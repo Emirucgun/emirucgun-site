@@ -19,3 +19,14 @@ Open `index.html` in a browser, or run `python3 -m http.server` and visit `local
 Every page shares `style.css`. Content lives directly in the HTML — no templating.
 When adding a project: copy a `.row` block in `work.html`, bump the index number, update the link.
 When adding an essay: copy a `.post` block in `writing.html` (and the two most recent on `index.html`).
+
+## Deploy
+Hosted on Vercel, connected to this repository (`main` branch, auto-deploy on push).
+
+Vercel project settings that must stay this way:
+- Framework Preset: **Other**
+- Build Command: *(empty)*
+- Output Directory: *(empty)*
+- Install Command: *(empty)*
+
+There is no build step — the repository root is served as-is.
