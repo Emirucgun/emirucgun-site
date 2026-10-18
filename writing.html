@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing — Emir Uçgun</title>
+<meta name="description" content="Essays on mobile development, audio engineering, and AI in products.">
+<meta property="og:title" content="Writing — Emir Uçgun">
+<meta property="og:description" content="Essays on mobile development, audio engineering, and AI in products.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emirucgun.com/writing.html">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bar"><div class="wrap bar-in">
+  <a class="id" href="index.html"><span class="dot"></span>Emir Uçgun</a>
+  <nav>
+    <a href="work.html">Work</a>
+    <a href="writing.html" aria-current="page">Writing</a>
+    <a href="about.html">About</a>
+  </nav>
+</div></div>
+
+<header class="phead"><div class="wrap">
+  <div class="kicker"><span class="blue">●</span><span>Two essays</span><span>/ Medium</span></div>
+  <h1>Writing<span class="pt">.</span></h1>
+  <p class="lede">I write when I learn something the hard way. Mostly about the parts of mobile development that don't survive a summary.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="head"><span class="num">01</span><h2>Essays</h2><span class="note">Published on Medium</span></div>
+  <div class="rows">
+
+    <div class="post rv">
+      <div class="date">Feb 24, 2026</div>
+      <div>
+        <h3><a href="https://medium.com/@emirucgun/building-a-real-time-harmonica-tuner-8335c223c0fa" target="_blank" rel="noopener">Building a Real-Time Harmonica Tuner</a></h3>
+        <p>How a tuner actually works: capturing raw audio, estimating fundamental frequency with the YIN algorithm, converting the error into cents, and mapping a frequency back to hole number and blow/draw action. Also the boring part nobody writes about — getting native audio into a JavaScript thread without latency killing the whole thing.</p>
+      </div>
+      <div class="go">Read ↗</div>
+    </div>
+
+    <div class="post rv">
+      <div class="date">Jan 8, 2026</div>
+      <div>
+        <h3><a href="https://medium.com/@emirucgun/is-your-product-truly-ai-powered-or-just-ai-bloated-the-hidden-cost-of-the-ai-gold-rush-07066d674c5f" target="_blank" rel="noopener">Is Your Product Truly “AI-Powered” or Just AI-Bloated?</a></h3>
+        <p>A skeptical look at the AI gold rush: what it costs to bolt a model onto a product that never needed one, and how to tell the difference between a feature and a gimmick.</p>
+      </div>
+      <div class="go">Read ↗</div>
+    </div>
+
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head rv"><span class="num">02</span><h2>Follow along</h2><span class="note">New essays, irregularly</span></div>
+  <p class="rv" style="max-width:62ch;color:rgba(244,242,238,.7);font-size:15px;line-height:1.7">
+    Everything is published openly on <a class="blue" href="https://medium.com/@emirucgun" target="_blank" rel="noopener">medium.com/@emirucgun ↗</a>.
+    No newsletter — I'd rather write once it's worth reading.
+  </p>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="head rv"><span class="num">→</span><h2>Get in touch</h2><span class="note">Replies same day</span></div>
+  <a class="mail rv" href="mailto:emirucgun@gmail.com">emirucgun@gmail.com</a>
+  <div class="links rv">
+    <a href="https://github.com/Emirucgun" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="https://linkedin.com/in/eucgun" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://medium.com/@emirucgun" target="_blank" rel="noopener">Medium ↗</a>
+    <a href="tel:+393445034591">+39 344 503 4591</a>
+  </div>
+  <div class="fine"><span>© 2026 Emir Uçgun · Torino, Italy</span><span>Hand-built · HTML / CSS / JS</span></div>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*55)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Emir Uçgun</title>
+<meta name="description" content="iOS apps built end to end: White Noise, Harmonica Tuner, Ghosted, SubSafe.">
+<meta property="og:title" content="Work — Emir Uçgun">
+<meta property="og:description" content="iOS apps built end to end: White Noise, Harmonica Tuner, Ghosted, SubSafe.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://emirucgun.com/work.html">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bar"><div class="wrap bar-in">
+  <a class="id" href="index.html"><span class="dot"></span>Emir Uçgun</a>
+  <nav>
+    <a href="work.html" aria-current="page">Work</a>
+    <a href="writing.html">Writing</a>
+    <a href="about.html">About</a>
+  </nav>
+</div></div>
+
+<header class="phead"><div class="wrap">
+  <div class="kicker"><span class="blue">●</span><span>Four builds</span><span>/ Three shipped</span></div>
+  <h1><span class="thin">Selected</span><br>Work<span class="pt">.</span></h1>
+  <p class="lede">Things I built and can talk about for an hour. Source is public on GitHub — read it, that's the point.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="head"><span class="num">01</span><h2>Apps</h2><span class="note">2025 — 2026</span></div>
+  <div class="rows">
+
+    <div class="row rv">
+      <div class="idx">01</div>
+      <div>
+        <h3><a href="https://github.com/Emirucgun/wn0" target="_blank" rel="noopener">White Noise</a></h3>
+        <p>A focus and sleep app built on a multi-channel procedural ambient mixer. Nothing is a looped sample: the sound is generated.</p>
+        <ul>
+          <li>Custom <i>AVAudioSourceNode</i> blocks generate audio in real time, with binaural-beat layers cross-faded by a Pomodoro timer.</li>
+          <li>MVVM architecture with singleton audio and display managers.</li>
+          <li>SwiftUI interface with glassmorphic materials and procedural animation; an OLED-safe low-luminance mode for overnight use.</li>
+        </ul>
+      </div>
+      <div class="tag">SwiftUI · AVAudioEngine<br>2026</div>
+    </div>
+
+    <div class="row rv">
+      <div class="idx">02</div>
+      <div>
+        <h3><a href="https://github.com/Emirucgun/harmonica-tuner" target="_blank" rel="noopener">Harmonica Tuner</a></h3>
+        <p>Real-time pitch detection for 10-hole diatonic harmonicas — it tells you which hole, whether to blow or draw, and how many cents off you are.</p>
+        <ul>
+          <li>Bridged Android's native <i>AudioRecord</i> to the JavaScript thread for low-latency PCM streaming.</li>
+          <li>YIN algorithm for fundamental-frequency estimation, mapped to harmonica layout.</li>
+          <li><a class="blue" href="https://medium.com/@emirucgun/building-a-real-time-harmonica-tuner-8335c223c0fa" target="_blank" rel="noopener">I wrote up the signal processing behind it ↗</a></li>
+        </ul>
+      </div>
+      <div class="tag">React Native · Expo<br>2026</div>
+    </div>
+
+    <div class="row rv">
+      <div class="idx">03</div>
+      <div>
+        <h3><a href="https://github.com/Emirucgun/Ghosted-App" target="_blank" rel="noopener">Ghosted</a></h3>
+        <p>A conversation-exit assistant: paste the message you just received, get a polite way out drafted by an LLM.</p>
+        <ul>
+          <li>Groq LLM inference behind two modes — generate an excuse, or soften a reply you already wrote.</li>
+          <li>UIKit with Storyboards and programmatic UI; usage streaks persisted locally.</li>
+        </ul>
+      </div>
+      <div class="tag">UIKit · Groq API<br>2026</div>
+    </div>
+
+    <div class="row rv">
+      <div class="idx">04</div>
+      <div>
+        <h3>SubSafe</h3>
+        <p>An offline subscription tracker, published on Google Play.</p>
+        <ul>
+          <li>Local-first by design: no account, no cloud, no data leaving the device.</li>
+          <li>Built with React Native and Expo as an end-to-end publishing exercise.</li>
+        </ul>
+      </div>
+      <div class="tag">React Native<br>Google Play</div>
+    </div>
+
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head rv"><span class="num">02</span><h2>Also on GitHub</h2><span class="note">Smaller experiments</span></div>
+  <p class="rv" style="max-width:62ch;color:rgba(244,242,238,.7);font-size:15px;line-height:1.7">
+    Student projects, Blender models, and a few things that never became products —
+    <a class="blue" href="https://github.com/Emirucgun" target="_blank" rel="noopener">github.com/Emirucgun ↗</a>
+  </p>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="head rv"><span class="num">→</span><h2>Get in touch</h2><span class="note">Replies same day</span></div>
+  <a class="mail rv" href="mailto:emirucgun@gmail.com">emirucgun@gmail.com</a>
+  <div class="links rv">
+    <a href="https://github.com/Emirucgun" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="https://linkedin.com/in/eucgun" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://medium.com/@emirucgun" target="_blank" rel="noopener">Medium ↗</a>
+    <a href="tel:+393445034591">+39 344 503 4591</a>
+  </div>
+  <div class="fine"><span>© 2026 Emir Uçgun · Torino, Italy</span><span>Hand-built · HTML / CSS / JS</span></div>
+</div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4*55)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
