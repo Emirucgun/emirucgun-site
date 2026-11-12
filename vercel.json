@@ -26,5 +26,22 @@
     }
   ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/#profile",
+      "permanent": false
+    },
+    {
+      "source": "/work",
+      "destination": "/#white-noise",
+      "permanent": false
+    },
+    {
+      "source": "/writing",
+      "destination": "/#writing",
+      "permanent": false
+    }
+  ]
 }

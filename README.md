@@ -1,47 +1,39 @@
 # emirucgun.com
 
-Personal site — static HTML, CSS and a little JavaScript. No build step, no framework.
+Personal site, designed in the visual language of Apple Wallet. Static HTML, CSS and a little JavaScript — no build step, no framework.
 
-## Pages
-- `index.html` — home
-- `work.html` — selected projects
-- `writing.html` — essays published on Medium
-- `about.html` — background, experience, education
+## Structure
+- `index.html` — the whole site: a stack of Wallet-style cards (Profile, Flo internship, four projects, Writing, Contact).
+  Each card's detail content lives in a hidden `.detail` block inside its `<article class="pass">`.
+- `style.css` — iOS system colours (light/dark), the card stack, card art (CSS only, no images), detail-sheet components.
+- `main.js` — card open/close (FLIP animation), history/deep links, menu, theme, copy, share.
+- `/about`, `/work`, `/writing` redirect to `/#profile`, `/#white-noise`, `/#writing` (see `vercel.json`).
 
-## Stack
-Plain HTML/CSS/JS. Self-hosted webfonts (Oswald, Inter, JetBrains Mono) in `fonts/`.
-Deployed on Vercel from the `main` branch.
-
-## Local preview
-Open `index.html` in a browser, or run `python3 -m http.server` and visit `localhost:8000`.
-
-## Theme
-Dark and light themes share one set of CSS custom properties in `:root` and
-`[data-theme="light"]`. The theme follows the operating system on first visit,
-then a header button (or the `T` key) overrides it; the choice is stored in `localStorage`.
-A tiny inline script in `<head>` applies the theme before paint, so there is no flash.
-
-## Interactions
-`main.js` — no dependencies:
-- scroll progress line under the header
-- cursor spotlight and hero parallax (desktop, fine pointer only)
-- magnetic hover on selected links
-- copy-to-clipboard on the email address
-- mobile menu, scroll reveals, cross-page transitions (`@view-transition`)
-Everything is disabled under `prefers-reduced-motion`.
+## How the Wallet interaction works
+Tapping a card copies its face into a fixed sheet, moves the real `.detail` node in beneath it, and animates the
+copy from the card's old position (FLIP) while the other cards drop to the bottom. Only `transform` and `opacity`
+are animated, so it stays on the compositor. Every card has a deep link (`/#ghosted`); back/forward and the ✕
+button close it. Without JavaScript the cards render as a plain list with all details visible.
+Motion is skipped under `prefers-reduced-motion`.
 
 ## Editing
-Every page shares `style.css`. Content lives directly in the HTML — no templating.
-When adding a project: copy a `.row` block in `work.html`, bump the index number, update the link.
-When adding an essay: copy a `.post` block in `writing.html` (and the two most recent on `index.html`).
+- **New project:** copy one of the project `<article class="pass">` blocks in `index.html`, give it a new `id`,
+  `data-title` and `style="--i:N"` (its position in the stack), and add a `.c-xxx` card-art class in `style.css`.
+- **New essay:** add a `.row` to the Writing card's "Latest Essays" list.
+- Only the top ~60px of each card shows in the stack, so put the card's name in `.c-top`.
+
+## Fonts
+SF Pro on Apple devices (system font — nothing is downloaded). Everywhere else, a self-hosted Inter variable font
+(`fonts/Inter-var-*.woff2`, weights 400–700).
+
+## Theme
+Follows the OS on first visit; the sun/moon button overrides it and the choice is stored in `localStorage`.
+An inline script in `<head>` applies it before first paint.
+
+## Local preview
+`python3 -m http.server` and visit `localhost:8000` (redirects only work on Vercel).
 
 ## Deploy
 Hosted on Vercel, connected to this repository (`main` branch, auto-deploy on push).
-
-Vercel project settings that must stay this way:
-- Framework Preset: **Other**
-- Build Command: *(empty)*
-- Output Directory: *(empty)*
-- Install Command: *(empty)*
-
-There is no build step — the repository root is served as-is.
+Vercel project settings: Framework Preset **Other**; Build, Output and Install commands empty.
+The repository root is served as-is.
