@@ -4,18 +4,409 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f2f2f7">
-<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;document.querySelector('meta[name=theme-color]').content=t==='dark'?'#000000':'#f2f2f7';if(localStorage.getItem('promo')==='0')d.classList.add('no-promo');}catch(e){}})();</script>
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;document.querySelector('meta[name=theme-color]').content=t==='dark'?'#000000':'#f2f2f7';if(localStorage.getItem('intro')==='0')d.classList.add('no-promo');}catch(e){}})();</script>
 <title>Emir Uçgun — iOS Developer</title>
 <meta name="description" content="iOS developer and Computer Engineering student at Politecnico di Torino. Swift, SwiftUI, UIKit.">
+<link rel="canonical" href="https://www.emirucgun.com/">
 <meta property="og:title" content="Emir Uçgun — iOS Developer">
 <meta property="og:description" content="iOS developer and Computer Engineering student at Politecnico di Torino. Swift, SwiftUI, UIKit.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://emirucgun.com">
+<meta property="og:url" content="https://www.emirucgun.com/">
+<meta property="og:image" content="https://www.emirucgun.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/style.css">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/main.js" defer></script>
+<!-- The stylesheet is inlined on purpose: the first paint needs this one file and nothing else. -->
+<style>
+/* Emir Uçgun — Wallet-style portfolio
+   SF Pro on Apple devices (system font, nothing downloaded); Inter variable elsewhere. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/Inter-var-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/Inter-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+/* ============================================================
+   Tokens — iOS system colours
+   ============================================================ */
+:root{
+  --bg:#f2f2f7;
+  --cell:#fff;
+  --label:#000;
+  --label2:rgba(60,60,67,.6);
+  --label3:rgba(60,60,67,.3);
+  --sep:rgba(60,60,67,.16);
+  --fill:rgba(120,120,128,.12);
+  --blue:#007aff;
+  --green:#34c759;
+  --green-text:#1c7f36;
+  --glass:rgba(255,255,255,.78);
+  --glass-edge:rgba(0,0,0,.06);
+  --glass-shadow:0 2px 10px rgba(0,0,0,.08),0 0 0 .5px rgba(0,0,0,.04);
+  --card-edge:rgba(0,0,0,.08);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,"Segoe UI",Roboto,sans-serif;
+  --round:-apple-system,BlinkMacSystemFont,"SF Pro Rounded","Inter",system-ui,sans-serif;
+  --serif:"New York",ui-serif,Georgia,"Times New Roman",serif;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --col:520px;
+  --gut:16px;
+  --peek:60px;
+  --r-card:15px;
+  --r-group:22px;
+  /* the soft colour bloom shared by the Profile card and the QR pass */
+  --bloom:radial-gradient(70% 90% at 24% 72%,#ffc23a 0,rgba(255,194,58,0) 70%),
+          radial-gradient(60% 80% at 90% 86%,#cf7df5 0,rgba(207,125,245,0) 70%),
+          radial-gradient(60% 70% at 72% 10%,#ff9a4d 0,rgba(255,154,77,0) 72%),#fdf6e7;
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#000;
+  --cell:#1c1c1e;
+  --label:#fff;
+  --label2:rgba(235,235,245,.6);
+  --label3:rgba(235,235,245,.3);
+  --sep:rgba(84,84,88,.55);
+  --fill:rgba(120,120,128,.24);
+  --blue:#0a84ff;
+  --green:#30d158;
+  --green-text:#30d158;
+  --glass:rgba(44,44,46,.72);
+  --glass-edge:rgba(255,255,255,.08);
+  --glass-shadow:0 2px 12px rgba(0,0,0,.5),inset 0 0 0 .5px rgba(255,255,255,.1);
+  --card-edge:rgba(255,255,255,.1);
+  color-scheme:dark;
+}
+@media (min-width:700px){:root{--peek:66px}}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable;background:var(--bg)}
+html.locked{overflow:hidden}
+body{background:var(--bg);color:var(--label);font-family:var(--sans);font-size:17px;line-height:1.35;letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;min-height:100vh;min-height:100dvh}
+a{color:inherit;text-decoration:none}
+button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+svg{display:block}
+b{font-weight:600}
+i,em{font-style:normal}
+::selection{background:color-mix(in srgb,var(--blue) 30%,transparent)}
+:focus-visible{outline:2.5px solid var(--blue);outline-offset:2px}
+
+.page{max-width:var(--col);margin:0 auto;padding:0 var(--gut) calc(40px + env(safe-area-inset-bottom));
+  padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
+
+/* pill buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 16px;border-radius:999px;
+  background:var(--fill);color:var(--blue);font-size:16px;font-weight:600;white-space:nowrap;
+  transition:transform .2s var(--ease),opacity .2s}
+.btn svg{flex:none;width:18px;height:18px}
+.btn:active{transform:scale(.95);opacity:.75}
+.btn.tint{background:var(--blue);color:#fff}
+.btn.sq{flex:none;width:40px;padding:0}
+
+/* "live" status dot */
+.live{position:relative;flex:none;display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green)}
+.live::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--green);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{transform:none;opacity:.7}70%,100%{transform:scale(3);opacity:0}}
+
+/* miniature card, used wherever a card is referenced by name */
+.mini{flex:none;display:block;width:26px;height:18px;border-radius:5px;background:var(--k,var(--fill));box-shadow:0 0 0 .5px var(--card-edge)}
+
+/* ============================================================
+   Large title + glass toolbar
+   ============================================================ */
+.top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:calc(14px + env(safe-area-inset-top)) 0 14px;z-index:20}
+.title{font-size:clamp(28px,8.6vw,34px);font-weight:700;letter-spacing:-.025em;line-height:1.1;white-space:nowrap}
+.tools{display:flex;gap:8px;flex:none}
+.glass{display:flex;align-items:center;justify-content:center;height:44px;background:var(--glass);color:var(--label);
+  border-radius:999px;box-shadow:var(--glass-shadow);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);
+  transition:transform .2s var(--ease),background-color .2s}
+.glass.circle{width:44px}
+.glass svg{width:21px;height:21px}
+.glass.pill{padding:0 4px}
+.glass.pill button{width:40px;height:44px;display:flex;align-items:center;justify-content:center}
+.glass:active,.glass.pill button:active{transform:scale(.92)}
+#themeBtn .sun{display:none}
+[data-theme="dark"] #themeBtn .sun{display:block}
+[data-theme="dark"] #themeBtn .moon{display:none}
+@media (max-width:339px){.tools>.circle{display:none}}
+
+/* popover menu (the Wallet "•••" menu): an index of every card, plus the QR action */
+.popover{--cut:var(--cell);position:absolute;top:calc(64px + env(safe-area-inset-top));right:0;width:min(312px,calc(100vw - 32px));
+  max-height:calc(100vh - 84px);max-height:calc(100dvh - 84px - env(safe-area-inset-top));overflow-y:auto;overscroll-behavior:contain;
+  padding:6px;border-radius:24px;background:var(--glass);box-shadow:0 12px 40px rgba(0,0,0,.18),0 0 0 .5px var(--glass-edge);
+  -webkit-backdrop-filter:blur(30px) saturate(190%);backdrop-filter:blur(30px) saturate(190%);
+  transform-origin:calc(100% - 22px) -10px;transform:scale(.4);opacity:0;visibility:hidden;
+  transition:transform .26s var(--ease),opacity .16s ease,visibility 0s .26s}
+.popover.open{transform:none;opacity:1;visibility:visible;transition:transform .34s var(--ease),opacity .14s ease,visibility 0s}
+.popover a,.popover button{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:6px 12px 6px 8px;
+  font-size:17px;text-align:left;white-space:nowrap;border-radius:14px}
+.popover a:active,.popover button:active{background:var(--fill)}
+@media (hover:hover){.popover a:hover,.popover button:hover{background:var(--fill)}}
+.pi{flex:none;display:flex;align-items:center;justify-content:center;width:30px}
+.pi svg{width:20px;height:20px}
+.popover small{flex:0 1 auto;min-width:0;margin-left:auto;padding-left:8px;font-size:14px;color:var(--label2);overflow:hidden;text-overflow:ellipsis}
+.pop-h{padding:9px 12px 3px 14px;font-size:13px;font-weight:600;color:var(--label2)}
+.popover hr{border:0;height:.5px;background:var(--sep);margin:6px 12px}
+
+/* ============================================================
+   Intro tile — who, what, and the three things a recruiter needs
+   ============================================================ */
+.promo{position:relative;margin:2px 0 24px;padding:14px 16px 16px;border-radius:var(--r-group);background:var(--cell)}
+.no-promo .promo{display:none}
+.promo-status{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--green-text)}
+.promo-title{font-size:21px;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-top:5px;padding-right:34px}
+.promo-sub{font-size:15px;color:var(--label2);line-height:1.35;margin-top:3px}
+.promo-actions{display:flex;gap:8px;margin-top:13px}
+.promo-actions .btn{flex:1 1 auto;min-width:0}
+.promo-actions .btn.sq{flex:none}
+@media (max-width:359px){.promo-actions .btn:not(.sq) svg{display:none}.promo-actions .btn{padding:0 10px}}
+.promo-x{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--fill);color:var(--label2)}
+.promo-x::after{content:"";position:absolute;inset:-7px}
+.promo-x svg{width:12px;height:12px}
+.promo-x:active{transform:scale(.9)}
+
+/* ============================================================
+   The card stack
+   ============================================================ */
+.stack{position:relative;padding-bottom:6px}
+.pass{position:relative}
+/* each card overlaps the previous one so only its top strip shows (margin % = % of width) */
+.pass+.pass{margin-top:calc(var(--peek) - 63.05%)}
+.js .pass{animation:rise .5s var(--ease) backwards;animation-delay:calc(var(--i) * 22ms)}
+@keyframes rise{from{transform:translateY(56px);opacity:0}}
+
+.card{position:relative;display:flex;flex-direction:column;justify-content:space-between;width:100%;aspect-ratio:1.586;
+  padding:15px 17px 16px;border-radius:var(--r-card);text-align:left;overflow:hidden;color:#fff;isolation:isolate;
+  box-shadow:0 0 0 .5px var(--card-edge),0 -3px 14px -5px rgba(0,0,0,.28);
+  transition:transform .3s var(--ease)}
+.card:active{transform:scale(.982)}
+@media (hover:hover) and (pointer:fine){
+  .pass:not(:last-child) .card:hover{transform:translateY(-12px)}
+}
+/* optional image art: <img class="c-art" src="/cards/name.webp" alt=""> as the card's first child */
+.c-art{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.c-top,.c-bottom{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;position:relative;z-index:2}
+.c-bottom{align-items:flex-end}
+.c-name{display:flex;align-items:center;gap:7px;font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2;white-space:nowrap}
+.c-name svg{width:20px;height:20px}
+.c-meta{font-size:13px;font-weight:600;opacity:.9;letter-spacing:.01em;white-space:nowrap;padding-top:3px}
+.c-sub{font-size:14px;font-weight:500;opacity:.92}
+.c-big{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.c-field{display:flex;flex-direction:column;font-size:16px;font-weight:500;line-height:1.15}
+.c-field small{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;opacity:.88;margin-bottom:2px}
+.c-field.r{text-align:right;align-items:flex-end}
+@media (max-width:359px){.c-name{font-size:17px}.c-big{font-size:17px}}
+
+/* 1 · Profile — titanium card with a soft colour bloom */
+.c-profile{background:var(--bloom);color:#1d1d1f}
+.mono{display:inline-flex;align-items:center;justify-content:center;font-family:var(--round);font-weight:700;font-size:15px;letter-spacing:-.02em;
+  width:34px;height:24px;border-radius:7px;background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.14)}
+.c-profile .c-meta{opacity:.78}
+.c-holder{display:flex;flex-direction:column;font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.c-holder small{font-size:13px;font-weight:500;letter-spacing:0;opacity:.82;margin-top:2px}
+
+/* 2 · Flo — boarding pass */
+.c-flo{background:linear-gradient(160deg,#d6334d,#b01a58);justify-content:flex-start;gap:4px}
+.c-flo .c-name{font-family:var(--round);font-size:22px;font-weight:700}
+.bp{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.bp-end{display:flex;flex-direction:column;font-size:clamp(26px,8.4vw,34px);font-weight:400;letter-spacing:-.03em;line-height:1}
+.bp-end small{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;opacity:.88;margin-bottom:4px}
+.bp-end.r{align-items:flex-end}
+.bp-plane{width:30px;height:30px;margin-top:12px}
+.bp-fields{display:flex;justify-content:space-between;margin-top:auto}
+
+/* 3 · White Noise — night indigo, rings and a waveform */
+.c-wn{background:repeating-radial-gradient(circle at 88% 135%,rgba(255,255,255,.09) 0 1.5px,transparent 1.5px 13px),
+  radial-gradient(120% 90% at 85% 110%,#4b4ae0,transparent 60%),linear-gradient(160deg,#141a3c,#0a0d22)}
+.wave{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:324/56;fill:none;stroke:#b9c0ff;stroke-width:2.6;stroke-linecap:round;opacity:.9;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent);mask:linear-gradient(90deg,transparent,#000 24%,#000 76%,transparent)}
+
+/* 4 · Harmonica Tuner — brass plate, engraved in dark */
+.c-ht{background:linear-gradient(150deg,#ffc94f,#ff9a1f 72%,#ff8a14);color:#3a1a00}
+.holes{position:relative;z-index:1;display:grid;grid-template-columns:repeat(10,1fr);gap:5px;padding:7px;border-radius:11px;
+  background:rgba(58,26,0,.16);box-shadow:inset 0 1px 2px rgba(58,26,0,.25)}
+.holes i{display:flex;align-items:center;justify-content:center;height:30px;border-radius:5px;background:#3a1a00;
+  font-size:11px;font-weight:600;color:#ffe9c7}
+.holes i.on{background:#fff;color:#b8400a;box-shadow:0 0 14px rgba(255,255,255,.85)}
+
+/* 5 · Ghosted — violet, with the conversation it gets you out of */
+.c-gh{background:radial-gradient(circle at 92% 8%,rgba(255,255,255,.09) 0 96px,transparent 97px),linear-gradient(150deg,#7250f2,#4c25c6)}
+.bubbles{position:relative;z-index:1;display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;line-height:1.25}
+.bubbles i{max-width:80%;padding:7px 12px;border-radius:17px}
+.bubbles i:first-child{align-self:flex-start;background:rgba(24,6,90,.42);border-bottom-left-radius:5px}
+.bubbles i:last-child{align-self:flex-end;background:#fff;color:#4c25c6;border-bottom-right-radius:5px}
+
+/* 6 · SubSafe — transit green with a shield watermark */
+.c-ss{--cut:#12703c;background:linear-gradient(155deg,#148546,#0b5f37)}
+.c-mark{position:absolute;right:-22px;bottom:-40px;z-index:0;width:200px;height:200px;color:rgba(255,255,255,.1);--cut:transparent}
+.c-live{display:flex;align-items:center;gap:6px;opacity:1}
+.c-live .live,.c-live .live::after{background:#7dffa1}
+
+/* 7 · Writing — paper */
+.c-wr{background:#f6f0e4;color:#2b2621;
+  background-image:repeating-linear-gradient(0deg,transparent 0 23px,rgba(120,90,50,.08) 23px 24px)}
+.c-wr .c-name{font-family:var(--serif);font-size:22px;font-weight:600}
+.c-quote{position:relative;z-index:2;font-family:var(--serif);font-size:clamp(17px,5vw,21px);line-height:1.25;font-style:italic;letter-spacing:-.01em;max-width:88%}
+
+/* 8 · Contact — black cash card: a colour wheel seen through a dot screen */
+.c-ct{background:#0d0d0f}
+.c-ct::before{content:"";position:absolute;inset:0;z-index:0;
+  background:conic-gradient(from 200deg at 50% 51%,#ff9f0a,#ff375f,#bf5af2,#5e5ce6,#0a84ff,#30d158,#ffd60a,#ff9f0a);
+  -webkit-mask:radial-gradient(circle 62px at 50% 51%,transparent 26%,#000 50%,#000 64%,transparent 100%);
+          mask:radial-gradient(circle 62px at 50% 51%,transparent 26%,#000 50%,#000 64%,transparent 100%)}
+.c-ct::after{content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(circle,transparent 1.5px,#0d0d0f 2.1px) 50% 51%/9px 9px}
+.c-go{width:16px;height:16px;opacity:.6;margin-bottom:4px}
+
+/* footer under the stack */
+.fine{text-align:center;font-size:13px;color:var(--label2);margin-top:26px;line-height:1.5}
+
+/* ============================================================
+   Card detail sheet
+   ============================================================ */
+.sheet{position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.sheet[hidden]{display:none}
+.sheet-bg{position:fixed;inset:0;background:var(--bg);z-index:-1}
+.sheet-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  max-width:var(--col);margin:0 auto;padding:calc(10px + env(safe-area-inset-top)) var(--gut) 10px;pointer-events:none}
+.sheet-bar>*{pointer-events:auto}
+.sheet-title{font-size:17px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet.scrolled .sheet-title{opacity:1}
+.sheet-bar::before{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb,var(--bg) 72%,transparent);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);opacity:0;transition:opacity .2s;
+  -webkit-mask:linear-gradient(#000 70%,transparent);mask:linear-gradient(#000 70%,transparent)}
+.sheet.scrolled .sheet-bar::before{opacity:1}
+.sheet-inner{max-width:var(--col);margin:0 auto;padding:4px var(--gut) calc(48px + env(safe-area-inset-bottom))}
+.sheet-card .card{cursor:default;box-shadow:0 0 0 .5px var(--card-edge),0 10px 30px -10px rgba(0,0,0,.35)}
+.sheet-card .card:active{transform:none}
+
+/* previous / next card, at the end of every sheet */
+.sheet-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.tile.nav{min-height:0;padding:12px 14px 13px;gap:9px;transition:transform .2s var(--ease)}
+.tile.nav:active{transform:scale(.97)}
+.nav-top{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;color:var(--label2)}
+.nav-name{font-size:16px;font-weight:600;line-height:1.2}
+
+/* ============================================================
+   Detail content (tiles, grouped lists)
+   ============================================================ */
+.detail{padding-top:18px}
+.lede{font-size:17px;line-height:1.45;color:var(--label);margin:2px 4px 18px}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+.tile{position:relative;display:flex;flex-direction:column;background:var(--cell);border-radius:var(--r-group);padding:13px 15px 15px;min-height:96px}
+.tile.tall{grid-row:span 2;grid-column:2}
+.tile.tall .btn{margin-top:auto;align-self:stretch}
+.t-label{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600}
+.t-value{font-size:clamp(22px,6.6vw,26px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-top:1px}
+.t-value.sm{font-size:21px;margin-top:4px}
+.t-sub{font-size:14px;color:var(--label2);line-height:1.3;margin-top:1px}
+.bars{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;height:38px;margin-top:auto;padding-top:10px}
+.bars i{border-radius:3px;background:var(--fill);position:relative;overflow:hidden}
+.bars i.on{background:linear-gradient(#ffbf2a,#c86cf2)}
+
+.gtitle{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:26px 4px 10px}
+.gsub{font-size:15px;font-weight:600;color:var(--label2);margin:24px 16px 7px}
+.foot{font-size:13px;color:var(--label2);line-height:1.4;margin:8px 16px 0}
+.foot a{color:var(--blue)}
+
+.list{background:var(--cell);border-radius:var(--r-group);overflow:hidden;margin-bottom:12px}
+.list.text{padding:14px 16px}
+.list.text p{font-size:16px;line-height:1.5;color:var(--label)}
+.list.text p+p{margin-top:10px}
+
+.row{position:relative;display:flex;align-items:center;gap:13px;padding:11px 14px 11px 14px;min-height:56px;transition:background-color .15s}
+button.row{width:100%;text-align:left}
+a.row:active,button.row:active,.row a.row-main:active{background:var(--fill)}
+@media (hover:hover){a.row:hover,button.row:hover{background:var(--fill)}}
+.row+.row::before,.kv+.kv::before{content:"";position:absolute;top:0;right:0;left:63px;height:.5px;background:var(--sep)}
+.kv+.kv::before{left:16px}
+.ico{--cut:var(--c);flex:none;align-self:flex-start;width:38px;height:38px;border-radius:9px;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center}
+.ico svg{width:21px;height:21px}
+[data-theme="dark"] .ico[style*="1c1c1e"]{background:#3a3a3c;--cut:#3a3a3c}
+.ico.n{font-size:16px;font-weight:700;width:30px;height:30px;border-radius:8px;margin:1px 4px 0}
+.glyph{font-size:18px;font-weight:700;letter-spacing:-.03em}
+.row-main{flex:1;min-width:0;display:flex;flex-direction:column;align-self:center}
+.row-main b{font-size:17px;font-weight:600;line-height:1.25}
+.row-main span{font-size:15px;color:var(--label2);line-height:1.3}
+.row-main .row-text{font-size:16px;color:var(--label);line-height:1.4}
+.row-main i{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}
+/* title on the left, a short fact on the right; the lines under it get the full width */
+.row-main .row-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;color:var(--label)}
+.row-main .row-head em{flex:none;font-size:15px;font-weight:500;color:var(--label2)}
+.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:1px 0 2px}
+.chev{flex:none;width:13px;height:13px;color:var(--label3)}
+.chev.out{width:15px;height:15px}
+.row .row-main[href]{margin:-11px 0;padding:11px 0}
+.row-main[href] span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.kv{position:relative;display:flex;justify-content:space-between;gap:16px;padding:14px 16px;font-size:17px}
+.kv span:last-child{color:var(--label2);text-align:right}
+/* stacked variant: small label above, value below at full strength */
+.kv.col{flex-direction:column;gap:1px;padding:10px 16px 12px}
+.kv.col span:first-child{font-size:13px;font-weight:600;color:var(--label2)}
+.kv.col span:last-child{color:var(--label);text-align:left}
+
+.chip{flex:none;display:flex;align-items:center;gap:5px;padding:7px 13px;border-radius:999px;background:var(--fill);color:var(--blue);font-size:15px;font-weight:600}
+.chip svg{width:16px;height:16px}
+.chip:active{transform:scale(.95)}
+.chip.done{color:var(--green-text)}
+
+/* ============================================================
+   QR pass — hand the site to the person standing in front of you
+   ============================================================ */
+.qr{width:min(330px,calc(100vw - 48px));margin:auto;padding:0;border:0;background:none;overflow:visible;color:#1d1d1f;
+  filter:drop-shadow(0 24px 36px rgba(0,0,0,.35))}
+.qr::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.qr[open]{animation:qr-in .4s var(--ease)}
+.qr[open]::backdrop{animation:fade .22s ease}
+@keyframes qr-in{from{transform:translateY(36px) scale(.92);opacity:0}}
+@keyframes fade{from{opacity:0}}
+.qr-pass{padding:16px 18px 20px;border-radius:24px;background:var(--bloom);text-align:center;
+  -webkit-mask:radial-gradient(circle 10px at 0 73px,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 73px,#0000 98%,#000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle 10px at 0 73px,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 10px at 100% 73px,#0000 98%,#000) right/51% 100% no-repeat}
+.qr-head{display:flex;align-items:center;gap:11px;height:57px;padding-bottom:16px;text-align:left;border-bottom:1.5px dashed rgba(29,29,31,.22)}
+.qr-who{display:flex;flex-direction:column;font-size:17px;line-height:1.2}
+.qr-who small{font-size:13px;font-weight:500;opacity:.78}
+.qr-code{width:min(232px,100%);margin:18px auto 14px;padding:8px;border-radius:18px;background:#fff}
+.qr-code svg{width:100%;height:auto;aspect-ratio:1}
+.qr-url{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.qr-hint{font-size:14px;opacity:.75;margin-top:2px}
+.qr form{display:flex;justify-content:center;margin-top:16px}
+
+/* ============================================================
+   HUD toast
+   ============================================================ */
+.hud{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));z-index:80;display:flex;align-items:center;gap:8px;
+  padding:12px 20px 12px 16px;border-radius:999px;background:var(--glass);box-shadow:0 8px 30px rgba(0,0,0,.18),0 0 0 .5px var(--glass-edge);
+  -webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);
+  font-size:15px;font-weight:600;transform:translate(-50%,20px) scale(.9);opacity:0;pointer-events:none;
+  transition:transform .4s var(--ease),opacity .2s}
+.hud.show{transform:translate(-50%,0);opacity:1}
+.hud svg{width:18px;height:18px;color:var(--green)}
+
+/* ============================================================
+   No-JS fallback: show everything as a plain list
+   ============================================================ */
+html:not(.js) .pass+.pass{margin-top:22px}
+html:not(.js) .detail[hidden]{display:block}
+html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
 </head>
 <body>
 
@@ -34,11 +425,13 @@
   <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5" fill="currentColor"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 4L1.5 9 12 14l10.5-5z" fill="currentColor"/><path d="M6 11.5V16c3.5 2.6 8.5 2.6 12 0v-4.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
   <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" fill="currentColor"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z" fill="currentColor"/><circle cx="17" cy="9" r="2.6" fill="currentColor" opacity=".7"/><path d="M16.5 14.2c3 .3 5 2.4 5 5.8h-4.3" fill="currentColor" opacity=".7"/></symbol>
-  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" fill="currentColor"/><path d="M9 12h7M9 15.5h7M9 9h3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".9"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.6 7-12.2A7 7 0 0 0 5 9.8C5 15.4 12 22 12 22z" fill="currentColor"/><circle cx="12" cy="9.8" r="2.6" fill="#fff"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20.5c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5z" fill="currentColor"/></symbol>
+  <symbol id="i-contact" viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 20c0-3.6 2.9-6 6.5-6 1.4 0 2.7.4 3.8 1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M18 13.5v6M15 16.5h6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M13.5 13.5h3v3h-3zM17.5 17.5h3v3h-3zM18 13.5h2.5V16H18zM13.5 18H16v2.5h-2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" fill="currentColor"/><path d="M9 12h7M9 15.5h7M9 9h3" fill="none" stroke-width="1.6" stroke-linecap="round" style="stroke:var(--cut,#fff)"/></symbol>
   <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h1.5M7 8.5v7M11 5v14M15 8v8M19 10.5v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   <symbol id="i-bubble" viewBox="0 0 24 24"><path d="M12 4c5 0 9 3.1 9 7s-4 7-9 7c-.9 0-1.8-.1-2.6-.3L4.5 20l1.3-3.8C4 14.9 3 13 3 11c0-3.9 4-7 9-7z" fill="currentColor"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.8-8 10-4.6-1.2-8-5-8-10v-6z" fill="currentColor"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.8-8 10-4.6-1.2-8-5-8-10v-6z" fill="currentColor"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--cut,#fff)"/></symbol>
   <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21.5 12c0-.8-.7-1.4-1.5-1.4h-5.3L10 3H8l2.4 7.6H5.6L3.8 8.3H2.3L3.4 12l-1.1 3.7h1.5l1.8-2.3h4.8L8 21h2l4.7-7.6H20c.8 0 1.5-.6 1.5-1.4z" fill="currentColor"/></symbol>
 </svg>
 
@@ -50,33 +443,31 @@
       <a class="glass circle" href="#contact" aria-label="Contact"><svg><use href="#i-mail"/></svg></a>
       <div class="glass pill">
         <button type="button" id="themeBtn" aria-label="Switch to dark appearance"><svg class="moon"><use href="#i-moon"/></svg><svg class="sun"><use href="#i-sun"/></svg></button>
-        <button type="button" id="moreBtn" aria-label="More" aria-haspopup="menu" aria-expanded="false" aria-controls="menu"><svg><use href="#i-more"/></svg></button>
+        <button type="button" id="moreBtn" aria-label="All cards" aria-expanded="false" aria-controls="menu"><svg><use href="#i-more"/></svg></button>
       </div>
     </div>
-    <nav class="popover" id="menu" role="menu" aria-label="Sections">
-      <a role="menuitem" href="#profile"><svg><use href="#i-people"/></svg><span>Profile<small>iOS Developer · Torino</small></span></a>
-      <a role="menuitem" href="#white-noise"><svg><use href="#i-code"/></svg><span>Projects<small>4 apps</small></span></a>
-      <a role="menuitem" href="#writing"><svg><use href="#i-doc"/></svg><span>Writing<small>2 essays</small></span></a>
+    <nav class="popover" id="menu" aria-label="All cards">
+      <a href="#profile"><span class="pi"><svg><use href="#i-person"/></svg></span>Profile<small>About · Toolkit</small></a>
+      <a href="#flo"><span class="pi"><svg><use href="#i-brief"/></svg></span>Experience<small>Flo · iOS Intern</small></a>
+      <p class="pop-h" id="menuProjectsTitle">Projects</p>
+      <!-- one row per card marked data-kind="project", filled in by main.js -->
+      <div id="menuProjects" role="group" aria-labelledby="menuProjectsTitle"></div>
       <hr>
-      <a role="menuitem" href="#contact"><svg><use href="#i-mail"/></svg><span>Contact<small>Replies same day</small></span></a>
+      <a href="#writing"><span class="pi"><svg><use href="#i-doc"/></svg></span>Writing<small>2 essays</small></a>
+      <a href="#contact"><span class="pi"><svg><use href="#i-mail"/></svg></span>Contact<small>Replies same day</small></a>
+      <hr>
+      <button type="button" data-qr><span class="pi"><svg><use href="#i-qr"/></svg></span>Show QR Code</button>
     </nav>
   </header>
 
   <aside class="promo" id="promo" aria-label="Availability">
-    <div class="promo-art" aria-hidden="true">
-      <span style="--c:#ff9f0a;--r:-6deg">Swift</span>
-      <span style="--c:#0a84ff;--r:4deg">SwiftUI</span>
-      <span style="--c:#30d158;--r:-3deg">UIKit</span>
-      <span style="--c:#bf5af2;--r:5deg">AVAudioEngine</span>
-      <span style="--c:#ff453a;--r:-4deg">React Native</span>
-      <span style="--c:#64d2ff;--r:3deg">TypeScript</span>
-      <span style="--c:#ffd60a;--r:-5deg">Python</span>
-      <span style="--c:#5e5ce6;--r:4deg">Supabase</span>
-      <span style="--c:#ff375f;--r:-2deg">Figma</span>
-    </div>
-    <div class="promo-bar">
-      <div><b>Open to iOS internships</b><span>Part-time or internship roles, from Torino or remote.</span></div>
-      <a class="promo-btn" href="mailto:emirucgun@gmail.com">Email</a>
+    <p class="promo-status"><i class="live" aria-hidden="true"></i>Available</p>
+    <p class="promo-title">Open to iOS internships</p>
+    <p class="promo-sub">Part-time or internship roles, from Torino or remote. Swift, SwiftUI and UIKit.</p>
+    <div class="promo-actions">
+      <a class="btn tint" href="mailto:emirucgun@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+      <a class="btn" href="/emir-ucgun.vcf"><svg aria-hidden="true"><use href="#i-contact"/></svg>Save Contact</a>
+      <button type="button" class="btn sq" data-qr aria-label="Show QR code"><svg><use href="#i-qr"/></svg></button>
     </div>
     <button type="button" class="promo-x" id="promoX" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button>
   </aside>
@@ -84,11 +475,10 @@
   <main class="stack" id="stack" aria-label="Cards">
 
     <!-- ===================== PROFILE ===================== -->
-    <article class="pass" id="profile" style="--i:0" data-title="Profile">
+    <article class="pass" id="profile" style="--i:0;--k:linear-gradient(135deg,#ffc23a,#cf7df5)" data-title="Profile">
       <button type="button" class="card c-profile" aria-label="Open Profile">
-        <span class="c-top"><span class="mono">EU</span><span class="c-meta">Profile</span></span>
-        <span class="c-blob" aria-hidden="true"></span>
-        <span class="c-bottom"><span class="c-holder">Emir Uçgun<small>iOS Developer</small></span><span class="c-loc">Torino, IT</span></span>
+        <span class="c-top"><span class="c-name"><span class="mono">EU</span>Profile</span><span class="c-meta">iOS Developer</span></span>
+        <span class="c-bottom"><span class="c-holder">Emir Uçgun<small>Computer Engineering · Politecnico di Torino</small></span></span>
       </button>
       <div class="detail" hidden>
         <p class="lede">Computer Engineering student at Politecnico di Torino. I build iOS apps end to end — UIKit to SwiftUI, REST and LLM integration, and custom real-time audio.</p>
@@ -100,9 +490,9 @@
             <span class="t-sub">Italy · from Türkiye</span>
           </div>
           <div class="tile tall">
-            <span class="t-label">Available</span>
+            <span class="t-label"><i class="live" aria-hidden="true"></i>Available</span>
             <span class="t-sub">For iOS internships &amp; part-time roles.</span>
-            <a class="t-check" href="mailto:emirucgun@gmail.com" aria-label="Email me"><svg><use href="#i-check"/></svg></a>
+            <a class="btn tint" href="mailto:emirucgun@gmail.com">Email me</a>
           </div>
           <div class="tile">
             <span class="t-label">Degree Progress</span>
@@ -114,14 +504,13 @@
         <h3 class="gtitle">Experience</h3>
         <div class="list">
           <a class="row" href="#flo">
-            <span class="ico" style="--c:#ff6b6b"><svg><use href="#i-brief"/></svg></span>
-            <span class="row-main"><b>Flo</b><span>iOS Development Intern</span><span>Istanbul · Jul — Aug 2026</span></span>
-            <span class="row-end">2 apps</span><svg class="chev"><use href="#i-chev"/></svg>
+            <span class="ico" style="--c:#d6334d"><svg><use href="#i-brief"/></svg></span>
+            <span class="row-main"><span class="row-head"><b>Flo</b><em>2 apps</em></span><span>iOS Development Intern</span><span>Istanbul · Jul — Aug 2026</span></span>
+            <svg class="chev"><use href="#i-chev"/></svg>
           </a>
           <div class="row">
             <span class="ico" style="--c:#34c759"><svg><use href="#i-people"/></svg></span>
-            <span class="row-main"><b>GDSC</b><span>Core Member &amp; Event Coordinator</span><span>2023 — 2024</span></span>
-            <span class="row-end">100+ students</span>
+            <span class="row-main"><span class="row-head"><b>GDSC</b><em>100+ students</em></span><span>Core Member &amp; Event Coordinator</span><span>2023 — 2024</span></span>
           </div>
         </div>
         <p class="foot">At GDSC I co-organised a technology summit for 100+ students and ran five technical workshops and tech talks.</p>
@@ -130,9 +519,16 @@
         <div class="list">
           <div class="row">
             <span class="ico" style="--c:#0a84ff"><svg><use href="#i-cap"/></svg></span>
-            <span class="row-main"><b>Politecnico di Torino</b><span>BSc in Computer Engineering</span><span>2024 — expected 2028</span></span>
-            <span class="row-end">Torino</span>
+            <span class="row-main"><span class="row-head"><b>Politecnico di Torino</b><em>Torino</em></span><span>BSc in Computer Engineering</span><span>2024 — expected 2028</span></span>
           </div>
+        </div>
+
+        <h3 class="gtitle">Toolkit</h3>
+        <div class="list">
+          <div class="kv col"><span>iOS</span><span>Swift · SwiftUI · UIKit · AVAudioEngine</span></div>
+          <div class="kv col"><span>Cross-platform</span><span>React Native · Expo · TypeScript</span></div>
+          <div class="kv col"><span>Backend &amp; AI</span><span>Supabase · Groq API · Python</span></div>
+          <div class="kv col"><span>Design</span><span>Figma · Blender</span></div>
         </div>
 
         <h3 class="gtitle">Background</h3>
@@ -151,19 +547,11 @@
           <div class="kv"><span>Languages</span><span>Turkish · English · Italian</span></div>
           <div class="kv"><span>Looking for</span><span>iOS internship / part-time</span></div>
         </div>
-
-        <h3 class="gsub">Toolkit</h3>
-        <div class="list">
-          <div class="kv"><span>iOS</span><span>Swift · SwiftUI · UIKit · AVAudioEngine</span></div>
-          <div class="kv"><span>Cross-platform</span><span>React Native · Expo · TypeScript</span></div>
-          <div class="kv"><span>Backend &amp; AI</span><span>Supabase · Groq API · Python</span></div>
-          <div class="kv"><span>Design</span><span>Figma · Blender</span></div>
-        </div>
       </div>
     </article>
 
     <!-- ===================== FLO (boarding pass) ===================== -->
-    <article class="pass" id="flo" style="--i:1" data-title="Flo Internship">
+    <article class="pass" id="flo" style="--i:1;--k:linear-gradient(135deg,#d6334d,#b01a58)" data-title="Flo Internship">
       <button type="button" class="card c-flo" aria-label="Open Flo internship">
         <span class="c-top"><span class="c-name">Flo</span><span class="c-field r"><small>Role</small>iOS Intern</span></span>
         <span class="bp">
@@ -186,7 +574,7 @@
         </div>
         <h3 class="gtitle">Highlights</h3>
         <div class="list">
-          <div class="row"><span class="ico n" style="--c:#ff6b6b">1</span><span class="row-main"><span class="row-text">Built two complete iOS applications end to end in a six-person iOS team.</span></span></div>
+          <div class="row"><span class="ico n" style="--c:#d6334d">1</span><span class="row-main"><span class="row-text">Built two complete iOS applications end to end in a six-person iOS team.</span></span></div>
           <div class="row"><span class="ico n" style="--c:#ff9f0a">2</span><span class="row-main"><span class="row-text">Started in UIKit and Storyboards, then moved to SwiftUI as the team migrated.</span></span></div>
           <div class="row"><span class="ico n" style="--c:#0a84ff">3</span><span class="row-main"><span class="row-text">Daily standups, task breakdown, code review with the senior engineer, and the app update and release cycle.</span></span></div>
         </div>
@@ -202,9 +590,10 @@
     </article>
 
     <!-- ===================== WHITE NOISE ===================== -->
-    <article class="pass" id="white-noise" style="--i:2" data-title="White Noise">
+    <article class="pass" id="white-noise" style="--i:2;--k:linear-gradient(135deg,#141a3c,#4b4ae0)" data-title="White Noise" data-kind="project" data-tag="SwiftUI">
       <button type="button" class="card c-wn" aria-label="Open White Noise">
         <span class="c-top"><span class="c-name"><svg><use href="#i-wave"/></svg>White Noise</span><span class="c-meta">SwiftUI</span></span>
+        <svg class="wave" viewBox="0 0 324 56" aria-hidden="true"><path d="M3 25.5v5M9 23.4v9.3M15 20.9v14.1M21 19.9v16.2M27 23.2v9.5M33 22.3v11.5M39 18.7v18.6M45 19.2v17.6M51 25.9v4.3M57 19.4v17.1M63 24.1v7.7M69 22v12M75 11.3v33.4M81 13.3v29.4M87 13.3v29.4M93 22.6v10.8M99 21.2v13.6M105 11.7v32.5M111 10.3v35.3M117 16.1v23.9M123 20.3v15.3M129 23.9v8.1M135 19.8v16.4M141 13.7v28.7M147 10.9v34.2M153 6.8v42.4M159 20.8v14.5M165 15.2v25.6M171 12.6v30.7M177 12.4v31.2M183 12.1v31.7M189 19v18M195 18v20M201 19.9v16.2M207 15.7v24.6M213 11.5v33.1M219 16v24M225 19.3v17.3M231 21.9v12.2M237 11.6v32.8M243 11.4v33.2M249 15.4v25.2M255 18.8v18.5M261 23.6v8.8M267 20.1v15.7M273 23.5v8.9M279 22.1v11.8M285 20.2v15.6M291 22.1v11.9M297 24v7.9M303 21.7v12.7M309 20.8v14.4M315 23v10.1M321 25.7v4.7"/></svg>
         <span class="c-bottom"><span class="c-sub">Procedural ambient mixer</span><span class="c-meta">2026</span></span>
       </button>
       <div class="detail" hidden>
@@ -230,7 +619,7 @@
     </article>
 
     <!-- ===================== HARMONICA TUNER ===================== -->
-    <article class="pass" id="harmonica-tuner" style="--i:3" data-title="Harmonica Tuner">
+    <article class="pass" id="harmonica-tuner" style="--i:3;--k:linear-gradient(135deg,#ffc94f,#ff8a14)" data-title="Harmonica Tuner" data-kind="project" data-tag="React Native">
       <button type="button" class="card c-ht" aria-label="Open Harmonica Tuner">
         <span class="c-top"><span class="c-name">Harmonica Tuner</span><span class="c-meta">React Native</span></span>
         <span class="holes" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i class="on">5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i></span>
@@ -263,10 +652,10 @@
     </article>
 
     <!-- ===================== GHOSTED ===================== -->
-    <article class="pass" id="ghosted" style="--i:4" data-title="Ghosted">
+    <article class="pass" id="ghosted" style="--i:4;--k:linear-gradient(135deg,#7250f2,#4c25c6)" data-title="Ghosted" data-kind="project" data-tag="UIKit">
       <button type="button" class="card c-gh" aria-label="Open Ghosted">
         <span class="c-top"><span class="c-name"><svg><use href="#i-bubble"/></svg>Ghosted</span><span class="c-meta">UIKit</span></span>
-        <span class="bubbles" aria-hidden="true"><i></i><i></i></span>
+        <span class="bubbles" aria-hidden="true"><i>Drinks on Friday?</i><i>I'd love to, but this week is packed.</i></span>
         <span class="c-bottom"><span class="c-sub">A polite way out</span><span class="c-meta">2026</span></span>
       </button>
       <div class="detail" hidden>
@@ -291,10 +680,11 @@
     </article>
 
     <!-- ===================== SUBSAFE ===================== -->
-    <article class="pass" id="subsafe" style="--i:5" data-title="SubSafe">
+    <article class="pass" id="subsafe" style="--i:5;--k:linear-gradient(135deg,#1a9a52,#0b5f37)" data-title="SubSafe" data-kind="project" data-tag="Google Play">
       <button type="button" class="card c-ss" aria-label="Open SubSafe">
         <span class="c-top"><span class="c-name"><svg><use href="#i-shield"/></svg>SubSafe</span><span class="c-meta">Google Play</span></span>
-        <span class="c-bottom"><span class="c-sub">Offline subscription tracker</span><span class="c-meta">Live</span></span>
+        <svg class="c-mark" aria-hidden="true"><use href="#i-shield"/></svg>
+        <span class="c-bottom"><span class="c-sub">Offline subscription tracker</span><span class="c-meta c-live"><i class="live" aria-hidden="true"></i>Live</span></span>
       </button>
       <div class="detail" hidden>
         <p class="lede">An offline subscription tracker, published on Google Play.</p>
@@ -309,7 +699,7 @@
         </div>
         <div class="list">
           <a class="row" href="https://play.google.com/store/apps/details?id=com.emirucgun.subsafe" target="_blank" rel="noopener">
-            <span class="ico" style="--c:#30d158"><svg><use href="#i-shield"/></svg></span>
+            <span class="ico" style="--c:#1a9a52"><svg><use href="#i-shield"/></svg></span>
             <span class="row-main"><b>Get it on Google Play</b><span>com.emirucgun.subsafe</span></span>
             <svg class="chev out"><use href="#i-out"/></svg>
           </a>
@@ -319,7 +709,7 @@
     </article>
 
     <!-- ===================== WRITING ===================== -->
-    <article class="pass" id="writing" style="--i:6" data-title="Writing">
+    <article class="pass" id="writing" style="--i:6;--k:#eadfc8" data-title="Writing">
       <button type="button" class="card c-wr" aria-label="Open Writing">
         <span class="c-top"><span class="c-name">Writing</span><span class="c-meta">2 essays</span></span>
         <span class="c-quote" aria-hidden="true">“If I can't explain it, I don't ship it.”</span>
@@ -352,10 +742,10 @@
     </article>
 
     <!-- ===================== CONTACT ===================== -->
-    <article class="pass" id="contact" style="--i:7" data-title="Contact">
+    <article class="pass" id="contact" style="--i:7;--k:#0d0d0f" data-title="Contact">
       <button type="button" class="card c-ct" aria-label="Open Contact">
-        <span class="c-top"><span class="c-name"><svg><use href="#i-mail"/></svg>Contact</span><span class="c-big">Same day</span></span>
-        <span class="c-bottom"><span class="c-sub">emirucgun@gmail.com</span><span class="c-meta">Reply time</span></span>
+        <span class="c-top"><span class="c-name"><svg><use href="#i-mail"/></svg>Contact</span><span class="c-meta">Replies same day</span></span>
+        <span class="c-bottom"><span class="c-big">emirucgun@gmail.com</span><svg class="c-go" aria-hidden="true"><use href="#i-chev"/></svg></span>
       </button>
       <div class="detail" hidden>
         <div class="tiles">
@@ -369,14 +759,14 @@
             <a class="row-main" href="mailto:emirucgun@gmail.com"><b>Email</b><span>emirucgun@gmail.com</span></a>
             <button type="button" class="chip" data-copy="emirucgun@gmail.com" aria-label="Copy email address"><svg><use href="#i-copy"/></svg><span>Copy</span></button>
           </div>
+          <a class="row" href="https://www.linkedin.com/in/eucgun" target="_blank" rel="noopener">
+            <span class="ico" style="--c:#0a66c2"><b class="glyph">in</b></span>
+            <span class="row-main"><b>LinkedIn</b><span>in/eucgun</span></span>
+            <svg class="chev out"><use href="#i-out"/></svg>
+          </a>
           <a class="row" href="https://github.com/Emirucgun" target="_blank" rel="noopener">
             <span class="ico" style="--c:#1c1c1e"><svg><use href="#i-code"/></svg></span>
             <span class="row-main"><b>GitHub</b><span>@Emirucgun</span></span>
-            <svg class="chev out"><use href="#i-out"/></svg>
-          </a>
-          <a class="row" href="https://linkedin.com/in/eucgun" target="_blank" rel="noopener">
-            <span class="ico" style="--c:#0a66c2"><b class="glyph">in</b></span>
-            <span class="row-main"><b>LinkedIn</b><span>in/eucgun</span></span>
             <svg class="chev out"><use href="#i-out"/></svg>
           </a>
           <a class="row" href="https://medium.com/@emirucgun" target="_blank" rel="noopener">
@@ -384,6 +774,19 @@
             <span class="row-main"><b>Medium</b><span>@emirucgun</span></span>
             <svg class="chev out"><use href="#i-out"/></svg>
           </a>
+        </div>
+        <h3 class="gsub">Keep My Details</h3>
+        <div class="list">
+          <a class="row" href="/emir-ucgun.vcf">
+            <span class="ico" style="--c:#34c759"><svg><use href="#i-contact"/></svg></span>
+            <span class="row-main"><b>Save to Contacts</b><span>Name, email and links</span></span>
+            <svg class="chev"><use href="#i-chev"/></svg>
+          </a>
+          <button type="button" class="row" data-qr>
+            <span class="ico" style="--c:#1c1c1e"><svg><use href="#i-qr"/></svg></span>
+            <span class="row-main"><b>Show QR Code</b><span>Open this site on another phone</span></span>
+            <svg class="chev"><use href="#i-chev"/></svg>
+          </button>
         </div>
         <p class="foot">© 2026 Emir Uçgun · Torino, Italy · Hand-built with HTML, CSS and JS.</p>
       </div>
@@ -401,11 +804,22 @@
     <h2 class="sheet-title" id="sheetTitle"></h2>
     <button type="button" class="glass circle" id="shareBtn" aria-label="Share"><svg><use href="#i-share"/></svg></button>
   </div>
-  <div class="sheet-inner">
+  <div class="sheet-inner" id="sheetInner">
     <div class="sheet-card" id="sheetCard"></div>
     <div class="sheet-body" id="sheetBody"></div>
+    <nav class="sheet-nav" id="sheetNav" aria-label="Other cards"></nav>
   </div>
 </div>
+
+<dialog class="qr" id="qr" aria-labelledby="qrName">
+  <div class="qr-pass">
+    <div class="qr-head"><span class="mono">EU</span><span class="qr-who"><b id="qrName">Emir Uçgun</b><small>iOS Developer · Torino</small></span></div>
+    <div class="qr-code"><svg viewBox="-2 -2 29 29" shape-rendering="crispEdges" role="img" aria-label="QR code for www.emirucgun.com"><path fill="#000" d="M0 0h7v1h-7zM8 0h1v1h-1zM10 0h2v1h-2zM13 0h4v1h-4zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h2v1h-2zM12 1h1v1h-1zM14 1h1v1h-1zM16 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h1v1h-1zM14 2h2v1h-2zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM13 3h3v1h-3zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h4v1h-4zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h2v1h-2zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM14 7h1v1h-1zM16 7h1v1h-1zM0 8h1v1h-1zM4 8h1v1h-1zM6 8h5v1h-5zM16 8h6v1h-6zM24 8h1v1h-1zM2 9h2v1h-2zM10 9h4v1h-4zM15 9h3v1h-3zM20 9h2v1h-2zM23 9h1v1h-1zM0 10h1v1h-1zM3 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM11 10h1v1h-1zM14 10h2v1h-2zM19 10h4v1h-4zM1 11h1v1h-1zM3 11h2v1h-2zM8 11h3v1h-3zM14 11h3v1h-3zM18 11h2v1h-2zM22 11h2v1h-2zM3 12h1v1h-1zM6 12h2v1h-2zM10 12h3v1h-3zM15 12h1v1h-1zM17 12h2v1h-2zM21 12h4v1h-4zM0 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM14 13h4v1h-4zM20 13h1v1h-1zM23 13h1v1h-1zM2 14h1v1h-1zM6 14h1v1h-1zM8 14h2v1h-2zM13 14h3v1h-3zM19 14h4v1h-4zM4 15h2v1h-2zM9 15h2v1h-2zM12 15h1v1h-1zM15 15h1v1h-1zM18 15h3v1h-3zM22 15h2v1h-2zM0 16h2v1h-2zM3 16h1v1h-1zM5 16h2v1h-2zM8 16h1v1h-1zM10 16h3v1h-3zM14 16h9v1h-9zM8 17h1v1h-1zM10 17h1v1h-1zM12 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM20 17h1v1h-1zM0 18h7v1h-7zM8 18h1v1h-1zM10 18h5v1h-5zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h4v1h-4zM16 19h1v1h-1zM20 19h3v1h-3zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM8 20h2v1h-2zM11 20h2v1h-2zM16 20h7v1h-7zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM10 21h2v1h-2zM13 21h3v1h-3zM18 21h2v1h-2zM22 21h3v1h-3zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM9 22h1v1h-1zM11 22h3v1h-3zM16 22h3v1h-3zM21 22h1v1h-1zM23 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM12 23h1v1h-1zM14 23h2v1h-2zM18 23h6v1h-6zM0 24h7v1h-7zM8 24h1v1h-1zM10 24h3v1h-3zM15 24h1v1h-1zM22 24h3v1h-3z"/></svg></div>
+    <p class="qr-url">emirucgun.com</p>
+    <p class="qr-hint">Point a phone camera here to open this site.</p>
+  </div>
+  <form method="dialog"><button class="glass circle" aria-label="Close QR code"><svg><use href="#i-x"/></svg></button></form>
+</dialog>
 
 <div class="hud" id="hud" role="status" aria-live="polite"><svg><use href="#i-check"/></svg><span></span></div>
 
