@@ -304,7 +304,7 @@ i,em{font-style:normal}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
 .tile{position:relative;display:flex;flex-direction:column;background:var(--cell);border-radius:var(--r-group);padding:13px 15px 15px;min-height:96px}
 .tile.tall{grid-row:span 2;grid-column:2}
-.tile.tall .btn{margin-top:auto;align-self:stretch}
+.t-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:10px}
 .t-label{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600}
 .t-value{font-size:clamp(22px,6.6vw,26px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-top:1px}
 .t-value.sm{font-size:21px;margin-top:4px}
@@ -428,6 +428,7 @@ html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none
   <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 20.5c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5z" fill="currentColor"/></symbol>
   <symbol id="i-contact" viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 20c0-3.6 2.9-6 6.5-6 1.4 0 2.7.4 3.8 1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M18 13.5v6M15 16.5h6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
   <symbol id="i-qr" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M13.5 13.5h3v3h-3zM17.5 17.5h3v3h-3zM18 13.5h2.5V16H18zM13.5 18H16v2.5h-2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-cv" viewBox="0 0 24 24"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 13h6M9 17h6M9 9h2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z" fill="currentColor"/><path d="M9 12h7M9 15.5h7M9 9h3" fill="none" stroke-width="1.6" stroke-linecap="round" style="stroke:var(--cut,#fff)"/></symbol>
   <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h1.5M7 8.5v7M11 5v14M15 8v8M19 10.5v3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   <symbol id="i-bubble" viewBox="0 0 24 24"><path d="M12 4c5 0 9 3.1 9 7s-4 7-9 7c-.9 0-1.8-.1-2.6-.3L4.5 20l1.3-3.8C4 14.9 3 13 3 11c0-3.9 4-7 9-7z" fill="currentColor"/></symbol>
@@ -456,6 +457,7 @@ html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none
       <a href="#writing"><span class="pi"><svg><use href="#i-doc"/></svg></span>Writing<small>2 essays</small></a>
       <a href="#contact"><span class="pi"><svg><use href="#i-mail"/></svg></span>Contact<small>Replies same day</small></a>
       <hr>
+      <a href="/Emir-Ucgun-CV.pdf" target="_blank" rel="noopener"><span class="pi"><svg><use href="#i-cv"/></svg></span>CV<small>PDF</small></a>
       <button type="button" data-qr><span class="pi"><svg><use href="#i-qr"/></svg></span>Show QR Code</button>
     </nav>
   </header>
@@ -466,7 +468,8 @@ html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none
     <p class="promo-sub">Part-time or internship roles, from Torino or remote. Swift, SwiftUI and UIKit.</p>
     <div class="promo-actions">
       <a class="btn tint" href="mailto:emirucgun@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
-      <a class="btn" href="/emir-ucgun.vcf"><svg aria-hidden="true"><use href="#i-contact"/></svg>Save Contact</a>
+      <a class="btn" href="/Emir-Ucgun-CV.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-cv"/></svg>CV</a>
+      <a class="btn sq" href="/emir-ucgun.vcf" aria-label="Save contact"><svg><use href="#i-contact"/></svg></a>
       <button type="button" class="btn sq" data-qr aria-label="Show QR code"><svg><use href="#i-qr"/></svg></button>
     </div>
     <button type="button" class="promo-x" id="promoX" aria-label="Dismiss"><svg><use href="#i-x"/></svg></button>
@@ -492,7 +495,10 @@ html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none
           <div class="tile tall">
             <span class="t-label"><i class="live" aria-hidden="true"></i>Available</span>
             <span class="t-sub">For iOS internships &amp; part-time roles.</span>
-            <a class="btn tint" href="mailto:emirucgun@gmail.com">Email me</a>
+            <span class="t-actions">
+              <a class="btn" href="/Emir-Ucgun-CV.pdf" target="_blank" rel="noopener">View CV</a>
+              <a class="btn tint" href="mailto:emirucgun@gmail.com">Email me</a>
+            </span>
           </div>
           <div class="tile">
             <span class="t-label">Degree Progress</span>
@@ -777,6 +783,11 @@ html:not(.js) .tools,html:not(.js) .promo-x,html:not(.js) [data-qr]{display:none
         </div>
         <h3 class="gsub">Keep My Details</h3>
         <div class="list">
+          <a class="row" href="/Emir-Ucgun-CV.pdf" target="_blank" rel="noopener">
+            <span class="ico" style="--c:#ff3b30"><svg><use href="#i-cv"/></svg></span>
+            <span class="row-main"><b>CV</b><span>PDF · one page</span></span>
+            <svg class="chev out"><use href="#i-out"/></svg>
+          </a>
           <a class="row" href="/emir-ucgun.vcf">
             <span class="ico" style="--c:#34c759"><svg><use href="#i-contact"/></svg></span>
             <span class="row-main"><b>Save to Contacts</b><span>Name, email and links</span></span>

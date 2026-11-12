@@ -8,7 +8,8 @@ Personal site, designed in the visual language of Apple Wallet. Static HTML, CSS
   The stylesheet is inlined in `<head>` on purpose, so the first paint needs one request. It holds the iOS system colours
   (light/dark), the card stack, the card art (CSS and inline SVG, no images) and the detail-sheet components.
 - `main.js` — card open/close (FLIP animation), previous/next between cards, history/deep links, menu, theme, QR pass, copy, share.
-- `emir-ucgun.vcf` — the contact card behind "Save Contact".
+- `Emir-Ucgun-CV.pdf` — the CV behind every "CV" button. Replace the file to update it; the name stays the same.
+- `emir-ucgun.vcf` — the contact card behind the "Save contact" button.
 - `og.png`, `apple-touch-icon.png` — link-preview image and home-screen icon.
 - `/about`, `/work`, `/writing` redirect to `/#profile`, `/#white-noise`, `/#writing` (see `vercel.json`).
 
@@ -35,7 +36,7 @@ Motion is skipped under `prefers-reduced-motion`.
   (the card is 1.586 : 1) and keep the top strip calm, since the title sits on it.
 - **QR code:** the pass under "Show QR Code" encodes `https://www.emirucgun.com` as a single SVG path in `index.html`
   (the `<dialog id="qr">`). If the address changes, generate a new one and replace the path and its `viewBox`.
-- **Contact details** appear in three places: the Contact card in `index.html`, `emir-ucgun.vcf`, and `og.png`.
+- **Contact details** appear in four places: the Contact card in `index.html`, `emir-ucgun.vcf`, `Emir-Ucgun-CV.pdf`, and `og.png`.
 
 ## Fonts
 SF Pro on Apple devices (system font — nothing is downloaded). Everywhere else, a self-hosted Inter variable font
