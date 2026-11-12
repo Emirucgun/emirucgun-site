@@ -1,0 +1,5 @@
+# Keep these byte-for-byte on every machine: a line-ending rewrite would corrupt the PDF and the vCard needs its CRLFs.
+*.pdf   binary
+*.png   binary
+*.woff2 binary
+*.vcf   -text
