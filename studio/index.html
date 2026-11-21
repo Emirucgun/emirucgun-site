@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){var d=document.documentElement,l;d.classList.add('js');try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(l==='en')d.lang='en'})();</script>
 <title>Emir Uçgun: servizi digitali per le attività di Torino</title>
-<meta name="description" content="Profilo Google, menù digitali, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi di Torino. Analisi gratuita, nessuna password richiesta, pagate dopo aver visto il lavoro.">
+<meta name="description" content="Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi di Torino. Analisi gratuita, nessuna password richiesta: prima vedete un'anteprima, poi pagate.">
 <link rel="canonical" href="https://studio.emirucgun.com/">
 <meta name="theme-color" content="#FAF7F2">
 <meta property="og:type" content="website">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_GB">
 <meta property="og:title" content="Aiuto le attività di Torino a farsi trovare online">
-<meta property="og:description" content="Profilo Google, menù digitali, grafiche e siti semplici. Analisi gratuita e senza impegno.">
+<meta property="og:description" content="Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici. Analisi gratuita e senza impegno.">
 <meta property="og:url" content="https://studio.emirucgun.com/">
 <meta property="og:image" content="https://studio.emirucgun.com/studio/og.png">
 <meta property="og:image:width" content="1200">
@@ -67,6 +67,7 @@ ul{margin:0;padding:0;list-style:none}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
 .sprite{position:absolute}
 .mt-12{margin-top:12px}
+.mt-16{margin-top:16px}
 .mb-0{margin-bottom:0}
 .small{font-size:.85rem}
 .h3-lg{font-size:clamp(1.4rem,3vw,1.75rem)}
@@ -148,8 +149,9 @@ section{padding-block:clamp(64px,10vw,120px)}
 
 /* ---------- packages ---------- */
 .packs{display:grid;gap:18px}
-@media (min-width:640px){.packs{grid-template-columns:repeat(2,1fr)}.pack-full{grid-column:1/-1;order:2}}
-@media (min-width:980px){.packs{grid-template-columns:repeat(3,1fr)}.pack-full{grid-column:span 2;order:0}}
+/* phone: one column · tablet: 2 columns · desktop: 3 cards, then 2 wider cards, then the bundle across */
+@media (min-width:640px){.packs{grid-template-columns:repeat(2,1fr)}.pack-full{grid-column:1/-1}}
+@media (min-width:980px){.packs{grid-template-columns:repeat(6,1fr)}.packs > .pack{grid-column:span 2}.packs > .pack:nth-child(4),.packs > .pack:nth-child(5){grid-column:span 3}.packs > .pack-full{grid-column:1/-1}}
 .pack{display:flex;flex-direction:column;gap:14px}
 .pack-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .price{font:600 1.75rem/1 var(--serif);white-space:nowrap;letter-spacing:-.01em}
@@ -162,17 +164,57 @@ section{padding-block:clamp(64px,10vw,120px)}
 .pack .more{margin-top:auto;padding-top:6px;font-size:.95rem}
 .pack-full{border:2px solid var(--accent);background:var(--tint-2);position:relative}
 .badge{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-.pack-full .combo{display:grid;gap:10px}
-@media (min-width:980px){.pack-full .combo{grid-template-columns:1fr 1fr}}
-.combo div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;font-size:.98rem}
-.combo b{display:block;font-weight:600}
-.combo span span{color:var(--ink-2)}
+.combo{display:grid;gap:10px}
+@media (min-width:760px){.combo{grid-template-columns:repeat(3,1fr)}}
+.combo li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;font-size:.98rem}
+.combo b{font-weight:600}
+.combo li > span{color:var(--ink-2);white-space:nowrap}
+.saving{font-size:1rem}
+.saving del{color:var(--ink-2);text-decoration-thickness:1.5px}
+.saving strong{color:var(--ok)}
+.tiers{display:grid;gap:6px;padding:12px 14px;background:var(--paper);border-radius:var(--r-sm);font-size:.98rem}
+.tiers li{display:flex;justify-content:space-between;gap:12px}
+.tiers b{font-weight:700}
+.preview-note{font-size:.9rem;padding-top:12px;border-top:1px dashed var(--line-2)}
+.guarantee{margin-top:26px;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:var(--r-sm);padding:16px 18px}
+.guarantee .ico{color:var(--ok);stroke-width:2.4;margin-top:2px}
+.guarantee strong{display:block;margin-bottom:4px}
 .monthly{margin-top:clamp(48px,7vw,72px)}
 .monthly-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 24px;margin-bottom:22px}
 .monthly-head p{color:var(--ink-2)}
 .grid-2{display:grid;gap:18px}
 @media (min-width:640px){.grid-2{grid-template-columns:1fr 1fr}}
 .note{margin-top:22px;font-size:.95rem;color:var(--ink-2)}
+
+/* ---------- delivery photos ---------- */
+.photos{background:var(--surface);border-top:1px solid var(--line)}
+.photos .wrap{display:grid;gap:40px;align-items:center}
+@media (min-width:920px){.photos .wrap{grid-template-columns:1.15fr 1fr;gap:64px}}
+.promise{display:flex;gap:12px;align-items:flex-start;background:var(--tint-2);border:1px solid var(--tint);border-radius:var(--r-sm);padding:16px 18px;margin-top:22px}
+.promise .ico{color:var(--accent);margin-top:2px}
+.promise strong{display:block}
+.promise span span{color:var(--ink-2)}
+.tiers-line{font-weight:600}
+.photos .steps li{border-top-color:var(--line-2)}
+@media (min-width:760px){.photos .steps{grid-template-columns:1fr}}
+/* before/after slider: the native range input does the work, so keyboard, touch and screen readers all work */
+.compare{margin:0;display:grid;gap:10px}
+.compare-box{--pos:50%;position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;background:repeating-linear-gradient(135deg,#EFE9E1 0 14px,#F6F1EA 14px 28px);box-shadow:var(--shadow);user-select:none;-webkit-user-select:none}
+.compare-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare-box .after{clip-path:inset(0 0 0 var(--pos))}
+.compare-box .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--ink-2);font-size:.95rem}
+.compare-box .empty b{display:block;color:var(--ink);font-size:1.05rem}
+.compare-box.ready .empty{display:none}
+.compare-box:not(.ready) img,.compare-box:not(.ready) .line,.compare-box:not(.ready) .knob,.compare-box:not(.ready) .tag{visibility:hidden}
+.compare-box .line{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.12);pointer-events:none}
+.compare-box .knob{position:absolute;top:50%;left:var(--pos);width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);display:grid;place-items:center;color:var(--ink);pointer-events:none}
+.compare-box .knob svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.compare-box .tag{position:absolute;top:12px;pointer-events:none}
+.compare-box .tag-before{left:12px}
+.compare-box .tag-after{right:12px}
+.compare-box input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;-webkit-appearance:none;appearance:none}
+.compare-box input:focus-visible ~ .knob{outline:3px solid var(--accent);outline-offset:3px}
+.compare figcaption{font-size:.9rem;color:var(--ink-2)}
 
 /* ---------- how I work ---------- */
 .how{background:var(--tint)}
@@ -183,6 +225,10 @@ section{padding-block:clamp(64px,10vw,120px)}
 .rule .num{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin-bottom:18px}
 .rule h3{margin-bottom:8px}
 .rule p{color:var(--ink-2)}
+.rule p strong{color:var(--ink);font-weight:600}
+.rule p + p,.rule .pay{margin-top:10px}
+.pay{display:grid;gap:6px;font-size:.95rem;color:var(--ink-2)}
+.pay b{color:var(--ink);font-weight:600}
 .steps{margin-top:clamp(40px,6vw,56px);display:grid;gap:14px;counter-reset:s}
 @media (min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
 .steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-top:1.5px solid rgba(168,72,27,.25)}
@@ -375,6 +421,7 @@ footer p + p{margin-top:4px}
     <a class="brand" href="/studio"><b>Emir Uçgun</b><span>Studio · Torino</span></a>
     <nav class="nav" aria-label="Sezioni" data-en-aria-label="Sections">
       <a href="#pacchetti"><span lang="it">Pacchetti</span><span lang="en">Packages</span></a>
+      <a href="#foto"><span lang="it">Foto</span><span lang="en">Photos</span></a>
       <a href="#come-lavoro"><span lang="it">Come lavoro</span><span lang="en">How I work</span></a>
       <a href="#esempi"><span lang="it">Esempi</span><span lang="en">Examples</span></a>
       <a href="#chi-sono"><span lang="it">Chi sono</span><span lang="en">About</span></a>
@@ -396,8 +443,8 @@ footer p + p{margin-top:4px}
       <p class="eyebrow"><span lang="it">Servizi digitali per attività locali</span><span lang="en">Digital services for local businesses</span></p>
       <h1 id="hero-title"><span lang="it">Aiuto le attività di Torino a farsi trovare online.</span><span lang="en">I help Turin businesses get found online.</span></h1>
       <p class="lead">
-        <span lang="it">Profilo Google, menù digitali, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi.</span>
-        <span lang="en">Google profiles, digital menus, visuals and simple websites for restaurants, cafés, barbers, salons and shops.</span>
+        <span lang="it">Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi.</span>
+        <span lang="en">Google profiles, digital menus, delivery-app photos, visuals and simple websites for restaurants, cafés, barbers, salons and shops.</span>
       </p>
       <div class="cta">
         <a class="btn btn-primary" href="#contatti" data-wa>
@@ -409,7 +456,7 @@ footer p + p{margin-top:4px}
       <ul class="assure">
         <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span lang="it">Analisi gratuita, senza impegno</span><span lang="en">Free review, no obligation</span></li>
         <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span lang="it">Nessuna password richiesta</span><span lang="en">No passwords needed</span></li>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span lang="it">Pagate dopo aver visto il lavoro</span><span lang="en">You pay after seeing the work</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span lang="it">Prima l'anteprima, poi pagate</span><span lang="en">Preview first, then you pay</span></li>
       </ul>
     </div>
 
@@ -469,6 +516,8 @@ footer p + p{margin-top:4px}
       <p class="lead"><span lang="it">Non sapete cosa vi serve? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">Not sure what you need? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
     </div>
 
+    <!-- Every bundle must cost less than its parts bought separately. If you change a price, check the
+         "Pacchetto completo" card: its struck-through total and the saving are written out there too. -->
     <div class="packs">
       <article class="card pack" aria-labelledby="pk-a">
         <div class="pack-top">
@@ -483,6 +532,7 @@ footer p + p{margin-top:4px}
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Servizi o menù sul profilo</span><span lang="en">Services or menu on the profile</span></span></li>
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni recenti</span><span lang="en">Replies to recent reviews</span></span></li>
         </ul>
+        <p class="preview-note"><span lang="it">Anteprima: vi mando gli screenshot delle modifiche proposte, prima di applicarle.</span><span lang="en">Preview: I send you screenshots of the proposed changes before I apply them.</span></p>
       </article>
 
       <article class="card pack" aria-labelledby="pk-b">
@@ -499,6 +549,23 @@ footer p + p{margin-top:4px}
         <a class="link more" href="/studio/demo/menu"><span lang="it">Provate la demo</span><span lang="en">Try the demo</span></a>
       </article>
 
+      <article class="card pack" aria-labelledby="pk-f">
+        <div class="pack-top">
+          <h3 id="pk-f"><span lang="it">Foto menù</span><span lang="en">Menu photos</span></h3>
+          <p class="price"><small><span lang="it">a partire da</span><span lang="en">from</span></small><span data-eur="60">60 €</span></p>
+        </div>
+        <p><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></p>
+        <ul class="tiers" aria-label="Prezzi" data-en-aria-label="Prices">
+          <li><span><span lang="it">10 piatti</span><span lang="en">10 dishes</span></span><b data-eur="60">60 €</b></li>
+          <li><span><span lang="it">25 piatti</span><span lang="en">25 dishes</span></span><b data-eur="120">120 €</b></li>
+        </ul>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Luce, colori, sfondo e inquadratura</span><span lang="en">Light, colour, background and framing</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pronte per Glovo, Deliveroo, Just Eat e Google</span><span lang="en">Ready for Glovo, Deliveroo, Just Eat and Google</span></span></li>
+        </ul>
+        <a class="link more" href="#foto"><span lang="it">Guardate prima e dopo</span><span lang="en">See before and after</span></a>
+      </article>
+
       <article class="card pack" aria-labelledby="pk-c">
         <div class="pack-top">
           <h3 id="pk-c"><span lang="it">Pacchetto grafiche</span><span lang="en">Visuals pack</span></h3>
@@ -513,22 +580,6 @@ footer p + p{margin-top:4px}
         <a class="link more" href="#esempi-grafiche"><span lang="it">Guardate un esempio</span><span lang="en">See an example</span></a>
       </article>
 
-      <!-- TODO check pricing: "Google in ordine + Pacchetto grafiche" costs 110 € when bought separately, less than this 130 € bundle. -->
-      <article class="card pack pack-full" aria-labelledby="pk-d">
-        <div class="pack-top">
-          <div>
-            <span class="badge"><span lang="it">Consigliato</span><span lang="en">Recommended</span></span>
-            <h3 id="pk-d" class="mt-12"><span lang="it">Pacchetto completo</span><span lang="en">Complete package</span></h3>
-          </div>
-          <p class="price" data-eur="130">130 €</p>
-        </div>
-        <p><span lang="it">Il profilo Google in ordine, più a scelta il menù digitale o le grafiche.</span><span lang="en">Your Google profile sorted, plus your choice of the digital menu or the visuals.</span></p>
-        <div class="combo">
-          <div><b><span lang="it">Opzione 1</span><span lang="en">Option 1</span></b><span><span lang="it">Google in ordine + Menù digitale</span><span lang="en">Google, sorted + Digital menu</span></span></div>
-          <div><b><span lang="it">Opzione 2</span><span lang="en">Option 2</span></b><span><span lang="it">Google in ordine + Pacchetto grafiche</span><span lang="en">Google, sorted + Visuals pack</span></span></div>
-        </div>
-      </article>
-
       <article class="card pack" aria-labelledby="pk-e">
         <div class="pack-top">
           <h3 id="pk-e"><span lang="it">Sito semplice</span><span lang="en">Simple website</span></h3>
@@ -541,7 +592,33 @@ footer p + p{margin-top:4px}
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Preventivo preciso prima di iniziare</span><span lang="en">An exact quote before I start</span></span></li>
         </ul>
       </article>
+
+      <article class="card pack pack-full" aria-labelledby="pk-d">
+        <div class="pack-top">
+          <div>
+            <span class="badge"><span lang="it">Consigliato</span><span lang="en">Recommended</span></span>
+            <h3 id="pk-d" class="mt-12"><span lang="it">Pacchetto completo</span><span lang="en">Complete package</span></h3>
+          </div>
+          <p class="price" data-eur="150">150 €</p>
+        </div>
+        <p><span lang="it">Tutto quello che serve per farsi trovare e farsi scegliere, in un'unica consegna.</span><span lang="en">Everything you need to be found and chosen, delivered in one go.</span></p>
+        <ul class="combo">
+          <li><b><span lang="it">Google in ordine</span><span lang="en">Google, sorted</span></b><span data-eur="60">60 €</span></li>
+          <li><b><span lang="it">Menù digitale</span><span lang="en">Digital menu</span></b><span data-eur="90">90 €</span></li>
+          <li><b><span lang="it">Foto menù, 10 piatti</span><span lang="en">Menu photos, 10 dishes</span></b><span data-eur="60">60 €</span></li>
+        </ul>
+        <p class="saving">
+          <span lang="it">Separatamente <del data-eur="210">210 €</del> — <strong>risparmiate <span data-eur="60">60 €</span></strong></span>
+          <span lang="en"><del data-eur="210">210 €</del> separately — <strong>save <span data-eur="60">60 €</span></strong></span>
+        </p>
+      </article>
     </div>
+
+    <p class="guarantee">
+      <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+      <span><strong><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing.</span></strong>
+      <a class="link" href="#come-lavoro"><span lang="it">Come funzionano i pagamenti</span><span lang="en">How payment works</span></a></span>
+    </p>
 
     <div class="monthly">
       <div class="monthly-head">
@@ -578,6 +655,49 @@ footer p + p{margin-top:4px}
   </div>
 </section>
 
+<!-- ============ 3b. PHOTOS FOR DELIVERY ============
+     The comparison uses /studio/food-before-1.jpg and /studio/food-after-1.jpg (same size and framing,
+     4:3, about 1600 × 1200 px, under 250 KB each). Until both files exist, a neutral placeholder is shown. -->
+<section id="foto" class="photos" aria-labelledby="photos-title">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow"><span lang="it">Foto per il delivery</span><span lang="en">Photos for delivery apps</span></p>
+      <h2 id="photos-title"><span lang="it">Piatti veri, foto che fanno venire fame.</span><span lang="en">Real dishes, photos that make people hungry.</span></h2>
+      <p class="lead mt-16"><span lang="it">Su Glovo, Deliveroo e Just Eat i clienti scelgono guardando le foto. Le vostre, fatte con il telefono, possono rendere molto di più.</span><span lang="en">On Glovo, Deliveroo and Just Eat, customers choose by looking at the photos. Yours, taken on a phone, can do a lot more.</span></p>
+      <div class="promise">
+        <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+        <span><strong><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></strong>
+        <span><span lang="it">Il piatto resta quello che il cliente riceverà davvero: le foto restano fedeli, come chiedono Glovo, Deliveroo e Just Eat.</span><span lang="en">The dish stays exactly what the customer will actually receive, so the photos stay accurate, as Glovo, Deliveroo and Just Eat require.</span></span></span>
+      </div>
+      <p class="steps-title"><span lang="it">Come funziona</span><span lang="en">How it works</span></p>
+      <ol class="steps">
+        <li><span><b><span lang="it">Mi mandate le foto</span><span lang="en">You send me the photos</span></b><span><span lang="it">Quelle fatte con il telefono, direttamente su WhatsApp.</span><span lang="en">The ones you took on your phone, straight on WhatsApp.</span></span></span></li>
+        <li><span><b><span lang="it">Le sistemo</span><span lang="en">I edit them</span></b><span><span lang="it">Luce, colori, sfondo e inquadratura.</span><span lang="en">Light, colour, background and framing.</span></span></span></li>
+        <li><span><b><span lang="it">Ricevete i file pronti</span><span lang="en">You get the finished files</span></b><span><span lang="it">Nei formati giusti per le app di delivery e per Google.</span><span lang="en">In the right formats for delivery apps and Google.</span></span></span></li>
+      </ol>
+      <p class="mt-16 tiers-line"><span lang="it">10 piatti <span data-eur="60">60 €</span> · 25 piatti <span data-eur="120">120 €</span></span><span lang="en">10 dishes <span data-eur="60">60 €</span> · 25 dishes <span data-eur="120">120 €</span></span></p>
+    </div>
+
+    <figure class="compare">
+      <div class="compare-box" data-compare>
+        <div class="empty"><span><b><span lang="it">Foto prima e dopo</span><span lang="en">Before and after photo</span></b><span lang="it">in arrivo</span><span lang="en">coming soon</span></span></div>
+        <img class="before" src="/studio/food-before-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+             alt="Prima: la foto originale del piatto, scattata con il telefono" data-en-alt="Before: the original photo of the dish, taken on a phone">
+        <img class="after" src="/studio/food-after-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+             alt="Dopo: la stessa foto con luce, colori, sfondo e inquadratura sistemati" data-en-alt="After: the same photo with light, colour, background and framing fixed">
+        <span class="tag tag-before"><span lang="it">Prima</span><span lang="en">Before</span></span>
+        <span class="tag tag-after"><span lang="it">Dopo</span><span lang="en">After</span></span>
+        <span class="line" aria-hidden="true"></span>
+        <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        <input type="range" min="0" max="100" value="50" step="1"
+               aria-label="Confronto prima e dopo: spostate per vedere il ritocco" data-en-aria-label="Before and after comparison: move to see the edit">
+      </div>
+      <!-- TODO check: make sure this caption still describes the photos you add. -->
+      <figcaption><span lang="it">Trascinate per confrontare. Stesso piatto, stessa foto: cambia solo il ritocco.</span><span lang="en">Drag to compare. Same dish, same photo: only the editing changes.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ============ 4. HOW I WORK (trust) ============ -->
 <section id="come-lavoro" class="how" aria-labelledby="how-title">
   <div class="wrap">
@@ -599,14 +719,18 @@ footer p + p{margin-top:4px}
       </li>
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-hand"/></svg></div>
-        <h3><span lang="it">Pagate dopo</span><span lang="en">You pay after</span></h3>
-        <p><span lang="it">I pacchetti piccoli si pagano alla consegna. Per il pacchetto completo e il sito: 50% quando approvate la bozza, 50% alla consegna.</span><span lang="en">Small packages are paid on delivery. For the complete package and the website: 50% when you approve the draft, 50% on delivery.</span></p>
+        <h3><span lang="it">Prima l'anteprima, poi pagate</span><span lang="en">Preview first, then you pay</span></h3>
+        <p><strong><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing.</span></strong></p>
+        <ul class="pay">
+          <li><b><span lang="it">Alla consegna:</span><span lang="en">On delivery:</span></b> <span lang="it">Google in ordine, Menù digitale, Foto menù 10 piatti, Pacchetto grafiche.</span><span lang="en">Google, sorted; Digital menu; Menu photos (10 dishes); Visuals pack.</span></li>
+          <li><b>50% + 50%:</b> <span lang="it">Foto menù 25 piatti, Pacchetto completo, Sito semplice. Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">Menu photos (25 dishes), Complete package, Simple website. Half when you approve the preview, half on delivery.</span></li>
+        </ul>
+        <p class="small"><span lang="it">Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte, prima che le applichi.</span><span lang="en">For your Google profile, the preview is screenshots of the proposed changes, before I apply them.</span></p>
       </li>
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg></div>
         <h3><span lang="it">Pagamenti tracciabili</span><span lang="en">Traceable payments</span></h3>
-        <!-- TODO check: confirm which receipt you will issue (e.g. ricevuta per prestazione occasionale). -->
-        <p><span lang="it">Bonifico o PayPal, intestati a me, Emir Uçgun. Per ogni pagamento ricevete una ricevuta.</span><span lang="en">Bank transfer or PayPal, in my own name, Emir Uçgun. You get a receipt for every payment.</span></p>
+        <p><span lang="it">Bonifico o PayPal, intestati a me, Emir Uçgun. Ricevuta regolare.</span><span lang="en">Bank transfer or PayPal, in my own name, Emir Uçgun. Proper receipt.</span></p>
       </li>
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div>
@@ -825,12 +949,12 @@ footer p + p{margin-top:4px}
       <h2 id="faq-title"><span lang="it">Le domande che mi fanno più spesso</span><span lang="en">The questions I'm asked most</span></h2>
     </div>
     <details>
-      <summary><span lang="it">Vi devo dare la password del mio profilo?</span><span lang="en">Do I need to give you my password?</span></summary>
+      <summary><span lang="it">Serve la password del mio profilo?</span><span lang="en">Do I need to give you my password?</span></summary>
       <p><span lang="it">No, mai. Mi aggiungete come gestore del vostro profilo Google: bastano pochi clic e vi guido io. Potete rimuovermi quando volete e il profilo resta sempre di vostra proprietà.</span><span lang="en">No, never. You add me as a manager on your Google profile: it takes a few clicks and I'll walk you through it. You can remove me at any time, and the profile always remains yours.</span></p>
     </details>
     <details>
       <summary><span lang="it">Come si paga?</span><span lang="en">How do I pay?</span></summary>
-      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun), e ricevete una ricevuta. I pacchetti piccoli si pagano alla consegna; per il pacchetto completo e il sito, 50% quando approvate la bozza e 50% alla consegna. I piani mensili si pagano mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun), and you get a receipt. Small packages are paid on delivery; for the complete package and the website, 50% when you approve the draft and 50% on delivery. Monthly plans are paid month by month.</span></p>
+      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun). Rilascio regolare ricevuta per prestazione occasionale. Google in ordine, Menù digitale, Foto menù 10 piatti e Pacchetto grafiche si pagano alla consegna. Foto menù 25 piatti, Pacchetto completo e Sito semplice: 50% quando approvate l'anteprima, 50% alla consegna. I piani mensili si pagano mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun). I issue a proper receipt for occasional services (ricevuta per prestazione occasionale). Google, sorted; Digital menu; Menu photos (10 dishes) and the Visuals pack are paid on delivery. Menu photos (25 dishes), the Complete package and the Simple website: 50% when you approve the preview, 50% on delivery. Monthly plans are paid month by month.</span></p>
     </details>
     <details>
       <summary><span lang="it">Quanto tempo ci vuole?</span><span lang="en">How long does it take?</span></summary>
@@ -838,17 +962,15 @@ footer p + p{margin-top:4px}
     </details>
     <details>
       <summary><span lang="it">E se il risultato non mi piace?</span><span lang="en">What if I don't like the result?</span></summary>
-      <!-- TODO check: is this the refund/revision policy you want to promise? -->
-      <p><span lang="it">Prima di consegnare vi mostro sempre il lavoro e lo sistemiamo insieme. Pagate solo dopo averlo visto: se non siete convinti, non pagate.</span><span lang="en">I always show you the work before delivery and we adjust it together. You only pay after seeing it: if you're not convinced, you don't pay.</span></p>
+      <p><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla. Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte: le applico solo dopo il vostro via libera.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing. For your Google profile, the preview is screenshots of the proposed changes: I only apply them once you give the go-ahead.</span></p>
     </details>
     <details>
       <summary><span lang="it">Posso interrompere il piano mensile?</span><span lang="en">Can I stop the monthly plan?</span></summary>
       <p><span lang="it">Sì, quando volete. Non c'è nessun contratto né penale: basta un messaggio e dal mese successivo non pagate più.</span><span lang="en">Yes, whenever you like. There's no contract and no penalty: just send me a message and you stop paying from the following month.</span></p>
     </details>
     <details>
-      <summary><span lang="it">Lavori solo a Torino?</span><span lang="en">Do you only work in Turin?</span></summary>
-      <!-- // TODO check IT: this question uses "tu", as a customer would naturally ask it; answers stay on "voi". -->
-      <p><span lang="it">Mi concentro su Torino perché qui posso passare di persona, se serve. Ma lavoro volentieri anche con attività di altre città: quasi tutto si può fare a distanza.</span><span lang="en">I focus on Turin because here I can drop by in person if needed. But I'm happy to work with businesses in other cities too: nearly everything can be done remotely.</span></p>
+      <summary><span lang="it">Il servizio è solo per Torino?</span><span lang="en">Do you only work in Turin?</span></summary>
+      <p><span lang="it">Mi concentro sulle attività di Torino, ma lavoro volentieri anche con altre città: si fa tutto a distanza, su WhatsApp o per email.</span><span lang="en">I focus on businesses in Turin, but I'm happy to work with other cities too: everything is done remotely, on WhatsApp or by email.</span></p>
     </details>
   </div>
 </section>
@@ -868,8 +990,7 @@ footer p + p{margin-top:4px}
         <div class="contact-meta">
           <span>Email: <span data-mail-text>—</span></span>
           <span data-if-phone>WhatsApp: <span data-phone-text>—</span></span>
-          <!-- TODO check: only keep this line if you are happy to meet clients in person. -->
-          <span><span lang="it">Preferite parlarne di persona? Sono a Torino: posso passare io da voi.</span><span lang="en">Prefer to talk in person? I'm in Turin: I can come by.</span></span>
+          <span><span lang="it">Preferite parlarne a voce? Possiamo fare una breve videochiamata.</span><span lang="en">Prefer to talk? We can do a short video call.</span></span>
         </div>
       </div>
     </div>
