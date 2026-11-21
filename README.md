@@ -55,15 +55,15 @@ Vercel project settings: Framework Preset **Other**; Build, Output and Install c
 The repository root is served as-is.
 
 ## Studio subdomain (studio.emirucgun.com)
-A services site for Turin restaurants that sell on delivery apps (Glovo, Deliveroo, Just Eat) lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
+A services site for Turin restaurants and cafés (Google profile, IT/EN QR menu, dish photos for Google, Instagram and delivery apps) lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
 - `studio/index.html`: the single-page site. `studio/demo/menu/index.html`: the digital menu demo (`/demo/menu`).
 - `studio/config.js`: **every placeholder in one place** (WhatsApp, phone, email, LinkedIn, photo). Edit only this file.
 - `studio/site.js`: IT | EN toggle, contact links, price formatting. Both languages sit side by side in the HTML as
   `<span lang="it">…</span><span lang="en">…</span>`; edit both when you change copy. Prices live in `data-eur="…"`.
 - `studio/emir.jpg`: your photo (square, ~800 × 800 px, under 150 KB). Until it exists, initials are shown.
-- `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison, the centrepiece of the "Foto per il delivery"
+- `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison, the centrepiece of the "Foto dei piatti"
   section (same framing, 4:3, ~1600 × 1200 px, under 250 KB each). Until both exist, a placeholder is shown.
-- Pricing: three packages (Foto Delivery, Visibilità, Completo), each showing the struck-through list price and a launch price
+- Pricing: three packages (Foto dei piatti, Visibilità, Completo), each showing the struck-through list price and a launch price
   valid until 31 December, plus a monthly management band and a one-line "Su misura" link to contact. The price comment above the
   packages section says what to change once the launch period ends; prices also appear in the payment rule, the FAQ and the
   "Pacchetti foto da …" link in the photos section.
