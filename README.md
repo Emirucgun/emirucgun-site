@@ -53,3 +53,15 @@ An inline script in `<head>` applies it before first paint.
 Hosted on Vercel, connected to this repository (`main` branch, auto-deploy on push).
 Vercel project settings: Framework Preset **Other**; Build, Output and Install commands empty.
 The repository root is served as-is.
+
+## Studio subdomain (studio.emirucgun.com)
+A separate services site lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
+- `studio/index.html`: the single-page site. `studio/demo/menu/index.html`: the digital menu demo (`/demo/menu`).
+- `studio/config.js`: **every placeholder in one place** (WhatsApp, phone, email, LinkedIn, photo). Edit only this file.
+- `studio/site.js`: IT | EN toggle, contact links, price formatting. Both languages sit side by side in the HTML as
+  `<span lang="it">…</span><span lang="en">…</span>`; edit both when you change copy. Prices live in `data-eur="…"`.
+- `studio/emir.jpg`: your photo (square, ~800 × 800 px, under 150 KB). Until it exists, initials are shown.
+- Routing: `middleware.js` serves `/` of the subdomain from `/studio`, and the host-scoped rewrite in `vercel.json` serves
+  every other subdomain path from `/studio/…`. Requests to `emirucgun.com/studio…` redirect to the subdomain.
+- Local preview: `python3 -m http.server`, then `localhost:8000/studio/` and `localhost:8000/studio/demo/menu/`.
+- Search the copy for `TODO check` before going live.

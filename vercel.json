@@ -3,6 +3,15 @@
   "framework": null,
   "headers": [
     {
+      "source": "/studio/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
       "source": "/fonts/(.*)",
       "headers": [
         {
@@ -36,7 +45,26 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": { "eq": "studio.emirucgun.com" } }],
+      "destination": "/studio/:path*"
+    }
+  ],
   "redirects": [
+    {
+      "source": "/studio/:path*",
+      "has": [{ "type": "host", "value": { "eq": "emirucgun.com" } }],
+      "destination": "https://studio.emirucgun.com/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/studio/:path*",
+      "has": [{ "type": "host", "value": { "eq": "www.emirucgun.com" } }],
+      "destination": "https://studio.emirucgun.com/:path*",
+      "permanent": false
+    },
     {
       "source": "/about",
       "destination": "/#profile",
