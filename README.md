@@ -55,17 +55,21 @@ Vercel project settings: Framework Preset **Other**; Build, Output and Install c
 The repository root is served as-is.
 
 ## Studio subdomain (studio.emirucgun.com)
-A separate services site lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
+A services site for Turin restaurants that sell on delivery apps (Glovo, Deliveroo, Just Eat) lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
 - `studio/index.html`: the single-page site. `studio/demo/menu/index.html`: the digital menu demo (`/demo/menu`).
 - `studio/config.js`: **every placeholder in one place** (WhatsApp, phone, email, LinkedIn, photo). Edit only this file.
 - `studio/site.js`: IT | EN toggle, contact links, price formatting. Both languages sit side by side in the HTML as
   `<span lang="it">…</span><span lang="en">…</span>`; edit both when you change copy. Prices live in `data-eur="…"`.
 - `studio/emir.jpg`: your photo (square, ~800 × 800 px, under 150 KB). Until it exists, initials are shown.
-- `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison in the "Foto per il delivery"
+- `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison, the centrepiece of the "Foto per il delivery"
   section (same framing, 4:3, ~1600 × 1200 px, under 250 KB each). Until both exist, a placeholder is shown.
-- Pricing: three sector packages (Ristoranti & Bar, Barbieri & Saloni, Negozi & Attività), a monthly maintenance band and a
-  collapsible "Su misura" list of single services. Every package must cost less than its parts: each card shows the struck-through
-  "Separatamente" total, so update it when a single price changes (the sums are written out in a comment above the section).
+- Pricing: three packages (Foto Delivery, Visibilità, Completo), each showing the struck-through list price and a launch price
+  valid until 31 December, plus a monthly management band and a one-line "Su misura" link to contact. The price comment above the
+  packages section says what to change once the launch period ends; prices also appear in the payment rule, the FAQ and the
+  "Pacchetti foto da …" link in the photos section.
+- "I numeri delle piattaforme" quotes figures published by Deliveroo and DoorDash, with their sources. Keep them worded as the
+  platforms' own figures, never as a promise.
+- `studio/posts/`: the trattoria and caffè visuals in the "Esempi" gallery (`studio/posts/opt/` holds the resized AVIF/WebP files).
 - Routing: `middleware.js` serves `/` of the subdomain from `/studio`, and the host-scoped rewrite in `vercel.json` serves
   every other subdomain path from `/studio/…`. Requests to `emirucgun.com/studio…` redirect to the subdomain.
 - Local preview: `python3 -m http.server`, then `localhost:8000/studio/` and `localhost:8000/studio/demo/menu/`.

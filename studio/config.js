@@ -27,8 +27,8 @@ window.STUDIO = {
 
   // The text WhatsApp and email open with, already typed for the visitor.
   message: {
-    it: "Buongiorno Emir, ho visto il sito studio.emirucgun.com e vorrei un'analisi gratuita per la mia attività. Nome dell'attività: ",
-    en: "Hello Emir, I saw studio.emirucgun.com and I'd like a free review for my business. Business name: "
+    it: "Buongiorno Emir, ho visto il sito studio.emirucgun.com e vorrei un'analisi gratuita per il mio locale. Nome del locale (o link su Glovo, Deliveroo o Just Eat): ",
+    en: "Hello Emir, I saw studio.emirucgun.com and I'd like a free review for my restaurant. Restaurant name (or Glovo, Deliveroo or Just Eat link): "
   },
   emailSubject: {
     it: 'Richiesta analisi gratuita',
