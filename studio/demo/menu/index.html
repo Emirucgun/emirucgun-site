@@ -1,385 +1,61 @@
 <!doctype html>
-<html lang="it" data-title-en="Menu · Trattoria dei Tre Glicini (concept project)">
+<html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>(function(){var d=document.documentElement,l;d.classList.add('js');try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(l==='en')d.lang='en'})();</script>
-<title>Menù · Trattoria dei Tre Glicini (progetto dimostrativo)</title>
-<meta name="description" content="Menù digitale dimostrativo di una trattoria inventata, realizzato da Emir Uçgun. In italiano e inglese, con allergeni.">
-<!-- A demo for a made-up business: keep it out of search results so nobody mistakes it for a real restaurant. -->
+<!-- Title, description and preview tags are read by WhatsApp/Google without running JavaScript,
+     so they are written here. For a new client, update them together with menu.data.js. -->
+<title>Menù · Trattoria dei Tre Glicini (demo)</title>
+<meta name="description" content="Menù digitale dimostrativo di una trattoria piemontese inventata, in italiano e inglese, con allergeni e filtri. Realizzato da Emir Uçgun Studio.">
+<!-- A demo for a made-up restaurant: keep it out of search results. Remove this line for a real client. -->
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://studio.emirucgun.com/demo/menu">
-<meta name="theme-color" content="#FBF7EF">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F7F2E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191412" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Menù digitale dimostrativo · Emir Uçgun">
-<meta property="og:description" content="Un menù per una trattoria inventata: italiano e inglese, allergeni, veloce da telefono.">
+<meta property="og:title" content="Menù digitale dimostrativo · Trattoria dei Tre Glicini">
+<meta property="og:description" content="Un menù per una trattoria inventata: italiano e inglese, allergeni, filtri, veloce da telefono.">
 <meta property="og:url" content="https://studio.emirucgun.com/demo/menu">
 <meta property="og:image" content="https://studio.emirucgun.com/studio/og.png">
-<link rel="icon" href="/studio/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/studio/demo/menu/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/studio/apple-touch-icon.png">
-<link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Paths are absolute: on studio.emirucgun.com this page is served at /demo/menu (no trailing slash),
+     where a relative "menu.js" would point to the wrong folder. -->
 <link rel="preload" href="/studio/fonts/Fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script src="/studio/config.js" defer></script>
-<script src="/studio/site.js" defer></script>
-<style>
-@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url(/studio/fonts/Inter-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:300 800;font-display:swap;src:url(/studio/fonts/Fraunces-var-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-:root{
-  --paper:#FBF7EF; --card:#fff; --ink:#22201C; --ink-2:#5F584E; --line:#E9E1D3;
-  --wis:#6B4E8C; --wis-dark:#523A6E; --wis-soft:#F1EAF6; --leaf:#3F6B3A; --leaf-soft:#E7F0E2;
-  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif;
-  color-scheme:light;
-}
-html:not([lang="en"]) body [lang="en"],html[lang="en"] body [lang="it"]{display:none!important}
-*,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:72px}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased}
-h1,h2,h3{margin:0;font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
-p{margin:0}
-ul,ol{margin:0;padding:0;list-style:none}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--wis);outline-offset:2px;border-radius:6px}
-.col{max-width:640px;margin-inline:auto;padding-inline:18px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* demo banner: always visible, so nobody takes this for a real restaurant */
-.demo{background:var(--ink);color:#F4EFE6;font-size:.82rem;line-height:1.35}
-.demo .col{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:9px}
-.demo b{font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;background:#F4EFE6;color:var(--ink);padding:3px 8px;border-radius:99px;margin-right:8px;white-space:nowrap}
-.demo a{color:#F4EFE6;white-space:nowrap;font-weight:600}
-
-/* masthead */
-.mast{padding:34px 0 22px;text-align:center;position:relative}
-.sprig{width:58px;height:58px;margin:0 auto 12px;display:block}
-.mast .kicker{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wis)}
-.mast h1{font-size:clamp(2rem,9vw,2.6rem);line-height:1.04;margin-top:8px}
-.mast .sub{color:var(--ink-2);margin-top:8px;font-size:.95rem}
-.lang{position:absolute;top:14px;right:0;display:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:3px;font:600 .8rem var(--sans)}
-.js .lang{display:inline-flex}
-.lang button{font:inherit;border:0;background:none;color:var(--ink-2);padding:6px 10px;border-radius:99px;cursor:pointer;min-width:38px;min-height:32px}
-.lang button[aria-pressed="true"]{background:var(--wis);color:#fff}
-.info{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
-.info span{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:.82rem;color:var(--ink-2)}
-.info svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--leaf)}
-
-/* sticky category bar */
-.cats{position:sticky;top:0;z-index:5;background:rgba(251,247,239,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.cats .col{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding-block:10px;-webkit-overflow-scrolling:touch}
-.cats .col::-webkit-scrollbar{display:none}
-.cats a{flex:none;text-decoration:none;font-size:.9rem;font-weight:600;color:var(--ink-2);padding:8px 14px;border-radius:99px;border:1px solid transparent;white-space:nowrap}
-.cats a[aria-current="true"]{background:var(--wis);color:#fff}
-.veg{flex:none;margin-left:auto;display:none;align-items:center;gap:6px;font:600 .85rem var(--sans);color:var(--leaf);background:var(--leaf-soft);border:1px solid transparent;border-radius:99px;padding:7px 12px;cursor:pointer;white-space:nowrap}
-.js .veg{display:inline-flex}
-.veg[aria-pressed="true"]{background:var(--leaf);color:#fff}
-.veg i{width:14px;height:14px;border:1.6px solid currentColor;border-radius:4px;display:grid;place-items:center;font-style:normal;font-size:10px;line-height:1}
-.veg[aria-pressed="true"] i::after{content:"✓"}
-
-/* courses */
-.course{padding-top:30px}
-.course h2{font-size:1.55rem;display:flex;align-items:baseline;gap:12px}
-.course h2::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(-4px)}
-.course .hint{color:var(--ink-2);font-size:.88rem;margin-top:4px}
-.dishes{margin-top:10px}
-.dish{padding:16px 0;border-bottom:1px solid var(--line)}
-.dish:last-child{border-bottom:0}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
-.dish h3{font-size:1.12rem;line-height:1.25}
-.price{font:600 1.02rem var(--sans);white-space:nowrap;font-variant-numeric:tabular-nums}
-.price small{font-weight:500;color:var(--ink-2);font-size:.78rem;margin-right:4px}
-.prices{display:grid;gap:2px;text-align:right}
-.desc{color:var(--ink-2);font-size:.93rem;margin-top:4px;max-width:34em}
-.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;align-items:center}
-.chip{font-size:.72rem;font-weight:700;letter-spacing:.03em;padding:3px 8px;border-radius:99px}
-.chip-house{background:var(--wis-soft);color:var(--wis-dark)}
-.chip-veg{background:var(--leaf-soft);color:var(--leaf)}
-.al{display:inline-flex;gap:4px}
-.al abbr{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:.72rem;font-weight:600;color:var(--ink-2);text-decoration:none;cursor:help}
-.is-veg-only .dish:not([data-veg]){display:none}
-.is-veg-only .course:not(:has(.dish[data-veg])){display:none}
-
-/* footer notes */
-.notes{margin-top:34px;display:grid;gap:12px}
-.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:.92rem}
-.box strong{display:block;margin-bottom:4px}
-details.box summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
-details.box summary::-webkit-details-marker{display:none}
-details.box summary::after{content:"+";font-size:1.2rem;color:var(--wis)}
-details.box[open] summary::after{content:"–"}
-.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:14px;font-size:.88rem}
-.legend li{display:flex;gap:8px;align-items:center}
-.legend span:first-child{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:99px;border:1px solid var(--line);font-size:.72rem;font-weight:600;color:var(--ink-2)}
-.end{text-align:center;color:var(--ink-2);font-size:.85rem;padding:34px 0 calc(40px + env(safe-area-inset-bottom))}
-.end p + p{margin-top:6px}
-.end a{color:var(--wis-dark);font-weight:600}
-</style>
+<link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="/studio/demo/menu/menu.js">
+<link rel="modulepreload" href="/studio/demo/menu/menu.data.js">
+<link rel="stylesheet" href="/studio/demo/menu/menu.css">
+<script type="module" src="/studio/demo/menu/menu.js"></script>
 </head>
 <body>
-
-<div class="demo" role="note">
-  <div class="col">
-    <span><b><span lang="it">Demo</span><span lang="en">Demo</span></b><span lang="it">Progetto dimostrativo: la trattoria è inventata.</span><span lang="en">Concept project: this trattoria is made up.</span></span>
-    <a href="/studio#esempi">← Emir Uçgun</a>
-  </div>
+<div id="app">
+  <noscript>
+    <div class="noscript">
+      <p lang="it">Per vedere il menù attivate JavaScript, oppure chiedete il menù cartaceo al personale.</p>
+      <p lang="en">Please enable JavaScript to see the menu, or ask our staff for the printed one.</p>
+    </div>
+  </noscript>
 </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<header class="col mast">
-  <div class="lang" role="group" aria-label="Lingua" data-en-aria-label="Language">
-    <button type="button" data-set-lang="it" aria-pressed="true">IT</button>
-    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-  </div>
-  <!-- wisteria sprig -->
-  <svg class="sprig" viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M32 6c0 10-2 18-6 26" fill="none" stroke="#3F6B3A" stroke-width="2" stroke-linecap="round"/>
-    <path d="M30 14c6-4 12-3 16 1-6 3-11 2-16-1z" fill="#3F6B3A"/>
-    <g fill="#6B4E8C"><circle cx="27" cy="34" r="4"/><circle cx="35" cy="34" r="4"/><circle cx="31" cy="41" r="3.6"/><circle cx="24" cy="41" r="3"/><circle cx="38" cy="41" r="3"/><circle cx="28" cy="47.5" r="3"/><circle cx="34.5" cy="47.5" r="3"/><circle cx="31" cy="53.5" r="2.6"/></g>
-    <g fill="#9A80B8"><circle cx="31" cy="28" r="3.4"/><circle cx="31" cy="58.5" r="2"/></g>
-  </svg>
-  <p class="kicker"><span lang="it">Cucina piemontese</span><span lang="en">Piedmontese cooking</span></p>
-  <h1>Trattoria dei Tre&nbsp;Glicini</h1>
-  <p class="sub">Via Esempio 3 · Torino</p>
-  <div class="info">
-    <span><i class="dot" aria-hidden="true"></i><span lang="it">Pranzo 12–14:30 · Cena 19–22:30</span><span lang="en">Lunch 12–2:30 pm · Dinner 7–10:30 pm</span></span>
-    <span><span lang="it">Chiuso il lunedì</span><span lang="en">Closed on Mondays</span></span>
-  </div>
-</header>
-
-<nav class="cats" aria-label="Categorie del menù" data-en-aria-label="Menu sections">
-  <div class="col">
-    <a href="#antipasti"><span lang="it">Antipasti</span><span lang="en">Starters</span></a>
-    <a href="#primi"><span lang="it">Primi</span><span lang="en">First courses</span></a>
-    <a href="#secondi"><span lang="it">Secondi</span><span lang="en">Mains</span></a>
-    <a href="#contorni"><span lang="it">Contorni</span><span lang="en">Sides</span></a>
-    <a href="#dolci"><span lang="it">Dolci</span><span lang="en">Desserts</span></a>
-    <a href="#bevande"><span lang="it">Bevande</span><span lang="en">Drinks</span></a>
-    <button class="veg" type="button" aria-pressed="false"><i aria-hidden="true"></i><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></button>
-  </div>
-</nav>
-
-<!-- Allergen numbers follow the 14 allergens of EU Regulation 1169/2011 (legend at the bottom).
-     Each dish: data-veg marks vegetarian dishes; prices go in data-eur. -->
-<main class="col" id="menu">
-
-  <section class="course" id="antipasti" aria-labelledby="h-antipasti">
-    <h2 id="h-antipasti"><span lang="it">Antipasti</span><span lang="en">Starters</span></h2>
-    <ul class="dishes">
-      <li class="dish">
-        <div class="row"><h3>Vitello tonnato</h3><span class="price" data-eur="12">12 €</span></div>
-        <p class="desc"><span lang="it">Girello di vitello cotto rosa, salsa tonnata della casa e capperi.</span><span lang="en">Pink-cooked veal, house tuna sauce and capers.</span></p>
-        <div class="meta"><span class="al"><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Pesce" data-en-title="Fish">4</abbr></span></div>
-      </li>
-      <li class="dish">
-        <div class="row"><h3>Battuta di Fassona al coltello</h3><span class="price" data-eur="13">13 €</span></div>
-        <p class="desc"><span lang="it">Carne cruda di Fassona piemontese battuta a mano, olio extravergine, sale e limone.</span><span lang="en">Hand-chopped raw Piedmontese Fassona beef, extra virgin olive oil, salt and lemon.</span></p>
-      </li>
-      <li class="dish">
-        <div class="row"><h3>Peperoni con bagna càuda</h3><span class="price" data-eur="10">10 €</span></div>
-        <p class="desc"><span lang="it">Peperoni arrostiti con la classica salsa calda di aglio, acciughe e olio.</span><span lang="en">Roasted peppers with the classic warm garlic, anchovy and olive oil dip.</span></p>
-        <div class="meta"><span class="al"><abbr title="Pesce" data-en-title="Fish">4</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Tomino alla piastra</h3><span class="price" data-eur="9">9 €</span></div>
-        <p class="desc"><span lang="it">Formaggio fresco piemontese alla piastra, miele di acacia e nocciole tostate.</span><span lang="en">Griddled fresh Piedmontese cheese, acacia honey and toasted hazelnuts.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Latte" data-en-title="Milk">7</abbr><abbr title="Frutta a guscio" data-en-title="Tree nuts">8</abbr></span></div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="course" id="primi" aria-labelledby="h-primi">
-    <h2 id="h-primi"><span lang="it">Primi</span><span lang="en">First courses</span></h2>
-    <p class="hint"><span lang="it">Pasta fresca fatta in casa ogni mattina.</span><span lang="en">Fresh pasta, made in-house every morning.</span></p>
-    <ul class="dishes">
-      <li class="dish">
-        <div class="row"><h3>Agnolotti del plin al sugo d'arrosto</h3><span class="price" data-eur="14">14 €</span></div>
-        <p class="desc"><span lang="it">Piccoli ravioli chiusi a mano, ripieni di carne, con il fondo dell'arrosto.</span><span lang="en">Small hand-pinched ravioli filled with meat, served with roast jus.</span></p>
-        <div class="meta"><span class="chip chip-house"><span lang="it">Il nostro piatto</span><span lang="en">House favourite</span></span><span class="al"><abbr title="Glutine" data-en-title="Gluten">1</abbr><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Latte" data-en-title="Milk">7</abbr><abbr title="Sedano" data-en-title="Celery">9</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Tajarin al burro e salvia</h3><span class="price" data-eur="12">12 €</span></div>
-        <p class="desc"><span lang="it">Tagliolini sottili all'uovo, burro di montagna e salvia.</span><span lang="en">Thin egg tagliolini with mountain butter and sage.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Glutine" data-en-title="Gluten">1</abbr><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Latte" data-en-title="Milk">7</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Risotto al Castelmagno</h3><span class="price" data-eur="13">13 €</span></div>
-        <p class="desc"><span lang="it">Riso Carnaroli mantecato con Castelmagno, il formaggio delle valli cuneesi.</span><span lang="en">Carnaroli rice with Castelmagno, a cheese from the valleys around Cuneo.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Latte" data-en-title="Milk">7</abbr><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Minestra di verdure</h3><span class="price" data-eur="9">9 €</span></div>
-        <p class="desc"><span lang="it">Verdure di stagione, legumi e un filo d'olio. Senza latticini.</span><span lang="en">Seasonal vegetables, pulses and a drizzle of olive oil. Dairy-free.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Sedano" data-en-title="Celery">9</abbr></span></div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="course" id="secondi" aria-labelledby="h-secondi">
-    <h2 id="h-secondi"><span lang="it">Secondi</span><span lang="en">Mains</span></h2>
-    <ul class="dishes">
-      <li class="dish">
-        <div class="row"><h3>Brasato al Barolo con polenta</h3><span class="price" data-eur="19">19 €</span></div>
-        <p class="desc"><span lang="it">Manzo cotto lentamente nel Barolo, servito con polenta morbida.</span><span lang="en">Beef slow-cooked in Barolo wine, with soft polenta.</span></p>
-        <div class="meta"><span class="al"><abbr title="Sedano" data-en-title="Celery">9</abbr><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-      <li class="dish">
-        <div class="row"><h3>Coniglio alle erbe</h3><span class="price" data-eur="17">17 €</span></div>
-        <p class="desc"><span lang="it">Coniglio al forno con rosmarino, timo e patate.</span><span lang="en">Oven-roasted rabbit with rosemary, thyme and potatoes.</span></p>
-        <div class="meta"><span class="al"><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Flan di cardi con fonduta</h3><span class="price" data-eur="14">14 €</span></div>
-        <p class="desc"><span lang="it">Sformato di cardo gobbo con fonduta di formaggio.</span><span lang="en">Cardoon flan with a warm cheese fondue.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Glutine" data-en-title="Gluten">1</abbr><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Latte" data-en-title="Milk">7</abbr></span></div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="course" id="contorni" aria-labelledby="h-contorni">
-    <h2 id="h-contorni"><span lang="it">Contorni</span><span lang="en">Sides</span></h2>
-    <ul class="dishes">
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Patate al forno</span><span lang="en">Roast potatoes</span></h3><span class="price" data-eur="5">5 €</span></div>
-        <p class="desc"><span lang="it">Con rosmarino e sale grosso.</span><span lang="en">With rosemary and coarse salt.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Verdure di stagione alla griglia</span><span lang="en">Grilled seasonal vegetables</span></h3><span class="price" data-eur="6">6 €</span></div>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Insalata mista</span><span lang="en">Mixed salad</span></h3><span class="price" data-eur="5">5 €</span></div>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span></div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="course" id="dolci" aria-labelledby="h-dolci">
-    <h2 id="h-dolci"><span lang="it">Dolci</span><span lang="en">Desserts</span></h2>
-    <ul class="dishes">
-      <li class="dish" data-veg>
-        <div class="row"><h3>Bunet</h3><span class="price" data-eur="6">6 €</span></div>
-        <p class="desc"><span lang="it">Il budino piemontese al cacao e amaretti.</span><span lang="en">The Piedmontese cocoa and amaretti pudding.</span></p>
-        <div class="meta"><span class="chip chip-house"><span lang="it">Ricetta della nonna</span><span lang="en">Grandma's recipe</span></span><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Latte" data-en-title="Milk">7</abbr><abbr title="Frutta a guscio" data-en-title="Tree nuts">8</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Panna cotta al caramello</h3><span class="price" data-eur="6">6 €</span></div>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Latte" data-en-title="Milk">7</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Torta di nocciole con zabaione</h3><span class="price" data-eur="7">7 €</span></div>
-        <p class="desc"><span lang="it">Nocciole Piemonte IGP e zabaione caldo al Marsala.</span><span lang="en">Piedmont IGP hazelnuts with warm Marsala zabaglione.</span></p>
-        <div class="meta"><span class="chip chip-veg"><span lang="it">Vegetariano</span><span lang="en">Vegetarian</span></span><span class="al"><abbr title="Glutine" data-en-title="Gluten">1</abbr><abbr title="Uova" data-en-title="Eggs">3</abbr><abbr title="Latte" data-en-title="Milk">7</abbr><abbr title="Frutta a guscio" data-en-title="Tree nuts">8</abbr><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="course" id="bevande" aria-labelledby="h-bevande">
-    <h2 id="h-bevande"><span lang="it">Bevande</span><span lang="en">Drinks</span></h2>
-    <ul class="dishes">
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Acqua naturale o frizzante</span><span lang="en">Still or sparkling water</span></h3><span class="price"><small><span lang="it">0,75 l</span><span lang="en">0.75 l</span></small><span data-eur="3">3 €</span></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Barbera d'Asti DOCG</h3>
-          <span class="prices"><span class="price"><small><span lang="it">calice</span><span lang="en">glass</span></small><span data-eur="5">5 €</span></span><span class="price"><small><span lang="it">bottiglia</span><span lang="en">bottle</span></small><span data-eur="22">22 €</span></span></span></div>
-        <div class="meta"><span class="al"><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3>Dolcetto d'Alba DOC</h3>
-          <span class="prices"><span class="price"><small><span lang="it">calice</span><span lang="en">glass</span></small><span data-eur="5">5 €</span></span><span class="price"><small><span lang="it">bottiglia</span><span lang="en">bottle</span></small><span data-eur="20">20 €</span></span></span></div>
-        <div class="meta"><span class="al"><abbr title="Solfiti" data-en-title="Sulphites">12</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Birra artigianale</span><span lang="en">Craft beer</span></h3><span class="price"><small>33 cl</small><span data-eur="6">6 €</span></span></div>
-        <div class="meta"><span class="al"><abbr title="Glutine" data-en-title="Gluten">1</abbr></span></div>
-      </li>
-      <li class="dish" data-veg>
-        <div class="row"><h3><span lang="it">Caffè</span><span lang="en">Espresso</span></h3><span class="price" data-eur="1.5">1,50 €</span></div>
-      </li>
-    </ul>
-  </section>
-
-  <div class="notes">
-    <div class="box">
-      <strong><span lang="it">Allergie o intolleranze?</span><span lang="en">Allergies or intolerances?</span></strong>
-      <span lang="it">Segnalatelo al personale prima di ordinare: vi diremo esattamente cosa contiene ogni piatto.</span><span lang="en">Let our staff know before ordering: we'll tell you exactly what's in every dish.</span>
-    </div>
-    <details class="box">
-      <summary><span lang="it">Legenda allergeni</span><span lang="en">Allergen key</span></summary>
-      <ol class="legend">
-        <li><span>1</span><span lang="it">Glutine</span><span lang="en">Gluten</span></li>
-        <li><span>2</span><span lang="it">Crostacei</span><span lang="en">Crustaceans</span></li>
-        <li><span>3</span><span lang="it">Uova</span><span lang="en">Eggs</span></li>
-        <li><span>4</span><span lang="it">Pesce</span><span lang="en">Fish</span></li>
-        <li><span>5</span><span lang="it">Arachidi</span><span lang="en">Peanuts</span></li>
-        <li><span>6</span><span lang="it">Soia</span><span lang="en">Soy</span></li>
-        <li><span>7</span><span lang="it">Latte</span><span lang="en">Milk</span></li>
-        <li><span>8</span><span lang="it">Frutta a guscio</span><span lang="en">Tree nuts</span></li>
-        <li><span>9</span><span lang="it">Sedano</span><span lang="en">Celery</span></li>
-        <li><span>10</span><span lang="it">Senape</span><span lang="en">Mustard</span></li>
-        <li><span>11</span><span lang="it">Sesamo</span><span lang="en">Sesame</span></li>
-        <li><span>12</span><span lang="it">Solfiti</span><span lang="en">Sulphites</span></li>
-        <li><span>13</span><span lang="it">Lupini</span><span lang="en">Lupin</span></li>
-        <li><span>14</span><span lang="it">Molluschi</span><span lang="en">Molluscs</span></li>
-      </ol>
-    </details>
-    <div class="box">
-      <strong><span lang="it">Coperto</span><span lang="en">Cover charge</span></strong>
-      <span data-eur="2.5">2,50 €</span> <span lang="it">a persona · Pane e grissini fatti in casa</span><span lang="en">per person · Homemade bread and grissini</span>
-    </div>
-  </div>
-</main>
-
-<footer class="col end">
-  <p><span lang="it">Prezzi in euro, IVA inclusa. Trattoria e prezzi sono inventati.</span><span lang="en">Prices in euros, VAT included. The trattoria and its prices are made up.</span></p>
-  <p><span lang="it">Menù digitale realizzato da</span><span lang="en">Digital menu made by</span> <a href="/studio">Emir Uçgun · Studio</a></p>
-</footer>
-
-<script>
-/* Menu page only: highlight the current section in the bar, and the vegetarian filter. */
-(() => {
-  const links = [...document.querySelectorAll('.cats a')];
-  const bar = document.querySelector('.cats .col');
-  const setCurrent = (id) => links.forEach((a) => {
-    const on = a.hash === '#' + id;
-    a.setAttribute('aria-current', on ? 'true' : 'false');
-    if (on) {
-      const r = a.getBoundingClientRect(), b = bar.getBoundingClientRect();
-      if (r.left < b.left || r.right > b.right) bar.scrollTo({ left: a.offsetLeft - 18, behavior: 'smooth' });
-    }
-  });
-  const sections = links.map((a) => document.querySelector(a.hash)).filter(Boolean);
-  const pick = () => {
-    const y = 90;
-    let cur = sections[0];
-    for (const s of sections) if (s.offsetParent && s.getBoundingClientRect().top - y <= 0) cur = s;
-    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = [...sections].reverse().find((s) => s.offsetParent) || cur;
-    setCurrent(cur.id);
-  };
-  let raf = 0;
-  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; pick(); }); }, { passive: true });
-  pick();
-
-  // allergen numbers are read out by name to screen readers, in the active language
-  const labelAllergens = () => document.querySelectorAll('.al').forEach((al) => {
-    const names = [...al.querySelectorAll('abbr')].map((a) => a.title.toLowerCase()).join(', ');
-    al.setAttribute('role', 'img');
-    al.setAttribute('aria-label', (document.documentElement.lang === 'en' ? 'Allergens: ' : 'Allergeni: ') + names);
-  });
-  document.addEventListener('studio:lang', labelAllergens);
-  labelAllergens();
-
-  const veg = document.querySelector('.veg');
-  veg.addEventListener('click', () => {
-    const on = veg.getAttribute('aria-pressed') !== 'true';
-    veg.setAttribute('aria-pressed', String(on));
-    document.getElementById('menu').classList.toggle('is-veg-only', on);
-    links.forEach((a) => { const s = document.querySelector(a.hash); a.hidden = on && !s.querySelector('.dish[data-veg]'); });
-    pick();
-  });
-})();
-</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4.1 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-wheat-off" viewBox="0 0 24 24"><path d="M2 22 12 12M16 8l-1.2 1.2M3.5 12.5 5 11l1.5 1.5a3.5 3.5 0 0 1 0 5L5 19l-1.5-1.5a3.5 3.5 0 0 1 0-5zM8 8l-.5.5a3.5 3.5 0 0 0 0 5L9 15l1.5-1.5c.6-.6.9-1.3 1-2M10.9 5.3c.2-.3.3-.5.6-.8L13 3l1.5 1.5a3.5 3.5 0 0 1 .3 4.6M20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4zM11.5 17.5 13 19l-1.5 1.5a3.5 3.5 0 0 1-5 0L5 19l1.5-1.5a3.5 3.5 0 0 1 5 0zM16 16l-.5.5a3.5 3.5 0 0 1-5 0L9 15l1.5-1.5c.6-.5 1.3-.9 2-1M18.7 13.1c.3-.2.5-.3.8-.6L21 11l-1.5-1.5a3.5 3.5 0 0 0-4.6-.3M2 2l20 20"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.1 7.4 7.4 2.1-7.4 2.1-2.1 7.4-2.1-7.4L2.5 12l7.4-2.1z" fill="currentColor" stroke="none"/></symbol>
+</svg>
 </body>
 </html>
