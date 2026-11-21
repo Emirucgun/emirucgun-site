@@ -63,7 +63,9 @@ A separate services site lives in `studio/` and is served at **studio.emirucgun.
 - `studio/emir.jpg`: your photo (square, ~800 × 800 px, under 150 KB). Until it exists, initials are shown.
 - `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison in the "Foto per il delivery"
   section (same framing, 4:3, ~1600 × 1200 px, under 250 KB each). Until both exist, a placeholder is shown.
-- Every bundle must cost less than its parts: the "Pacchetto completo" card spells out the separate total and the saving.
+- Pricing: three sector packages (Ristoranti & Bar, Barbieri & Saloni, Negozi & Attività), a monthly maintenance band and a
+  collapsible "Su misura" list of single services. Every package must cost less than its parts: each card shows the struck-through
+  "Separatamente" total, so update it when a single price changes (the sums are written out in a comment above the section).
 - Routing: `middleware.js` serves `/` of the subdomain from `/studio`, and the host-scoped rewrite in `vercel.json` serves
   every other subdomain path from `/studio/…`. Requests to `emirucgun.com/studio…` redirect to the subdomain.
 - Local preview: `python3 -m http.server`, then `localhost:8000/studio/` and `localhost:8000/studio/demo/menu/`.
