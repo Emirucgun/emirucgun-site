@@ -1,24 +1,24 @@
 <!doctype html>
-<html lang="it" data-title-en="Emir Uçgun: digital services for Turin businesses">
+<html lang="it" data-title-en="Delivery dish photos and digital menus for Turin restaurants · Emir Uçgun">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){var d=document.documentElement,l;d.classList.add('js');try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(l==='en')d.lang='en'})();</script>
-<title>Emir Uçgun: servizi digitali per le attività di Torino</title>
-<meta name="description" content="Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi di Torino. Analisi gratuita, nessuna password richiesta: prima vedete un'anteprima, poi pagate.">
+<title>Foto piatti per il delivery e menù digitale per ristoranti a Torino · Emir Uçgun</title>
+<meta name="description" content="Foto dei piatti per Glovo, Deliveroo e Just Eat, profilo Google in ordine e menù digitale per ristoranti, pizzerie e locali da asporto di Torino. Analisi gratuita, nessuna password: prima vedete l'anteprima, poi pagate.">
 <link rel="canonical" href="https://studio.emirucgun.com/">
 <meta name="theme-color" content="#FAF7F2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Emir Uçgun · Studio">
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_GB">
-<meta property="og:title" content="Aiuto le attività di Torino a farsi trovare online">
-<meta property="og:description" content="Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici. Analisi gratuita e senza impegno.">
+<meta property="og:title" content="Più ordini su Glovo, Deliveroo e Just Eat · Foto piatti delivery a Torino">
+<meta property="og:description" content="Foto dei piatti che fanno venire fame, profilo Google in ordine e menù digitale per ristoranti di Torino. Analisi gratuita e senza impegno.">
 <meta property="og:url" content="https://studio.emirucgun.com/">
 <meta property="og:image" content="https://studio.emirucgun.com/studio/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Emir Uçgun, servizi digitali per le attività di Torino">
+<meta property="og:image:alt" content="Emir Uçgun: più ordini su Glovo, Deliveroo e Just Eat per i ristoranti di Torino">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/studio/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/studio/apple-touch-icon.png">
@@ -147,6 +147,16 @@ section{padding-block:clamp(64px,10vw,120px)}
 .point p{color:var(--ink-2)}
 .problem .grid-3 .point + .point{border-top:1px solid var(--line);padding-top:26px}
 @media (min-width:760px){.problem .grid-3 .point + .point{border-top:0;padding-top:0;border-left:1px solid var(--line);padding-left:22px}}
+/* proof: what the platforms themselves report (no numbers of my own) */
+.proof{margin-top:clamp(48px,7vw,72px);padding-top:clamp(36px,5vw,48px);border-top:1px solid var(--line)}
+.proof > h3{font-size:clamp(1.4rem,3vw,1.75rem);margin-bottom:22px}
+.facts-2{display:grid;gap:16px}
+@media (min-width:760px){.facts-2{grid-template-columns:repeat(2,1fr);gap:22px}}
+.fact{background:var(--tint-2);border:1px solid var(--tint);border-radius:var(--r);padding:22px 24px;display:grid;gap:10px;align-content:start}
+.fact .big{font:600 clamp(2.2rem,6vw,2.8rem)/1 var(--serif);color:var(--accent);letter-spacing:-.02em}
+.fact p{font-size:1.02rem}
+.fact .src{font-size:.8rem;color:var(--ink-2)}
+.proof-note{margin-top:16px;font-size:.85rem;color:var(--ink-2);max-width:44rem}
 
 /* ---------- packages ---------- */
 /* phone: one column · desktop: the three sector packages side by side */
@@ -160,13 +170,15 @@ section{padding-block:clamp(64px,10vw,120px)}
 .ticks li{display:flex;gap:10px;align-items:flex-start}
 .ticks .ico{width:19px;height:19px;color:var(--ok);margin-top:3px;stroke-width:2.2}
 .pack-foot{margin-top:auto;display:grid;gap:14px;padding-top:16px;border-top:1px solid var(--line)}
-.pack-cost{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px}
 .pack-foot .btn{width:100%}
 .pack-pop{border:2px solid var(--accent);background:var(--tint-2);box-shadow:var(--shadow)}
 .pack-pop .pack-foot{border-top-color:var(--tint)}
 .badge{align-self:flex-start;display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-.saving{font-size:.95rem;color:var(--ink-2)}
-.saving del{text-decoration-thickness:1.5px}
+.pack-intro{color:var(--ink-2);font-size:.98rem;margin-top:-6px}
+.pack-cost{display:grid;gap:4px}
+.list{font-size:.95rem;color:var(--ink-2)}
+.list del{text-decoration-thickness:1.5px}
+.launch{font-size:.85rem;font-weight:600;color:var(--accent)}
 .guarantee{margin-top:26px;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:var(--r-sm);padding:16px 18px}
 .guarantee .ico{color:var(--ok);stroke-width:2.4;margin-top:2px}
 .guarantee strong{display:block;margin-bottom:4px}
@@ -175,31 +187,23 @@ section{padding-block:clamp(64px,10vw,120px)}
 .monthly .ico{flex:none;width:22px;height:22px;color:var(--accent)}
 .monthly p{flex:1 1 20em;color:var(--ink-2)}
 .monthly p strong{color:var(--ink)}
-/* custom: single services, collapsed by default */
-.custom{margin-top:clamp(40px,6vw,56px);display:grid;gap:18px}
-@media (min-width:900px){.custom{grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}}
-.custom-intro p{color:var(--ink-2);margin-top:10px}
-.custom-intro .btn{margin-top:20px}
-.singles{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
-.singles summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;font-weight:600}
-.singles summary::-webkit-details-marker{display:none}
-.singles summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-3px) rotate(45deg);transition:transform .2s}
-.singles[open] summary::after{transform:translateY(3px) rotate(-135deg)}
-.singles ul{border-top:1px solid var(--line);padding:6px 22px 14px}
-.singles li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;font-size:.98rem}
-.singles li + li{border-top:1px dashed var(--line-2)}
-.singles li small{display:block;color:var(--ink-2);font-size:.85rem;margin-top:2px}
-.singles b{white-space:nowrap;font-weight:600}
+/* custom: one line pointing to contact */
+.custom{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;padding:4px 2px}
+.custom p{color:var(--ink-2)}
+.custom p strong{color:var(--ink)}
 
 /* ---------- delivery photos ---------- */
-.photos{background:var(--surface);border-top:1px solid var(--line)}
-.photos .wrap{display:grid;gap:40px;align-items:center}
-@media (min-width:920px){.photos .wrap{grid-template-columns:1.15fr 1fr;gap:64px}}
+.photos{background:var(--surface);border-bottom:1px solid var(--line)}
+.photos .head{margin-bottom:clamp(28px,5vw,44px)}
+.photos-body{display:grid;gap:36px;align-items:start}
+@media (min-width:920px){.photos-body{grid-template-columns:1.5fr 1fr;gap:56px}}
+.photos-side .promise:first-child{margin-top:0}
+.promise + .promise{margin-top:12px}
 .promise{display:flex;gap:12px;align-items:flex-start;background:var(--tint-2);border:1px solid var(--tint);border-radius:var(--r-sm);padding:16px 18px;margin-top:22px}
 .promise .ico{color:var(--accent);margin-top:2px}
 .promise strong{display:block}
 .promise span span{color:var(--ink-2)}
-.tiers-line{font-weight:600}
+.photos-side .link{display:inline-block;margin-top:18px}
 .photos .steps li{border-top-color:var(--line-2)}
 @media (min-width:760px){.photos .steps{grid-template-columns:1fr}}
 /* before/after slider: the native range input does the work, so keyboard, touch and screen readers all work */
@@ -226,7 +230,7 @@ section{padding-block:clamp(64px,10vw,120px)}
 .how .card{border-color:transparent}
 .rules{display:grid;gap:16px}
 @media (min-width:640px){.rules{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:980px){.rules{grid-template-columns:repeat(6,1fr)}.rules li{grid-column:span 2}.rules li:nth-child(4){grid-column:2/span 2}}
+@media (min-width:980px){.rules{grid-template-columns:repeat(3,1fr)}}
 .rule .num{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin-bottom:18px}
 .rule h3{margin-bottom:8px}
 .rule p{color:var(--ink-2)}
@@ -306,7 +310,7 @@ section{padding-block:clamp(64px,10vw,120px)}
   .phone iframe{width:100%;height:100%;border:0;display:block}
 }
 
-/* posts gallery: real visuals for three fictional businesses (script: posts-gallery.js) */
+/* posts gallery: real visuals for two fictional restaurants (script: posts-gallery.js) */
 .pg-tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--surface);margin-bottom:20px;max-width:100%}
 .pg-tabs button{font:inherit;font-size:.92rem;font-weight:600;color:var(--ink-2);background:none;border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
 .pg-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
@@ -397,7 +401,6 @@ footer p + p{margin-top:4px}
   <defs>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.8 19.5h18.4z"/><path d="M12 10v4.2M12 17h.01"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
     <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7.5h18V11H3zM12 7.5V20"/><path d="M12 7.5S10.8 3.5 8.5 3.5a2 2 0 0 0 0 4M12 7.5s1.2-4 3.5-4a2 2 0 0 1 0 4"/></symbol>
@@ -406,7 +409,6 @@ footer p + p{margin-top:4px}
     <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2.4-1.5-2.4 1.5-2.4-1.5-2.4 1.5L6 20.5z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
-    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.5v4.2c0 1.3 2.5 2.8 5.5 2.8s5.5-1.5 5.5-2.8v-4.2M21.5 9.5v5"/></symbol>
     <symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.5v.01M11.5 16.5v-6M11.5 13c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5v3.5"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.7 4.2-2.2 1.4a11 11 0 0 0 6.4 6.4l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></symbol>
@@ -415,7 +417,6 @@ footer p + p{margin-top:4px}
     <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8.5 8.5"/></symbol>
     <symbol id="i-cup" viewBox="0 0 24 24"><path d="M4.5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5zM16.5 10.5h1.5a2.5 2.5 0 0 1 0 5h-1.8M8 3.5c-.6.8-.6 1.7 0 2.5M12 3.5c-.6.8-.6 1.7 0 2.5"/></symbol>
     <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5V20h16V9.5M3 9.5l1.6-5h14.8l1.6 5zM3 9.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M10 20v-5h4v5"/></symbol>
-    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6.5" cy="6.5" r="2.8"/><circle cx="6.5" cy="17.5" r="2.8"/><path d="M8.6 8.4L20 18.5M8.6 15.6L20 5.5"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   </defs>
 </svg>
@@ -426,8 +427,8 @@ footer p + p{margin-top:4px}
   <div class="wrap">
     <a class="brand" href="/studio"><b>Emir Uçgun</b><span>Studio · Torino</span></a>
     <nav class="nav" aria-label="Sezioni" data-en-aria-label="Sections">
-      <a href="#pacchetti"><span lang="it">Pacchetti</span><span lang="en">Packages</span></a>
       <a href="#foto"><span lang="it">Foto</span><span lang="en">Photos</span></a>
+      <a href="#pacchetti"><span lang="it">Pacchetti</span><span lang="en">Packages</span></a>
       <a href="#come-lavoro"><span lang="it">Come lavoro</span><span lang="en">How I work</span></a>
       <a href="#esempi"><span lang="it">Esempi</span><span lang="en">Examples</span></a>
       <a href="#chi-sono"><span lang="it">Chi sono</span><span lang="en">About</span></a>
@@ -446,16 +447,16 @@ footer p + p{margin-top:4px}
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap">
     <div>
-      <p class="eyebrow"><span lang="it">Servizi digitali per attività locali</span><span lang="en">Digital services for local businesses</span></p>
-      <h1 id="hero-title"><span lang="it">Aiuto le attività di Torino a farsi trovare online.</span><span lang="en">I help Turin businesses get found online.</span></h1>
+      <p class="eyebrow"><span lang="it">Per ristoranti e locali da asporto · Torino</span><span lang="en">For restaurants and takeaways · Turin</span></p>
+      <h1 id="hero-title"><span lang="it">Più ordini su Glovo, Deliveroo e Just Eat.</span><span lang="en">More orders on Glovo, Deliveroo and Just Eat.</span></h1>
       <p class="lead">
-        <span lang="it">Profilo Google, menù digitali, foto per il delivery, grafiche e siti semplici per ristoranti, bar, barbieri, saloni e negozi.</span>
-        <span lang="en">Google profiles, digital menus, delivery-app photos, visuals and simple websites for restaurants, cafés, barbers, salons and shops.</span>
+        <span lang="it">Foto dei piatti che fanno venire fame, profilo Google in ordine e menù chiaro. Per ristoranti, pizzerie e locali da asporto di Torino.</span>
+        <span lang="en">Dish photos that make people hungry, a tidy Google profile and a clear menu. For restaurants, pizzerias and takeaways in Turin.</span>
       </p>
       <div class="cta">
         <a class="btn btn-primary" href="#contatti" data-wa>
           <svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg>
-          <span lang="it">Richiedi un'analisi gratuita</span><span lang="en">Get a free review</span>
+          <span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Get the free review</span>
         </a>
         <a class="btn btn-ghost" href="#pacchetti"><span lang="it">Vedi i pacchetti</span><span lang="en">See the packages</span></a>
       </div>
@@ -485,101 +486,182 @@ footer p + p{margin-top:4px}
   </div>
 </section>
 
-<!-- ============ 2. THE PROBLEM ============ -->
+<!-- ============ 2. THE PROBLEM + what the platforms report ============ -->
 <section class="problem" aria-labelledby="problem-title">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow"><span lang="it">Perché conta</span><span lang="en">Why it matters</span></p>
-      <h2 id="problem-title"><span lang="it">Oggi i clienti scelgono dal telefono.</span><span lang="en">Today, customers choose on their phone.</span></h2>
+      <h2 id="problem-title"><span lang="it">Sulle app di delivery si ordina con gli occhi.</span><span lang="en">On delivery apps, people order with their eyes.</span></h2>
     </div>
     <div class="grid-3">
       <div class="point">
-        <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg></div>
-        <h3><span lang="it">Prima vi cercano su Google Maps</span><span lang="en">They look you up on Google Maps first</span></h3>
-        <p><span lang="it">Orari, foto, recensioni: molti decidono lì, prima ancora di passare davanti alla vostra porta.</span><span lang="en">Hours, photos, reviews: many people decide there, before they ever walk past your door.</span></p>
+        <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div>
+        <h3><span lang="it">Si decide in pochi secondi</span><span lang="en">The choice takes a few seconds</span></h3>
+        <p><span lang="it">Su Glovo, Deliveroo e Just Eat il cliente scorre decine di locali e sceglie guardando le foto, prima ancora di leggere i prezzi.</span><span lang="en">On Glovo, Deliveroo and Just Eat, customers scroll past dozens of places and choose by the photos, before they even read the prices.</span></p>
+      </div>
+      <div class="point">
+        <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg></div>
+        <h3><span lang="it">Senza una bella foto, il piatto viene saltato</span><span lang="en">Without a good photo, the dish gets skipped</span></h3>
+        <p><span lang="it">Piatti senza foto, o con foto scure fatte al volo col telefono, passano inosservati. Anche quando sono buonissimi.</span><span lang="en">Dishes with no photo, or a dark snap taken on a phone, go unnoticed. Even when they taste great.</span></p>
       </div>
       <div class="point">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg></div>
-        <h3><span lang="it">Un profilo incompleto fa perdere clienti</span><span lang="en">An incomplete profile loses customers</span></h3>
-        <p><span lang="it">Orari sbagliati, niente menù, foto vecchie, recensioni senza risposta. E chi cerca sceglie il locale accanto.</span><span lang="en">Wrong hours, no menu, old photos, unanswered reviews. So people pick the place next door.</span></p>
-      </div>
-      <div class="point">
-        <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></div>
         <h3><span lang="it">E voi non avete tempo</span><span lang="en">And you don't have the time</span></h3>
-        <p><span lang="it">Gestire un'attività è già un lavoro a tempo pieno. Di questa parte mi occupo io.</span><span lang="en">Running a business is already a full-time job. I take care of this part.</span></p>
+        <p><span lang="it">Tra cucina, ordini e personale, sistemare menù, foto e profilo Google resta sempre in fondo alla lista. Di questo mi occupo io.</span><span lang="en">Between the kitchen, orders and staff, fixing menus, photos and Google always ends up at the bottom of the list. I take care of it.</span></p>
+      </div>
+    </div>
+
+    <!-- Platform figures, quoted as the platforms report them. Not my results: never present them as a promise.
+         Deliveroo: help.deliveroo.com/articles/3151927 ("Restaurants that have photography on their menu can boost overall
+         orders by 25%"; the merchant site words it "up to 25%", so the page says "fino al").
+         DoorDash: merchants.doordash.com, "menu quality" article (at least 50% photo coverage, +13% sales on average). -->
+    <div class="proof">
+      <h3><span lang="it">I numeri delle piattaforme</span><span lang="en">What the platforms report</span></h3>
+      <div class="facts-2">
+        <div class="fact">
+          <span class="big">+25%</span>
+          <p><span lang="it">Secondo Deliveroo, i ristoranti con le foto nel menù possono aumentare gli ordini complessivi fino al 25%.</span><span lang="en">According to Deliveroo, restaurants with photos on their menu can increase overall orders by up to 25%.</span></p>
+          <span class="src"><span lang="it">Fonte: Deliveroo, centro assistenza per i ristoranti</span><span lang="en">Source: Deliveroo, restaurant help centre</span></span>
+        </div>
+        <div class="fact">
+          <span class="big">+13%</span>
+          <p><span lang="it">Secondo DoorDash, i locali con foto su almeno metà del menù registrano in media il 13% di vendite in più.</span><span lang="en">According to DoorDash, restaurants with photos on at least half of the menu see 13% more sales on average.</span></p>
+          <span class="src"><span lang="it">Fonte: DoorDash, Merchant Learning Center</span><span lang="en">Source: DoorDash, Merchant Learning Center</span></span>
+        </div>
+      </div>
+      <p class="proof-note"><span lang="it">Sono dati pubblicati dalle piattaforme, non risultati miei: ogni locale è diverso e non vi prometto numeri precisi.</span><span lang="en">These figures are published by the platforms, not results of mine: every restaurant is different and I don't promise exact numbers.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. PHOTOS FOR DELIVERY (the centerpiece) ============
+     The comparison uses /studio/food-before-1.jpg and /studio/food-after-1.jpg (same size and framing,
+     4:3, about 1600 × 1200 px, under 250 KB each). Until both files exist, a neutral placeholder is shown. -->
+<section id="foto" class="photos" aria-labelledby="photos-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow"><span lang="it">Foto per il delivery</span><span lang="en">Photos for delivery apps</span></p>
+      <h2 id="photos-title"><span lang="it">Piatti veri, foto che fanno venire fame.</span><span lang="en">Real dishes, photos that make people hungry.</span></h2>
+      <p class="lead"><span lang="it">Le foto che fate con il telefono possono rendere molto di più. Trascinate per vedere la differenza.</span><span lang="en">The photos you take on your phone can do a lot more. Drag to see the difference.</span></p>
+    </div>
+
+    <div class="photos-body">
+      <figure class="compare">
+        <div class="compare-box" data-compare>
+          <div class="empty"><span><b><span lang="it">Foto prima e dopo</span><span lang="en">Before and after photo</span></b><span lang="it">in arrivo</span><span lang="en">coming soon</span></span></div>
+          <img class="before" src="/studio/food-before-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+               alt="Prima: la foto originale del piatto, scattata con il telefono" data-en-alt="Before: the original photo of the dish, taken on a phone">
+          <img class="after" src="/studio/food-after-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+               alt="Dopo: la stessa foto con luce, colori, sfondo e inquadratura sistemati" data-en-alt="After: the same photo with light, colour, background and framing fixed">
+          <span class="tag tag-before"><span lang="it">Prima</span><span lang="en">Before</span></span>
+          <span class="tag tag-after"><span lang="it">Dopo</span><span lang="en">After</span></span>
+          <span class="line" aria-hidden="true"></span>
+          <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+          <input type="range" min="0" max="100" value="50" step="1"
+                 aria-label="Confronto prima e dopo: spostate per vedere il ritocco" data-en-aria-label="Before and after comparison: move to see the edit">
+        </div>
+        <!-- TODO check: make sure this caption still describes the photos you add. -->
+        <figcaption><span lang="it">Stesso piatto, stessa foto: cambia solo il ritocco.</span><span lang="en">Same dish, same photo: only the editing changes.</span></figcaption>
+      </figure>
+
+      <div class="photos-side">
+        <div class="promise">
+          <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span><strong><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></strong>
+          <span><span lang="it">Il piatto resta quello che il cliente riceverà davvero.</span><span lang="en">The dish stays exactly what the customer will actually receive.</span></span></span>
+        </div>
+        <div class="promise">
+          <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span><strong><span lang="it">Foto conformi alle linee guida delle piattaforme.</span><span lang="en">Photos that follow the platforms' guidelines.</span></strong>
+          <span><span lang="it">Formati e proporzioni giusti per Glovo, Deliveroo e Just Eat, senza scritte o loghi sopra il piatto.</span><span lang="en">The right formats and proportions for Glovo, Deliveroo and Just Eat, with no text or logos over the dish.</span></span></span>
+        </div>
+        <p class="steps-title"><span lang="it">Come funziona</span><span lang="en">How it works</span></p>
+        <ol class="steps">
+          <li><span><b><span lang="it">Scattate con il telefono</span><span lang="en">You shoot on your phone</span></b><span><span lang="it">Seguendo la mia guida di una pagina, poi me le mandate su WhatsApp.</span><span lang="en">Following my one-page guide, then send them to me on WhatsApp.</span></span></span></li>
+          <li><span><b><span lang="it">Le sistemo</span><span lang="en">I edit them</span></b><span><span lang="it">Luce, colori, sfondo e inquadratura.</span><span lang="en">Light, colour, background and framing.</span></span></span></li>
+          <li><span><b><span lang="it">Ricevete i file pronti</span><span lang="en">You get the finished files</span></b><span><span lang="it">Nei formati giusti per le app di delivery e per Google.</span><span lang="en">In the right formats for delivery apps and Google.</span></span></span></li>
+        </ol>
+        <a class="link" href="#pacchetti"><span lang="it">Pacchetti foto da <span data-eur="119">119 €</span></span><span lang="en">Photo packages from <span data-eur="119">119 €</span></span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 3. PACKAGES ============
+<!-- ============ 4. PACKAGES ============
      Prices: edit the data-eur numbers (the text inside is only the no-JavaScript fallback).
-     Every package must cost less than its parts bought separately. Single prices (see "Su misura" below):
-     Google in ordine 60 · Menù digitale 90 · Foto 10 piatti 60 · Prenotazioni online 70 · 5 grafiche social 50.
-     Ristoranti & Bar 60+90+60 = 210 → 150 · Barbieri & Saloni 60+70+50 = 180 → 130 · Negozi & Attività 60+50 = 110 → 90.
-     If you change a single price, update the struck-through "Separatamente" total on each package that contains it. -->
+     List prices (struck through): Foto Delivery 149 · Visibilità 349 · Completo 449 · Gestione mensile 149/mese.
+     Launch prices, valid until 31 December: Foto Delivery 119 · Visibilità 249 · Completo 349.
+     After 31 December: delete each <p class="list"> and <p class="launch">, set each .price to the list price, and update
+     the "Pacchetti foto da 119 €" link in the photos section. Prices also appear in the payment rule and the FAQ. -->
 <section id="pacchetti" aria-labelledby="packs-title">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow"><span lang="it">Pacchetti</span><span lang="en">Packages</span></p>
       <h2 id="packs-title"><span lang="it">Prezzi chiari, concordati prima di iniziare.</span><span lang="en">Clear prices, agreed before I start.</span></h2>
-      <p class="lead"><span lang="it">Ho preparato un pacchetto per ogni tipo di attività. Non sapete quale scegliere? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">I've put together one package for each kind of business. Not sure which one? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
+      <p class="lead"><span lang="it">Tre pacchetti pensati per chi vende su Glovo, Deliveroo e Just Eat. Non sapete quale scegliere? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">Three packages built for restaurants selling on Glovo, Deliveroo and Just Eat. Not sure which one? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
     </div>
 
     <div class="packs">
-      <article class="card pack pack-pop" aria-labelledby="pk-food">
+      <article class="card pack" aria-labelledby="pk-photo">
+        <h3 id="pk-photo">Foto Delivery</h3>
+        <p class="pack-intro"><span lang="it">Per partire dalle foto.</span><span lang="en">To start with the photos.</span></p>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">15 piatti ritoccati: luce, colori, sfondo e inquadratura</span><span lang="en">15 dishes edited: light, colour, background and framing</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Formati pronti per Glovo, Deliveroo, Just Eat e Google</span><span lang="en">Formats ready for Glovo, Deliveroo, Just Eat and Google</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Guida di una pagina per scattare con il telefono</span><span lang="en">One-page guide for shooting on your phone</span></span></li>
+        </ul>
+        <div class="pack-foot">
+          <div class="pack-cost">
+            <p class="list"><span lang="it">Listino <del data-eur="149">149 €</del></span><span lang="en">List price <del data-eur="149">149 €</del></span></p>
+            <p class="price" data-eur="119">119 €</p>
+            <p class="launch"><span lang="it">Prezzo di lancio fino al 31 dicembre</span><span lang="en">Launch price until 31 December</span></p>
+          </div>
+          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Get the free review</span></a>
+        </div>
+      </article>
+
+      <article class="card pack pack-pop" aria-labelledby="pk-vis">
         <span class="badge"><span lang="it">Il più richiesto</span><span lang="en">Most popular</span></span>
-        <h3 id="pk-food"><span lang="it">Ristoranti &amp; Bar</span><span lang="en">Restaurants &amp; Bars</span></h3>
+        <h3 id="pk-vis"><span lang="it">Visibilità</span><span lang="en">Visibility</span></h3>
+        <p class="pack-intro"><span lang="it">Per farvi scegliere sulle app e trovare su Google.</span><span lang="en">To get chosen on the apps and found on Google.</span></p>
         <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e menù sul profilo</span><span lang="en">Google, sorted: photos, hours and menu on your profile</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Menù digitale con QR per i tavoli</span><span lang="en">Digital menu with a QR code for your tables</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Foto di 10 piatti, pronte per il delivery</span><span lang="en">Photos of 10 dishes, ready for delivery apps</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">20 foto ritoccate, pronte per le app di delivery e Google</span><span lang="en">20 edited photos, ready for delivery apps and Google</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Profilo Google in ordine: foto, orari, categorie e menù</span><span lang="en">Google profile, sorted: photos, hours, categories and menu</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Menù digitale IT/EN con QR, cartoncino pronto da stampare</span><span lang="en">IT/EN digital menu with QR code, table card ready to print</span></span></li>
         </ul>
         <div class="pack-foot">
           <div class="pack-cost">
-            <p class="saving"><span lang="it">Separatamente <del data-eur="210">210 €</del></span><span lang="en"><del data-eur="210">210 €</del> separately</span></p>
-            <p class="price" data-eur="150">150 €</p>
+            <p class="list"><span lang="it">Listino <del data-eur="349">349 €</del></span><span lang="en">List price <del data-eur="349">349 €</del></span></p>
+            <p class="price" data-eur="249">249 €</p>
+            <p class="launch"><span lang="it">Prezzo di lancio fino al 31 dicembre</span><span lang="en">Launch price until 31 December</span></p>
           </div>
-          <a class="btn btn-primary" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
+          <a class="btn btn-primary" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Get the free review</span></a>
         </div>
       </article>
 
-      <article class="card pack" aria-labelledby="pk-hair">
-        <h3 id="pk-hair"><span lang="it">Barbieri &amp; Saloni</span><span lang="en">Barbers &amp; Salons</span></h3>
+      <article class="card pack" aria-labelledby="pk-full">
+        <h3 id="pk-full"><span lang="it">Completo</span><span lang="en">Complete</span></h3>
+        <p class="pack-intro"><span lang="it">Per non pensarci più.</span><span lang="en">So you don't have to think about it.</span></p>
         <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e servizi sul profilo</span><span lang="en">Google, sorted: photos, hours and services on your profile</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Prenotazioni online: vi configuro un sistema gratuito, collegato a WhatsApp e Instagram</span><span lang="en">Online booking: I set up a free booking system, linked to WhatsApp and Instagram</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 grafiche social con i vostri colori</span><span lang="en">5 social visuals in your colours</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Tutto quello che c'è in Visibilità</span><span lang="en">Everything in Visibility</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Descrizioni del menù riscritte per il delivery</span><span lang="en">Menu descriptions rewritten for delivery</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 post social con le vostre foto</span><span lang="en">5 social posts with your photos</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">1 mese di gestione mensile incluso</span><span lang="en">1 month of monthly management included</span></span></li>
         </ul>
         <div class="pack-foot">
           <div class="pack-cost">
-            <p class="saving"><span lang="it">Separatamente <del data-eur="180">180 €</del></span><span lang="en"><del data-eur="180">180 €</del> separately</span></p>
-            <p class="price" data-eur="130">130 €</p>
+            <p class="list"><span lang="it">Listino <del data-eur="449">449 €</del></span><span lang="en">List price <del data-eur="449">449 €</del></span></p>
+            <p class="price" data-eur="349">349 €</p>
+            <p class="launch"><span lang="it">Prezzo di lancio fino al 31 dicembre</span><span lang="en">Launch price until 31 December</span></p>
           </div>
-          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
-        </div>
-      </article>
-
-      <article class="card pack" aria-labelledby="pk-shop">
-        <h3 id="pk-shop"><span lang="it">Negozi &amp; Attività</span><span lang="en">Shops &amp; Local businesses</span></h3>
-        <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e categorie giuste</span><span lang="en">Google, sorted: photos, hours and the right categories</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni recenti</span><span lang="en">Replies to your recent reviews</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 grafiche social con i vostri colori</span><span lang="en">5 social visuals in your colours</span></span></li>
-        </ul>
-        <div class="pack-foot">
-          <div class="pack-cost">
-            <p class="saving"><span lang="it">Separatamente <del data-eur="110">110 €</del></span><span lang="en"><del data-eur="110">110 €</del> separately</span></p>
-            <p class="price" data-eur="90">90 €</p>
-          </div>
-          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
+          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Get the free review</span></a>
         </div>
       </article>
     </div>
 
     <div class="monthly" id="mensile">
       <svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>
-      <p><span lang="it"><strong>Manutenzione mensile da <span data-eur="30">30 €</span>/mese</strong> — aggiornamenti, risposte alle recensioni, 4 post Google. Con 4 grafiche Instagram: <strong><span data-eur="50">50 €</span>/mese</strong>. Disdite quando volete.</span><span lang="en"><strong>Monthly maintenance from <span data-eur="30">30 €</span>/month</strong> — updates, replies to reviews, 4 Google posts. With 4 Instagram visuals: <strong><span data-eur="50">50 €</span>/month</strong>. Cancel anytime.</span></p>
+      <p><span lang="it"><strong>Gestione mensile <span data-eur="149">149 €</span>/mese</strong> — 8 post, 5 nuove foto, risposte alle recensioni, aggiornamenti del menù. Disdite quando volete.</span><span lang="en"><strong>Monthly management <span data-eur="149">149 €</span>/month</strong> — 8 posts, 5 new photos, replies to reviews, menu updates. Cancel anytime.</span></p>
     </div>
 
     <p class="guarantee">
@@ -589,96 +671,41 @@ footer p + p{margin-top:4px}
     </p>
 
     <div class="custom" id="su-misura">
-      <div class="custom-intro">
-        <p class="eyebrow"><span lang="it">Su misura</span><span lang="en">Tailored</span></p>
-        <h3 class="h3-lg"><span lang="it">Vi serve solo una cosa?</span><span lang="en">Only need one thing?</span></h3>
-        <p><span lang="it">Se nessun pacchetto fa per voi, scrivetemi e ne parliamo.</span><span lang="en">If none of the packages fits, message me and we'll talk it through.</span></p>
-        <a class="btn btn-ghost" href="#contatti"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span lang="it">Scrivetemi</span><span lang="en">Message me</span></a>
-      </div>
-      <details class="singles">
-        <summary><span lang="it">Singoli servizi e prezzi</span><span lang="en">Single services and prices</span></summary>
-        <ul>
-          <li><span><span lang="it">Google in ordine</span><span lang="en">Google, sorted</span></span><b data-eur="60">60 €</b></li>
-          <li><span><span lang="it">Menù digitale</span><span lang="en">Digital menu</span><small><span lang="it">Con QR per i tavoli · </span><span lang="en">With a QR code for your tables · </span><a class="link" href="/studio/demo/menu"><span lang="it">provate la demo</span><span lang="en">try the demo</span></a></small></span><b data-eur="90">90 €</b></li>
-          <li><span><span lang="it">Foto per il delivery</span><span lang="en">Photos for delivery</span><small><span lang="it">10 piatti · 25 piatti <span data-eur="120">120 €</span></span><span lang="en">10 dishes · 25 dishes <span data-eur="120">120 €</span></span></small></span><b><span lang="it">da</span><span lang="en">from</span> <span data-eur="60">60 €</span></b></li>
-          <li><span><span lang="it">Prenotazioni online</span><span lang="en">Online booking</span></span><b data-eur="70">70 €</b></li>
-          <li><span><span lang="it">5 grafiche social</span><span lang="en">5 social visuals</span></span><b data-eur="50">50 €</b></li>
-          <li><span><span lang="it">Sito semplice</span><span lang="en">Simple website</span><small><span lang="it">Una pagina · preventivo preciso prima di iniziare</span><span lang="en">One page · an exact quote before I start</span></small></span><b><span lang="it">da</span><span lang="en">from</span> <span data-eur="150">150 €</span></b></li>
-        </ul>
-      </details>
+      <p><span lang="it"><strong>Su misura.</strong> Vi serve solo una parte? Scrivetemi e ne parliamo.</span><span lang="en"><strong>Tailored.</strong> Only need part of it? Message me and we'll talk it through.</span></p>
+      <a class="btn btn-ghost" href="#contatti"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span lang="it">Scrivetemi</span><span lang="en">Message me</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============ 3b. PHOTOS FOR DELIVERY ============
-     The comparison uses /studio/food-before-1.jpg and /studio/food-after-1.jpg (same size and framing,
-     4:3, about 1600 × 1200 px, under 250 KB each). Until both files exist, a neutral placeholder is shown. -->
-<section id="foto" class="photos" aria-labelledby="photos-title">
-  <div class="wrap">
-    <div>
-      <p class="eyebrow"><span lang="it">Foto per il delivery</span><span lang="en">Photos for delivery apps</span></p>
-      <h2 id="photos-title"><span lang="it">Piatti veri, foto che fanno venire fame.</span><span lang="en">Real dishes, photos that make people hungry.</span></h2>
-      <p class="lead mt-16"><span lang="it">Su Glovo, Deliveroo e Just Eat i clienti scelgono guardando le foto. Le vostre, fatte con il telefono, possono rendere molto di più.</span><span lang="en">On Glovo, Deliveroo and Just Eat, customers choose by looking at the photos. Yours, taken on a phone, can do a lot more.</span></p>
-      <div class="promise">
-        <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
-        <span><strong><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></strong>
-        <span><span lang="it">Il piatto resta quello che il cliente riceverà davvero: le foto restano fedeli, come chiedono Glovo, Deliveroo e Just Eat.</span><span lang="en">The dish stays exactly what the customer will actually receive, so the photos stay accurate, as Glovo, Deliveroo and Just Eat require.</span></span></span>
-      </div>
-      <p class="steps-title"><span lang="it">Come funziona</span><span lang="en">How it works</span></p>
-      <ol class="steps">
-        <li><span><b><span lang="it">Mi mandate le foto</span><span lang="en">You send me the photos</span></b><span><span lang="it">Quelle fatte con il telefono, direttamente su WhatsApp.</span><span lang="en">The ones you took on your phone, straight on WhatsApp.</span></span></span></li>
-        <li><span><b><span lang="it">Le sistemo</span><span lang="en">I edit them</span></b><span><span lang="it">Luce, colori, sfondo e inquadratura.</span><span lang="en">Light, colour, background and framing.</span></span></span></li>
-        <li><span><b><span lang="it">Ricevete i file pronti</span><span lang="en">You get the finished files</span></b><span><span lang="it">Nei formati giusti per le app di delivery e per Google.</span><span lang="en">In the right formats for delivery apps and Google.</span></span></span></li>
-      </ol>
-      <p class="mt-16 tiers-line"><span lang="it">10 piatti <span data-eur="60">60 €</span> · 25 piatti <span data-eur="120">120 €</span></span><span lang="en">10 dishes <span data-eur="60">60 €</span> · 25 dishes <span data-eur="120">120 €</span></span></p>
-    </div>
 
-    <figure class="compare">
-      <div class="compare-box" data-compare>
-        <div class="empty"><span><b><span lang="it">Foto prima e dopo</span><span lang="en">Before and after photo</span></b><span lang="it">in arrivo</span><span lang="en">coming soon</span></span></div>
-        <img class="before" src="/studio/food-before-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
-             alt="Prima: la foto originale del piatto, scattata con il telefono" data-en-alt="Before: the original photo of the dish, taken on a phone">
-        <img class="after" src="/studio/food-after-1.jpg" width="1600" height="1200" loading="lazy" decoding="async"
-             alt="Dopo: la stessa foto con luce, colori, sfondo e inquadratura sistemati" data-en-alt="After: the same photo with light, colour, background and framing fixed">
-        <span class="tag tag-before"><span lang="it">Prima</span><span lang="en">Before</span></span>
-        <span class="tag tag-after"><span lang="it">Dopo</span><span lang="en">After</span></span>
-        <span class="line" aria-hidden="true"></span>
-        <span class="knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
-        <input type="range" min="0" max="100" value="50" step="1"
-               aria-label="Confronto prima e dopo: spostate per vedere il ritocco" data-en-aria-label="Before and after comparison: move to see the edit">
-      </div>
-      <!-- TODO check: make sure this caption still describes the photos you add. -->
-      <figcaption><span lang="it">Trascinate per confrontare. Stesso piatto, stessa foto: cambia solo il ritocco.</span><span lang="en">Drag to compare. Same dish, same photo: only the editing changes.</span></figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ============ 4. HOW I WORK (trust) ============ -->
+<!-- ============ 5. HOW I WORK (trust) ============ -->
 <section id="come-lavoro" class="how" aria-labelledby="how-title">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow"><span lang="it">Come lavoro</span><span lang="en">How I work</span></p>
-      <h2 id="how-title"><span lang="it">Cinque regole, sempre uguali per tutti.</span><span lang="en">Five rules, the same for everyone.</span></h2>
+      <h2 id="how-title"><span lang="it">Sei regole, sempre uguali per tutti.</span><span lang="en">Six rules, the same for everyone.</span></h2>
       <p class="lead"><span lang="it">Le scrivo qui perché possiate sapere esattamente cosa aspettarvi, prima ancora di contattarmi.</span><span lang="en">I write them here so you know exactly what to expect, before you even get in touch.</span></p>
     </div>
     <ol class="rules">
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-gift"/></svg></div>
         <h3><span lang="it">Prima, un'analisi gratuita</span><span lang="en">First, a free review</span></h3>
-        <p><span lang="it">Guardo la vostra presenza online e vi mando 3 cose concrete da migliorare. Senza impegno: potete anche farle da soli.</span><span lang="en">I look at how you show up online and send you 3 concrete things to improve. No obligation: you can even do them yourselves.</span></p>
+        <p><span lang="it">Guardo come appare il vostro locale sulle app di delivery e su Google e vi mando 3 cose concrete da migliorare. Senza impegno: potete anche farle da soli.</span><span lang="en">I look at how your restaurant shows up on the delivery apps and on Google and send you 3 concrete things to improve. No obligation: you can even do them yourselves.</span></p>
       </li>
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-key"/></svg></div>
         <h3><span lang="it">Non vi chiedo mai le password</span><span lang="en">I never ask for your passwords</span></h3>
         <p><span lang="it">Mi aggiungete come gestore del vostro profilo Google e potete rimuovermi quando volete. Il profilo resta sempre vostro.</span><span lang="en">You add me as a manager on your Google profile and can remove me at any time. The profile always stays yours.</span></p>
+        <p><span lang="it">Lo stesso vale per le app di delivery: mi aggiungete come utente, mai con le vostre credenziali.</span><span lang="en">The same goes for the delivery apps: you add me as a user, never with your own login.</span></p>
       </li>
       <li class="card rule">
         <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-hand"/></svg></div>
         <h3><span lang="it">Prima l'anteprima, poi pagate</span><span lang="en">Preview first, then you pay</span></h3>
         <p><strong><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing.</span></strong></p>
         <ul class="pay">
-          <li><b><span lang="it">Alla consegna:</span><span lang="en">On delivery:</span></b> <span lang="it">i singoli servizi: Google in ordine, Menù digitale, Foto 10 piatti, Prenotazioni online, 5 grafiche social.</span><span lang="en">single services: Google, sorted; Digital menu; Photos (10 dishes); Online booking; 5 social visuals.</span></li>
-          <li><b>50% + 50%:</b> <span lang="it">i pacchetti (Ristoranti &amp; Bar, Barbieri &amp; Saloni, Negozi &amp; Attività), Foto 25 piatti, Sito semplice. Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">the packages (Restaurants &amp; Bars, Barbers &amp; Salons, Shops &amp; Local businesses), Photos (25 dishes), Simple website. Half when you approve the preview, half on delivery.</span></li>
+          <li><b><span lang="it">Alla consegna:</span><span lang="en">On delivery:</span></b> <span lang="it">Foto Delivery.</span><span lang="en">Foto Delivery.</span></li>
+          <li><b>50% + 50%:</b> <span lang="it">Visibilità e Completo. Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">Visibility and Complete. Half when you approve the preview, half on delivery.</span></li>
+          <li><b><span lang="it">Mese per mese:</span><span lang="en">Month by month:</span></b> <span lang="it">la gestione mensile.</span><span lang="en">monthly management.</span></li>
         </ul>
         <p class="small"><span lang="it">Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte, prima che le applichi.</span><span lang="en">For your Google profile, the preview is screenshots of the proposed changes, before I apply them.</span></p>
       </li>
@@ -692,24 +719,29 @@ footer p + p{margin-top:4px}
         <h3><span lang="it">Consegna in 2–5 giorni</span><span lang="en">Delivery in 2–5 days</span></h3>
         <p><span lang="it">Tempi chiari fin dall'inizio. E potete scrivermi in italiano, inglese o turco.</span><span lang="en">Clear timing from the start. And you can write to me in Italian, English or Turkish.</span></p>
       </li>
+      <li class="card rule">
+        <div class="num"><svg class="ico" aria-hidden="true"><use href="#i-image"/></svg></div>
+        <h3><span lang="it">Vi aiuto a caricarle</span><span lang="en">I help you upload them</span></h3>
+        <p><span lang="it">Vi consegno i file pronti e vi guido nel caricamento sull'app, oppure li carico io se mi aggiungete come utente.</span><span lang="en">I hand you the finished files and guide you through uploading them to the app, or I upload them myself if you add me as a user.</span></p>
+      </li>
     </ol>
 
     <p class="steps-title"><span lang="it">In pratica</span><span lang="en">In practice</span></p>
     <ol class="steps">
-      <li><span><b><span lang="it">Mi scrivete</span><span lang="en">You message me</span></b><span><span lang="it">Su WhatsApp o per email, con il nome della vostra attività.</span><span lang="en">On WhatsApp or by email, with your business name.</span></span></span></li>
-      <li><span><b><span lang="it">Ricevete l'analisi</span><span lang="en">You get the review</span></b><span><span lang="it">3 cose concrete da migliorare, gratis.</span><span lang="en">3 concrete things to improve, for free.</span></span></span></li>
+      <li><span><b><span lang="it">Mi scrivete</span><span lang="en">You message me</span></b><span><span lang="it">Su WhatsApp o per email, con il nome del locale o il link su Glovo, Deliveroo o Just Eat.</span><span lang="en">On WhatsApp or by email, with your restaurant's name or its Glovo, Deliveroo or Just Eat link.</span></span></span></li>
+      <li><span><b><span lang="it">Ricevete l'analisi</span><span lang="en">You get the review</span></b><span><span lang="it">3 cose concrete da migliorare su foto, menù e Google, gratis.</span><span lang="en">3 concrete things to improve in your photos, menu and Google, for free.</span></span></span></li>
       <li><span><b><span lang="it">Decidete voi</span><span lang="en">You decide</span></b><span><span lang="it">Se volete procedere, concordiamo pacchetto e prezzo. Altrimenti, nessun problema.</span><span lang="en">If you want to go ahead, we agree on the package and price. If not, no problem.</span></span></span></li>
     </ol>
   </div>
 </section>
 
-<!-- ============ 5. EXAMPLES (all fictional, all labelled) ============ -->
+<!-- ============ 6. EXAMPLES (all fictional, all labelled) ============ -->
 <section id="esempi" aria-labelledby="ex-title">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow"><span lang="it">Esempi</span><span lang="en">Examples</span></p>
       <h2 id="ex-title"><span lang="it">Ecco cosa ricevete.</span><span lang="en">Here's what you get.</span></h2>
-      <p class="lead"><span lang="it">Sono progetti dimostrativi: le attività e i loro dati sono inventati. Servono a mostrarvi in modo concreto il risultato del lavoro.</span><span lang="en">These are concept projects: the businesses and their details are made up. They show you, concretely, what the finished work looks like.</span></p>
+      <p class="lead"><span lang="it">Sono progetti dimostrativi: i locali e i loro dati sono inventati. Servono a mostrarvi in modo concreto il risultato del lavoro.</span><span lang="en">These are concept projects: the restaurants and their details are made up. They show you, concretely, what the finished work looks like.</span></p>
     </div>
 
     <!-- 5a. Google profile, before / after -->
@@ -808,13 +840,13 @@ footer p + p{margin-top:4px}
     <!-- 5c. Promo visuals -->
     <article class="example" id="esempi-grafiche" aria-labelledby="ex3">
       <div class="ex-head">
-        <span class="demo-label"><span lang="it">Progetto dimostrativo — attività inventate</span><span lang="en">Concept project — fictional businesses</span></span>
-        <h3 id="ex3"><span lang="it">Grafiche per tre attività</span><span lang="en">Visuals for three businesses</span></h3>
-        <p><span lang="it">Post e storie per una trattoria, un caffè e una barberia inventati. Toccate un'immagine per vederla a tutto schermo.</span><span lang="en">Posts and stories for a made-up trattoria, café and barber shop. Tap an image to see it full size.</span></p>
+        <span class="demo-label"><span lang="it">Progetto dimostrativo — locali inventati</span><span lang="en">Concept project — fictional restaurants</span></span>
+        <h3 id="ex3"><span lang="it">Grafiche per due locali</span><span lang="en">Visuals for two restaurants</span></h3>
+        <p><span lang="it">Post e storie per una trattoria e un caffè inventati. Toccate un'immagine per vederla a tutto schermo.</span><span lang="en">Posts and stories for a made-up trattoria and café. Tap an image to see it full size.</span></p>
       </div>
       <div class="pg" data-posts-gallery>
-        <div class="pg-tabs" role="tablist" aria-label="Attività" data-en-aria-label="Businesses">
-          <button type="button" role="tab" id="pg-tab-trattoria" aria-controls="pg-trattoria" aria-selected="true"><span lang="it">Trattoria</span><span lang="en">Trattoria</span></button><button type="button" role="tab" id="pg-tab-caffe" aria-controls="pg-caffe" aria-selected="false" tabindex="-1"><span lang="it">Caffè</span><span lang="en">Café</span></button><button type="button" role="tab" id="pg-tab-barber" aria-controls="pg-barber" aria-selected="false" tabindex="-1"><span lang="it">Barberia</span><span lang="en">Barber</span></button>
+        <div class="pg-tabs" role="tablist" aria-label="Locali" data-en-aria-label="Restaurants">
+          <button type="button" role="tab" id="pg-tab-trattoria" aria-controls="pg-trattoria" aria-selected="true"><span lang="it">Trattoria</span><span lang="en">Trattoria</span></button><button type="button" role="tab" id="pg-tab-caffe" aria-controls="pg-caffe" aria-selected="false" tabindex="-1"><span lang="it">Caffè</span><span lang="en">Café</span></button>
         </div>
       <div class="pg-panel" role="tabpanel" id="pg-trattoria" aria-labelledby="pg-tab-trattoria" tabindex="0">
         <div class="pg-body">
@@ -830,15 +862,8 @@ footer p + p{margin-top:4px}
         </div>
         <p class="pg-style"><b>Caffè Ortensia</b> · <span lang="it">Caffè di quartiere · verde salvia e panna · sans morbido</span><span lang="en">Neighbourhood café · sage green and cream · soft sans</span></p>
       </div>
-      <div class="pg-panel" role="tabpanel" id="pg-barber" aria-labelledby="pg-tab-barber" tabindex="0" hidden>
-        <div class="pg-body">
-          <ul class="pg-grid" role="list"><li><button type="button" class="pg-open" data-full="/studio/posts/opt/barber-post-1-1080"><picture><source type="image/avif" srcset="/studio/posts/opt/barber-post-1-360.avif 360w, /studio/posts/opt/barber-post-1-720.avif 720w, /studio/posts/opt/barber-post-1-1080.avif 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><source type="image/webp" srcset="/studio/posts/opt/barber-post-1-360.webp 360w, /studio/posts/opt/barber-post-1-720.webp 720w, /studio/posts/opt/barber-post-1-1080.webp 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><img src="/studio/posts/opt/barber-post-1-720.webp" width="1080" height="1350" loading="lazy" decoding="async" alt="Barberia Il Rasoio Gentile — post: Nuovi orari" data-en-alt="Barberia Il Rasoio Gentile — post: Nuovi orari"></picture></button></li><li><button type="button" class="pg-open" data-full="/studio/posts/opt/barber-post-2-1080"><picture><source type="image/avif" srcset="/studio/posts/opt/barber-post-2-360.avif 360w, /studio/posts/opt/barber-post-2-720.avif 720w, /studio/posts/opt/barber-post-2-1080.avif 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><source type="image/webp" srcset="/studio/posts/opt/barber-post-2-360.webp 360w, /studio/posts/opt/barber-post-2-720.webp 720w, /studio/posts/opt/barber-post-2-1080.webp 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><img src="/studio/posts/opt/barber-post-2-720.webp" width="1080" height="1350" loading="lazy" decoding="async" alt="Barberia Il Rasoio Gentile — post: Taglio + barba · 25 €" data-en-alt="Barberia Il Rasoio Gentile — post: Taglio + barba · 25 €"></picture></button></li><li><button type="button" class="pg-open" data-full="/studio/posts/opt/barber-post-3-1080"><picture><source type="image/avif" srcset="/studio/posts/opt/barber-post-3-360.avif 360w, /studio/posts/opt/barber-post-3-720.avif 720w, /studio/posts/opt/barber-post-3-1080.avif 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><source type="image/webp" srcset="/studio/posts/opt/barber-post-3-360.webp 360w, /studio/posts/opt/barber-post-3-720.webp 720w, /studio/posts/opt/barber-post-3-1080.webp 1080w" sizes="(min-width:1120px) 270px, (min-width:900px) 24vw, 31vw"><img src="/studio/posts/opt/barber-post-3-720.webp" width="1080" height="1350" loading="lazy" decoding="async" alt="Barberia Il Rasoio Gentile — post: Prenota online, salta la fila" data-en-alt="Barberia Il Rasoio Gentile — post: Prenota online, salta la fila"></picture></button></li></ul>
-          <div class="pg-phone"><button type="button" class="pg-open" data-full="/studio/posts/opt/barber-story-1080"><picture><source type="image/avif" srcset="/studio/posts/opt/barber-story-360.avif 360w, /studio/posts/opt/barber-story-720.avif 720w, /studio/posts/opt/barber-story-1080.avif 1080w" sizes="(min-width:900px) 220px, 56vw"><source type="image/webp" srcset="/studio/posts/opt/barber-story-360.webp 360w, /studio/posts/opt/barber-story-720.webp 720w, /studio/posts/opt/barber-story-1080.webp 1080w" sizes="(min-width:900px) 220px, 56vw"><img src="/studio/posts/opt/barber-story-720.webp" width="1080" height="1920" loading="lazy" decoding="async" alt="Barberia Il Rasoio Gentile — story: Natale si avvicina" data-en-alt="Barberia Il Rasoio Gentile — story: Natale si avvicina"></picture></button></div>
-        </div>
-        <p class="pg-style"><b>Barberia Il Rasoio Gentile</b> · <span lang="it">Barberia moderna · antracite e ottone · sans deciso</span><span lang="en">Modern barber shop · charcoal and brass · bold sans</span></p>
       </div>
-      </div>
-      <p class="pg-cta"><span lang="it">Volete grafiche così per la vostra attività?</span><span lang="en">Want visuals like these for your business?</span> <a class="link" href="#su-misura"><span lang="it">5 grafiche social · <span data-eur="50">50 €</span></span><span lang="en">5 social visuals · <span data-eur="50">50 €</span></span></a></p>
+      <p class="pg-cta"><span lang="it">Volete post così per il vostro locale? Sono inclusi nel pacchetto Completo e nella gestione mensile.</span><span lang="en">Want posts like these for your restaurant? They're included in the Complete package and in monthly management.</span> <a class="link" href="#pacchetti"><span lang="it">Vedi i pacchetti</span><span lang="en">See the packages</span></a></p>
       <dialog class="pg-lb" aria-label="Immagine a tutto schermo" data-en-aria-label="Full-size image">
         <figure><picture><source type="image/avif"><img alt=""></picture><figcaption aria-live="polite"></figcaption></figure>
         <button type="button" class="pg-lb-btn pg-prev" aria-label="Precedente" data-en-aria-label="Previous">‹</button>
@@ -849,7 +874,7 @@ footer p + p{margin-top:4px}
   </div>
 </section>
 
-<!-- ============ 6. ABOUT ============ -->
+<!-- ============ 7. ABOUT ============ -->
 <section id="chi-sono" class="about" aria-labelledby="about-title">
   <div class="wrap">
     <div class="avatar portrait" data-photo data-alt="Emir Uçgun" aria-hidden="true">EU</div>
@@ -857,7 +882,7 @@ footer p + p{margin-top:4px}
       <p class="eyebrow mb-0"><span lang="it">Chi sono</span><span lang="en">About me</span></p>
       <h2 id="about-title"><span lang="it">Piacere, sono Emir.</span><span lang="en">Nice to meet you, I'm Emir.</span></h2>
       <p><span lang="it">Studio Ingegneria Informatica al Politecnico di Torino e vivo a Torino. Sono uno sviluppatore: creo app per iPhone e Android e siti web, e alcune mie app sono pubblicate sugli store.</span><span lang="en">I study Computer Engineering at Politecnico di Torino and live in Turin. I'm a developer: I build iPhone and Android apps and websites, and some of my apps are published on the app stores.</span></p>
-      <p><span lang="it">Ho iniziato questo progetto perché vedo tante attività ottime che online quasi non si trovano. Lavoro da solo: quando mi scrivete, vi rispondo sempre io.</span><span lang="en">I started this because I see so many great local businesses that are almost impossible to find online. I work on my own: when you write to me, it's always me who replies.</span></p>
+      <p><span lang="it">Ho iniziato questo progetto perché vedo tanti locali di Torino dove si mangia benissimo, ma che sulle app di delivery e su Google si presentano con foto scure e menù confusi. Lavoro da solo: quando mi scrivete, vi rispondo sempre io.</span><span lang="en">I started this because I see so many places in Turin with great food that show up on delivery apps and Google with dark photos and confusing menus. I work on my own: when you write to me, it's always me who replies.</span></p>
       <dl class="facts">
         <div><dt><span lang="it">Dove</span><span lang="en">Where</span></dt><dd>Torino</dd></div>
         <div><dt><span lang="it">Studio</span><span lang="en">Studies</span></dt><dd>Politecnico di Torino</dd></div>
@@ -885,14 +910,14 @@ footer p + p{margin-top:4px}
       <!--
       <figure class="card">
         <blockquote><p>Testo reale del cliente, con il suo permesso.</p></blockquote>
-        <figcaption>Nome Cognome · Nome dell'attività, Torino</figcaption>
+        <figcaption>Nome Cognome · Nome del locale, Torino</figcaption>
       </figure>
       -->
     </div>
   </div>
 </section>
 
-<!-- ============ 7. FAQ ============ -->
+<!-- ============ 8. FAQ ============ -->
 <section id="domande" class="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="head">
@@ -900,12 +925,32 @@ footer p + p{margin-top:4px}
       <h2 id="faq-title"><span lang="it">Le domande che mi fanno più spesso</span><span lang="en">The questions I'm asked most</span></h2>
     </div>
     <details>
-      <summary><span lang="it">Serve la password del mio profilo?</span><span lang="en">Do I need to give you my password?</span></summary>
-      <p><span lang="it">No, mai. Mi aggiungete come gestore del vostro profilo Google: bastano pochi clic e vi guido io. Potete rimuovermi quando volete e il profilo resta sempre di vostra proprietà.</span><span lang="en">No, never. You add me as a manager on your Google profile: it takes a few clicks and I'll walk you through it. You can remove me at any time, and the profile always remains yours.</span></p>
+      <summary><span lang="it">Devo portare i piatti da qualche parte?</span><span lang="en">Do I need to take my dishes somewhere?</span></summary>
+      <p><span lang="it">No. Li fotografate voi con il telefono, nel vostro locale, seguendo la mia guida di una pagina: luce, angolazione e sfondo spiegati in modo semplice. Poi me le mandate su WhatsApp e al resto penso io.</span><span lang="en">No. You shoot them yourself on your phone, in your own kitchen or dining room, following my one-page guide: light, angle and background, explained simply. Then you send them to me on WhatsApp and I take care of the rest.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Con quali app lavori?</span><span lang="en">Which apps do you work with?</span></summary>
+      <p><span lang="it">Glovo, Deliveroo e Just Eat. Vi consegno le foto nei formati che chiede ciascuna app, più le versioni per il profilo Google.</span><span lang="en">Glovo, Deliveroo and Just Eat. I deliver the photos in the formats each app asks for, plus versions for your Google profile.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Glovo, Deliveroo e Just Eat accetteranno le foto?</span><span lang="en">Will Glovo, Deliveroo and Just Eat accept the photos?</span></summary>
+      <p><span lang="it">Le preparo seguendo le linee guida delle piattaforme: piatto reale, niente scritte o loghi sopra, formati e proporzioni giusti. L'approvazione finale spetta comunque alla piattaforma: se una foto venisse rifiutata, la correggo io.</span><span lang="en">I prepare them following the platforms' guidelines: the real dish, no text or logos over it, the right formats and proportions. Final approval is always up to the platform: if a photo is ever rejected, I fix it.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Posso usare le foto anche su Google e Instagram?</span><span lang="en">Can I use the photos on Google and Instagram too?</span></summary>
+      <p><span lang="it">Sì. Le foto sono vostre: potete usarle su Google, Instagram, Facebook, sul vostro sito e sui menù stampati.</span><span lang="en">Yes. The photos are yours: you can use them on Google, Instagram, Facebook, your website and printed menus.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Ti devo dare le mie password?</span><span lang="en">Do I need to give you my passwords?</span></summary>
+      <p><span lang="it">No, mai. Per Google mi aggiungete come gestore del profilo; per le app di delivery mi aggiungete come utente, oppure caricate voi le foto seguendo le mie indicazioni. Potete rimuovermi quando volete e tutto resta sempre vostro.</span><span lang="en">No, never. For Google you add me as a manager of your profile; for the delivery apps you add me as a user, or you upload the photos yourself following my instructions. You can remove me at any time and everything always stays yours.</span></p>
     </details>
     <details>
       <summary><span lang="it">Come si paga?</span><span lang="en">How do I pay?</span></summary>
-      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun). Rilascio regolare ricevuta per prestazione occasionale. I singoli servizi (Google in ordine, Menù digitale, Foto 10 piatti, Prenotazioni online, 5 grafiche social) si pagano alla consegna. I pacchetti Ristoranti &amp; Bar, Barbieri &amp; Saloni e Negozi &amp; Attività, le Foto 25 piatti e il Sito semplice: 50% quando approvate l'anteprima, 50% alla consegna. La manutenzione mensile si paga mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun). I issue a proper receipt for occasional services (ricevuta per prestazione occasionale). Single services (Google, sorted; Digital menu; Photos of 10 dishes; Online booking; 5 social visuals) are paid on delivery. The Restaurants &amp; Bars, Barbers &amp; Salons and Shops &amp; Local businesses packages, Photos of 25 dishes and the Simple website: 50% when you approve the preview, 50% on delivery. Monthly maintenance is paid month by month.</span></p>
+      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun), con regolare ricevuta per prestazione occasionale. Foto Delivery (<span data-eur="119">119 €</span>) si paga alla consegna. Visibilità (<span data-eur="249">249 €</span>) e Completo (<span data-eur="349">349 €</span>): 50% quando approvate l'anteprima, 50% alla consegna. Sono prezzi di lancio, validi fino al 31 dicembre. La gestione mensile (<span data-eur="149">149 €</span>/mese) si paga mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun), with a proper receipt for occasional services (ricevuta per prestazione occasionale). Foto Delivery (<span data-eur="119">119 €</span>) is paid on delivery. Visibility (<span data-eur="249">249 €</span>) and Complete (<span data-eur="349">349 €</span>): 50% when you approve the preview, 50% on delivery. These are launch prices, valid until 31 December. Monthly management (<span data-eur="149">149 €</span>/month) is paid month by month.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Posso disdire la gestione mensile?</span><span lang="en">Can I cancel the monthly management?</span></summary>
+      <p><span lang="it">Sì, quando volete. Non c'è nessun contratto né penale: basta un messaggio e dal mese successivo non pagate più. Nel pacchetto Completo il primo mese è incluso: poi continuate solo se volete.</span><span lang="en">Yes, whenever you like. There's no contract and no penalty: just send me a message and you stop paying from the following month. The Complete package includes the first month: after that you only continue if you want to.</span></p>
     </details>
     <details>
       <summary><span lang="it">Quanto tempo ci vuole?</span><span lang="en">How long does it take?</span></summary>
@@ -916,24 +961,20 @@ footer p + p{margin-top:4px}
       <p><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla. Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte: le applico solo dopo il vostro via libera.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing. For your Google profile, the preview is screenshots of the proposed changes: I only apply them once you give the go-ahead.</span></p>
     </details>
     <details>
-      <summary><span lang="it">Posso interrompere la manutenzione mensile?</span><span lang="en">Can I stop the monthly maintenance?</span></summary>
-      <p><span lang="it">Sì, quando volete. Non c'è nessun contratto né penale: basta un messaggio e dal mese successivo non pagate più.</span><span lang="en">Yes, whenever you like. There's no contract and no penalty: just send me a message and you stop paying from the following month.</span></p>
-    </details>
-    <details>
-      <summary><span lang="it">Il servizio è solo per Torino?</span><span lang="en">Do you only work in Turin?</span></summary>
-      <p><span lang="it">Mi concentro sulle attività di Torino, ma lavoro volentieri anche con altre città: si fa tutto a distanza, su WhatsApp o per email.</span><span lang="en">I focus on businesses in Turin, but I'm happy to work with other cities too: everything is done remotely, on WhatsApp or by email.</span></p>
+      <summary><span lang="it">Lavori solo a Torino?</span><span lang="en">Do you only work in Turin?</span></summary>
+      <p><span lang="it">Mi concentro sui locali di Torino, ma lavoro volentieri anche con altre città: si fa tutto a distanza, su WhatsApp o per email.</span><span lang="en">I focus on restaurants in Turin, but I'm happy to work with other cities too: everything is done remotely, on WhatsApp or by email.</span></p>
     </details>
   </div>
 </section>
 
-<!-- ============ 8. CONTACT ============ -->
+<!-- ============ 9. CONTACT ============ -->
 <section id="contatti" aria-labelledby="contact-title">
   <div class="wrap">
     <div class="contact-card">
       <div>
         <p class="eyebrow"><span lang="it">Contatti</span><span lang="en">Contact</span></p>
         <h2 id="contact-title"><span lang="it">Richiedete l'analisi gratuita.</span><span lang="en">Ask for your free review.</span></h2>
-        <p class="lead"><span lang="it">Scrivetemi il nome della vostra attività. Vi rispondo con 3 cose concrete da migliorare, senza impegno.</span><span lang="en">Send me your business name. I'll reply with 3 concrete things to improve, no obligation.</span></p>
+        <p class="lead"><span lang="it">Mandatemi il nome del locale o il link su Glovo, Deliveroo o Just Eat. Vi rispondo con 3 cose concrete da migliorare, senza impegno.</span><span lang="en">Send me your restaurant's name or its Glovo, Deliveroo or Just Eat link. I'll reply with 3 concrete things to improve, no obligation.</span></p>
       </div>
       <div class="btns">
         <a class="btn btn-primary" href="#contatti" data-wa><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span lang="it">Scrivetemi su WhatsApp</span><span lang="en">Message me on WhatsApp</span></a>
