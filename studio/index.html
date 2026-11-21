@@ -149,43 +149,47 @@ section{padding-block:clamp(64px,10vw,120px)}
 @media (min-width:760px){.problem .grid-3 .point + .point{border-top:0;padding-top:0;border-left:1px solid var(--line);padding-left:22px}}
 
 /* ---------- packages ---------- */
+/* phone: one column · desktop: the three sector packages side by side */
 .packs{display:grid;gap:18px}
-/* phone: one column · tablet: 2 columns · desktop: 3 cards, then 2 wider cards, then the bundle across */
-@media (min-width:640px){.packs{grid-template-columns:repeat(2,1fr)}.pack-full{grid-column:1/-1}}
-@media (min-width:980px){.packs{grid-template-columns:repeat(6,1fr)}.packs > .pack{grid-column:span 2}.packs > .pack:nth-child(4),.packs > .pack:nth-child(5){grid-column:span 3}.packs > .pack-full{grid-column:1/-1}}
-.pack{display:flex;flex-direction:column;gap:14px}
-.pack-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.price{font:600 1.75rem/1 var(--serif);white-space:nowrap;letter-spacing:-.01em}
-.price small{display:block;font:500 .78rem/1.2 var(--sans);color:var(--ink-2);letter-spacing:0;margin-bottom:6px;text-align:right}
+@media (min-width:900px){.packs{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.pack{display:flex;flex-direction:column;gap:16px}
+.pack h3{font-size:clamp(1.3rem,2.6vw,1.5rem)}
+.price{font:600 2rem/1 var(--serif);white-space:nowrap;letter-spacing:-.01em}
 .per{font:500 .95rem var(--sans);color:var(--ink-2)}
-.pack > p{color:var(--ink-2)}
 .ticks{display:grid;gap:9px;font-size:.98rem}
 .ticks li{display:flex;gap:10px;align-items:flex-start}
 .ticks .ico{width:19px;height:19px;color:var(--ok);margin-top:3px;stroke-width:2.2}
-.pack .more{margin-top:auto;padding-top:6px;font-size:.95rem}
-.pack-full{border:2px solid var(--accent);background:var(--tint-2);position:relative}
-.badge{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-.combo{display:grid;gap:10px}
-@media (min-width:760px){.combo{grid-template-columns:repeat(3,1fr)}}
-.combo li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;font-size:.98rem}
-.combo b{font-weight:600}
-.combo li > span{color:var(--ink-2);white-space:nowrap}
-.saving{font-size:1rem}
-.saving del{color:var(--ink-2);text-decoration-thickness:1.5px}
-.saving strong{color:var(--ok)}
-.tiers{display:grid;gap:6px;padding:12px 14px;background:var(--paper);border-radius:var(--r-sm);font-size:.98rem}
-.tiers li{display:flex;justify-content:space-between;gap:12px}
-.tiers b{font-weight:700}
-.preview-note{font-size:.9rem;padding-top:12px;border-top:1px dashed var(--line-2)}
+.pack-foot{margin-top:auto;display:grid;gap:14px;padding-top:16px;border-top:1px solid var(--line)}
+.pack-cost{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px}
+.pack-foot .btn{width:100%}
+.pack-pop{border:2px solid var(--accent);background:var(--tint-2);box-shadow:var(--shadow)}
+.pack-pop .pack-foot{border-top-color:var(--tint)}
+.badge{align-self:flex-start;display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.saving{font-size:.95rem;color:var(--ink-2)}
+.saving del{text-decoration-thickness:1.5px}
 .guarantee{margin-top:26px;display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:var(--r-sm);padding:16px 18px}
 .guarantee .ico{color:var(--ok);stroke-width:2.4;margin-top:2px}
 .guarantee strong{display:block;margin-bottom:4px}
-.monthly{margin-top:clamp(48px,7vw,72px)}
-.monthly-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:10px 24px;margin-bottom:22px}
-.monthly-head p{color:var(--ink-2)}
-.grid-2{display:grid;gap:18px}
-@media (min-width:640px){.grid-2{grid-template-columns:1fr 1fr}}
-.note{margin-top:22px;font-size:.95rem;color:var(--ink-2)}
+/* monthly: one band under the packages */
+.monthly{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px}
+.monthly .ico{flex:none;width:22px;height:22px;color:var(--accent)}
+.monthly p{flex:1 1 20em;color:var(--ink-2)}
+.monthly p strong{color:var(--ink)}
+/* custom: single services, collapsed by default */
+.custom{margin-top:clamp(40px,6vw,56px);display:grid;gap:18px}
+@media (min-width:900px){.custom{grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}}
+.custom-intro p{color:var(--ink-2);margin-top:10px}
+.custom-intro .btn{margin-top:20px}
+.singles{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.singles summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;font-weight:600}
+.singles summary::-webkit-details-marker{display:none}
+.singles summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-3px) rotate(45deg);transition:transform .2s}
+.singles[open] summary::after{transform:translateY(3px) rotate(-135deg)}
+.singles ul{border-top:1px solid var(--line);padding:6px 22px 14px}
+.singles li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;font-size:.98rem}
+.singles li + li{border-top:1px dashed var(--line-2)}
+.singles li small{display:block;color:var(--ink-2);font-size:.85rem;margin-top:2px}
+.singles b{white-space:nowrap;font-weight:600}
 
 /* ---------- delivery photos ---------- */
 .photos{background:var(--surface);border-top:1px solid var(--line)}
@@ -509,111 +513,73 @@ footer p + p{margin-top:4px}
 </section>
 
 <!-- ============ 3. PACKAGES ============
-     Prices: edit the data-eur numbers (the text inside is only the no-JavaScript fallback). -->
+     Prices: edit the data-eur numbers (the text inside is only the no-JavaScript fallback).
+     Every package must cost less than its parts bought separately. Single prices (see "Su misura" below):
+     Google in ordine 60 · Menù digitale 90 · Foto 10 piatti 60 · Prenotazioni online 70 · 5 grafiche social 50.
+     Ristoranti & Bar 60+90+60 = 210 → 150 · Barbieri & Saloni 60+70+50 = 180 → 130 · Negozi & Attività 60+50 = 110 → 90.
+     If you change a single price, update the struck-through "Separatamente" total on each package that contains it. -->
 <section id="pacchetti" aria-labelledby="packs-title">
   <div class="wrap">
     <div class="head">
       <p class="eyebrow"><span lang="it">Pacchetti</span><span lang="en">Packages</span></p>
       <h2 id="packs-title"><span lang="it">Prezzi chiari, concordati prima di iniziare.</span><span lang="en">Clear prices, agreed before I start.</span></h2>
-      <p class="lead"><span lang="it">Non sapete cosa vi serve? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">Not sure what you need? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
+      <p class="lead"><span lang="it">Ho preparato un pacchetto per ogni tipo di attività. Non sapete quale scegliere? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">I've put together one package for each kind of business. Not sure which one? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
     </div>
 
-    <!-- Every bundle must cost less than its parts bought separately. If you change a price, check the
-         "Pacchetto completo" card: its struck-through total and the saving are written out there too. -->
     <div class="packs">
-      <article class="card pack" aria-labelledby="pk-a">
-        <div class="pack-top">
-          <h3 id="pk-a"><span lang="it">Google in ordine</span><span lang="en">Google, sorted</span></h3>
-          <p class="price" data-eur="60">60 €</p>
-        </div>
-        <p><span lang="it">Il vostro profilo Google Business completo, corretto e curato.</span><span lang="en">Your Google Business Profile complete, correct and looked after.</span></p>
+      <article class="card pack pack-pop" aria-labelledby="pk-food">
+        <span class="badge"><span lang="it">Il più richiesto</span><span lang="en">Most popular</span></span>
+        <h3 id="pk-food"><span lang="it">Ristoranti &amp; Bar</span><span lang="en">Restaurants &amp; Bars</span></h3>
         <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Foto scelte e caricate</span><span lang="en">Photos chosen and uploaded</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Orari corretti, festivi compresi</span><span lang="en">Correct hours, holidays included</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Descrizione e categorie giuste</span><span lang="en">The right description and categories</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Servizi o menù sul profilo</span><span lang="en">Services or menu on the profile</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni recenti</span><span lang="en">Replies to recent reviews</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e menù sul profilo</span><span lang="en">Google, sorted: photos, hours and menu on your profile</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Menù digitale con QR per i tavoli</span><span lang="en">Digital menu with a QR code for your tables</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Foto di 10 piatti, pronte per il delivery</span><span lang="en">Photos of 10 dishes, ready for delivery apps</span></span></li>
         </ul>
-        <p class="preview-note"><span lang="it">Anteprima: vi mando gli screenshot delle modifiche proposte, prima di applicarle.</span><span lang="en">Preview: I send you screenshots of the proposed changes before I apply them.</span></p>
-      </article>
-
-      <article class="card pack" aria-labelledby="pk-b">
-        <div class="pack-top">
-          <h3 id="pk-b"><span lang="it">Menù digitale</span><span lang="en">Digital menu</span></h3>
-          <p class="price" data-eur="90">90 €</p>
-        </div>
-        <p><span lang="it">Il vostro menù sul telefono dei clienti, in italiano e in inglese.</span><span lang="en">Your menu on your customers' phones, in Italian and English.</span></p>
-        <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagina menù veloce, pensata per lo smartphone</span><span lang="en">A fast menu page, made for smartphones</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Categorie, prezzi e allergeni</span><span lang="en">Categories, prices and allergens</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Codice QR stampabile per i tavoli</span><span lang="en">Printable QR code for your tables</span></span></li>
-        </ul>
-        <a class="link more" href="/studio/demo/menu"><span lang="it">Provate la demo</span><span lang="en">Try the demo</span></a>
-      </article>
-
-      <article class="card pack" aria-labelledby="pk-f">
-        <div class="pack-top">
-          <h3 id="pk-f"><span lang="it">Foto menù</span><span lang="en">Menu photos</span></h3>
-          <p class="price"><small><span lang="it">a partire da</span><span lang="en">from</span></small><span data-eur="60">60 €</span></p>
-        </div>
-        <p><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></p>
-        <ul class="tiers" aria-label="Prezzi" data-en-aria-label="Prices">
-          <li><span><span lang="it">10 piatti</span><span lang="en">10 dishes</span></span><b data-eur="60">60 €</b></li>
-          <li><span><span lang="it">25 piatti</span><span lang="en">25 dishes</span></span><b data-eur="120">120 €</b></li>
-        </ul>
-        <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Luce, colori, sfondo e inquadratura</span><span lang="en">Light, colour, background and framing</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pronte per Glovo, Deliveroo, Just Eat e Google</span><span lang="en">Ready for Glovo, Deliveroo, Just Eat and Google</span></span></li>
-        </ul>
-        <a class="link more" href="#foto"><span lang="it">Guardate prima e dopo</span><span lang="en">See before and after</span></a>
-      </article>
-
-      <article class="card pack" aria-labelledby="pk-c">
-        <div class="pack-top">
-          <h3 id="pk-c"><span lang="it">Pacchetto grafiche</span><span lang="en">Visuals pack</span></h3>
-          <p class="price" data-eur="50">50 €</p>
-        </div>
-        <p><span lang="it">5 grafiche pronte da pubblicare.</span><span lang="en">5 visuals, ready to post.</span></p>
-        <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Per post Instagram, Google o promozioni</span><span lang="en">For Instagram or Google posts, or promotions</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Con i vostri colori e il vostro logo</span><span lang="en">In your colours, with your logo</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Nei formati giusti per ogni canale</span><span lang="en">In the right format for each channel</span></span></li>
-        </ul>
-        <a class="link more" href="#esempi-grafiche"><span lang="it">Guardate un esempio</span><span lang="en">See an example</span></a>
-      </article>
-
-      <article class="card pack" aria-labelledby="pk-e">
-        <div class="pack-top">
-          <h3 id="pk-e"><span lang="it">Sito semplice</span><span lang="en">Simple website</span></h3>
-          <p class="price"><small><span lang="it">a partire da</span><span lang="en">from</span></small><span data-eur="150">150 €</span></p>
-        </div>
-        <p><span lang="it">Un sito di una pagina, chiaro e veloce.</span><span lang="en">A clear, fast one-page website.</span></p>
-        <ul class="ticks">
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Chi siete, orari, dove trovarvi, contatti</span><span lang="en">Who you are, hours, where to find you, contacts</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Perfetto anche da telefono</span><span lang="en">Works perfectly on phones</span></span></li>
-          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Preventivo preciso prima di iniziare</span><span lang="en">An exact quote before I start</span></span></li>
-        </ul>
-      </article>
-
-      <article class="card pack pack-full" aria-labelledby="pk-d">
-        <div class="pack-top">
-          <div>
-            <span class="badge"><span lang="it">Consigliato</span><span lang="en">Recommended</span></span>
-            <h3 id="pk-d" class="mt-12"><span lang="it">Pacchetto completo</span><span lang="en">Complete package</span></h3>
+        <div class="pack-foot">
+          <div class="pack-cost">
+            <p class="saving"><span lang="it">Separatamente <del data-eur="210">210 €</del></span><span lang="en"><del data-eur="210">210 €</del> separately</span></p>
+            <p class="price" data-eur="150">150 €</p>
           </div>
-          <p class="price" data-eur="150">150 €</p>
+          <a class="btn btn-primary" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
         </div>
-        <p><span lang="it">Tutto quello che serve per farsi trovare e farsi scegliere, in un'unica consegna.</span><span lang="en">Everything you need to be found and chosen, delivered in one go.</span></p>
-        <ul class="combo">
-          <li><b><span lang="it">Google in ordine</span><span lang="en">Google, sorted</span></b><span data-eur="60">60 €</span></li>
-          <li><b><span lang="it">Menù digitale</span><span lang="en">Digital menu</span></b><span data-eur="90">90 €</span></li>
-          <li><b><span lang="it">Foto menù, 10 piatti</span><span lang="en">Menu photos, 10 dishes</span></b><span data-eur="60">60 €</span></li>
-        </ul>
-        <p class="saving">
-          <span lang="it">Separatamente <del data-eur="210">210 €</del> — <strong>risparmiate <span data-eur="60">60 €</span></strong></span>
-          <span lang="en"><del data-eur="210">210 €</del> separately — <strong>save <span data-eur="60">60 €</span></strong></span>
-        </p>
       </article>
+
+      <article class="card pack" aria-labelledby="pk-hair">
+        <h3 id="pk-hair"><span lang="it">Barbieri &amp; Saloni</span><span lang="en">Barbers &amp; Salons</span></h3>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e servizi sul profilo</span><span lang="en">Google, sorted: photos, hours and services on your profile</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Prenotazioni online: vi configuro un sistema gratuito, collegato a WhatsApp e Instagram</span><span lang="en">Online booking: I set up a free booking system, linked to WhatsApp and Instagram</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 grafiche social con i vostri colori</span><span lang="en">5 social visuals in your colours</span></span></li>
+        </ul>
+        <div class="pack-foot">
+          <div class="pack-cost">
+            <p class="saving"><span lang="it">Separatamente <del data-eur="180">180 €</del></span><span lang="en"><del data-eur="180">180 €</del> separately</span></p>
+            <p class="price" data-eur="130">130 €</p>
+          </div>
+          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
+        </div>
+      </article>
+
+      <article class="card pack" aria-labelledby="pk-shop">
+        <h3 id="pk-shop"><span lang="it">Negozi &amp; Attività</span><span lang="en">Shops &amp; Local businesses</span></h3>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Google in ordine: foto, orari e categorie giuste</span><span lang="en">Google, sorted: photos, hours and the right categories</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni recenti</span><span lang="en">Replies to your recent reviews</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 grafiche social con i vostri colori</span><span lang="en">5 social visuals in your colours</span></span></li>
+        </ul>
+        <div class="pack-foot">
+          <div class="pack-cost">
+            <p class="saving"><span lang="it">Separatamente <del data-eur="110">110 €</del></span><span lang="en"><del data-eur="110">110 €</del> separately</span></p>
+            <p class="price" data-eur="90">90 €</p>
+          </div>
+          <a class="btn btn-ghost" href="#contatti"><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Ask for the free review</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="monthly" id="mensile">
+      <svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>
+      <p><span lang="it"><strong>Manutenzione mensile da <span data-eur="30">30 €</span>/mese</strong> — aggiornamenti, risposte alle recensioni, 4 post Google. Con 4 grafiche Instagram: <strong><span data-eur="50">50 €</span>/mese</strong>. Disdite quando volete.</span><span lang="en"><strong>Monthly maintenance from <span data-eur="30">30 €</span>/month</strong> — updates, replies to reviews, 4 Google posts. With 4 Instagram visuals: <strong><span data-eur="50">50 €</span>/month</strong>. Cancel anytime.</span></p>
     </div>
 
     <p class="guarantee">
@@ -622,37 +588,24 @@ footer p + p{margin-top:4px}
       <a class="link" href="#come-lavoro"><span lang="it">Come funzionano i pagamenti</span><span lang="en">How payment works</span></a></span>
     </p>
 
-    <div class="monthly">
-      <div class="monthly-head">
-        <div>
-          <h3 class="h3-lg"><span lang="it">Piani mensili</span><span lang="en">Monthly plans</span></h3>
-          <p><span lang="it">Per tenere tutto aggiornato, senza pensarci.</span><span lang="en">To keep everything up to date without thinking about it.</span></p>
-        </div>
-        <p><strong><span lang="it">Disdetta quando volete, senza contratto.</span><span lang="en">Cancel anytime, no contract.</span></strong></p>
+    <div class="custom" id="su-misura">
+      <div class="custom-intro">
+        <p class="eyebrow"><span lang="it">Su misura</span><span lang="en">Tailored</span></p>
+        <h3 class="h3-lg"><span lang="it">Vi serve solo una cosa?</span><span lang="en">Only need one thing?</span></h3>
+        <p><span lang="it">Se nessun pacchetto fa per voi, scrivetemi e ne parliamo.</span><span lang="en">If none of the packages fits, message me and we'll talk it through.</span></p>
+        <a class="btn btn-ghost" href="#contatti"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span lang="it">Scrivetemi</span><span lang="en">Message me</span></a>
       </div>
-      <div class="grid-2">
-        <article class="card pack" aria-labelledby="pk-m1">
-          <div class="pack-top">
-            <h3 id="pk-m1"><span lang="it">Manutenzione</span><span lang="en">Maintenance</span></h3>
-            <p class="price"><span data-eur="30">30 €</span><span class="per"><span lang="it">/mese</span><span lang="en">/month</span></span></p>
-          </div>
-          <ul class="ticks">
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Orari e menù sempre aggiornati</span><span lang="en">Hours and menu kept up to date</span></span></li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni</span><span lang="en">Replies to reviews</span></span></li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">4 post Google al mese</span><span lang="en">4 Google posts a month</span></span></li>
-          </ul>
-        </article>
-        <article class="card pack" aria-labelledby="pk-m2">
-          <div class="pack-top">
-            <h3 id="pk-m2"><span lang="it">Manutenzione + grafiche</span><span lang="en">Maintenance + visuals</span></h3>
-            <p class="price"><span data-eur="50">50 €</span><span class="per"><span lang="it">/mese</span><span lang="en">/month</span></span></p>
-          </div>
-          <ul class="ticks">
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Tutto ciò che c'è in Manutenzione</span><span lang="en">Everything in Maintenance</span></span></li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">4 grafiche Instagram al mese</span><span lang="en">4 Instagram visuals a month</span></span></li>
-          </ul>
-        </article>
-      </div>
+      <details class="singles">
+        <summary><span lang="it">Singoli servizi e prezzi</span><span lang="en">Single services and prices</span></summary>
+        <ul>
+          <li><span><span lang="it">Google in ordine</span><span lang="en">Google, sorted</span></span><b data-eur="60">60 €</b></li>
+          <li><span><span lang="it">Menù digitale</span><span lang="en">Digital menu</span><small><span lang="it">Con QR per i tavoli · </span><span lang="en">With a QR code for your tables · </span><a class="link" href="/studio/demo/menu"><span lang="it">provate la demo</span><span lang="en">try the demo</span></a></small></span><b data-eur="90">90 €</b></li>
+          <li><span><span lang="it">Foto per il delivery</span><span lang="en">Photos for delivery</span><small><span lang="it">10 piatti · 25 piatti <span data-eur="120">120 €</span></span><span lang="en">10 dishes · 25 dishes <span data-eur="120">120 €</span></span></small></span><b><span lang="it">da</span><span lang="en">from</span> <span data-eur="60">60 €</span></b></li>
+          <li><span><span lang="it">Prenotazioni online</span><span lang="en">Online booking</span></span><b data-eur="70">70 €</b></li>
+          <li><span><span lang="it">5 grafiche social</span><span lang="en">5 social visuals</span></span><b data-eur="50">50 €</b></li>
+          <li><span><span lang="it">Sito semplice</span><span lang="en">Simple website</span><small><span lang="it">Una pagina · preventivo preciso prima di iniziare</span><span lang="en">One page · an exact quote before I start</span></small></span><b><span lang="it">da</span><span lang="en">from</span> <span data-eur="150">150 €</span></b></li>
+        </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -724,8 +677,8 @@ footer p + p{margin-top:4px}
         <h3><span lang="it">Prima l'anteprima, poi pagate</span><span lang="en">Preview first, then you pay</span></h3>
         <p><strong><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing.</span></strong></p>
         <ul class="pay">
-          <li><b><span lang="it">Alla consegna:</span><span lang="en">On delivery:</span></b> <span lang="it">Google in ordine, Menù digitale, Foto menù 10 piatti, Pacchetto grafiche.</span><span lang="en">Google, sorted; Digital menu; Menu photos (10 dishes); Visuals pack.</span></li>
-          <li><b>50% + 50%:</b> <span lang="it">Foto menù 25 piatti, Pacchetto completo, Sito semplice. Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">Menu photos (25 dishes), Complete package, Simple website. Half when you approve the preview, half on delivery.</span></li>
+          <li><b><span lang="it">Alla consegna:</span><span lang="en">On delivery:</span></b> <span lang="it">i singoli servizi: Google in ordine, Menù digitale, Foto 10 piatti, Prenotazioni online, 5 grafiche social.</span><span lang="en">single services: Google, sorted; Digital menu; Photos (10 dishes); Online booking; 5 social visuals.</span></li>
+          <li><b>50% + 50%:</b> <span lang="it">i pacchetti (Ristoranti &amp; Bar, Barbieri &amp; Saloni, Negozi &amp; Attività), Foto 25 piatti, Sito semplice. Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">the packages (Restaurants &amp; Bars, Barbers &amp; Salons, Shops &amp; Local businesses), Photos (25 dishes), Simple website. Half when you approve the preview, half on delivery.</span></li>
         </ul>
         <p class="small"><span lang="it">Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte, prima che le applichi.</span><span lang="en">For your Google profile, the preview is screenshots of the proposed changes, before I apply them.</span></p>
       </li>
@@ -885,7 +838,7 @@ footer p + p{margin-top:4px}
         <p class="pg-style"><b>Barberia Il Rasoio Gentile</b> · <span lang="it">Barberia moderna · antracite e ottone · sans deciso</span><span lang="en">Modern barber shop · charcoal and brass · bold sans</span></p>
       </div>
       </div>
-      <p class="pg-cta"><span lang="it">Volete grafiche così per la vostra attività?</span><span lang="en">Want visuals like these for your business?</span> <a class="link" href="#pk-c"><span lang="it">Pacchetto grafiche · 5 post · 50 €</span><span lang="en">Visuals pack · 5 posts · €50</span></a></p>
+      <p class="pg-cta"><span lang="it">Volete grafiche così per la vostra attività?</span><span lang="en">Want visuals like these for your business?</span> <a class="link" href="#su-misura"><span lang="it">5 grafiche social · <span data-eur="50">50 €</span></span><span lang="en">5 social visuals · <span data-eur="50">50 €</span></span></a></p>
       <dialog class="pg-lb" aria-label="Immagine a tutto schermo" data-en-aria-label="Full-size image">
         <figure><picture><source type="image/avif"><img alt=""></picture><figcaption aria-live="polite"></figcaption></figure>
         <button type="button" class="pg-lb-btn pg-prev" aria-label="Precedente" data-en-aria-label="Previous">‹</button>
@@ -952,7 +905,7 @@ footer p + p{margin-top:4px}
     </details>
     <details>
       <summary><span lang="it">Come si paga?</span><span lang="en">How do I pay?</span></summary>
-      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun). Rilascio regolare ricevuta per prestazione occasionale. Google in ordine, Menù digitale, Foto menù 10 piatti e Pacchetto grafiche si pagano alla consegna. Foto menù 25 piatti, Pacchetto completo e Sito semplice: 50% quando approvate l'anteprima, 50% alla consegna. I piani mensili si pagano mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun). I issue a proper receipt for occasional services (ricevuta per prestazione occasionale). Google, sorted; Digital menu; Menu photos (10 dishes) and the Visuals pack are paid on delivery. Menu photos (25 dishes), the Complete package and the Simple website: 50% when you approve the preview, 50% on delivery. Monthly plans are paid month by month.</span></p>
+      <p><span lang="it">Con bonifico o PayPal, intestati a me (Emir Uçgun). Rilascio regolare ricevuta per prestazione occasionale. I singoli servizi (Google in ordine, Menù digitale, Foto 10 piatti, Prenotazioni online, 5 grafiche social) si pagano alla consegna. I pacchetti Ristoranti &amp; Bar, Barbieri &amp; Saloni e Negozi &amp; Attività, le Foto 25 piatti e il Sito semplice: 50% quando approvate l'anteprima, 50% alla consegna. La manutenzione mensile si paga mese per mese.</span><span lang="en">By bank transfer or PayPal, in my own name (Emir Uçgun). I issue a proper receipt for occasional services (ricevuta per prestazione occasionale). Single services (Google, sorted; Digital menu; Photos of 10 dishes; Online booking; 5 social visuals) are paid on delivery. The Restaurants &amp; Bars, Barbers &amp; Salons and Shops &amp; Local businesses packages, Photos of 25 dishes and the Simple website: 50% when you approve the preview, 50% on delivery. Monthly maintenance is paid month by month.</span></p>
     </details>
     <details>
       <summary><span lang="it">Quanto tempo ci vuole?</span><span lang="en">How long does it take?</span></summary>
@@ -963,7 +916,7 @@ footer p + p{margin-top:4px}
       <p><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla. Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte: le applico solo dopo il vostro via libera.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing. For your Google profile, the preview is screenshots of the proposed changes: I only apply them once you give the go-ahead.</span></p>
     </details>
     <details>
-      <summary><span lang="it">Posso interrompere il piano mensile?</span><span lang="en">Can I stop the monthly plan?</span></summary>
+      <summary><span lang="it">Posso interrompere la manutenzione mensile?</span><span lang="en">Can I stop the monthly maintenance?</span></summary>
       <p><span lang="it">Sì, quando volete. Non c'è nessun contratto né penale: basta un messaggio e dal mese successivo non pagate più.</span><span lang="en">Yes, whenever you like. There's no contract and no penalty: just send me a message and you stop paying from the following month.</span></p>
     </details>
     <details>
