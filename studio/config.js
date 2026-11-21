@@ -6,17 +6,17 @@
 window.STUDIO = {
   // WhatsApp number in international format, digits only, no "+" or spaces.
   // Example for an Italian mobile: '393401234567'
-  whatsapp: 'PLACEHOLDER',
+  whatsapp: '3445034591',
 
   // The same number as people should read it on the page. Example: '+39 340 123 4567'
   // Leave it as 'PLACEHOLDER' to hide the number and show only the WhatsApp button.
   phoneDisplay: 'PLACEHOLDER',
 
   // Your contact email. Example: 'ciao@emirucgun.com'
-  email: 'PLACEHOLDER',
+  email: 'emirucgun@gmail.com',
 
   // Your LinkedIn profile URL. Example: 'https://www.linkedin.com/in/your-name'
-  linkedin: 'PLACEHOLDER',
+  linkedin: 'https://www.linkedin.com/in/eucgun/',
 
   // Your photo: a square JPG of about 800 × 800 px and under 150 KB.
   // Put the file at studio/emir.jpg. Until it exists, the page shows your initials.
