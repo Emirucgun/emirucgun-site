@@ -87,6 +87,25 @@
   addEventListener('storage', (e) => { if (e.key === 'lang' && (e.newValue === 'it' || e.newValue === 'en')) setLang(e.newValue, false); });
   setLang(lang(), false);
 
+  /* ---------- before/after photo comparison ----------
+     A transparent native range input covers the photo: arrow keys, touch drag and screen readers work as usual. */
+  $$('[data-compare]').forEach((box) => {
+    const input = box.querySelector('input');
+    const imgs = [...box.querySelectorAll('img')];
+    const update = () => {
+      const v = +input.value;
+      box.style.setProperty('--pos', v + '%');
+      input.setAttribute('aria-valuetext', lang() === 'en' ? `${v}% before, ${100 - v}% after` : `${v}% prima, ${100 - v}% dopo`);
+    };
+    // show the comparison only once both photos have loaded; until then the placeholder stays
+    const check = () => { if (imgs.every((i) => i.complete && i.naturalWidth)) box.classList.add('ready'); };
+    imgs.forEach((i) => i.addEventListener('load', check));
+    check();
+    input.addEventListener('input', update);
+    document.addEventListener('studio:lang', update);
+    update();
+  });
+
   /* ---------- live preview of the menu demo, only on wide screens (phones get the button) ---------- */
   const preview = document.querySelector('[data-preview]');
   if (preview && matchMedia('(min-width: 900px)').matches) {
