@@ -15,7 +15,7 @@
       <li class="card"><b><span lang="it">Mi scrivete</span><span lang="en">You message me</span></b><span><span lang="it">Su WhatsApp o per email, con il nome del locale. Vi rispondo io, di persona.</span><span lang="en">On WhatsApp or by email, with your restaurant's name. I reply myself, in person.</span></span></li>
       <li class="card"><b><span lang="it">Analisi gratuita</span><span lang="en">Free review</span></b><span><span lang="it">Guardo Google, menù e app di delivery e vi mando 3 cose concrete da migliorare. Potete anche farle da soli.</span><span lang="en">I look at Google, your menu and delivery apps and send you 3 concrete things to improve. You can even do them yourselves.</span></span></li>
       <li class="card"><b><span lang="it">Anteprima</span><span lang="en">Preview</span></b><span><span lang="it">Se volete procedere, mi mandate le foto e vedete l'anteprima. Non vi convince? Non pagate nulla.</span><span lang="en">If you want to go ahead, you send me the photos and see a preview. Not convinced? You pay nothing.</span></span></li>
-      <li class="card"><b><span lang="it">Consegna in 2–5 giorni</span><span lang="en">Delivery in 2–5 days</span></b><span><span lang="it">File pronti nei formati giusti, e vi aiuto a caricarli su Google e sulle app.</span><span lang="en">Finished files in the right formats, and I help you upload them to Google and the apps.</span></span></li>
+      <li class="card"><b><span lang="it">Consegna in 2–⁠5 giorni</span><span lang="en">Delivery in 2–⁠5 days</span></b><span><span lang="it">File pronti nei formati giusti, e vi aiuto a caricarli su Google e sulle app.</span><span lang="en">Finished files in the right formats, and I help you upload them to Google and the apps.</span></span></li>
     </ol>
   </div>
 </section>
@@ -65,7 +65,7 @@
       </li>
       <li class="card rule">
         <span class="ri"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg></span>
-        <h3><span lang="it">Consegna in 2–5 giorni</span><span lang="en">Delivery in 2–5 days</span></h3>
+        <h3><span lang="it">Consegna in 2–⁠5 giorni</span><span lang="en">Delivery in 2–⁠5 days</span></h3>
         <p><span lang="it">Da quando ho tutto il materiale (foto, orari, menù). Ve lo confermo prima di iniziare.</span><span lang="en">From when I have everything (photos, hours, menu). I confirm it before I start.</span></p>
       </li>
       <li class="card rule">
