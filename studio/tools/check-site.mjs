@@ -3,6 +3,7 @@
 // - every internal link and #anchor points to something that exists
 // - no duplicate ids, every <img> has alt + width + height, no leftover forbidden copy
 // - the WhatsApp fallback links use the number in config.js
+// - with showWebsiteDemos false: the concept demos aren't built and no page links to them
 // - private previews (/anteprima/…) are noindex, nofollow and never linked; sitemap has no demos or previews
 // Exit code 1 on any error.
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
@@ -97,6 +98,19 @@ const sitemap = readFileSync(join(STUDIO, 'sitemap.xml'), 'utf8');
 for (const u of ['/', '/esempi', '/prezzi', '/come-funziona'])
   if (!sitemap.includes(`<loc>https://studio.emirucgun.com${u}</loc>`)) errors.push(`sitemap.xml: missing ${u}`);
 if (/\/anteprima|\/demo\//.test(sitemap)) errors.push('sitemap.xml: demos and private previews must not be listed');
+
+const walkAll = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.name.startsWith('.') || e.name === 'node_modules' ? [] : e.isDirectory() ? walkAll(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));
+
+// hidden concept demos: nothing built, nothing links to them
+if (C.showWebsiteDemos !== true) {
+  const demos = readdirSync(join(STUDIO, 'sites', 'demos')).filter((f) => f.endsWith('.js') && !f.startsWith('_')).map((f) => f.replace(/\.js$/, ''));
+  for (const slug of demos) if (existsSync(join(STUDIO, 'demo', slug))) errors.push(`studio/demo/${slug}/ exists but showWebsiteDemos is false: run node studio/sites/build.mjs`);
+  const re = new RegExp(`(/demo/(${demos.join('|')})\\b|esempi#siti)`);
+  for (const f of walkAll(REPO)) {
+    const m = readFileSync(f, 'utf8').match(re);
+    if (m) errors.push(`${f.slice(REPO.length + 1)}: links to a hidden website demo (${m[0]})`);
+  }
+}
 
 // private previews (/anteprima/<slug>) are never linked from any other page of the site
 const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));

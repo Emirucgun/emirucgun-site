@@ -24,7 +24,7 @@
 
     <div id="sito" class="plans-group">
       <h2 id="packs-title" class="group-title"><span lang="it">Sito web con menù</span><span lang="en">Website with menu</span></h2>
-      <p class="group-lead"><span lang="it">Il menù non si apre più come PDF: è dentro il sito, in italiano e inglese, veloce sul telefono.</span><span lang="en">Your menu no longer opens as a PDF: it's part of the website, in Italian and English, fast on a phone.</span> <a class="link" href="/studio/esempi#siti"><span lang="it">Guardate tre siti dimostrativi</span><span lang="en">See three concept websites</span></a></p>
+      <p class="group-lead"><span lang="it">Il menù non si apre più come PDF: è dentro il sito, in italiano e inglese, veloce sul telefono.</span><span lang="en">Your menu no longer opens as a PDF: it's part of the website, in Italian and English, fast on a phone.</span><!-- if:showWebsiteDemos --> <a class="link" href="/studio/esempi#siti"><span lang="it">Guardate tre siti dimostrativi</span><span lang="en">See three concept websites</span></a><!-- /if --></p>
       <div class="plans plans-2" data-stagger>
       <article class="card plan plan-pop p-renew" aria-labelledby="pk-renew">
         <span class="badge"><span lang="it">Il più richiesto</span><span lang="en">Most popular</span></span>
