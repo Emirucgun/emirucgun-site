@@ -1,6 +1,7 @@
 // Browser test for the studio site: offer switch, countdown, prices, WhatsApp links, slider, form, menu, sticky bar.
 // Needs Playwright (`npm i -g playwright` or any global install) and a local server on the repo root:
 //   npx serve -l 4173 .            (from the repository root, in another terminal)
+//   or, with no server running:  node studio/tools/run-site-test.cjs
 //   node studio/tools/site-test.cjs [http://localhost:4173]
 // The browser clock is set with Playwright's clock API, so the end date in config.js is tested as it is.
 const { chromium } = require('playwright');
@@ -40,9 +41,9 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
   {
     const { page, ctx } = await open(browser, '/studio/prezzi', '2026-11-22T10:00:00+01:00');
     const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '249 €,119 €,349 €', `prezzi: offer prices ${prices}`);
+    ok(prices.join(',') === '649 €,449 €,249 €,119 €,349 €', `prezzi: offer prices ${prices}`);
     const struck = await texts(page, '.plans del');
-    ok(struck.join(',') === '349 €,149 €,449 €', `prezzi: struck regular prices ${struck}`);
+    ok(struck.join(',') === '849 €,599 €,349 €,149 €,449 €', `prezzi: struck regular prices ${struck}`);
     ok(await visible(page, '.deadline'), 'prezzi: deadline box visible');
     const box = await page.$$eval('[data-cd-box] [data-u]', (e) => e.map((x) => x.textContent));
     ok(box.join(' ') === '8 13 59', `prezzi: countdown boxes ${box}`);
@@ -75,7 +76,7 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
     ok(await page.getAttribute('html', 'data-offer') === 'off', 'switches off at 23:59:00 without reload');
     ok(!(await visible(page, '.promo')), 'banner hidden after the end');
     const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '349 €,149 €,449 €', `home: regular prices ${prices}`);
+    ok(prices.join(',') === '849 €,149 €,349 €', `home: regular prices ${prices}`);
     await ctx.close();
   }
 
@@ -94,9 +95,9 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
   {
     const { page, ctx } = await open(browser, '/studio/prezzi', '2026-12-01T09:00:00+01:00');
     const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '349 €,149 €,449 €', `prezzi: regular prices ${prices}`);
+    ok(prices.join(',') === '849 €,599 €,349 €,149 €,449 €', `prezzi: regular prices ${prices}`);
     const cmp = await texts(page, '.cmp thead small');
-    ok(cmp.join(',') === '149 €,349 €,449 €', `prezzi: comparison table header ${cmp}`);
+    ok(cmp.join(',') === '149 €,349 €,449 €,599 €,849 €', `prezzi: comparison table header ${cmp}`);
     const href = decodeURIComponent(await page.getAttribute('[data-wa="photo"]', 'href'));
     ok(norm(href).includes('Foto dei piatti (149 €)'), 'WhatsApp message uses the regular price');
     ok(norm(await page.textContent('[data-calc] [data-out="vis"]')) === '349 €', 'calculator uses the regular Visibilità price');

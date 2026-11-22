@@ -17,12 +17,14 @@ About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Acce
 | `menu.css` | Design: light + dark mode, print stylesheet, motion | Not needed per client |
 | `menu.types.d.ts` | Types for the data file, so VS Code autocompletes and underlines mistakes | No |
 | `check.mjs` | Validates the data file and double-checks allergens against the dish descriptions | No, just run it |
+| `allergens.js`, `check-lib.mjs` | The 14-allergen list and the validation rules, shared with the restaurant website template (`studio/sites/`) | No |
 | `logo.svg` | The demo restaurant's logo (also used as its favicon) | Replace per client |
 
 ## New client menu in 10 minutes
 
 1. **Copy the folder**, e.g. `studio/demo/menu/` → `studio/m/da-gino/` (or into the client's own site).
-2. **Fix the four absolute paths** at the top of `index.html` (`modulepreload` ×2, `stylesheet`, `script`)
+   For a whole website with the menu built in, use the template in `studio/sites/` instead.
+2. **Fix the five absolute paths** at the top of `index.html` (`modulepreload` ×3, `stylesheet`, `script`)
    so they point at the new folder. They're absolute on purpose: on the subdomain the page is served at
    `/demo/menu` without a trailing slash, where relative paths would break.
 3. **Edit `menu.data.js`**:

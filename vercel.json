@@ -30,6 +30,15 @@
       ]
     },
     {
+      "source": "/studio/anteprima/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/anteprima/(.*)",
+      "has": [{ "type": "host", "value": "studio.emirucgun.com" }],
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
