@@ -24,7 +24,7 @@ for (const [folder, kind] of [['demo', 'demo'], ['anteprima', 'preview']]) {
     for (const p of ['', '/en', '/menu', '/en/menu']) sitePages.push({ url: `/studio/${folder}/${slug}${p}`, kind });
   }
 }
-const studioPages = ['/studio', '/studio/prezzi', '/studio/esempi', '/studio/demo/menu'].map((url) => ({ url, kind: 'studio' }));
+const studioPages = ['/studio', '/studio/prezzi', '/studio/esempi', '/studio/come-funziona', '/studio/demo/menu', '/studio/prezzi?lang=en'].map((url) => ({ url, kind: 'studio' }));
 
 (async () => {
   const server = await start(PORT);
@@ -35,6 +35,8 @@ const studioPages = ['/studio', '/studio/prezzi', '/studio/esempi', '/studio/dem
   if (SHOTS) fs.mkdirSync(SHOTS, { recursive: true });
 
   for (const width of WIDTHS) {
+    // isMobile: like a real phone, the page is laid out wider (and zoomed out) if anything overflows,
+    // so innerWidth must stay equal to the screen width
     const ctx = await browser.newContext({ viewport: { width, height: width < 600 ? 812 : 800 }, deviceScaleFactor: 1, isMobile: width < 600, hasTouch: width < 600 });
     for (const { url, kind } of [...sitePages, ...studioPages]) {
       const page = await ctx.newPage();
@@ -49,7 +51,7 @@ const studioPages = ['/studio', '/studio/prezzi', '/studio/esempi', '/studio/dem
       await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); } scrollTo(0, 0); });
       await page.waitForTimeout(250);
       const info = await page.evaluate(() => ({
-        overflow: document.documentElement.scrollWidth - innerWidth,
+        overflow: Math.max(document.documentElement.scrollWidth, innerWidth) - screen.width,
         h1: document.querySelectorAll('h1').length,
         lang: document.documentElement.lang,
         robots: document.querySelector('meta[name="robots"]')?.content || '',
