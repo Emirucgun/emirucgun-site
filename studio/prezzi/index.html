@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="it" data-title-en="Prices: Dish photos, Visibility, Complete · Emir Uçgun">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(){var d=document.documentElement,l;d.classList.add('js');try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(l==='en')d.lang='en'})();</script>
+<!-- config.js loads first (it is tiny): it decides offer or regular prices before the page is drawn. -->
+<script src="/studio/config.js"></script>
+<title>Prezzi: foto dei piatti, Visibilità, Completo · Emir Uçgun</title>
+<meta name="description" content="Tre pacchetti a prezzo fisso per ristoranti di Torino: Foto dei piatti, Visibilità e Completo, più la gestione mensile. Prima l'anteprima, poi pagate.">
+<link rel="canonical" href="https://studio.emirucgun.com/prezzi">
+<meta name="theme-color" content="#FAF7F2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emir Uçgun · Studio">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Prezzi chiari per il vostro ristorante: foto, Google e menù QR">
+<meta property="og:description" content="Tre pacchetti a prezzo fisso, confronto completo e un calcolatore: quanto vale una foto per il vostro locale?">
+<meta property="og:url" content="https://studio.emirucgun.com/prezzi">
+<meta property="og:image" content="https://studio.emirucgun.com/studio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Emir Uçgun: più clienti per i ristoranti di Torino, su Google, al tavolo e sui delivery">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/studio/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/studio/apple-touch-icon.png">
+<link rel="preload" href="/studio/fonts/Fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/studio/studio.css">
+<script src="/studio/site.js" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 12h10"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/><path d="M9.2 8.6c.3-.3.8-.3 1 .1l.7 1.3c.1.3.1.6-.1.8l-.4.4c.4.9 1.2 1.7 2.1 2.1l.4-.4c.2-.2.5-.3.8-.1l1.3.7c.4.2.4.7.1 1l-.6.6c-.5.5-1.3.6-1.9.3a7 7 0 0 1-3.6-3.6c-.3-.6-.2-1.4.3-1.9z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8.5 8.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 14h2M14 18v2h2M18 18h2v2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2.4-1.5-2.4 1.5-2.4-1.5-2.4 1.5L6 20.5z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7.5h18V11H3zM12 7.5V20"/><path d="M12 7.5S10.8 3.5 8.5 3.5a2 2 0 0 0 0 4M12 7.5s1.2-4 3.5-4a2 2 0 0 1 0 4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15.5V4.5M7.5 9L12 4.5 16.5 9M4.5 15v3.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V15"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-angle" viewBox="0 0 24 24"><path d="M4 20h16M4 20L16 6"/><path d="M10 20a6 6 0 0 0-1.8-4.3"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.6 5.6 1.9-5.6 1.9L12 18.5l-1.9-5.6-5.6-1.9 5.6-1.9z"/></symbol>
+    <symbol id="i-frame" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><circle cx="12" cy="12" r="3.5"/></symbol>
+    <symbol id="i-steam" viewBox="0 0 24 24"><path d="M4 15h16a8 8 0 0 1-16 0zM8 4c-.7 1 .7 2 0 3.5M12 3c-.7 1 .7 2 0 3.5M16 4c-.7 1 .7 2 0 3.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.1A8 8 0 1 1 20 12z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.5v.01M11.5 16.5v-6M11.5 13c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5v3.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.7 4.2-2.2 1.4a11 11 0 0 0 6.4 6.4l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="M12 3.5l8.5 8.5-8.5 8.5L3.5 12z"/><path d="M9.5 13.5V11h5M12.5 9l2 2-2 2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2 2 0 0 1 6 3.5h13v14H6a2 2 0 0 0-2 2zM4 19.5a2 2 0 0 0 2 2h13v-4"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9.5V20h16V9.5M3 9.5l1.6-5h14.8l1.6 5zM3 9.5a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M10 20v-5h4v5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
+
+<!-- Black Friday banner: shown only while the offer runs (dates and prices in config.js) -->
+<div class="promo offer-only">
+  <a href="#pacchetti">
+    <span lang="it"><span class="short"><b>Black Friday</b> fino al <span data-offer-date>30 novembre</span></span><span class="long"><b>Black Friday</b>: prezzi validi fino al <span data-offer-date>30 novembre</span></span><span class="sr-only">. Termina il <span data-offer-date>30 novembre</span> alle <span data-offer-time>23:59</span>.</span></span>
+    <span lang="en"><span class="short"><b>Black Friday</b> until <span data-offer-date>30 November</span></span><span class="long"><b>Black Friday</b>: prices valid until <span data-offer-date>30 November</span></span><span class="sr-only">. Ends on <span data-offer-date>30 November</span> at <span data-offer-time>23:59</span>.</span></span>
+    <span class="cd-t" data-cd-text aria-hidden="true"></span>
+  </a>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/studio" aria-label="Emir Uçgun Studio, home"><b>Emir Uçgun</b><span>Studio</span></a>
+    <nav id="nav" class="nav" aria-label="Menu principale" data-en-aria-label="Main menu">
+      <a href="/studio/esempi"><span lang="it">Esempi</span><span lang="en">Examples</span></a>
+      <a href="/studio/prezzi" aria-current="page"><span lang="it">Prezzi</span><span lang="en">Prices</span></a>
+      <a href="/studio/come-funziona"><span lang="it">Come funziona</span><span lang="en">How it works</span></a>
+      <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Richiedi l'analisi gratuita</span><span lang="en">Get the free review</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Lingua" data-en-aria-label="Language">
+      <button type="button" data-set-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-primary btn-sm top-cta" href="https://wa.me/393445034591" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Analisi gratuita</span><span lang="en">Free review</span></a>
+    <button type="button" class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-head" aria-labelledby="page-title" data-bar-after>
+  <div class="wrap">
+    <p class="eyebrow"><span lang="it">Prezzi</span><span lang="en">Prices</span></p>
+    <h1 id="page-title"><span lang="it">Un prezzo fisso, deciso prima. Pagate solo se vi convince.</span><span lang="en">One fixed price, agreed up front. You pay only if you're convinced.</span></h1>
+    <p class="lead"><span lang="it">Non sapete quale scegliere? Partite dall'analisi gratuita: vi dico io da dove conviene cominciare.</span><span lang="en">Not sure which one? Start with the free review and I'll tell you where it makes sense to begin.</span></p>
+  </div>
+</section>
+
+<!-- Prices, the offer end date and the regular prices all come from config.js.
+     The numbers written here are only the fallback without JavaScript (tools/check-site.mjs compares them). -->
+<section id="pacchetti" class="sec" aria-labelledby="packs-title">
+  <div class="wrap">
+    <h2 id="packs-title" class="sr-only"><span lang="it">Pacchetti</span><span lang="en">Packages</span></h2>
+    <div class="deadline offer-only">
+      <p class="lbl"><span lang="it"><b>Black Friday</b>: prezzi validi fino al <span data-offer-date>30 novembre</span></span><span lang="en"><b>Black Friday</b>: prices valid until <span data-offer-date>30 November</span></span></p>
+      <p class="sr-only"><span lang="it">Termina il <span data-offer-date>30 novembre</span> alle <span data-offer-time>23:59</span>.</span><span lang="en">Ends on <span data-offer-date>30 November</span> at <span data-offer-time>23:59</span>.</span></p>
+      <div class="cd-box" data-cd-box aria-hidden="true">
+        <span class="u"><b data-u="d">–</b><small><span lang="it">giorni</span><span lang="en">days</span></small></span>
+        <span class="u"><b data-u="h">–</b><small><span lang="it">ore</span><span lang="en">hours</span></small></span>
+        <span class="u"><b data-u="m">–</b><small>min</small></span>
+      </div>
+      <p class="note"><span lang="it">Il prezzo vale per chi mi scrive entro il <span data-offer-date>30 novembre</span>, anche se il lavoro parte a dicembre.</span><span lang="en">The price holds for anyone who messages me by <span data-offer-date>30 November</span>, even if the work starts in December.</span></p>
+    </div>
+
+    <div class="plans" data-stagger>
+      <article class="card plan plan-pop p-vis" aria-labelledby="pk-vis">
+        <span class="badge"><span lang="it">Il più richiesto</span><span lang="en">Most popular</span></span>
+        <h3 id="pk-vis"><span lang="it">Visibilità</span><span lang="en">Visibility</span></h3>
+        <p class="for"><span lang="it">Per farvi trovare su Google e capire al tavolo.</span><span lang="en">To get found on Google and understood at the table.</span></p>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">20 foto ritoccate: luce, colori, sfondo e inquadratura</span><span lang="en">20 edited photos: light, colour, background and framing</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Nei formati per Google, menù, Instagram e app di delivery</span><span lang="en">In the formats for Google, menu, Instagram and delivery apps</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Profilo Google in ordine: foto, orari, categorie, descrizione e menù</span><span lang="en">Google profile sorted: photos, hours, categories, description and menu</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Menù digitale IT/EN con QR, prezzi e allergeni</span><span lang="en">IT/EN digital menu with QR code, prices and allergens</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Cartoncino QR per i tavoli, pronto da stampare</span><span lang="en">QR table card, ready to print</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
+        </ul>
+        <div class="cost">
+          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
+          <p class="price-line"><span class="price" data-price="vis">249 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="vis">349 €</del></span></p>
+          <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa="vis"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Scelgo Visibilità</span><span lang="en">I want Visibility</span></a>
+        </div>
+      </article>
+
+      <article class="card plan p-photo" aria-labelledby="pk-photo">
+        <h3 id="pk-photo"><span lang="it">Foto dei piatti</span><span lang="en">Dish photos</span></h3>
+        <p class="for"><span lang="it">Per partire dalle foto.</span><span lang="en">To start with the photos.</span></p>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">15 piatti ritoccati: luce, colori, sfondo e inquadratura</span><span lang="en">15 dishes edited: light, colour, background and framing</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Nei formati giusti per Deliveroo, Glovo, Just Eat, Google e Instagram</span><span lang="en">In the right formats for Deliveroo, Glovo, Just Eat, Google and Instagram</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Secondo le linee guida delle piattaforme: niente scritte o loghi sul piatto</span><span lang="en">Following the platforms' guidelines: no text or logos over the dish</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Guida di una pagina per scattare con il telefono</span><span lang="en">One-page guide for shooting on your phone</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento alla consegna</span><span lang="en">Payment on delivery</span></span></li>
+        </ul>
+        <div class="cost">
+          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
+          <p class="price-line"><span class="price" data-price="photo">119 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="photo">149 €</del></span></p>
+          <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="photo"><span lang="it">Scelgo Foto dei piatti</span><span lang="en">I want Dish photos</span></a>
+        </div>
+      </article>
+
+      <article class="card plan p-full" aria-labelledby="pk-full">
+        <h3 id="pk-full"><span lang="it">Completo</span><span lang="en">Complete</span></h3>
+        <p class="for"><span lang="it">Per non pensarci più.</span><span lang="en">So you don't have to think about it.</span></p>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Tutto quello che c'è in Visibilità</span><span lang="en">Everything in Visibility</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Descrizioni del menù riscritte, chiare al tavolo e sui delivery</span><span lang="en">Menu descriptions rewritten, clear at the table and on delivery apps</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 post social con le vostre foto</span><span lang="en">5 social posts with your photos</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">1 mese di gestione mensile incluso</span><span lang="en">1 month of monthly management included</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
+        </ul>
+        <div class="cost">
+          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
+          <p class="price-line"><span class="price" data-price="full">349 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="full">449 €</del></span></p>
+          <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="full"><span lang="it">Scelgo Completo</span><span lang="en">I want Complete</span></a>
+        </div>
+      </article>
+    </div>
+    <p class="muted small mt-16"><span lang="it"><strong>Su misura.</strong> Vi serve solo una parte? Scrivetemi e troviamo il prezzo giusto.</span><span lang="en"><strong>Tailored.</strong> Only need part of it? Message me and we'll find the right price.</span></p>
+  </div>
+</section>
+
+<!-- ============ comparison ============ -->
+<section id="confronto" class="sec sec-alt" aria-labelledby="cmp-title">
+  <div class="wrap narrow">
+    <div class="head">
+      <p class="eyebrow"><span lang="it">Confronto</span><span lang="en">Comparison</span></p>
+      <h2 id="cmp-title"><span lang="it">Cosa c'è in ogni pacchetto</span><span lang="en">What's in each package</span></h2>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><span lang="it">Foto</span><span lang="en">Photos</span><small data-price="photo">119 €</small></th>
+            <th scope="col" class="pop"><span lang="it">Visibilità</span><span lang="en">Visibility</span><small data-price="vis">249 €</small></th>
+            <th scope="col"><span lang="it">Completo</span><span lang="en">Complete</span><small data-price="full">349 €</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row"><span lang="it">Foto dei piatti ritoccate</span><span lang="en">Edited dish photos</span></th><td>15</td><td class="pop">20</td><td>20</td></tr>
+          <tr><th scope="row"><span lang="it">Formati per app di delivery e Google</span><span lang="en">Formats for delivery apps and Google</span></th><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Guida per scattare con il telefono</span><span lang="en">Guide for shooting on your phone</span></th><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Profilo Google in ordine</span><span lang="en">Google profile sorted</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Menù digitale IT/EN con QR</span><span lang="en">IT/EN digital menu with QR</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Cartoncino QR da stampare</span><span lang="en">Printable QR table card</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Descrizioni del menù riscritte</span><span lang="en">Rewritten menu descriptions</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Post social</span><span lang="en">Social posts</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td>5</td></tr>
+          <tr><th scope="row"><span lang="it">Gestione mensile inclusa</span><span lang="en">Monthly management included</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td><span lang="it">1 mese</span><span lang="en">1 month</span></td></tr>
+          <tr><th scope="row"><span lang="it">Pagamento</span><span lang="en">Payment</span></th><td><span lang="it">Alla consegna</span><span lang="en">On delivery</span></td><td class="pop">50% + 50%</td><td>50% + 50%</td></tr>
+          <tr><th scope="row"><span lang="it">Consegna</span><span lang="en">Delivery</span></th><td><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td><td class="pop"><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td><td><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ monthly plan ============ -->
+<section id="mensile" class="sec" aria-labelledby="month-title">
+  <div class="wrap narrow">
+    <article class="card plan">
+      <p class="eyebrow"><span lang="it">Dopo la consegna, se volete</span><span lang="en">After delivery, if you like</span></p>
+      <h2 id="month-title"><span lang="it">Gestione mensile</span><span lang="en">Monthly management</span></h2>
+      <p class="price-line"><span class="price" data-price="monthly">149 €</span><span class="per"><span lang="it">/mese · disdite quando volete</span><span lang="en">/month · cancel anytime</span></span></p>
+      <ul class="ticks">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">8 post al mese per Instagram e Facebook</span><span lang="en">8 posts a month for Instagram and Facebook</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">5 nuove foto ritoccate al mese</span><span lang="en">5 new edited photos a month</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Risposte alle recensioni su Google</span><span lang="en">Replies to your Google reviews</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Menù e orari aggiornati: piatti, prezzi, festività</span><span lang="en">Menu and hours kept up to date: dishes, prices, holidays</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Nessun contratto: si paga mese per mese</span><span lang="en">No contract: paid month by month</span></span></li>
+      </ul>
+      <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="monthly"><span lang="it">Mi interessa la gestione mensile</span><span lang="en">I'm interested in monthly management</span></a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ "Quanto vale una foto?" calculator ============
+     Uses Deliveroo's published figure (up to +12% online orders with photos on the menu).
+     It is an estimate of gross takings, worded as "fino a" / "up to", never a promise. -->
+<section id="calcolo" class="sec sec-alt" aria-labelledby="calc-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow"><span lang="it">Quanto vale una foto?</span><span lang="en">What's a photo worth?</span></p>
+      <h2 id="calc-title"><span lang="it">Fate due conti con i vostri numeri.</span><span lang="en">Run the numbers with your own figures.</span></h2>
+      <p class="lead"><span lang="it">Bastano due dati dal pannello di Deliveroo, Glovo o Just Eat.</span><span lang="en">All you need is two figures from your Deliveroo, Glovo or Just Eat dashboard.</span></p>
+    </div>
+    <div class="calc" data-calc="0.12">
+      <div class="calc-in">
+        <div class="field">
+          <div class="field-top"><label for="c-orders"><span lang="it">Ordini delivery al mese</span><span lang="en">Delivery orders per month</span></label><output data-out="orders" for="c-orders">300</output></div>
+          <input id="c-orders" name="orders" type="range" min="50" max="2000" step="10" value="300">
+        </div>
+        <div class="field">
+          <div class="field-top"><label for="c-aov"><span lang="it">Scontrino medio</span><span lang="en">Average order value</span></label><output data-out="aov" for="c-aov">25 €</output></div>
+          <input id="c-aov" name="aov" type="range" min="10" max="60" step="1" value="25">
+        </div>
+      </div>
+      <div class="calc-out">
+        <span class="k"><span lang="it">Stima: fino a</span><span lang="en">Estimate: up to</span></span>
+        <span class="v" data-out="extra">900 €</span>
+        <span class="k"><span lang="it">di incassi in più al mese, con le foto nel menù</span><span lang="en">extra takings a month, with photos on the menu</span></span>
+        <p class="pay"><span lang="it">Il pacchetto Visibilità (<b data-out="vis">249 €</b>) si ripagherebbe in circa <b data-out="days">9</b> giorni.</span><span lang="en">The Visibility package (<b data-out="vis">249 €</b>) would pay for itself in about <b data-out="days">9</b> days.</span></p>
+        <p class="fine"><span lang="it">Stima basata sul dato pubblicato da Deliveroo: fino al +12% di ordini online con le foto anche solo sul 10% del menù. Sono incassi lordi, non una promessa: ogni locale è diverso.</span><span lang="en">Estimate based on Deliveroo's published figure: up to +12% online orders with photos on just 10% of the menu. These are gross takings, not a promise: every restaurant is different.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ payment ============ -->
+<section id="pagamenti" class="sec" aria-labelledby="pay-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow"><span lang="it">Pagamenti</span><span lang="en">Payment</span></p>
+      <h2 id="pay-title"><span lang="it">Prima vedete l'anteprima. Se non vi convince, non pagate nulla.</span><span lang="en">You see a preview first. If you're not convinced, you pay nothing.</span></h2>
+      <p class="lead"><span lang="it">Bonifico o PayPal intestati a me, Emir Uçgun, con ricevuta regolare per prestazione occasionale.</span><span lang="en">Bank transfer or PayPal in my own name, Emir Uçgun, with a proper receipt for occasional services.</span></p>
+    </div>
+    <ul class="terms" data-stagger>
+      <li class="card"><b><span lang="it">Foto dei piatti</span><span lang="en">Dish photos</span></b><span><span lang="it">Si paga tutto alla consegna.</span><span lang="en">Paid in full on delivery.</span></span></li>
+      <li class="card"><b><span lang="it">Visibilità e Completo</span><span lang="en">Visibility and Complete</span></b><span><span lang="it">Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">Half when you approve the preview, half on delivery.</span></span></li>
+      <li class="card"><b><span lang="it">Gestione mensile</span><span lang="en">Monthly management</span></b><span><span lang="it">Mese per mese. Disdite con un messaggio.</span><span lang="en">Month by month. Cancel with one message.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="domande" class="sec sec-alt faq" aria-labelledby="faq-title">
+  <div class="wrap narrow">
+    <div class="head">
+      <p class="eyebrow"><span lang="it">Domande frequenti</span><span lang="en">FAQ</span></p>
+      <h2 id="faq-title"><span lang="it">Le domande che mi fanno più spesso</span><span lang="en">The questions I'm asked most</span></h2>
+    </div>
+    <details>
+      <summary><span lang="it">Devo darti le mie password?</span><span lang="en">Do I need to give you my passwords?</span></summary>
+      <p><span lang="it">No, mai. Per Google mi aggiungete come gestore del profilo; per le app di delivery come utente, oppure caricate voi le foto seguendo le mie indicazioni. Potete rimuovermi quando volete e tutto resta sempre vostro.</span><span lang="en">No, never. For Google you add me as a manager of your profile; for delivery apps as a user, or you upload the photos yourself following my instructions. You can remove me at any time and everything always stays yours.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">E se il risultato non mi piace?</span><span lang="en">What if I don't like the result?</span></summary>
+      <p><span lang="it">Prima vedete un'anteprima del lavoro. Se non vi convince, non pagate nulla. Per il profilo Google, l'anteprima sono gli screenshot delle modifiche proposte: le applico solo dopo il vostro via libera.</span><span lang="en">You see a preview of the work first. If you're not convinced, you pay nothing. For your Google profile, the preview is screenshots of the proposed changes: I only apply them once you give the go-ahead.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Quanto costa e come si paga?</span><span lang="en">How much is it and how do I pay?</span></summary>
+      <div><span lang="it">Foto dei piatti <span data-price="photo">119 €</span>, Visibilità <span data-price="vis">249 €</span>, Completo <span data-price="full">349 €</span><span class="offer-only"> (prezzi Black Friday per chi scrive entro il <span data-offer-date>30 novembre</span>; poi <span data-price-regular="photo">149 €</span>, <span data-price-regular="vis">349 €</span> e <span data-price-regular="full">449 €</span>)</span>. La gestione mensile costa <span data-price="monthly">149 €</span>/mese. Bonifico o PayPal intestati a me, con ricevuta regolare: Foto dei piatti alla consegna, Visibilità e Completo metà all'anteprima e metà alla consegna.</span><span lang="en">Dish photos <span data-price="photo">119 €</span>, Visibility <span data-price="vis">249 €</span>, Complete <span data-price="full">349 €</span><span class="offer-only"> (Black Friday prices for anyone who messages me by <span data-offer-date>30 November</span>; then <span data-price-regular="photo">149 €</span>, <span data-price-regular="vis">349 €</span> and <span data-price-regular="full">449 €</span>)</span>. Monthly management is <span data-price="monthly">149 €</span>/month. Bank transfer or PayPal in my name, with a proper receipt: Dish photos on delivery, Visibility and Complete half at preview and half on delivery.</span></div>
+    </details>
+    <details>
+      <summary><span lang="it">Serve un fotografo o un servizio fotografico?</span><span lang="en">Do I need a photographer or a photo shoot?</span></summary>
+      <p><span lang="it">No. Scattate voi con il telefono, nel vostro locale, seguendo la mia guida di una pagina. Me le mandate su WhatsApp e al resto penso io. Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">No. You shoot on your phone, in your own place, following my one-page guide. You send them on WhatsApp and I take care of the rest. I enhance your real photos, I don't invent dishes.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Glovo, Deliveroo e Just Eat accetteranno le foto?</span><span lang="en">Will Glovo, Deliveroo and Just Eat accept the photos?</span></summary>
+      <p><span lang="it">Le preparo seguendo le linee guida delle piattaforme: piatto reale, niente scritte o loghi sopra, formati e proporzioni giusti. L'approvazione finale spetta comunque alla piattaforma: se una foto venisse rifiutata, la correggo io.</span><span lang="en">I prepare them following the platforms' guidelines: the real dish, no text or logos over it, the right formats and proportions. Final approval is always up to the platform: if a photo is ever rejected, I fix it.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Non faccio delivery: le foto mi servono lo stesso?</span><span lang="en">I don't do delivery: are the photos still useful?</span></summary>
+      <p><span lang="it">Sì. Le stesse foto vanno sul profilo Google, sul menù digitale e su Instagram. Le foto sono vostre: potete usarle ovunque, anche sui menù stampati.</span><span lang="en">Yes. The same photos go on your Google profile, your digital menu and Instagram. The photos are yours: use them anywhere, printed menus included.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Il menù digitale è anche in inglese?</span><span lang="en">Is the digital menu in English too?</span></summary>
+      <p><span lang="it">Sì: italiano e inglese, con un tocco. I turisti leggono piatti, prezzi e allergeni nella loro lingua. Vi consegno anche il cartoncino con il QR, pronto da stampare per i tavoli.</span><span lang="en">Yes: Italian and English, with one tap. Tourists read dishes, prices and allergens in their own language. I also give you the table card with the QR code, ready to print.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Quanto tempo ci vuole?</span><span lang="en">How long does it take?</span></summary>
+      <p><span lang="it">Di solito dai 2 ai 5 giorni dal momento in cui ho tutto il materiale (foto, orari, menù). Ve lo confermo prima di iniziare.</span><span lang="en">Usually 2 to 5 days from when I have everything I need (photos, hours, menu). I confirm the timing before I start.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Posso disdire la gestione mensile?</span><span lang="en">Can I cancel the monthly management?</span></summary>
+      <p><span lang="it">Sì, quando volete. Nessun contratto né penale: basta un messaggio e dal mese successivo non pagate più. Nel pacchetto Completo il primo mese è incluso: poi continuate solo se volete.</span><span lang="en">Yes, whenever you like. No contract, no penalty: one message and you stop paying from the following month. The Complete package includes the first month: after that you only continue if you want to.</span></p>
+    </details>
+    <details>
+      <summary><span lang="it">Lavori solo a Torino?</span><span lang="en">Do you only work in Turin?</span></summary>
+      <p><span lang="it">Mi concentro sui locali di Torino, ma lavoro volentieri anche con altre città: si fa tutto a distanza, su WhatsApp o per email.</span><span lang="en">I focus on restaurants in Turin, but I'm happy to work with other cities too: everything is done remotely, on WhatsApp or by email.</span></p>
+    </details>
+  </div>
+</section>
+
+<section id="analisi" class="sec" aria-labelledby="cta-title" data-bar-hide>
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <p class="eyebrow"><span lang="it">Analisi gratuita</span><span lang="en">Free review</span></p>
+        <h2 id="cta-title"><span lang="it">Scopriamo cosa vi fa perdere clienti.</span><span lang="en">Let's find what's costing you customers.</span></h2>
+        <p class="lead"><span lang="it">Il nome del locale basta: vi rispondo io su WhatsApp con 3 cose concrete da migliorare. Gratis, senza impegno.</span><span lang="en">Your restaurant's name is enough: I'll reply myself on WhatsApp with 3 concrete things to improve. Free, no obligation.</span></p>
+      </div>
+      <form class="form" data-wa-form action="https://wa.me/393445034591" method="get" target="_blank">
+        <label><span lang="it">Nome del locale</span><span lang="en">Restaurant name</span>
+          <input name="locale" type="text" required autocomplete="organization" maxlength="80" placeholder="Es. Trattoria da Gino" data-en-placeholder="E.g. Trattoria da Gino"></label>
+        <label><span><span lang="it">Link su Deliveroo, Glovo, Just Eat o Google</span><span lang="en">Link on Deliveroo, Glovo, Just Eat or Google</span> <small><span lang="it">(facoltativo)</span><span lang="en">(optional)</span></small></span>
+          <input name="link" type="text" inputmode="url" autocomplete="url" maxlength="300" placeholder="https://…"></label>
+        <button class="btn btn-primary" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Richiedi l'analisi su WhatsApp</span><span lang="en">Request the review on WhatsApp</span></button>
+        <p class="alt"><span lang="it">Preferite l'email?</span><span lang="en">Prefer email?</span> <a href="mailto:emirucgun@gmail.com" data-mail><span lang="it">Scrivetemi qui</span><span lang="en">Write to me here</span></a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>Emir Uçgun</b>
+      <p><span lang="it">Studio per ristoranti · Torino</span><span lang="en">Studio for restaurants · Turin</span></p>
+      <nav aria-label="Pagine" data-en-aria-label="Pages" class="mt-8">
+        <a href="/studio"><span lang="it">Home</span><span lang="en">Home</span></a>
+        <a href="/studio/esempi"><span lang="it">Esempi</span><span lang="en">Examples</span></a>
+        <a href="/studio/prezzi"><span lang="it">Prezzi</span><span lang="en">Prices</span></a>
+        <a href="/studio/come-funziona"><span lang="it">Come funziona</span><span lang="en">How it works</span></a>
+      </nav>
+    </div>
+    <div>
+      <p><strong>Privacy</strong></p>
+      <p><span lang="it">Nessun cookie, nessun tracciamento: il sito ricorda solo la lingua scelta. Se mi scrivete, uso i vostri dati solo per rispondervi.</span><span lang="en">No cookies, no tracking: the site only remembers your language. If you write to me, I use your details only to reply.</span></p>
+    </div>
+    <div>
+      <a class="link" href="https://www.emirucgun.com" data-main-site><span lang="it">Il mio profilo professionale</span><span lang="en">My professional profile</span></a>
+    </div>
+  </div>
+</footer>
+
+<div class="stickybar">
+  <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Analisi gratuita su WhatsApp</span><span lang="en">Free review on WhatsApp</span></a>
+</div>
+</body>
+</html>

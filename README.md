@@ -55,22 +55,45 @@ Vercel project settings: Framework Preset **Other**; Build, Output and Install c
 The repository root is served as-is.
 
 ## Studio subdomain (studio.emirucgun.com)
-A services site for Turin restaurants and cafés (Google profile, IT/EN QR menu, dish photos for Google, Instagram and delivery apps) lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
-- `studio/index.html`: the single-page site. `studio/demo/menu/index.html`: the digital menu demo (`/demo/menu`).
-- `studio/config.js`: **every placeholder in one place** (WhatsApp, phone, email, LinkedIn, photo). Edit only this file.
-- `studio/site.js`: IT | EN toggle, contact links, price formatting. Both languages sit side by side in the HTML as
-  `<span lang="it">…</span><span lang="en">…</span>`; edit both when you change copy. Prices live in `data-eur="…"`.
-- `studio/emir.jpg`: your photo (square, ~800 × 800 px, under 150 KB). Until it exists, initials are shown.
-- `studio/food-before-1.jpg` and `studio/food-after-1.jpg`: the before/after photo comparison, the centrepiece of the "Foto dei piatti"
-  section (same framing, 4:3, ~1600 × 1200 px, under 250 KB each). Until both exist, a placeholder is shown.
-- Pricing: three packages (Foto dei piatti, Visibilità, Completo), each showing the struck-through list price and a launch price
-  valid until 31 December, plus a monthly management band and a one-line "Su misura" link to contact. The price comment above the
-  packages section says what to change once the launch period ends; prices also appear in the payment rule, the FAQ and the
-  "Pacchetti foto da …" link in the photos section.
-- "I numeri delle piattaforme" quotes figures published by Deliveroo and DoorDash, with their sources. Keep them worded as the
-  platforms' own figures, never as a promise.
-- `studio/posts/`: the trattoria and caffè visuals in the "Esempi" gallery (`studio/posts/opt/` holds the resized AVIF/WebP files).
-- Routing: `middleware.js` serves `/` of the subdomain from `/studio`, and the host-scoped rewrite in `vercel.json` serves
-  every other subdomain path from `/studio/…`. Requests to `emirucgun.com/studio…` redirect to the subdomain.
-- Local preview: `python3 -m http.server`, then `localhost:8000/studio/` and `localhost:8000/studio/demo/menu/`.
-- Search the copy for `TODO check` before going live.
+A sales site for Turin restaurants (dish photos for delivery apps and Google, Google Business Profile, IT/EN QR menu,
+monthly management) lives in `studio/` and is served at **studio.emirucgun.com**. It does not touch any of the files above.
+Every page has one goal: the visitor messages on WhatsApp (or requests the free review).
+
+### Pages
+| URL | File | Sections |
+| --- | --- | --- |
+| `/` | `studio/index.html` | Black Friday banner · hero with before/after slider · platform figures · 3 services · pricing · risk reversal · 4 FAQ + free-review form |
+| `/esempi` | `studio/esempi/index.html` | photo before/after + delivery-app card · Google profile before/after · QR menu demo · social posts gallery |
+| `/prezzi` | `studio/prezzi/index.html` | packages · comparison table · monthly plan · "Quanto vale una foto?" calculator · payment · full FAQ |
+| `/come-funziona` | `studio/come-funziona/index.html` | 4 steps · shooting guide · six trust rules · about me |
+| `/demo/menu` | `studio/demo/menu/` | the working menu demo (see its own README) |
+
+The three subpages share their head, banner, header, CTA band, footer and sticky bar. Those parts are written by
+`studio/tools/build-pages.py`; each page's own content is in `studio/tools/pages/*.inc`. Edit the `.inc` file (or the
+shared parts in the script), then run `python3 studio/tools/build-pages.py`. The generated HTML is committed: Vercel
+still serves the folder as-is, with no build step. `index.html` is written by hand.
+
+### What to edit
+- `studio/config.js`: **everything that changes**: WhatsApp number (with the 39 prefix), email, LinkedIn,
+  the prefilled WhatsApp messages, and the **offer**: `offer.ends` (local time) + `offer.timeZone`, and every package's
+  `offer` and `regular` price. Until `ends`, pages show the offer price with the regular one struck through, the banner and the
+  countdown; from that moment on, for every visitor, only regular prices. Nothing else to change when the offer ends.
+- Copy: both languages sit side by side as `<span lang="it">…</span><span lang="en">…</span>`; edit both.
+- Prices in the HTML (`data-price="vis"` etc.) are only the no-JavaScript fallback; `site.js` fills them from `config.js`.
+- `studio/img/`: AVIF + WebP sizes of the before/after photos (`dish-before-*`, `dish-after-*`) and the portrait (`emir-*`),
+  made from `food-before-1.jpg`, `food-after-1.jpg` and `emir.jpg`. New before/after pairs: same framing, export 480/800/1200 px wide.
+- Testimonials: a hidden section in `index.html` (`#testimonianze`), for real quotes only, with permission.
+- Platform figures (home proof strip, calculator on `/prezzi`): Deliveroo up to +12% online orders with photos on 10% of the menu;
+  DoorDash +13% sales on average with photos on half the menu. Keep them worded as the platforms' figures, never as a promise.
+
+### Scripts
+- `studio/studio.css`: one stylesheet for all four pages (mobile first). `studio/site.js`: language, prices, offer + countdown,
+  WhatsApp links, mini form, calculator, before/after sliders, mobile menu, sticky bar, scroll reveal. `studio/posts-gallery.js`: the gallery on `/esempi`.
+- `node studio/tools/check-site.mjs`: static checks: fallback prices = config, links and anchors, ids, images, IT/EN pairs, sitemap.
+- `node studio/tools/site-test.cjs`: browser test with Playwright (run `npx serve -l 4173 .` from the repo root first):
+  offer on/off around the end date, countdown, prices, WhatsApp links, slider, form, menu, sticky bar, calculator, EN.
+
+### Routing and preview
+- `middleware.js` serves `/` of the subdomain from `/studio`; the host-scoped rewrite in `vercel.json` serves every other
+  subdomain path from `/studio/…`. Requests to `emirucgun.com/studio…` redirect to the subdomain.
+- Local preview: `npx serve -l 4173 .` from the repo root, then `localhost:4173/studio/` (clean URLs like `/studio/prezzi` work).
