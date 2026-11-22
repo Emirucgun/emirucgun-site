@@ -55,7 +55,7 @@ def head(p):
 <title>{p['title']}</title>
 <meta name="description" content="{p['desc']}">
 <link rel="canonical" href="https://studio.emirucgun.com/{p['slug']}">
-<meta name="theme-color" content="#FAF7F2">
+<meta name="theme-color" content="#F4F1EC">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Emir Uçgun · Studio">
 <meta property="og:locale" content="it_IT">
@@ -70,7 +70,7 @@ def head(p):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/studio/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/studio/apple-touch-icon.png">
-{p.get('preload', '')}<link rel="preload" href="/studio/fonts/Fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+{p.get('preload', '')}<link rel="preload" href="/studio/fonts/SpaceGrotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/studio/studio.css">
 <script src="/studio/site.js" defer></script>
@@ -110,7 +110,7 @@ def chrome_top(current, banner_href='/studio/prezzi'):
       <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
     </div>
     <a class="btn btn-primary btn-sm top-cta" href="{WA}" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Analisi gratuita</span><span lang="en">Free review</span></a>
-    <button type="button" class="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span></button>
+    <button type="button" class="burger" aria-expanded="false" aria-controls="nav"><span class="burger-i" aria-hidden="true"></span>Menu</button>
   </div>
 </header>
 '''
@@ -164,7 +164,8 @@ BOTTOM = f'''
 </footer>
 
 <div class="stickybar">
-  <a class="btn btn-primary" href="{WA}" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Analisi gratuita su WhatsApp</span><span lang="en">Free review on WhatsApp</span></a>
+  <p class="sb-txt"><b><span lang="it">Analisi gratuita</span><span lang="en">Free review</span></b><span><span lang="it">Gratis, senza impegno</span><span lang="en">Free, no obligation</span></span></p>
+  <a class="btn btn-primary" href="{WA}" data-wa><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
 </body>
 </html>
@@ -187,7 +188,7 @@ PAGES = [
     dict(slug='come-funziona', out='come-funziona/index.html', body='come-funziona.inc',
          title='Come funziona: dall\'analisi gratuita alla consegna · Emir Uçgun',
          title_en='How it works: from the free review to delivery · Emir Uçgun',
-         desc='Come lavoro con i ristoranti di Torino: analisi gratuita, anteprima prima di pagare, nessuna password, consegna in 2–5 giorni. Più la guida per fotografare i piatti con il telefono.',
+         desc='Come lavoro con i ristoranti di Torino: analisi gratuita, anteprima prima di pagare, nessuna password, consegna in 2–⁠5 giorni. Più la guida per fotografare i piatti con il telefono.',
          og_title='Come funziona: semplice, veloce, senza rischi',
          og_desc='Quattro passi, nessuna password, prima l\'anteprima. E una guida per scattare foto dei piatti con il telefono.'),
 ]

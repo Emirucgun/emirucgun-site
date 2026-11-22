@@ -40,6 +40,7 @@
         <div class="cost">
           <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
           <p class="price-line"><span class="price" data-price="renew">649 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="renew">849 €</del></span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 7–⁠10 giorni</span><span lang="en">Ready in 7–⁠10 days</span></p>
           <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa="renew"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Scelgo Rinnovo totale</span><span lang="en">I want Total refresh</span></a>
         </div>
       </article>
@@ -57,6 +58,7 @@
         <div class="cost">
           <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
           <p class="price-line"><span class="price" data-price="site">449 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="site">599 €</del></span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 7–⁠10 giorni</span><span lang="en">Ready in 7–⁠10 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="site"><span lang="it">Scelgo Sito + Menù</span><span lang="en">I want Website + Menu</span></a>
         </div>
       </article>
@@ -81,6 +83,7 @@
         <div class="cost">
           <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
           <p class="price-line"><span class="price" data-price="vis">249 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="vis">349 €</del></span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="vis"><span lang="it">Scelgo Visibilità</span><span lang="en">I want Visibility</span></a>
         </div>
       </article>
@@ -98,6 +101,7 @@
         <div class="cost">
           <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
           <p class="price-line"><span class="price" data-price="photo">119 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="photo">149 €</del></span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="photo"><span lang="it">Scelgo Foto dei piatti</span><span lang="en">I want Dish photos</span></a>
         </div>
       </article>
@@ -115,6 +119,7 @@
         <div class="cost">
           <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
           <p class="price-line"><span class="price" data-price="full">349 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="full">449 €</del></span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="full"><span lang="it">Scelgo Completo</span><span lang="en">I want Complete</span></a>
         </div>
       </article>
@@ -158,7 +163,7 @@
           <tr><th scope="row"><span lang="it">Post social</span><span lang="en">Social posts</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td>5</td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
           <tr><th scope="row"><span lang="it">Gestione mensile inclusa</span><span lang="en">Monthly management included</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td><span lang="it">1 mese</span><span lang="en">1 month</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
           <tr><th scope="row"><span lang="it">Pagamento</span><span lang="en">Payment</span></th><td><span lang="it">Alla consegna</span><span lang="en">On delivery</span></td><td>50% + 50%</td><td>50% + 50%</td><td>50% + 50%</td><td class="pop">50% + 50%</td></tr>
-          <tr><th scope="row"><span lang="it">Consegna</span><span lang="en">Delivery</span></th><td><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td><td><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td><td><span lang="it">2–5 giorni</span><span lang="en">2–5 days</span></td><td><span lang="it">7–10 giorni</span><span lang="en">7–10 days</span></td><td class="pop"><span lang="it">7–10 giorni</span><span lang="en">7–10 days</span></td></tr>
+          <tr><th scope="row"><span lang="it">Consegna</span><span lang="en">Delivery</span></th><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td><td class="pop"><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td></tr>
         </tbody>
       </table>
     </div>
