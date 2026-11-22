@@ -3,7 +3,7 @@
   <div class="wrap">
     <p class="eyebrow"><span lang="it">Esempi</span><span lang="en">Examples</span></p>
     <h1 id="page-title"><span lang="it">Ecco cosa ricevete. Trascinate, toccate, provate.</span><span lang="en">Here's what you get. Drag, tap, try it.</span></h1>
-    <p class="lead"><span lang="it">Foto vere ritoccate, un profilo Google completo, un menù QR e tre siti web che funzionano davvero. I locali dimostrativi sono inventati e indicati come tali.</span><span lang="en">Real photos, edited; a complete Google profile; a QR menu and three websites that really work. The demo restaurants are made up and labelled as such.</span></p>
+    <p class="lead"><span lang="it">Foto vere ritoccate, un profilo Google completo, un menù QR<!-- if:showWebsiteDemos --> e tre siti web<!-- /if --> che funzionano davvero. I locali dimostrativi sono inventati e indicati come tali.</span><span lang="en">Real photos, edited; a complete Google profile; a QR menu<!-- if:showWebsiteDemos --> and three websites<!-- /if --> that really work. The demo restaurants are made up and labelled as such.</span></p>
   </div>
 </section>
 
@@ -175,6 +175,7 @@
   </div>
 </section>
 
+<!-- if:showWebsiteDemos -->
 <!-- ============ restaurant websites: three concept demos (studio/sites) ============
      Screenshots: node studio/tools/sites-screens.cjs (rerun after adding the real photos). -->
 <section id="siti" class="ex sec-alt" aria-labelledby="ex-siti">
@@ -214,6 +215,7 @@
   </div>
 </section>
 
+<!-- /if -->
 <!-- ============ social posts ============ -->
 <section id="post" class="ex" aria-labelledby="ex-post">
   <div class="wrap">

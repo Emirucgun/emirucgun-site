@@ -40,6 +40,12 @@ checks that every text colour in the theme has at least 4.5:1 contrast.
 
 ## The three concept demos
 
+> **Currently hidden:** `showWebsiteDemos: false` in `studio/config.js`. The builder skips them and deletes any
+> built copy (so `/demo/ristorante-*` returns 404), the "Siti web" section on /esempi and every link to them are
+> left out (`<!-- if:showWebsiteDemos -->` blocks in `studio/tools/pages/*.inc`), and `check-site.mjs` fails if
+> anything still links to them. To show them: set it to `true`, then run `node studio/sites/build.mjs`,
+> `python3 studio/tools/build-pages.py` and `node studio/tools/check-site.mjs`.
+
 All three are **fictional** (names checked against Turin restaurants in November 2026), labelled
 "Progetto dimostrativo — ristorante inventato" on every page, `noindex`, fake phone numbers, and their buttons
 show a "Demo: …" note instead of calling anyone.

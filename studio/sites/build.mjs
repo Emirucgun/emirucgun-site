@@ -111,8 +111,20 @@ const jobs = only.length
   : ['demos', 'anteprime'].flatMap((dir) => (existsSync(join(HERE, dir)) ? readdirSync(join(HERE, dir)) : [])
     .filter((f) => f.endsWith('.js') && !f.startsWith('_')).map((f) => join(HERE, dir, f)));
 
+// showWebsiteDemos: false in config.js → the concept demos aren't built and any built copy is removed,
+// so /demo/<slug> returns 404. Their data files stay in demos/, ready to switch back on.
+if (STUDIO_CFG.showWebsiteDemos !== true) {
+  for (const f of existsSync(join(HERE, 'demos')) ? readdirSync(join(HERE, 'demos')) : []) {
+    if (!f.endsWith('.js') || f.startsWith('_')) continue;
+    const out = join(STUDIO, 'demo', f.replace(/\.js$/, ''));
+    if (existsSync(out)) { rmSync(out, { recursive: true, force: true }); console.log(`removed ${join('studio', 'demo', basename(out))}/ (showWebsiteDemos is false)`); }
+  }
+}
+const hidden = (file) => STUDIO_CFG.showWebsiteDemos !== true && basename(dirname(file)) === 'demos';
+
 let failed = false;
 for (const file of jobs) {
+  if (hidden(file)) { console.log(`${basename(file)}: skipped (showWebsiteDemos is false in studio/config.js)`); continue; }
   const site = (await import(pathToFileURL(file).href + `?t=${Date.now()}`)).default;
   const theme = typeof site.theme === 'string' ? (await import(pathToFileURL(join(HERE, 'themes', `${site.theme}.js`)).href)).default : site.theme;
   const errors = [], warnings = [];

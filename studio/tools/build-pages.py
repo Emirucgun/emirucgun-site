@@ -192,8 +192,18 @@ PAGES = [
          og_desc='Quattro passi, nessuna password, prima l\'anteprima. E una guida per scattare foto dei piatti con il telefono.'),
 ]
 
+# Feature flags from config.js: `<!-- if:flag -->…<!-- /if -->` in a page body is kept only when the flag is true.
+import re
+CONFIG = (ROOT / 'config.js').read_text()
+FLAGS = {m[0]: m[1] == 'true' for m in re.findall(r'^\s*(\w+):\s*(true|false),', CONFIG, re.M)}
+
+
+def flags(body):
+    return re.sub(r'<!-- if:(\w+) -->(.*?)<!-- /if -->', lambda m: m.group(2) if FLAGS.get(m.group(1)) else '', body, flags=re.S)
+
+
 for p in PAGES:
-    body = (ROOT / 'tools' / 'pages' / p['body']).read_text()
+    body = flags((ROOT / 'tools' / 'pages' / p['body']).read_text())
     html = head(p) + chrome_top(p['slug'], p.get('banner', '/studio/prezzi')) + '\n<main id="main">\n' + body + BAND + BOTTOM
     out = ROOT / p['out']
     out.parent.mkdir(exist_ok=True)

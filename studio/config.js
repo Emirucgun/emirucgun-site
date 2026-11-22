@@ -18,6 +18,13 @@ window.STUDIO = {
   // Your LinkedIn profile URL.
   linkedin: 'https://www.linkedin.com/in/eucgun/',
 
+  // The three concept restaurant websites (/demo/ristorante-indiano, -giapponese, -messicano).
+  // false: not built (their URLs return 404), and the "Siti web" section on /esempi and every link to
+  // them are left out. true: built and shown. After changing it, run
+  //   node studio/sites/build.mjs && python3 studio/tools/build-pages.py && node studio/tools/check-site.mjs
+  // The website packages on /prezzi stay either way.
+  showWebsiteDemos: false,
+
   // Your main, professional site.
   mainSite: 'https://www.emirucgun.com',
 
