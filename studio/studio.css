@@ -225,8 +225,18 @@ html:not(.js) .burger{display:none}
 .plans{display:grid;gap:16px}
 @media (min-width:900px){
   .plans{grid-template-columns:repeat(3,1fr);align-items:stretch;gap:20px}
-  .plans .p-photo{order:1}.plans .p-vis{order:2}.plans .p-full{order:3}
+  .plans .p-photo{order:1}.plans .p-vis{order:2}.plans .p-full{order:3}.plans .p-renew{order:4}
+  .plans-2{grid-template-columns:repeat(2,1fr);max-width:820px;margin-inline:auto}
+  .plans-2 .p-site{order:1}.plans-2 .p-renew{order:2}
 }
+.plans-group + .plans-group{margin-top:48px}
+@media (min-width:768px){.plans-group + .plans-group{margin-top:80px}}
+.group-title{font-size:clamp(1.4rem,4.6vw,2rem)}
+.group-lead{color:var(--ink-2);margin:8px 0 20px;max-width:44rem}
+/* home: the PDF pain point, under the services */
+.pain{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px 16px;border:1px dashed var(--line-2);border-radius:var(--r);font-size:.96rem;color:var(--ink-2);background:var(--surface)}
+.pain .ico{color:var(--accent);margin-top:1px}
+.pain .link{white-space:nowrap}
 .plan{display:flex;flex-direction:column;gap:14px;position:relative}
 .plan h3{font-size:1.35rem}
 .plan .for{color:var(--ink-2);font-size:.95rem;margin-top:-8px}
@@ -407,6 +417,19 @@ footer p + p{margin-top:4px}
   .phone iframe{width:100%;height:100%;border:0;display:block}
 }
 
+/* restaurant websites: three phone frames */
+.sites{display:grid;gap:28px;margin-bottom:28px}
+@media (min-width:768px){.sites{grid-template-columns:repeat(3,1fr);gap:24px}}
+.site-card{display:grid;justify-items:center;gap:6px;text-align:center;text-decoration:none;color:inherit}
+.site-phone{width:min(240px,70vw);padding:9px;border-radius:34px;background:#1D1A16;box-shadow:0 24px 48px -28px rgba(29,26,22,.5);margin-bottom:10px;transition:transform .2s}
+.site-phone img{width:100%;height:auto;border-radius:26px;background:var(--line)}
+.site-card:hover .site-phone{transform:translateY(-4px)}
+.site-card b{font:600 1.2rem/1.2 var(--serif)}
+.site-style{font-size:.9rem;color:var(--ink-2);max-width:22rem}
+.site-card .more{min-height:36px}
+.sites-ticks{max-width:44rem;margin-bottom:20px}
+@media (min-width:768px){.sites-ticks{grid-template-columns:1fr 1fr;gap:10px 28px;max-width:none}}
+
 /* posts gallery (script: posts-gallery.js) */
 .pg-tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--surface);margin-bottom:18px;max-width:100%}
 .pg-tabs button{font-size:.92rem;font-weight:600;color:var(--ink-2);background:none;border:0;border-radius:999px;padding:0 16px;min-height:40px;cursor:pointer}
@@ -447,6 +470,11 @@ footer p + p{margin-top:4px}
 .cmp thead th{font:600 .84rem/1.2 var(--sans);vertical-align:bottom;padding-top:16px}
 .cmp thead th small{display:block;font-weight:500;color:var(--ink-2);margin-top:4px;font-size:.8rem}
 .cmp .pop{background:var(--tint-2)}
+/* five packages: the table scrolls sideways on phones, the row names stay put */
+.cmp-wide{min-width:640px}
+.cmp-wide th[scope="row"]{position:sticky;left:0;z-index:1;background:var(--surface);width:34%;min-width:150px;box-shadow:1px 0 0 var(--line)}
+.cmp-hint{margin-bottom:8px}
+@media (min-width:860px){.cmp-hint{display:none}}
 .cmp .yes{color:var(--ok)}
 .cmp .yes .ico{margin-inline:auto;width:20px;height:20px;stroke-width:2.6}
 .cmp .no{color:#B3A89A}

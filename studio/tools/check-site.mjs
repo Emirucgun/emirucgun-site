@@ -3,8 +3,9 @@
 // - every internal link and #anchor points to something that exists
 // - no duplicate ids, every <img> has alt + width + height, no leftover forbidden copy
 // - the WhatsApp fallback links use the number in config.js
+// - private previews (/anteprima/…) are noindex, nofollow and never linked; sitemap has no demos or previews
 // Exit code 1 on any error.
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -95,6 +96,18 @@ for (const [page, src] of Object.entries(html)) {
 const sitemap = readFileSync(join(STUDIO, 'sitemap.xml'), 'utf8');
 for (const u of ['/', '/esempi', '/prezzi', '/come-funziona'])
   if (!sitemap.includes(`<loc>https://studio.emirucgun.com${u}</loc>`)) errors.push(`sitemap.xml: missing ${u}`);
+if (/\/anteprima|\/demo\//.test(sitemap)) errors.push('sitemap.xml: demos and private previews must not be listed');
+
+// private previews (/anteprima/<slug>) are never linked from any other page of the site
+const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));
+for (const f of walk(STUDIO)) {
+  const rel = f.slice(STUDIO.length + 1);
+  if (rel.startsWith('anteprima/')) {
+    if (!/<meta name="robots" content="noindex, nofollow">/.test(readFileSync(f, 'utf8'))) errors.push(`${rel}: private preview without noindex, nofollow`);
+    continue;
+  }
+  if (/href="[^"]*\/anteprima\//.test(readFileSync(f, 'utf8'))) errors.push(`${rel}: links to a private preview (/anteprima/…)`);
+}
 
 console.log(`Offer "${C.offer.name}" ends ${new Date(C.offer.endsAt).toISOString()} (${C.offer.ends} ${C.offer.timeZone})`);
 console.log('Prices:', Object.entries(C.prices).map(([k, v]) => `${k} ${v.offer}/${v.regular}`).join(' · '));

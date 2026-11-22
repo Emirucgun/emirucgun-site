@@ -3,7 +3,7 @@
   <div class="wrap">
     <p class="eyebrow"><span lang="it">Esempi</span><span lang="en">Examples</span></p>
     <h1 id="page-title"><span lang="it">Ecco cosa ricevete. Trascinate, toccate, provate.</span><span lang="en">Here's what you get. Drag, tap, try it.</span></h1>
-    <p class="lead"><span lang="it">Foto vere ritoccate, un profilo Google completo e un menù QR che funziona davvero. I locali dimostrativi sono inventati e indicati come tali.</span><span lang="en">Real photos, edited; a complete Google profile; a QR menu that really works. The demo restaurants are made up and labelled as such.</span></p>
+    <p class="lead"><span lang="it">Foto vere ritoccate, un profilo Google completo, un menù QR e tre siti web che funzionano davvero. I locali dimostrativi sono inventati e indicati come tali.</span><span lang="en">Real photos, edited; a complete Google profile; a QR menu and three websites that really work. The demo restaurants are made up and labelled as such.</span></p>
   </div>
 </section>
 
@@ -175,8 +175,47 @@
   </div>
 </section>
 
+<!-- ============ restaurant websites: three concept demos (studio/sites) ============
+     Screenshots: node studio/tools/sites-screens.cjs (rerun after adding the real photos). -->
+<section id="siti" class="ex sec-alt" aria-labelledby="ex-siti">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="demo-label"><span lang="it">Progetto dimostrativo — ristoranti inventati</span><span lang="en">Concept project — fictional restaurants</span></span>
+      <h2 id="ex-siti"><span lang="it">Siti web: il menù dentro il sito, non in un PDF.</span><span lang="en">Websites: the menu inside the site, not in a PDF.</span></h2>
+      <p><span lang="it">Tre ristoranti inventati, tre stili nati dalla loro cucina. Stesso sistema sotto: veloce dal telefono, menù in italiano e inglese con gli allergeni, prenotazione e WhatsApp a un tocco.</span><span lang="en">Three made-up restaurants, three styles drawn from their cuisine. The same system underneath: fast on a phone, Italian and English menu with allergens, booking and WhatsApp one tap away.</span></p>
+    </div>
+    <ul class="sites" role="list">
+        <li><a class="site-card" href="/studio/demo/ristorante-indiano">
+          <div class="site-phone"><picture><img src="/studio/img/sites/ristorante-indiano-360.webp" srcset="/studio/img/sites/ristorante-indiano-360.webp 360w, /studio/img/sites/ristorante-indiano-720.webp 720w" sizes="(min-width:900px) 240px, 70vw" width="360" height="730" loading="lazy" decoding="async" alt="Kesar Rasoi, ristorante indiano inventato: la home del sito vista da telefono" data-en-alt="Kesar Rasoi, a fictional Indian restaurant: the website home page on a phone"></picture></div>
+          <b>Kesar Rasoi</b>
+          <span class="site-style"><span lang="it">Cucina indiana · indaco e zafferano, motivi da stampa a blocchi</span><span lang="en">Indian · indigo and saffron, block-print motifs</span></span>
+          <span class="more"><span lang="it">Apri il sito demo</span><span lang="en">Open the demo site</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a></li>
+        <li><a class="site-card" href="/studio/demo/ristorante-giapponese">
+          <div class="site-phone"><picture><img src="/studio/img/sites/ristorante-giapponese-360.webp" srcset="/studio/img/sites/ristorante-giapponese-360.webp 360w, /studio/img/sites/ristorante-giapponese-720.webp 720w" sizes="(min-width:900px) 240px, 70vw" width="360" height="730" loading="lazy" decoding="async" alt="Kinari, ristorante giapponese inventato: la home del sito vista da telefono" data-en-alt="Kinari, a fictional Japanese restaurant: the website home page on a phone"></picture></div>
+          <b>Kinari</b>
+          <span class="site-style"><span lang="it">Cucina giapponese · carta washi, legno e un solo tratto di pennello</span><span lang="en">Japanese · washi paper, wood and a single brush stroke</span></span>
+          <span class="more"><span lang="it">Apri il sito demo</span><span lang="en">Open the demo site</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a></li>
+        <li><a class="site-card" href="/studio/demo/ristorante-messicano">
+          <div class="site-phone"><picture><img src="/studio/img/sites/ristorante-messicano-360.webp" srcset="/studio/img/sites/ristorante-messicano-360.webp 360w, /studio/img/sites/ristorante-messicano-720.webp 720w" sizes="(min-width:900px) 240px, 70vw" width="360" height="730" loading="lazy" decoding="async" alt="Cocina Jacaranda, ristorante messicano inventato: la home del sito vista da telefono" data-en-alt="Cocina Jacaranda, a fictional Mexican restaurant: the website home page on a phone"></picture></div>
+          <b>Cocina Jacaranda</b>
+          <span class="site-style"><span lang="it">Cucina messicana · terracotta, piastrelle Talavera, insegne dipinte</span><span lang="en">Mexican · terracotta, Talavera tiles, hand-painted signs</span></span>
+          <span class="more"><span lang="it">Apri il sito demo</span><span lang="en">Open the demo site</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a></li>
+    </ul>
+    <ul class="ticks sites-ticks">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Il menù completo è una pagina del sito: si legge senza ingrandire, Google lo trova</span><span lang="en">The full menu is a page of the site: readable without zooming, and Google finds it</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Orari con «aperto ora», mappa, prenotazione e WhatsApp a un tocco</span><span lang="en">Hours with “open now”, map, booking and WhatsApp one tap away</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Italiano e inglese, con i 14 allergeni su ogni piatto</span><span lang="en">Italian and English, with the 14 allergens on every dish</span></span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Il dominio è intestato a voi: il sito è vostro</span><span lang="en">The domain is in your name: the website is yours</span></span></li>
+    </ul>
+    <p class="pg-cta"><span lang="it">Un sito così è il pacchetto Sito + Menù, oppure Rinnovo totale con foto e profilo Google.</span><span lang="en">A website like this is the Website + Menu package, or Total refresh with photos and Google profile.</span> <a class="link" href="/studio/prezzi#sito"><span lang="it">Vedi i prezzi</span><span lang="en">See prices</span></a></p>
+  </div>
+</section>
+
 <!-- ============ social posts ============ -->
-<section id="post" class="ex sec-alt" aria-labelledby="ex-post">
+<section id="post" class="ex" aria-labelledby="ex-post">
   <div class="wrap">
     <article aria-labelledby="ex-post">
       <div class="ex-head">

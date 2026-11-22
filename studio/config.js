@@ -37,7 +37,9 @@ window.STUDIO = {
     photo:   { offer: 119, regular: 149 }, // Foto dei piatti
     vis:     { offer: 249, regular: 349 }, // Visibilità
     full:    { offer: 349, regular: 449 }, // Completo
-    monthly: { offer: 149, regular: 149 }  // Gestione mensile, per month
+    site:    { offer: 449, regular: 599 }, // Sito + Menù
+    renew:   { offer: 649, regular: 849 }, // Rinnovo totale (Sito + Menù + Google + 20 foto)
+    monthly: { offer: 149, regular: 149 }  // Gestione mensile, per month (includes hosting + small site updates)
   },
 
   // Package names, used in the prefilled WhatsApp messages.
@@ -45,6 +47,8 @@ window.STUDIO = {
     photo: { it: 'Foto dei piatti', en: 'Dish photos' },
     vis: { it: 'Visibilità', en: 'Visibility' },
     full: { it: 'Completo', en: 'Complete' },
+    site: { it: 'Sito + Menù', en: 'Website + Menu' },
+    renew: { it: 'Rinnovo totale', en: 'Total refresh' },
     monthly: { it: 'Gestione mensile', en: 'Monthly management' }
   },
 
