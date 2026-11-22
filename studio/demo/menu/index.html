@@ -11,7 +11,7 @@
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://studio.emirucgun.com/demo/menu">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#F7F2E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#F7F1E8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191412" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Menù digitale dimostrativo · Trattoria dei Tre Glicini">
@@ -24,6 +24,9 @@
      where a relative "menu.js" would point to the wrong folder. -->
 <link rel="preload" href="/studio/fonts/Fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The cover photo is the largest thing on screen: start loading it before the script builds the page.
+     Keep in step with restaurant.coverPhoto in menu.data.js (delete these lines if there is none). -->
+<link rel="preload" as="image" type="image/avif" href="/studio/demo/menu/photos/cover-800.avif" imagesrcset="/studio/demo/menu/photos/cover-800.avif 800w, /studio/demo/menu/photos/cover-1600.avif 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="modulepreload" href="/studio/demo/menu/menu.js">
 <link rel="modulepreload" href="/studio/demo/menu/menu.data.js">
 <link rel="modulepreload" href="/studio/demo/menu/allergens.js">

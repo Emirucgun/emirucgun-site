@@ -4,8 +4,14 @@ The live demo at **studio.emirucgun.com/demo/menu** (locally: `/studio/demo/menu
 "Trattoria dei Tre Glicini". The same files are the template for every client menu.
 
 Static HTML, CSS and one small JavaScript module. No framework, no build step, no backend, no external services.
-About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Accessibility and Best Practices 100.
+Lighthouse mobile: Performance 95, Accessibility 100, Best Practices 100 (with photos).
 (SEO is lower only because the demo is deliberately `noindex`.)
+
+Layout, top to bottom: cover photo with the logo on a tile, name, an info row (hours/status · address · phone),
+the cover-charge strip, filter chips (Allergens, Vegetarian, Vegan, Gluten-free), sticky category tabs with a sliding
+underline, the house specials as large photo cards, then each category as rows: dishes with a photo get a square
+photo on the right, dishes without one get a text-only row with the same rhythm. Tapping any dish opens a detail sheet
+(photo, description, allergens written out). No cart, no ordering: it's a sit-down menu.
 
 ## Files
 
@@ -19,6 +25,7 @@ About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Acce
 | `check.mjs` | Validates the data file and double-checks allergens against the dish descriptions | No, just run it |
 | `allergens.js`, `check-lib.mjs` | The 14-allergen list and the validation rules, shared with the restaurant website template (`studio/sites/`) | No |
 | `logo.svg` | The demo restaurant's logo (also used as its favicon) | Replace per client |
+| `photos/` + `photos.py` | Master photos (`.jpg`) and the web copies `photos.py` makes from them | Add the client's photos, then run it |
 
 ## New client menu in 10 minutes
 
@@ -59,7 +66,7 @@ About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Acce
   allergens: ['gluten', 'eggs', 'celery', 'sulphites'],   // ALL of them, [] if none
   tags: ['vegetarian'],                       // 'vegetarian' | 'vegan' | 'spicy' | 'house'
   available: { it: 'Solo il giovedì', en: 'Thursdays only' },  // optional
-  photo: '/studio/m/da-gino/photos/tajarin.webp'               // optional
+  photo: '/studio/m/da-gino/photos/tajarin.jpg'                // optional: run photos.py after adding it
 }
 ```
 
@@ -71,8 +78,14 @@ About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Acce
   **Always confirm the final list with the restaurant**: the restaurant is legally responsible for it.
 - **Tags**: `vegan` already counts as vegetarian. `house` (piatto della casa) gets a highlighted card: keep it to 2–3 dishes.
   Careful with `vegetarian`: Parmigiano and most aged cheeses use animal rennet, and panna cotta uses gelatine.
-- **Photos** (optional): square, about 400 × 400 px, WebP, under 40 KB each, absolute path. Cards are designed to look
-  complete without one; if a photo path is set but the file isn't there, the card simply shows without it.
+- **Photos** (optional): square master `.jpg`, at least 1200 × 1200, in `photos/`, absolute path in `photo`. Then run
+  `python3 studio/demo/menu/photos.py`: it writes `name-240/480/960.webp` (about 8/20/55 KB), which is what the page loads.
+  Give photos to 6–10 dishes, the house specials first (they also appear as the big cards at the top; a house
+  special without a photo is left out of that row). Dishes without a photo get a text-only row; if the files are
+  missing, the row falls back to text-only too, so the page never shows an empty box.
+- **Cover photo** (`restaurant.coverPhoto`, optional): 16:9 `.jpg`, at least 1600 px wide; `photos.py` makes
+  `cover-800/1600` in AVIF and WebP. Update the `<link rel="preload" as="image">` in `index.html` to match, or delete it
+  if there's no cover.
 - **Categories**: `id`, `name`, optional `note` (a line under the heading). Set `drinks: true` on drinks:
   the Vegetarian/Vegan filters then leave them visible (allergen filters still apply).
 
@@ -84,13 +97,14 @@ About 110 KB on first load, fonts included. Lighthouse mobile: Performance, Acce
 - **Open/closed**: computed every 30 s from `hours`, in the restaurant's `timeZone` (not the phone's):
   "Aperto ora · chiude alle 22:30", "Chiude tra poco · alle 22:30" (last 30 minutes), "Chiuso · apre alle 19:00",
   "Chiuso · apre domani alle 12:00", "Chiuso · apre martedì alle 12:00".
-- **Header buttons**: Call (`tel:`), Directions (Google Maps link), Hours (opens a sheet with the week, today highlighted).
-  On the demo, Call and Directions show a short "Demo: …" note instead. Hours works, since it only shows the invented hours.
+- **Info row**: Hours (status + opens a sheet with the week, today highlighted), Address (Google Maps link), Phone (`tel:`).
+  On the demo, Address and Phone show a short "Demo: …" note instead. Hours works, since it only shows the invented hours.
 - **Filters**: Vegetarian, Vegan, Gluten-free, plus "hide dishes containing…" for any of the 14 allergens.
   Empty categories disappear from the page and the category bar; if nothing matches, an empty state offers to clear them.
-- **Allergens on each dish**: numbered badges; tapping them shows the names. Screen readers hear the names directly.
-- **Dark mode** follows the phone's setting. **Motion** is limited to small transitions and the sheets sliding up,
-  all off with "reduce motion". **Print** gives a clean one-column version of the full menu (filters ignored).
+- **Allergens on each dish**: numbered badges on the row; the dish sheet lists them by name. Screen readers hear the names directly.
+  In English, the sheet and the footer add a line saying the menu is translated and to talk to staff about severe allergies.
+- **Dark mode** follows the phone's setting. **Motion** is limited to the tab underline sliding, photos fading in and
+  the sheets sliding up, all off with "reduce motion". **Print** gives a clean one-column text menu (no photos, filters ignored).
 
 ## Local preview
 
