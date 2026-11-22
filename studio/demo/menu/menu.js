@@ -3,10 +3,11 @@
    You shouldn't need to edit this file for a new client: edit menu.data.js instead.
 
    What it does
-   - renders header, sticky category bar, dishes, footer and the two sheets (filters, hours)
+   - renders header (cover photo, info row), filter chips, sticky category tabs, the house specials,
+     the dishes (photo rows and text-only rows), footer, and three sheets (dish, filters, hours)
    - IT | EN switch, remembered in localStorage (wrapped in try/catch: private mode, blocked storage…)
    - open / closed status computed from the opening hours, in the restaurant's time zone
-   - scrollspy on the category bar, smooth scroll on tap (instant with reduced motion)
+   - scrollspy on the category tabs with a sliding underline, smooth scroll on tap (instant with reduced motion)
    - filters: vegetarian, vegan, gluten-free, plus any of the 14 allergens */
 
 import data from './menu.data.js';
@@ -27,18 +28,27 @@ const DAYS = /** @type {const} */ (['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 's
 const UI = {
   it: {
     menu: 'Menù', demo: 'demo', lang: 'Lingua', call: 'Chiama', directions: 'Indicazioni', hours: 'Orari',
-    demoNotice: 'Avviso demo', sections: 'Sezioni del menù', filters: 'Filtri',
+    phone: 'Telefono', address: 'Indirizzo',
+    demoNotice: 'Avviso demo', sections: 'Sezioni del menù', filters: 'Filtri', allergenFilter: 'Allergeni',
     filtersActive: (/** @type {number} */ n) => `Filtri, ${n} ${n === 1 ? 'attivo' : 'attivi'}`,
     openNow: 'Aperto ora', closesAt: (/** @type {string} */ t) => `chiude alle ${t}`,
     closingSoon: 'Chiude tra poco', at: (/** @type {string} */ t) => `alle ${t}`, closed: 'Chiuso',
     opensAt: (/** @type {string} */ t) => `apre alle ${t}`,
     opensTomorrow: (/** @type {string} */ t) => `apre domani alle ${t}`,
     opensOn: (/** @type {string} */ d, /** @type {string} */ t) => `apre ${d} alle ${t}`,
-    house: 'Piatto della casa', vegetarian: 'Vegetariano', vegan: 'Vegano', spicy: 'Piccante', glutenFree: 'Senza glutine',
-    allergens: 'Allergeni', noAllergens: 'Senza allergeni', diet: 'Preferenze',
-    exclude: 'Escludi allergeni', excludeHint: 'Nascondo i piatti che contengono:',
+    // short forms for the info row
+    sOpen: 'Aperto', sSoon: 'Chiude presto', sUntil: (/** @type {string} */ t) => `fino alle ${t}`,
+    sOpensAt: (/** @type {string} */ t) => `apre alle ${t}`,
+    sOpensTomorrow: (/** @type {string} */ t) => `apre domani ${t}`,
+    sOpensOn: (/** @type {string} */ d, /** @type {string} */ t) => `apre ${d} ${t}`,
+    daysShort: ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'],
+    house: 'Piatto della casa', houseTitle: 'Piatti della casa', houseNote: 'Quelli che ci chiedono di più.',
+    vegetarian: 'Vegetariano', vegan: 'Vegano', spicy: 'Piccante', glutenFree: 'Senza glutine',
+    allergens: 'Allergeni', noAllergens: 'Senza allergeni', noAllergensLong: 'Nessuno dei 14 allergeni principali.',
+    diet: 'Preferenze',
+    exclude: 'Escludi allergeni', excludeHint: 'Toccate un allergene per nascondere i piatti che lo contengono.',
     drinksHint: 'Vegetariano e Vegano non nascondono le bevande.',
-    reset: 'Azzera', close: 'Chiudi',
+    reset: 'Azzera', close: 'Chiudi', details: 'dettagli',
     show: (/** @type {number} */ n) => (n === 1 ? 'Mostra 1 piatto' : `Mostra ${n} piatti`),
     dishes: (/** @type {number} */ n) => (n === 1 ? '1 piatto' : `${n} piatti`),
     without: 'senza',
@@ -49,24 +59,33 @@ const UI = {
     allergyTitle: 'Allergie e intolleranze',
     allergyLead: 'Per allergie e intolleranze chiedete al personale.',
     allergyText: 'I numeri accanto ai piatti indicano i 14 allergeni del Reg. UE 1169/2011. In cucina li usiamo tutti: non possiamo escludere tracce.',
+    translated: '',
     legend: 'Legenda allergeni', where: 'Dove siamo', info: 'Buono a sapersi', closedDay: 'Chiuso', today: 'oggi',
     days: ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'],
     noscript: 'Per vedere il menù attivate JavaScript, oppure chiedete il menù cartaceo al personale.'
   },
   en: {
     menu: 'Menu', demo: 'demo', lang: 'Language', call: 'Call', directions: 'Directions', hours: 'Hours',
-    demoNotice: 'Demo notice', sections: 'Menu sections', filters: 'Filters',
+    phone: 'Phone', address: 'Address',
+    demoNotice: 'Demo notice', sections: 'Menu sections', filters: 'Filters', allergenFilter: 'Allergens',
     filtersActive: (/** @type {number} */ n) => `Filters, ${n} active`,
     openNow: 'Open now', closesAt: (/** @type {string} */ t) => `closes at ${t}`,
     closingSoon: 'Closing soon', at: (/** @type {string} */ t) => `at ${t}`, closed: 'Closed',
     opensAt: (/** @type {string} */ t) => `opens at ${t}`,
     opensTomorrow: (/** @type {string} */ t) => `opens tomorrow at ${t}`,
     opensOn: (/** @type {string} */ d, /** @type {string} */ t) => `opens ${d} at ${t}`,
-    house: 'House special', vegetarian: 'Vegetarian', vegan: 'Vegan', spicy: 'Spicy', glutenFree: 'Gluten-free',
-    allergens: 'Allergens', noAllergens: 'No allergens', diet: 'Preferences',
-    exclude: 'Exclude allergens', excludeHint: 'Hide dishes that contain:',
+    sOpen: 'Open', sSoon: 'Closing soon', sUntil: (/** @type {string} */ t) => `until ${t}`,
+    sOpensAt: (/** @type {string} */ t) => `opens at ${t}`,
+    sOpensTomorrow: (/** @type {string} */ t) => `opens tomorrow ${t}`,
+    sOpensOn: (/** @type {string} */ d, /** @type {string} */ t) => `opens ${d} ${t}`,
+    daysShort: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    house: 'House special', houseTitle: 'House specials', houseNote: 'The ones our guests ask for most.',
+    vegetarian: 'Vegetarian', vegan: 'Vegan', spicy: 'Spicy', glutenFree: 'Gluten-free',
+    allergens: 'Allergens', noAllergens: 'No allergens', noAllergensLong: 'None of the 14 major allergens.',
+    diet: 'Preferences',
+    exclude: 'Exclude allergens', excludeHint: 'Tap an allergen to hide the dishes that contain it.',
     drinksHint: 'Vegetarian and Vegan don’t hide drinks.',
-    reset: 'Clear', close: 'Close',
+    reset: 'Clear', close: 'Close', details: 'details',
     show: (/** @type {number} */ n) => (n === 1 ? 'Show 1 dish' : `Show ${n} dishes`),
     dishes: (/** @type {number} */ n) => (n === 1 ? '1 dish' : `${n} dishes`),
     without: 'without',
@@ -77,6 +96,7 @@ const UI = {
     allergyTitle: 'Allergies and intolerances',
     allergyLead: 'If you have allergies or intolerances, please ask our staff.',
     allergyText: 'The numbers next to each dish are the 14 allergens of EU Regulation 1169/2011. We use all of them in our kitchen, so we cannot rule out traces.',
+    translated: 'Translated from our Italian menu. If you have a severe allergy, please talk to our staff before ordering.',
     legend: 'Allergen key', where: 'Find us', info: 'Good to know', closedDay: 'Closed', today: 'today',
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     noscript: 'Please enable JavaScript to see the menu, or ask our staff for the printed one.'
@@ -102,6 +122,11 @@ const state = {
   /** @type {null | 'vegetarian' | 'vegan'} */ diet: null,
   /** @type {Set<AllergenId>} */ exclude: new Set()
 };
+/** id of the dish shown in the dish sheet, so it survives a language switch */
+/** @type {string | null} */
+let openDish = null;
+/** dishes whose photo files are missing: shown as text-only rows from then on */
+const noPhoto = new Set();
 
 /* ---------- helpers ---------- */
 
@@ -125,6 +150,19 @@ const allergensOf = (ids) => ids
   .filter((a) => a !== null)
   .sort((a, b) => a.n - b.n);
 const behavior = () => (reduceMotion.matches ? 'auto' : 'smooth');
+/** '/x/bunet.jpg' → '/x/bunet' @param {string} src */
+const stem = (src) => src.replace(/\.[a-z0-9]+$/i, '');
+/** @type {Map<string, { dish: Dish, cat: Category }>} */
+const DISHES = new Map(data.categories.flatMap((c) => c.dishes.map((d) => [d.id, { dish: d, cat: c }])));
+/** @param {Dish} d */
+const photoOf = (d) => (d.photo && !noPhoto.has(d.id) ? d.photo : null);
+
+/** A dish photo: square WebP copies made by photos.py. @param {Dish} d @param {string} cls @param {string} sizes */
+function dishImg(d, cls, sizes) {
+  const s = stem(/** @type {string} */ (photoOf(d)));
+  return `<img class="${cls}" src="${esc(s)}-480.webp" srcset="${esc(s)}-240.webp 240w, ${esc(s)}-480.webp 480w, ${esc(s)}-960.webp 960w"`
+    + ` sizes="${sizes}" alt="" width="480" height="480" loading="lazy" decoding="async" data-photo="${esc(d.id)}">`;
+}
 
 /* ---------- theme (colours + fonts from the data file) ---------- */
 
@@ -176,16 +214,19 @@ function openStatus() {
   return { open: false, inDays: -1, day: 0, at: '' };
 }
 
+/** Status for the info row: a short state word, a short detail line, and the full sentence for screen readers. */
 function statusText() {
   const u = ui();
   const s = openStatus();
   if (s.open) {
-    if (s.left <= 30) return { state: 'soon', html: `<b>${u.closingSoon}</b> · ${u.at(s.at)}` };
-    return { state: 'open', html: `<b>${u.openNow}</b> · ${u.closesAt(s.at)}` };
+    if (s.left <= 30) return { state: 'soon', word: u.sSoon, sub: u.at(s.at), full: `${u.closingSoon}, ${u.at(s.at)}` };
+    return { state: 'open', word: u.sOpen, sub: u.sUntil(s.at), full: `${u.openNow}, ${u.closesAt(s.at)}` };
   }
-  if (s.inDays < 0) return { state: 'closed', html: `<b>${u.closed}</b>` };
-  const when = s.inDays === 0 ? u.opensAt(s.at) : s.inDays === 1 ? u.opensTomorrow(s.at) : u.opensOn(u.days[s.day], s.at);
-  return { state: 'closed', html: `<b>${u.closed}</b> · ${when}` };
+  const c = /** @type {{ inDays: number, day: number, at: string }} */ (s);
+  if (c.inDays < 0) return { state: 'closed', word: u.closed, sub: '', full: u.closed };
+  const sub = c.inDays === 0 ? u.sOpensAt(c.at) : c.inDays === 1 ? u.sOpensTomorrow(c.at) : u.sOpensOn(u.daysShort[c.day], c.at);
+  const full = c.inDays === 0 ? u.opensAt(c.at) : c.inDays === 1 ? u.opensTomorrow(c.at) : u.opensOn(u.days[c.day], c.at);
+  return { state: 'closed', word: u.closed, sub, full: `${u.closed}, ${full}` };
 }
 
 function updateStatus() {
@@ -193,8 +234,10 @@ function updateStatus() {
   if (!el) return;
   const s = statusText();
   el.setAttribute('data-state', s.state);
-  const text = el.querySelector('.status-text');
-  if (text && text.innerHTML !== s.html) text.innerHTML = s.html;
+  const set = (/** @type {string} */ sel, /** @type {string} */ v) => { const n = el.querySelector(sel); if (n && n.textContent !== v) n.textContent = v; };
+  set('.status-word', s.word);
+  set('.status-sub', s.sub);
+  set('.status-full', s.full);
 }
 
 function hoursList() {
@@ -214,106 +257,156 @@ function renderBanner() {
   return `<aside class="demo-banner" aria-label="${ui().demoNotice}"><span class="pill">Demo</span>${esc(t(d.banner))} · <a href="${esc(d.url)}" target="_top">${esc(t(d.linkLabel))}</a></aside>`;
 }
 
+function renderCover() {
+  const c = R.coverPhoto;
+  if (!c) return '';
+  const s = stem(c.src);
+  return `<picture class="cover-photo">
+    <source type="image/avif" srcset="${esc(s)}-800.avif 800w, ${esc(s)}-1600.avif 1600w" sizes="100vw">
+    <img src="${esc(s)}-800.webp" srcset="${esc(s)}-800.webp 800w, ${esc(s)}-1600.webp 1600w" sizes="100vw" alt="${esc(t(c.alt))}" width="1600" height="900" fetchpriority="high" decoding="async">
+  </picture>`;
+}
+
 function renderHeader() {
   const u = ui();
   const demo = !!data.demo;
-  const call = demo
-    ? `<button type="button" class="action" data-action="demo-call">${icon('phone')}${u.call}</button>`
-    : `<a class="action" href="tel:${esc(R.phone)}">${icon('phone')}${u.call}</a>`;
-  const directions = demo
-    ? `<button type="button" class="action" data-action="demo-directions">${icon('pin')}${u.directions}</button>`
-    : `<a class="action" href="${esc(R.mapsUrl)}" target="_blank" rel="noopener">${icon('pin')}${u.directions}</a>`;
-  return `<header class="mast">
-  <div class="lang" role="group" aria-label="${u.lang}">
-    <button type="button" data-lang="it" lang="it" aria-pressed="${lang === 'it'}">IT<span class="sr-only"> · Italiano</span></button>
-    <button type="button" data-lang="en" lang="en" aria-pressed="${lang === 'en'}">EN<span class="sr-only"> · English</span></button>
+  /** One cell of the info row: a link or (on the demo) a button. */
+  const cell = (/** @type {string} */ ic, /** @type {string} */ label, /** @type {string} */ value, /** @type {string} */ attrs, /** @type {boolean} */ isLink) =>
+    `<li>${isLink ? `<a class="info-cell" ${attrs}>` : `<button type="button" class="info-cell" ${attrs}>`}`
+    + `<span class="info-label">${icon(ic)}${label}</span><span class="info-value">${value}</span>${isLink ? '</a>' : '</button>'}</li>`;
+  const cover = R.cover;
+  const coverAl = cover?.allergens ? allergensOf(cover.allergens) : [];
+  return `<header class="mast${R.coverPhoto ? ' has-cover' : ''}">
+  <div class="mast-media">${renderCover()}
+    <div class="lang" role="group" aria-label="${u.lang}">
+      <button type="button" data-lang="it" lang="it" aria-pressed="${lang === 'it'}">IT<span class="sr-only"> · Italiano</span></button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="${lang === 'en'}">EN<span class="sr-only"> · English</span></button>
+    </div>
   </div>
-  ${R.logo ? `<img class="logo" src="${esc(R.logo.src)}" width="${R.logo.width}" height="${R.logo.height}" alt="">` : ''}
-  ${R.kicker ? `<p class="kicker">${esc(t(R.kicker))}</p>` : ''}
-  <h1>${esc(R.name)}</h1>
-  ${R.tagline ? `<p class="tagline">${esc(t(R.tagline))}</p>` : ''}
-  <div class="rule" aria-hidden="true"><i></i></div>
-  <p class="status" data-state="closed"><span class="dot" aria-hidden="true"></span><span class="status-text"></span></p>
-  <ul class="actions">
-    <li>${call}</li>
-    <li>${directions}</li>
-    <li><button type="button" class="action" data-action="hours" aria-haspopup="dialog">${icon('clock')}${u.hours}</button></li>
-  </ul>
+  <div class="mast-body wrap">
+    <div class="mast-id">
+      ${R.logo ? `<span class="logo-tile"><img class="logo" src="${esc(R.logo.src)}" width="${R.logo.width}" height="${R.logo.height}" alt=""></span>` : ''}
+      ${R.kicker ? `<p class="kicker">${esc(t(R.kicker))}</p>` : ''}
+      <h1>${esc(R.name)}</h1>
+      ${R.tagline ? `<p class="tagline">${esc(t(R.tagline))}</p>` : ''}
+    </div>
+    <div class="mast-info">
+      <ul class="info">
+        <li><button type="button" class="info-cell status" data-state="closed" data-action="hours" aria-haspopup="dialog">
+          <span class="info-label">${icon('clock')}${u.hours}</span>
+          <span class="info-value" aria-hidden="true"><span class="dot"></span><span class="status-word"></span></span>
+          <span class="info-sub status-sub" aria-hidden="true"></span>
+          <span class="sr-only status-full"></span>
+        </button></li>
+        ${cell('pin', u.address, `${esc(R.address.street).replace(/ (\S{1,4})$/, '&nbsp;$1')}<span class="info-sub">${esc(R.address.city.replace(/^\d+\s*/, ''))}</span>`,
+          demo ? 'data-action="demo-directions"' : `href="${esc(R.mapsUrl)}" target="_blank" rel="noopener"`, !demo)}
+        ${cell('phone', u.phone, `${esc(R.phoneDisplay)}<span class="info-sub">${u.call}</span>`,
+          demo ? 'data-action="demo-call"' : `href="tel:${esc(R.phone)}"`, !demo)}
+      </ul>
+      ${cover ? `<p class="cover-strip"><span class="cover-name">${u.cover}</span> <b>${eur(cover.amount)}</b> <span class="muted">${u.perPerson}${cover.note ? ` · ${esc(t(cover.note))}` : ''}${coverAl.length ? ` <span class="al-inline">${u.allergens}: ${coverAl.map((a) => `${a.n} ${esc(t(a.name)).toLowerCase()}`).join(', ')}</span>` : ''}</span></p>` : ''}
+    </div>
+  </div>
 </header>`;
+}
+
+function renderChips() {
+  const u = ui();
+  return `<div class="chips-row wrap" role="group" aria-label="${u.filters}"><div class="chips-scroll">
+  <button type="button" class="chip chip-filter filter-btn" data-action="filters" aria-haspopup="dialog">${icon('sliders')}<span>${u.allergenFilter}</span><span class="count" aria-hidden="true" hidden></span></button>
+  <button type="button" class="chip" data-diet="vegetarian" aria-pressed="false">${icon('leaf')}${u.vegetarian}</button>
+  <button type="button" class="chip" data-diet="vegan" aria-pressed="false">${icon('sprout')}${u.vegan}</button>
+  <button type="button" class="chip" data-gf aria-pressed="false">${icon('wheat-off')}${u.glutenFree}</button>
+</div></div>`;
 }
 
 function renderBar() {
   const u = ui();
-  return `<nav class="bar" aria-label="${u.sections}"><div class="bar-in">
-  <button type="button" class="filter-btn" data-action="filters" aria-haspopup="dialog">${icon('sliders')}<span>${u.filters}</span><span class="count" aria-hidden="true" hidden></span></button>
-  <ul class="cats">${data.categories.map((c) => `<li data-cat-item="${c.id}"><a href="#${c.id}" data-cat="${c.id}" aria-current="false">${esc(t(c.name))}</a></li>`).join('')}</ul>
+  return `<nav class="bar" aria-label="${u.sections}"><div class="bar-in wrap">
+  <ul class="cats">${data.categories.map((c) => `<li data-cat-item="${c.id}"><a href="#${c.id}" data-cat="${c.id}" aria-current="false">${esc(t(c.name))}</a></li>`).join('')}<li class="ind" aria-hidden="true"></li></ul>
+  <button type="button" class="bar-filter filter-btn" data-action="filters" aria-haspopup="dialog" aria-label="${u.filters}">${icon('sliders')}<span class="count" aria-hidden="true" hidden></span></button>
 </div></nav>`;
 }
 
 /** @param {Dish['price']} p */
 function renderPrice(p) {
   if (typeof p === 'number') return `<p class="price">${eur(p)}</p>`;
-  return `<p class="price price-multi">${p.map((o) => `<span><span class="opt-label">${esc(t(o.label))}</span>${eur(o.amount)}</span>`).join('')}</p>`;
+  return `<p class="price price-multi">${p.map((o) => `<span><span class="opt-label">${esc(t(o.label))}</span> ${eur(o.amount)}</span>`).join('')}</p>`;
+}
+
+/** Diet / spicy tags. @param {Dish} d */
+function tagChips(d) {
+  const u = ui();
+  const tags = d.tags || [];
+  return [
+    tags.includes('vegan') ? `<li class="tag tag-veg">${icon('sprout')}${u.vegan}</li>`
+      : tags.includes('vegetarian') ? `<li class="tag tag-veg">${icon('leaf')}${u.vegetarian}</li>` : '',
+    tags.includes('spicy') ? `<li class="tag tag-spicy">${icon('flame')}${u.spicy}</li>` : ''
+  ].join('');
 }
 
 /** @param {Dish} d */
 function renderDish(d) {
   const u = ui();
-  const tags = d.tags || [];
-  const house = tags.includes('house');
+  const house = (d.tags || []).includes('house');
   const al = allergensOf(d.allergens);
-  const names = al.map((a) => t(a.name));
-  const chips = [
-    tags.includes('vegan') ? `<li class="tag">${icon('sprout')}${u.vegan}</li>`
-      : tags.includes('vegetarian') ? `<li class="tag">${icon('leaf')}${u.vegetarian}</li>` : '',
-    tags.includes('spicy') ? `<li class="tag tag-spicy">${icon('flame')}${u.spicy}</li>` : ''
-  ].join('');
+  const chips = tagChips(d);
+  const photo = photoOf(d);
   const alHtml = al.length
-    ? `<button type="button" class="al-btn" aria-expanded="false" aria-controls="al-${d.id}" title="${esc(names.join(', '))}">`
-      + `<span class="sr-only">${u.allergens}: ${esc(names.join(', '))}</span>`
-      + `<span class="al-label" aria-hidden="true">${u.allergens}</span>`
-      + al.map((a) => `<span class="al-n" aria-hidden="true">${a.n}</span>`).join('')
-      + `${icon('chevron', 'chev')}</button>`
+    ? `<span class="al"><span class="sr-only">${u.allergens}: ${esc(al.map((a) => t(a.name)).join(', '))}</span>`
+      + `<span class="al-label" aria-hidden="true">${u.allergens}</span><span class="al-nums" aria-hidden="true">${al.map((a) => `<span class="al-n">${a.n}</span>`).join('')}</span></span>`
     : `<span class="al-none">${u.noAllergens}</span>`;
-  return `<li class="dish${house ? ' is-house' : ''}${d.photo ? ' has-photo' : ''}" id="d-${esc(d.id)}">
-  ${house ? `<p class="house-label">${icon('star')}${u.house}</p>` : ''}
-  <div class="dish-main">${d.photo ? `<img class="photo" src="${esc(d.photo)}" alt="" width="120" height="120" loading="lazy" decoding="async">` : ''}<div>
-    <div class="dish-top"><h3 class="dish-name">${esc(t(d.name))}</h3>${renderPrice(d.price)}</div>
+  return `<li class="dish${photo ? ' has-photo' : ''}" id="d-${esc(d.id)}">
+  <div class="dish-text">
+    ${house ? `<p class="badge">${icon('star')}${u.house}</p>` : ''}
+    <h3 class="dish-name"><button type="button" class="open" data-dish="${esc(d.id)}" aria-haspopup="dialog">${esc(t(d.name))}<span class="sr-only">, ${u.details}</span></button></h3>
     ${d.description ? `<p class="desc">${esc(t(d.description))}</p>` : ''}
     ${d.available ? `<p class="avail">${icon('calendar')}${esc(t(d.available))}</p>` : ''}
-    <div class="meta">${chips ? `<ul class="tags">${chips}</ul>` : ''}${alHtml}</div>
-    ${al.length ? `<p class="al-names" id="al-${d.id}" hidden><b>${u.allergens}:</b> ${al.map((a) => `${a.n} ${esc(t(a.name))}`).join(' · ')}</p>` : ''}
-  </div></div>
+    ${renderPrice(d.price)}
+  </div>
+  ${photo ? `<div class="thumb">${dishImg(d, 'photo', '(min-width: 1024px) 128px, 104px')}</div>` : ''}
+  <div class="meta">${chips ? `<ul class="tags">${chips}</ul>` : ''}${alHtml}</div>
 </li>`;
+}
+
+/** The house specials, as big photo cards (only those with a photo). */
+function renderFeatured() {
+  const u = ui();
+  const list = [...DISHES.values()].filter(({ dish }) => (dish.tags || []).includes('house') && photoOf(dish));
+  if (!list.length) return '';
+  return `<section class="featured wrap" id="casa" aria-labelledby="h-casa">
+  <div class="sec-head"><h2 id="h-casa" class="sec-title">${u.houseTitle}<span aria-hidden="true">.</span></h2><p class="sec-note">${u.houseNote}</p></div>
+  <ul class="feat-list">${list.map(({ dish: d }) => `<li class="feat" id="f-${esc(d.id)}">
+    <div class="feat-media">${dishImg(d, 'photo', '(min-width: 1024px) 352px, (min-width: 700px) 45vw, 72vw')}</div>
+    <h3 class="feat-name"><button type="button" class="open" data-dish="${esc(d.id)}" aria-haspopup="dialog">${esc(t(d.name))}<span class="sr-only">, ${u.details}</span></button></h3>
+    ${d.description ? `<p class="desc">${esc(t(d.description))}</p>` : ''}
+    ${renderPrice(d.price)}
+  </li>`).join('')}</ul>
+</section>`;
 }
 
 /** @param {Category} c */
 function renderCategory(c) {
-  return `<section class="cat" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}">
-  <div class="cat-head"><h2 id="h-${esc(c.id)}" tabindex="-1">${esc(t(c.name))}</h2>${c.note ? `<p class="cat-note">${esc(t(c.note))}</p>` : ''}</div>
+  return `<section class="cat wrap" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}">
+  <div class="sec-head"><h2 id="h-${esc(c.id)}" class="sec-title" tabindex="-1">${esc(t(c.name))}<span aria-hidden="true">.</span></h2>${c.note ? `<p class="sec-note">${esc(t(c.note))}</p>` : ''}</div>
   <ul class="dishes">${c.dishes.map(renderDish).join('')}</ul>
 </section>`;
 }
 
 function renderFooter() {
   const u = ui();
-  const cover = R.cover;
-  const coverAl = cover?.allergens ? allergensOf(cover.allergens) : [];
   const demo = data.demo;
   return `<footer class="foot">
+  <div class="foot-grid wrap">
   <section class="box notice" aria-labelledby="h-allergy">
     <h2 id="h-allergy">${icon('info')}${u.allergyTitle}</h2>
     <p class="lead">${u.allergyLead}</p>
     <p class="muted">${u.allergyText}</p>
+    ${u.translated ? `<p class="muted">${u.translated}</p>` : ''}
   </section>
-  <section class="box" aria-labelledby="h-legend">
+  <section class="box legend-box" aria-labelledby="h-legend">
     <h2 id="h-legend">${u.legend}</h2>
-    <ol class="legend">${ALLERGENS.map((a) => `<li><span class="al-n" aria-hidden="true">${a.n}</span><span>${esc(t(a.long))}</span></li>`).join('')}</ol>
+    <ol class="legend">${ALLERGENS.map((a) => `<li><span class="al-n al-n-lg" aria-hidden="true">${a.n}</span><span>${esc(t(a.long))}</span></li>`).join('')}</ol>
   </section>
-  ${cover ? `<section class="box" aria-labelledby="h-cover">
-    <div class="cover-row"><h2 id="h-cover">${u.cover}</h2><p class="price">${eur(cover.amount)} <span class="muted">${u.perPerson}</span></p></div>
-    ${cover.note || coverAl.length ? `<p class="muted">${esc(t(cover.note))}${coverAl.length ? ` ${u.allergens}: ${coverAl.map((a) => `${a.n} ${esc(t(a.name)).toLowerCase()}`).join(', ')}.` : ''}</p>` : ''}
-  </section>` : ''}
   <section class="box" aria-labelledby="h-hours">
     <h2 id="h-hours">${icon('clock')}${u.hours}</h2>
     ${hoursList()}
@@ -323,18 +416,47 @@ function renderFooter() {
     <h2 id="h-where">${icon('pin')}${u.where}</h2>
     <address>${esc(R.name)}<br>${esc(R.address.street)}, ${esc(R.address.city)}<br>${
       demo ? esc(R.phoneDisplay) : `<a href="tel:${esc(R.phone)}">${esc(R.phoneDisplay)}</a>`}</address>
+    ${R.notes?.length ? `<h2 id="h-info" class="h-sub">${u.info}</h2><ul class="notes">${R.notes.map((n) => `<li>${esc(t(n))}</li>`).join('')}</ul>` : ''}
   </section>
-  ${R.notes?.length ? `<section class="box" aria-labelledby="h-info"><h2 id="h-info">${u.info}</h2><ul class="notes">${R.notes.map((n) => `<li>${esc(t(n))}</li>`).join('')}</ul></section>` : ''}
-  ${demo ? `<div class="pitch"><p>${esc(t(demo.pitch))}</p><a class="btn" href="${esc(demo.url)}" target="_top">${esc(demo.url.replace(/^https?:\/\//, ''))}${icon('arrow')}</a></div>
-  <p class="fineprint">${esc(t(demo.banner))} · <a href="${esc(demo.url)}" target="_top">${esc(t(demo.linkLabel))}</a></p>` : ''}
-  ${!demo && data.credit ? `<p class="fineprint"><a href="${esc(data.credit.url)}">${esc(t(data.credit.label))}</a></p>` : ''}
+  </div>
+  ${demo ? `<div class="pitch wrap"><p>${esc(t(demo.pitch))}</p><a class="btn" href="${esc(demo.url)}" target="_top">${esc(demo.url.replace(/^https?:\/\//, ''))}${icon('arrow')}</a></div>
+  <p class="fineprint wrap">${esc(t(demo.banner))} · <a href="${esc(demo.url)}" target="_top">${esc(t(demo.linkLabel))}</a></p>` : ''}
+  ${!demo && data.credit ? `<p class="fineprint wrap"><a href="${esc(data.credit.url)}">${esc(t(data.credit.label))}</a></p>` : ''}
 </footer>`;
+}
+
+/** Dish sheet content. @param {string} id */
+function renderDishSheet(id) {
+  const u = ui();
+  const entry = DISHES.get(id);
+  if (!entry) return '';
+  const d = entry.dish;
+  const al = allergensOf(d.allergens);
+  const chips = tagChips(d);
+  const photo = photoOf(d);
+  return `${photo ? `<div class="ds-media">${dishImg(d, 'photo', '(min-width: 640px) 560px, 100vw').replace(' loading="lazy"', '')}</div>` : ''}
+  <button type="button" class="icon-btn ds-close" data-action="close" aria-label="${u.close}">${icon('x')}</button>
+  <div class="ds-body">
+    ${(d.tags || []).includes('house') ? `<p class="badge">${icon('star')}${u.house}</p>` : ''}
+    <h2 id="t-dish">${esc(t(d.name))}</h2>
+    ${renderPrice(d.price)}
+    ${d.description ? `<p class="ds-desc">${esc(t(d.description))}</p>` : ''}
+    ${d.available ? `<p class="avail">${icon('calendar')}${esc(t(d.available))}</p>` : ''}
+    ${chips ? `<ul class="tags">${chips}</ul>` : ''}
+    <section class="ds-al" aria-labelledby="h-ds-al">
+      <h3 id="h-ds-al">${u.allergens}</h3>
+      ${al.length ? `<ul class="ds-al-list">${al.map((a) => `<li><span class="al-n al-n-lg" aria-hidden="true">${a.n}</span>${esc(t(a.long))}</li>`).join('')}</ul>`
+        : `<p class="muted">${u.noAllergensLong}</p>`}
+      <p class="muted small">${u.allergyLead}${u.translated ? ` ${u.translated}` : ''}</p>
+    </section>
+  </div>`;
 }
 
 function renderSheets() {
   const u = ui();
   const hasDrinks = data.categories.some((c) => c.drinks);
-  return `<dialog class="sheet" id="sheet-filters" aria-labelledby="t-filters">
+  return `<dialog class="sheet sheet-dish" id="sheet-dish" aria-labelledby="t-dish"><div class="ds"></div></dialog>
+<dialog class="sheet" id="sheet-filters" aria-labelledby="t-filters">
   <div class="sheet-head"><h2 id="t-filters">${u.filters}</h2><button type="button" class="icon-btn" data-action="close" aria-label="${u.close}">${icon('x')}</button></div>
   <div class="sheet-body">
     <fieldset><legend>${u.diet}</legend>
@@ -346,7 +468,7 @@ function renderSheets() {
       ${hasDrinks ? `<p class="hint">${u.drinksHint}</p>` : ''}
     </fieldset>
     <fieldset><legend>${u.exclude}</legend><p class="hint">${u.excludeHint}</p>
-      <div class="al-grid">${ALLERGENS.map((a) => `<label class="al-opt"><input type="checkbox" value="${a.id}"><span class="al-n" aria-hidden="true">${a.n}</span><span>${esc(t(a.name))}</span></label>`).join('')}</div>
+      <div class="al-grid">${ALLERGENS.map((a) => `<label class="al-opt"><input type="checkbox" value="${a.id}"><span class="al-n al-n-lg" aria-hidden="true">${a.n}</span><span>${esc(t(a.name))}</span></label>`).join('')}</div>
     </fieldset>
   </div>
   <div class="sheet-foot"><button type="button" class="btn btn-ghost" data-action="reset">${u.reset}</button><button type="button" class="btn" data-action="close" data-show-count></button></div>
@@ -361,31 +483,53 @@ function renderSheets() {
 </dialog>`;
 }
 
+/** Photos fade in once loaded; a photo whose files are missing turns its dish into a text-only row. @param {ParentNode} scope */
+function wirePhotos(scope) {
+  scope.querySelectorAll('img[data-photo]').forEach((img) => {
+    if (!(img instanceof HTMLImageElement)) return;
+    const id = img.getAttribute('data-photo') || '';
+    const shown = () => img.classList.add('loaded');
+    const drop = () => {
+      noPhoto.add(id);
+      const row = img.closest('.dish, .feat, .ds-media');
+      if (row?.classList.contains('dish')) { row.classList.remove('has-photo'); img.closest('.thumb')?.remove(); }
+      else if (row?.classList.contains('feat')) {
+        const section = row.closest('.featured');
+        row.remove();
+        if (section && !section.querySelector('.feat')) section.remove(); // no heading over an empty row
+      }
+      else row?.remove();
+    };
+    if (img.complete) { if (img.naturalWidth) shown(); else drop(); return; }
+    img.addEventListener('load', shown, { once: true });
+    img.addEventListener('error', drop, { once: true });
+  });
+}
+
 function render() {
   const app = $id('app');
   if (!app) return;
   const u = ui();
   root.lang = lang;
   document.title = `${u.menu} · ${R.name}${data.demo ? ` (${u.demo})` : ''}`;
-  app.innerHTML = `${renderBanner()}<div class="page">${renderHeader()}${renderBar()}
+  app.innerHTML = `${renderBanner()}<div class="page">${renderHeader()}${renderChips()}${renderBar()}
 <main id="menu">
-  <div class="filter-summary" hidden><p></p><button type="button" class="link-btn" data-action="reset">${u.reset}</button></div>
+  <div class="filter-summary wrap" hidden><p></p><button type="button" class="link-btn" data-action="reset">${u.reset}</button></div>
+  ${renderFeatured()}
   ${data.categories.map(renderCategory).join('')}
-  <div class="empty" hidden>${icon('plate')}<h2>${u.emptyTitle}</h2><p>${u.emptyText}</p><button type="button" class="btn" data-action="reset">${u.resetFilters}</button></div>
+  <div class="empty wrap" hidden>${icon('plate')}<h2>${u.emptyTitle}</h2><p>${u.emptyText}</p><button type="button" class="btn" data-action="reset">${u.resetFilters}</button></div>
 </main>${renderFooter()}</div>${renderSheets()}`;
 
-  // a photo that doesn't exist (yet) just disappears: the card is designed to work without it
-  app.querySelectorAll('img.photo').forEach((img) => {
-    const drop = () => { img.closest('.dish')?.classList.remove('has-photo'); img.remove(); };
-    if (img instanceof HTMLImageElement && img.complete && !img.naturalWidth) drop();
-    else img.addEventListener('error', drop, { once: true });
-  });
+  wirePhotos(app);
   const logo = app.querySelector('img.logo');
-  logo?.addEventListener('error', () => logo.remove(), { once: true });
+  logo?.addEventListener('error', () => logo.closest('.logo-tile')?.remove(), { once: true });
+  const cover = app.querySelector('.cover-photo img');
+  cover?.addEventListener('error', () => { cover.closest('.mast')?.classList.remove('has-cover'); cover.closest('picture')?.remove(); }, { once: true });
 
   observeBar();
   updateStatus();
   applyFilters();
+  current = null;
   spy();
 }
 
@@ -410,6 +554,8 @@ function applyFilters() {
       const ok = matches(d, c);
       const el = $id(`d-${d.id}`);
       if (el) el.hidden = !ok;
+      const feat = $id(`f-${d.id}`);
+      if (feat) feat.hidden = !ok;
       if (ok) n++;
     }
     if (!c.drinks) food += n;
@@ -421,20 +567,23 @@ function applyFilters() {
   const nothing = food === 0;
   if (nothing) data.categories.forEach((c) => { const s = $id(c.id); if (s) s.hidden = true; });
   document.querySelectorAll('[data-cat-item]').forEach((li) => { if (nothing && li instanceof HTMLElement) li.hidden = true; });
+  const featured = $id('casa');
+  if (featured) featured.hidden = nothing || !featured.querySelector('.feat:not([hidden])');
 
   const count = activeCount();
   const empty = document.querySelector('.empty');
   if (empty instanceof HTMLElement) empty.hidden = !nothing;
 
-  // filter button badge
-  const btn = document.querySelector('.filter-btn');
-  const badge = btn?.querySelector('.count');
-  if (btn && badge instanceof HTMLElement) {
-    badge.hidden = count === 0;
-    badge.textContent = String(count);
-    btn.toggleAttribute('data-active', count > 0);
-    if (count) btn.setAttribute('aria-label', u.filtersActive(count)); else btn.removeAttribute('aria-label');
-  }
+  // filter buttons: badge with the number of active filters
+  document.querySelectorAll('.filter-btn').forEach((btn) => {
+    const badge = btn.querySelector('.count');
+    if (!(badge instanceof HTMLElement)) return;
+    const n = state.exclude.size + (btn.classList.contains('bar-filter') ? (state.diet ? 1 : 0) : 0);
+    badge.hidden = n === 0;
+    badge.textContent = String(n);
+    btn.toggleAttribute('data-active', n > 0);
+    if (btn.classList.contains('bar-filter')) btn.setAttribute('aria-label', count ? u.filtersActive(count) : u.filters);
+  });
 
   // summary line above the menu
   const summary = document.querySelector('.filter-summary');
@@ -447,14 +596,15 @@ function applyFilters() {
     if (p) p.innerHTML = `${esc(parts.join(' · '))} · <b>${u.dishes(food)}</b>`;
   }
 
-  // controls in the sheet
+  // chips (row + sheet) and the allergen checkboxes
   document.querySelectorAll('[data-diet]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-diet') === state.diet)));
-  document.querySelector('[data-gf]')?.setAttribute('aria-pressed', String(state.exclude.has('gluten')));
+  document.querySelectorAll('[data-gf]').forEach((b) => b.setAttribute('aria-pressed', String(state.exclude.has('gluten'))));
   document.querySelectorAll('.al-opt input').forEach((i) => {
     if (i instanceof HTMLInputElement) i.checked = state.exclude.has(/** @type {AllergenId} */ (i.value));
   });
   const show = document.querySelector('[data-show-count]');
   if (show) show.textContent = u.show(food);
+  current = null;
   spy();
 }
 
@@ -464,7 +614,7 @@ function resetFilters() {
   applyFilters();
 }
 
-/* ---------- sticky bar: height + scrollspy ---------- */
+/* ---------- sticky bar: height, scrollspy, sliding underline ---------- */
 
 /** @type {ResizeObserver | null} */
 let barObserver = null;
@@ -472,9 +622,20 @@ function observeBar() {
   const bar = document.querySelector('.bar');
   if (!bar) return;
   barObserver?.disconnect();
-  const set = () => root.style.setProperty('--bar-h', `${Math.round(bar.getBoundingClientRect().height)}px`);
+  const set = () => { root.style.setProperty('--bar-h', `${Math.round(bar.getBoundingClientRect().height)}px`); moveIndicator(); };
   if ('ResizeObserver' in window) { barObserver = new ResizeObserver(set); barObserver.observe(bar); }
   set();
+}
+
+/** Slides the underline under the current tab. */
+function moveIndicator() {
+  const ind = document.querySelector('.cats .ind');
+  if (!(ind instanceof HTMLElement)) return;
+  const a = document.querySelector('.cats a[aria-current="true"]');
+  if (!(a instanceof HTMLElement)) { ind.style.opacity = '0'; return; }
+  ind.style.opacity = '1';
+  ind.style.width = `${a.offsetWidth}px`;
+  ind.style.transform = `translateX(${a.offsetLeft}px)`;
 }
 
 let lockSpy = 0;
@@ -483,7 +644,7 @@ let current = null;
 
 /** @param {string | null} id */
 function setCurrent(id) {
-  if (id === current && document.querySelector(`.cats a[aria-current="true"]`)) return;
+  if (id === current) return;
   current = id;
   const cats = document.querySelector('.cats');
   if (id === null && cats) cats.scrollTo({ left: 0, behavior: behavior() });
@@ -498,6 +659,7 @@ function setCurrent(id) {
       }
     }
   });
+  moveIndicator();
 }
 
 function spy() {
@@ -546,7 +708,7 @@ function setLang(l, save) {
     if (after !== undefined) scrollBy(0, after - before);
   }
   if (focusedLang) /** @type {HTMLElement | null} */ (document.querySelector(`[data-lang="${focusedLang}"]`))?.focus();
-  openSheets.forEach((id) => /** @type {HTMLDialogElement | null} */ ($id(id))?.showModal());
+  openSheets.forEach((id) => (id === 'sheet-dish' && openDish ? showDish(openDish) : /** @type {HTMLDialogElement | null} */ ($id(id))?.showModal()));
 }
 
 /* ---------- toast ---------- */
@@ -563,7 +725,7 @@ function toast(text) {
   toastTimer = window.setTimeout(() => el.classList.remove('show'), 3200);
 }
 
-/* ---------- events (delegated once, so they survive re-renders) ---------- */
+/* ---------- sheets ---------- */
 
 /** @param {string} id */
 function openSheet(id) {
@@ -571,8 +733,24 @@ function openSheet(id) {
   if (d instanceof HTMLDialogElement && !d.open) d.showModal();
 }
 
+/** @param {string} id */
+function showDish(id) {
+  const sheet = $id('sheet-dish');
+  const box = sheet?.querySelector('.ds');
+  if (!(sheet instanceof HTMLDialogElement) || !box) return;
+  openDish = id;
+  box.innerHTML = renderDishSheet(id);
+  sheet.classList.toggle('has-media', !!box.querySelector('.ds-media'));
+  wirePhotos(box);
+  if (!sheet.open) sheet.showModal();
+  sheet.scrollTop = 0;
+  /** @type {HTMLElement | null} */ (box.querySelector('.ds-close'))?.focus();
+}
+
 let filtersAtOpen = '';
 const filterKey = () => `${state.diet}|${[...state.exclude].sort().join(',')}`;
+
+/* ---------- events (delegated once, so they survive re-renders) ---------- */
 
 document.addEventListener('click', (e) => {
   const target = /** @type {Element} */ (e.target);
@@ -584,6 +762,9 @@ document.addEventListener('click', (e) => {
   const cat = target.closest('a[data-cat]');
   if (cat) { e.preventDefault(); goTo(cat.getAttribute('data-cat') || ''); return; }
 
+  const dish = target.closest('[data-dish]');
+  if (dish) { showDish(dish.getAttribute('data-dish') || ''); return; }
+
   const diet = target.closest('[data-diet]');
   if (diet) {
     const v = /** @type {'vegetarian' | 'vegan'} */ (diet.getAttribute('data-diet'));
@@ -594,15 +775,6 @@ document.addEventListener('click', (e) => {
   if (target.closest('[data-gf]')) {
     if (state.exclude.has('gluten')) state.exclude.delete('gluten'); else state.exclude.add('gluten');
     applyFilters();
-    return;
-  }
-
-  const al = target.closest('.al-btn');
-  if (al) {
-    const open = al.getAttribute('aria-expanded') !== 'true';
-    al.setAttribute('aria-expanded', String(open));
-    const panel = $id(al.getAttribute('aria-controls') || '');
-    if (panel) panel.hidden = !open;
     return;
   }
 
@@ -624,10 +796,18 @@ document.addEventListener('change', (e) => {
   applyFilters();
 });
 
-// After closing the filter sheet with new filters, bring the (shorter) menu back into view.
 document.addEventListener('close', (e) => {
-  if (!(e.target instanceof HTMLDialogElement) || e.target.id !== 'sheet-filters') return;
-  if (filterKey() === filtersAtOpen) return;
+  if (!(e.target instanceof HTMLDialogElement)) return;
+  if (e.target.id === 'sheet-dish') {
+    // back to the row the dish was opened from
+    const id = openDish;
+    openDish = null;
+    const btn = document.querySelector(`.dish [data-dish="${id}"]`);
+    if (btn instanceof HTMLElement) btn.focus({ preventScroll: true });
+    return;
+  }
+  // After closing the filter sheet with new filters, bring the (shorter) menu back into view.
+  if (e.target.id !== 'sheet-filters' || filterKey() === filtersAtOpen) return;
   const main = $id('menu');
   if (main && main.getBoundingClientRect().top < 0) {
     scrollTo({ top: scrollY + main.getBoundingClientRect().top - (document.querySelector('.bar')?.getBoundingClientRect().height || 0), behavior: 'auto' });
@@ -637,6 +817,8 @@ document.addEventListener('close', (e) => {
 /** @type {number} */
 let raf = 0;
 addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; spy(); }); }, { passive: true });
+addEventListener('resize', moveIndicator, { passive: true });
+document.fonts?.ready.then(moveIndicator);
 
 // Another tab (or the studio page this demo is embedded in) changed the language.
 addEventListener('storage', (e) => {

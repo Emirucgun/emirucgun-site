@@ -50,8 +50,9 @@ export interface Dish {
   /** Every allergen the dish contains, including hidden ones (stock, wine, breadcrumbs…). [] if none. */
   allergens: AllergenId[];
   tags?: Tag[];
-  /** Absolute path, e.g. '/studio/demo/menu/photos/bunet.webp'. Square, 400 × 400 px, under 40 KB.
-      If the file is missing the card simply shows without a photo. */
+  /** Absolute path to the square master photo, e.g. '/studio/demo/menu/photos/bunet.jpg' (at least 1200 × 1200).
+      Run `python3 photos.py` in this folder: the page loads the bunet-240/480/960.webp copies it makes.
+      Dishes without a photo get a text-only row; if the files are missing the row also falls back to text-only. */
   photo?: string;
   /** e.g. { it: 'Solo il giovedì', en: 'Thursdays only' } */
   available?: Localized;
@@ -95,6 +96,9 @@ export interface Restaurant {
   tagline?: Localized;
   /** Logo shown above the name (SVG or PNG, absolute path). Leave out for none. */
   logo?: { src: string; width: number; height: number };
+  /** Wide photo (16:9, at least 1600 px wide) at the top of the page. Run `python3 photos.py`:
+      the page loads the -800/-1600 .avif and .webp copies. Leave out for a header without photo. */
+  coverPhoto?: { src: string; alt: Localized };
   address: { street: string; city: string };
   /** International format, used for the Call button: '+390110000000'. */
   phone: string;

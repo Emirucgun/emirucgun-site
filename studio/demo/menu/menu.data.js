@@ -33,6 +33,11 @@ const menu = {
       en: 'Home cooking under the wisteria pergola, since 1962.'
     },
     logo: { src: '/studio/demo/menu/logo.svg', width: 64, height: 64 },
+    // Wide photo at the top of the page (16:9). Run photos.py after adding or replacing it.
+    coverPhoto: {
+      src: '/studio/demo/menu/photos/cover.jpg',
+      alt: { it: 'Il cortile della trattoria sotto il pergolato di glicini', en: 'The trattoria courtyard under the wisteria pergola' }
+    },
     address: { street: 'Via dei Tre Glicini 3', city: '10124 Torino' },
     phone: '+390110000000',
     phoneDisplay: '011 000 0000',
@@ -92,6 +97,7 @@ const menu = {
             en: 'Thin slices of rosy veal under our tuna and caper sauce.'
           },
           price: 13,
+          photo: '/studio/demo/menu/photos/vitello-tonnato.jpg',
           allergens: ['eggs', 'fish'] // tuna + anchovies, egg mayonnaise
         },
         {
@@ -102,6 +108,7 @@ const menu = {
             en: 'Raw Piedmontese Fassona beef, chopped by hand and dressed simply with olive oil, lemon and salt.'
           },
           price: 14,
+          photo: '/studio/demo/menu/photos/battuta-fassona.jpg',
           allergens: []
         },
         {
@@ -112,6 +119,7 @@ const menu = {
             en: 'Little fresh cheeses in a fiery green sauce of parsley, garlic, anchovies, vinegar-soaked breadcrumbs and chilli.'
           },
           price: 9,
+          photo: '/studio/demo/menu/photos/tomini-elettrici.jpg',
           allergens: ['gluten', 'fish', 'milk', 'sulphites'], // bread, anchovies, cheese, wine vinegar
           tags: ['spicy']
         },
@@ -152,6 +160,7 @@ const menu = {
             en: 'Tiny hand-pinched ravioli filled with roast veal, pork, rabbit and Parmigiano, served in their own roasting juices.'
           },
           price: 15,
+          photo: '/studio/demo/menu/photos/agnolotti-plin.jpg',
           allergens: ['gluten', 'eggs', 'milk', 'celery', 'sulphites'], // egg pasta, Parmigiano, roast with soffritto and wine
           tags: ['house']
         },
@@ -163,6 +172,7 @@ const menu = {
             en: 'Whisper-thin 30-yolk tagliolini, cut by knife, with a slow-cooked white veal ragù and rosemary.'
           },
           price: 14,
+          photo: '/studio/demo/menu/photos/tajarin-ragu.jpg',
           allergens: ['gluten', 'eggs', 'celery', 'sulphites'] // soffritto, white wine
         },
         {
@@ -184,6 +194,7 @@ const menu = {
             en: 'Carnaroli rice cooked with Barolo and vegetable stock, finished with mountain butter.'
           },
           price: 14,
+          photo: '/studio/demo/menu/photos/risotto-barolo.jpg',
           allergens: ['milk', 'celery', 'sulphites'], // butter, vegetable stock, wine
           tags: ['vegetarian']
         },
@@ -214,6 +225,7 @@ const menu = {
             en: 'Beef shoulder braised for six hours in Barolo with its vegetables, on soft polenta.'
           },
           price: 22,
+          photo: '/studio/demo/menu/photos/brasato-barolo.jpg',
           allergens: ['celery', 'sulphites'],
           tags: ['house']
         },
@@ -317,6 +329,7 @@ const menu = {
             en: 'Piedmont’s cocoa and amaretti pudding with caramel. Nonna Teresa’s recipe.'
           },
           price: 6.5,
+          photo: '/studio/demo/menu/photos/bunet.jpg',
           allergens: ['eggs', 'milk', 'nuts'], // amaretti = almonds
           tags: ['house', 'vegetarian']
         },
@@ -328,6 +341,7 @@ const menu = {
             en: 'Whisked to order with Marsala, served with crumbly cornmeal biscuits.'
           },
           price: 7,
+          photo: '/studio/demo/menu/photos/zabaione.jpg',
           allergens: ['gluten', 'eggs', 'milk', 'sulphites'], // biscuits: wheat + butter · Marsala
           tags: ['vegetarian']
         },
