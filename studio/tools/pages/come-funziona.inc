@@ -2,7 +2,7 @@
 <section class="page-head" aria-labelledby="page-title" data-bar-after>
   <div class="wrap">
     <p class="eyebrow"><span lang="it">Come funziona</span><span lang="en">How it works</span></p>
-    <h1 id="page-title"><span lang="it">Semplice, veloce, senza rischi.</span><span lang="en">Simple, fast, risk-free.</span></h1>
+    <h1 id="page-title"><span lang="it">Semplice e chiaro, passo per passo.</span><span lang="en">Simple and clear, step by step.</span></h1>
     <p class="lead"><span lang="it">Voi avete già una cucina da mandare avanti: a questa parte penso io. Ecco cosa succede dopo il primo messaggio.</span><span lang="en">You already have a kitchen to run: I take care of this part. Here's what happens after your first message.</span></p>
   </div>
 </section>

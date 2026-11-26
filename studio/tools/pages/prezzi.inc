@@ -249,7 +249,7 @@
   <div class="wrap narrow">
     <div class="head">
       <p class="eyebrow"><span lang="it">Domande frequenti</span><span lang="en">FAQ</span></p>
-      <h2 id="faq-title"><span lang="it">Le domande che mi fanno più spesso</span><span lang="en">The questions I'm asked most</span></h2>
+      <h2 id="faq-title"><span lang="it">Domande e risposte</span><span lang="en">Questions and answers</span></h2>
     </div>
     <details>
       <summary><span lang="it">Devo darti le mie password?</span><span lang="en">Do I need to give you my passwords?</span></summary>

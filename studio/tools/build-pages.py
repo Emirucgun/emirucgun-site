@@ -181,7 +181,7 @@ PAGES = [
          title='Come funziona: dall\'analisi gratuita alla consegna · Emir Uçgun',
          title_en='How it works: from the free review to delivery · Emir Uçgun',
          desc='Come lavoro con i ristoranti di Torino: analisi gratuita, anteprima prima di pagare, nessuna password, consegna in 2–⁠5 giorni. Più la guida per fotografare i piatti con il telefono.',
-         og_title='Come funziona: semplice, veloce, senza rischi',
+         og_title='Come funziona: semplice e chiaro, passo per passo',
          og_desc='Quattro passi, nessuna password, prima l\'anteprima. E una guida per scattare foto dei piatti con il telefono.'),
 ]
 
