@@ -112,6 +112,15 @@ if (C.showWebsiteDemos !== true) {
   }
 }
 
+// no Turkish dotted capital I (U+0130) / dotless i (U+0131) anywhere in the site's text (an uppercase done under a tr locale turns
+// "Glicini" into "GL\u0130C\u0130N\u0130"). Every page also sets lang="it"/"en" so CSS text-transform never uses tr rules.
+const walkText = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.name.startsWith('.') || e.name === 'node_modules' ? [] : e.isDirectory() ? walkText(join(dir, e.name)) : /\.(html|js|mjs|css|svg|inc|json)$/.test(e.name) ? [join(dir, e.name)] : []));
+for (const f of walkText(STUDIO)) {
+  const src = readFileSync(f, 'utf8');
+  if (/[\u0130\u0131]/.test(src)) errors.push(`${f.slice(REPO.length + 1)}: contains a Turkish dotted I (U+0130) or dotless i (U+0131)`);
+  if (f.endsWith('.html') && /<html\b/.test(src) && !/<html[^>]*\slang="(it|en)"/.test(src) && !/<html lang="\$\{/.test(src)) errors.push(`${f.slice(REPO.length + 1)}: <html> without lang="it" or "en"`);
+}
+
 // private previews (/anteprima/<slug>) are never linked from any other page of the site
 const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));
 for (const f of walk(STUDIO)) {
