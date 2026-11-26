@@ -29,6 +29,7 @@
 <link rel="preload" href="/studio/fonts/SpaceGrotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/studio/studio.css">
+<script src="/studio/before-after.js" defer></script>
 <script src="/studio/site.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Emir Uçgun Studio","url":"https://studio.emirucgun.com/","image":"https://studio.emirucgun.com/studio/og.png","description":"Foto dei piatti, profilo Google e menù digitale IT/EN con QR per ristoranti di Torino.","areaServed":{"@type":"City","name":"Torino"},"address":{"@type":"PostalAddress","addressLocality":"Torino","addressCountry":"IT"},"founder":{"@type":"Person","name":"Emir Uçgun","url":"https://www.emirucgun.com"},"knowsLanguage":["it","en","tr"]}</script>
 </head>
@@ -90,7 +91,7 @@
     </div>
 
     <div class="collage">
-    <figure id="prima-dopo">
+    <figure id="prima-dopo" data-ba-set>
       <div class="ba" data-ba>
         <picture>
           <source type="image/avif" srcset="/studio/img/dish-before-480.avif 480w, /studio/img/dish-before-800.avif 800w, /studio/img/dish-before-1200.avif 1200w" sizes="(min-width:1120px) 500px, (min-width:900px) 45vw, calc(100vw - 32px)">
@@ -109,6 +110,7 @@
         <input type="range" min="0" max="100" value="50" step="1" aria-label="Confronto prima e dopo: spostate per vedere il ritocco" data-en-aria-label="Before and after comparison: move to see the edit">
         <span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
       </div>
+      <p class="ba-meta" data-ba-meta hidden></p>
       <figcaption><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></span></figcaption>
     </figure>
     <!-- two of the real social posts from /esempi: shown from 600 px up, next to the slider -->

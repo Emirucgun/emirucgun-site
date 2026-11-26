@@ -16,7 +16,7 @@
       <p><span lang="it">Una foto scattata con il telefono in cucina, prima e dopo il mio ritocco. Trascinate per vedere la differenza.</span><span lang="en">A photo taken on a phone in the kitchen, before and after my edit. Drag to see the difference.</span></p>
     </div>
     <div class="duo">
-      <figure>
+      <figure data-ba-set>
         <div class="ba" data-ba>
         <picture>
           <source type="image/avif" srcset="/studio/img/dish-before-480.avif 480w, /studio/img/dish-before-800.avif 800w, /studio/img/dish-before-1200.avif 1200w" sizes="(min-width:1120px) 600px, (min-width:900px) 55vw, calc(100vw - 32px)">
@@ -35,12 +35,13 @@
         <input type="range" min="0" max="100" value="50" step="1" aria-label="Confronto prima e dopo della foto: spostate per vedere il ritocco" data-en-aria-label="Photo before and after comparison: move to see the edit">
         <span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
         </div>
+        <p class="ba-meta" data-ba-meta hidden></p>
         <figcaption><span lang="it">Cambiano luce, colori e sfondo. Il piatto resta quello che il cliente riceverà davvero.</span><span lang="en">Light, colour and background change. The dish stays exactly what the customer will receive.</span></figcaption>
       </figure>
       <div>
         <div class="promise"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><strong><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></strong><span><span lang="it">Niente immagini generate o prese da internet.</span><span lang="en">No generated images, nothing taken from the internet.</span></span></span></div>
         <div class="promise"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><strong><span lang="it">Pronte per le piattaforme.</span><span lang="en">Ready for the platforms.</span></strong><span><span lang="it">Formati giusti per Deliveroo, Glovo e Just Eat, senza scritte o loghi sul piatto.</span><span lang="en">The right formats for Deliveroo, Glovo and Just Eat, no text or logos over the dish.</span></span></span></div>
-        <p class="mt-16"><a class="more" href="/studio/prezzi#pacchetti"><span lang="it">Pacchetti foto da <span data-price="photo">149 €</span></span><span lang="en">Photo packages from <span data-price="photo">149 €</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p class="mt-16"><a class="more" href="/studio/prezzi#pacchetti"><span lang="it">Pacchetti foto da <span data-price="trial">79 €</span></span><span lang="en">Photo packages from <span data-price="trial">79 €</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 
@@ -49,7 +50,7 @@
         <h3><span lang="it">Così la vede chi ordina</span><span lang="en">How customers see it when ordering</span></h3>
         <p><span lang="it">Sulle app di delivery il piatto è una piccola foto in mezzo a decine di altre: si sceglie in pochi secondi, con gli occhi.</span><span lang="en">On delivery apps your dish is a small photo among dozens of others: people choose in seconds, with their eyes.</span></p>
       </div>
-      <div class="app" aria-label="Esempio di scheda di un piatto in un'app di delivery" data-en-aria-label="Example of a dish card in a delivery app" role="group">
+      <div class="app" data-ba-set="first" aria-label="Esempio di scheda di un piatto in un'app di delivery" data-en-aria-label="Example of a dish card in a delivery app" role="group">
         <div class="app-bar"><b><span lang="it">I più ordinati</span><span lang="en">Most ordered</span></b><span lang="it">Esempio</span><span lang="en">Example</span></div>
         <div class="ba" data-ba>
         <picture>
@@ -68,7 +69,7 @@
         <input type="range" min="0" max="100" value="50" step="1" aria-label="Confronto prima e dopo nella scheda dell'app" data-en-aria-label="Before and after comparison in the app card">
         <span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
         </div>
-        <div class="app-dish"><div><b>Kebab al piatto</b><span><span lang="it">Carne, patatine, insalata e salse</span><span lang="en">Meat, fries, salad and sauces</span></span></div></div>
+        <div class="app-dish"><div><b data-ba-dish><span lang="it">Kebab al piatto</span><span lang="en">Kebab plate</span></b><span data-ba-desc><span lang="it">Carne, patatine, insalata e salse</span><span lang="en">Meat, fries, salad and sauces</span></span></div></div>
       </div>
     </div>
   </div>

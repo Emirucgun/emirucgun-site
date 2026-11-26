@@ -78,6 +78,7 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
   {
     const { page, ctx } = await open(browser, '/studio/');
     const box = page.locator('#prima-dopo [data-ba]');
+    await box.scrollIntoViewIfNeeded(); // at 375 px the slider starts below the fold
     const bb = await box.boundingBox();
     await page.mouse.move(bb.x + bb.width * 0.5, bb.y + bb.height / 2);
     await page.mouse.down();
@@ -127,6 +128,57 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
     ok(extra === '1200 €' || extra === '1.200 €', `calculator 500 × 20 € × 12% = ${extra}`);
     ok(days === '9', `pays for itself in ${days} days (349 / (1200/30) → 9)`);
     await ctx.close();
+  }
+
+
+  console.log('\n# Before/after examples (before-after.js)');
+  {
+    // the real list: one example, so no dish tabs
+    const { page, ctx, errors } = await open(browser, '/studio/');
+    ok(await page.locator('.ba-tabs').count() === 0, 'one example: no dish tabs');
+    ok(await page.locator('#prima-dopo [data-ba-meta]').isHidden(), 'no credit: the credit line stays hidden');
+    ok(errors.length === 0, `no JS errors ${errors.join(' | ')}`);
+    await ctx.close();
+  }
+  for (const path of ['/studio/', '/studio/esempi']) {
+    // two examples (the second reuses the kebab files the other way round: only the mechanism is tested)
+    const { page, ctx, errors } = await open(browser, path);
+    await ctx.close();
+    const c2 = await browser.newContext({ viewport: { width: 375, height: 740 }, reducedMotion: 'reduce' });
+    await c2.route('**/studio/before-after.js', async (r) => {
+      const file = require('node:path').join(__dirname, '..', 'before-after.js');
+      const src = require('node:fs').readFileSync(file, 'utf8').replace(/\n\];\s*$/, `\n  ,
+  { id: 'test', before: '/studio/img/dish-after', after: '/studio/img/dish-before', widths: [480, 800, 1200], width: 1200, height: 896,
+    dish: { it: 'Piatto di prova', en: 'Test dish' }, credit: { it: 'Trattoria di prova, Torino', en: 'Test trattoria, Turin' },
+    alt: { before: { it: 'Prima di prova', en: 'Test before' }, after: { it: 'Dopo di prova', en: 'Test after' } } }
+];`);
+      await r.fulfill({ contentType: 'text/javascript', body: src });
+    });
+    const p2 = await c2.newPage();
+    const errs = [];
+    p2.on('pageerror', (e) => errs.push(e.message));
+    await p2.goto(BASE + path, { waitUntil: 'networkidle' });
+    const fig = p2.locator('[data-ba-set]:not([data-ba-set="first"])').first();
+    const tabs = fig.locator('[role="tab"]');
+    ok(await tabs.count() === 2, `${path}: two examples → two dish tabs`);
+    ok(await tabs.first().getAttribute('aria-selected') === 'true', `${path}: first tab selected`);
+    await tabs.nth(1).click();
+    ok(await tabs.nth(1).getAttribute('aria-selected') === 'true', `${path}: clicking the second tab selects it`);
+    const imgs = await fig.locator('[data-ba] img').evaluateAll((els) => els.map((e) => e.getAttribute('src') + '|' + e.alt));
+    ok(imgs[0] === '/studio/img/dish-after-800.webp|Prima di prova' && imgs[1] === '/studio/img/dish-before-800.webp|Dopo di prova', `${path}: images and alt swap (${imgs})`);
+    const avif = await fig.locator('[data-ba] > picture source[type="image/avif"]').first().getAttribute('srcset');
+    ok(avif.includes('/studio/img/dish-after-1200.avif 1200w'), `${path}: AVIF srcset swaps with every size`);
+    ok(norm(await fig.locator('[data-ba-meta]').innerText()) === 'Trattoria di prova, Torino', `${path}: credit shown`);
+    await tabs.nth(1).focus();
+    await p2.keyboard.press('ArrowLeft');
+    ok(await tabs.first().getAttribute('aria-selected') === 'true', `${path}: arrow keys move between dishes`);
+    ok(await fig.locator('[data-ba-meta]').isHidden(), `${path}: no credit on the first example → hidden again`);
+    await p2.click('[data-set-lang="en"]');
+    ok(norm(await tabs.nth(1).innerText()) === 'Test dish', `${path}: tab names in English`);
+    ok(await fig.locator('[data-ba] img').first().getAttribute('alt') === 'Before: the original photo of the dish, taken on a phone in the kitchen', `${path}: alt in English`);
+    if (path === '/studio/esempi') ok(await p2.locator('.app [role="tab"]').count() === 0, '/studio/esempi: the delivery-app card keeps the first example, no tabs');
+    ok(errs.length === 0 && errors.length === 0, `${path}: no JS errors ${errs.join(' | ')}`);
+    await c2.close();
   }
 
   await browser.close();

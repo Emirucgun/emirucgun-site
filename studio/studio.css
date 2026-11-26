@@ -217,6 +217,13 @@ html:not(.js) .burger{display:none}
 .ba-tag.a{right:12px;background:#fff;color:var(--ink)}
 .ba-hint{position:absolute;left:50%;bottom:14px;translate:-50% 0;z-index:3;pointer-events:none;font-size:.8rem;font-weight:600;color:#fff;background:rgba(23,21,19,.72);padding:6px 12px;border-radius:999px;white-space:nowrap;transition:opacity .3s}
 .ba.touched .ba-hint{opacity:0}
+/* dish tabs above the slider (only with two or more examples in before-after.js) */
+.ba-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:12px;padding:2px}
+.ba-tabs::-webkit-scrollbar{display:none}
+.ba-tabs [role=tab]{flex:none;min-height:44px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:var(--ink);font:600 .875rem/1 var(--sans);cursor:pointer;white-space:nowrap}
+.ba-tabs [role=tab][aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.ba-tabs [role=tab]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ba-meta{margin-top:10px;font-size:.8125rem;color:var(--ink-2)}
 
 /* ---------- proof strip: two big numbers between hairlines ---------- */
 .proof{padding-block:40px;border-block:1px solid var(--line)}

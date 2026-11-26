@@ -73,7 +73,7 @@ def head(p):
 {p.get('preload', '')}<link rel="preload" href="/studio/fonts/SpaceGrotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/studio/fonts/Inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/studio/studio.css">
-<script src="/studio/site.js" defer></script>
+{p.get('pre_scripts', '')}<script src="/studio/site.js" defer></script>
 {p.get('scripts', '')}</head>
 <body>
 '''
@@ -169,6 +169,7 @@ PAGES = [
          desc='Foto dei piatti prima e dopo il ritocco, un profilo Google completato, un menù QR IT/EN funzionante e post social per ristoranti di Torino.',
          og_title='Prima e dopo: foto dei piatti, profilo Google e menù QR',
          og_desc='Trascinate per vedere la differenza. Foto reali ritoccate, profilo Google completo e un menù QR da provare.',
+         pre_scripts='<script src="/studio/before-after.js" defer></script>\n',
          scripts='<script src="/studio/posts-gallery.js" defer></script>\n'),
     dict(slug='prezzi', out='prezzi/index.html', body='prezzi.inc',
          title='Prezzi: sito con menù, foto dei piatti, profilo Google · Emir Uçgun',

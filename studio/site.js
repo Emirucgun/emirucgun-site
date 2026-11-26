@@ -246,6 +246,74 @@
       io.observe(box);
     }
   });
+  /* ---------- before/after examples: the list in before-after.js (window.STUDIO_BA) ----------
+     A figure with [data-ba-set] holds one slider. The HTML already shows the first example (no-JS and first
+     paint); with two or more examples, a row of dish names above the slider switches between them.
+     data-ba-set="first" (the delivery-app card) always shows the first one, without tabs. */
+  const BA = (Array.isArray(window.STUDIO_BA) ? window.STUDIO_BA : []).filter((e) => e && e.before && e.after && e.widths && e.widths.length);
+  const both = (v) => (v && typeof v === 'object' ? v : { it: v || '', en: v || '' });
+  const bilingual = (v) => { const t = both(v); return `<span lang="it">${esc(t.it)}</span><span lang="en">${esc(t.en || t.it)}</span>`; };
+  function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]); }
+  const showBA = (fig, i) => {
+    const e = BA[i];
+    if (!e) return;
+    fig.dataset.baIndex = String(i);
+    const pics = $$('[data-ba] > picture', fig);
+    [['before', pics[0]], ['after', pics[1]]].forEach(([k, pic]) => {
+      if (!pic) return;
+      $$('source', pic).forEach((s) => {
+        const ext = s.type === 'image/avif' ? 'avif' : 'webp';
+        s.srcset = e.widths.map((w) => `${e[k]}-${w}.${ext} ${w}w`).join(', ');
+      });
+      const img = $('img', pic);
+      img.src = `${e[k]}-${e.widths[Math.min(1, e.widths.length - 1)]}.webp`;
+      if (e.width && e.height) { img.width = e.width; img.height = e.height; }
+      const alt = both(e.alt && e.alt[k]);
+      img.setAttribute('data-it-alt', alt.it);
+      img.setAttribute('data-en-alt', alt.en || alt.it);
+      img.alt = lang() === 'en' ? alt.en || alt.it : alt.it;
+    });
+    $$('[data-ba-dish]', fig).forEach((el) => { el.innerHTML = bilingual(e.dish); });
+    $$('[data-ba-desc]', fig).forEach((el) => { el.innerHTML = e.desc ? bilingual(e.desc) : ''; });
+    const meta = $('[data-ba-meta]', fig);
+    if (meta) { meta.innerHTML = e.credit ? bilingual(e.credit) : ''; meta.hidden = !e.credit; }
+    $$('[role="tab"]', fig).forEach((t, j) => { t.setAttribute('aria-selected', String(j === i)); t.tabIndex = j === i ? 0 : -1; });
+  };
+  $$('[data-ba-set]').forEach((fig, n) => {
+    if (!BA.length) return;
+    const slider = $('[data-ba]', fig);
+    if (BA.length > 1 && fig.dataset.baSet !== 'first' && slider) {
+      const list = document.createElement('div');
+      list.className = 'ba-tabs';
+      list.setAttribute('role', 'tablist');
+      list.setAttribute('aria-label', 'Piatti'); list.setAttribute('data-it-aria-label', 'Piatti'); list.setAttribute('data-en-aria-label', 'Dishes');
+      if (lang() === 'en') list.setAttribute('aria-label', 'Dishes');
+      slider.id = slider.id || `ba-panel-${n}`;
+      slider.setAttribute('role', 'tabpanel');
+      BA.forEach((e, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-controls', slider.id);
+        b.innerHTML = bilingual(e.dish);
+        b.addEventListener('click', () => showBA(fig, i));
+        list.append(b);
+      });
+      // arrows move between dishes, as in any tab row
+      list.addEventListener('keydown', (ev) => {
+        const tabs = $$('[role="tab"]', list), cur = tabs.indexOf(document.activeElement);
+        const to = { ArrowRight: cur + 1, ArrowLeft: cur - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+        if (cur < 0 || to === undefined) return;
+        ev.preventDefault();
+        const k = (to + tabs.length) % tabs.length;
+        tabs[k].focus();
+        showBA(fig, k);
+      });
+      slider.before(list);
+    }
+    showBA(fig, 0);
+  });
+
   // "Guarda il prima/dopo": scroll to the slider and replay the sweep
   $$('[data-show-ba]').forEach((a) => a.addEventListener('click', () => {
     const box = document.getElementById(a.getAttribute('href').slice(1))?.querySelector('[data-ba]');
