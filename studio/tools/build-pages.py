@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes the shared parts (head, banner, header, CTA band, footer, sticky bar) of the studio subpages.
+"""Writes the shared parts (head, header, CTA band, footer, sticky bar) of the studio subpages.
 
 The site has no build step: the HTML files in studio/ are what Vercel serves. This script is only a
 convenience to keep the three subpages' shared chrome identical. Page bodies live in studio/tools/pages/*.inc.
@@ -50,7 +50,7 @@ def head(p):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){{var d=document.documentElement,l;d.classList.add('js');try{{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}}catch(e){{}}if(l==='en')d.lang='en'}})();</script>
-<!-- config.js loads first (it is tiny): it decides offer or regular prices before the page is drawn. -->
+<!-- config.js loads first (it is tiny): prices and settings, ready before the page is drawn. -->
 <script src="/studio/config.js"></script>
 <title>{p['title']}</title>
 <meta name="description" content="{p['desc']}">
@@ -79,22 +79,13 @@ def head(p):
 '''
 
 
-def chrome_top(current, banner_href='/studio/prezzi'):
+def chrome_top(current):
     def nav(href, it, en, key):
         cur = ' aria-current="page"' if key == current else ''
         return f'<a href="{href}"{cur}><span lang="it">{it}</span><span lang="en">{en}</span></a>'
     return f'''{SPRITE}
 
 <a class="skip" href="#main"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
-
-<!-- Black Friday banner: shown only while the offer runs (dates and prices in config.js) -->
-<div class="promo offer-only">
-  <a href="{banner_href}">
-    <span lang="it"><span class="short"><b>Black Friday</b> fino al <span data-offer-date>30 novembre</span></span><span class="long"><b>Black Friday</b>: prezzi validi fino al <span data-offer-date>30 novembre</span></span><span class="sr-only">. Termina il <span data-offer-date>30 novembre</span> alle <span data-offer-time>23:59</span>.</span></span>
-    <span lang="en"><span class="short"><b>Black Friday</b> until <span data-offer-date>30 November</span></span><span class="long"><b>Black Friday</b>: prices valid until <span data-offer-date>30 November</span></span><span class="sr-only">. Ends on <span data-offer-date>30 November</span> at <span data-offer-time>23:59</span>.</span></span>
-    <span class="cd-t" data-cd-text aria-hidden="true"></span>
-  </a>
-</div>
 
 <header class="top">
   <div class="wrap">
@@ -179,10 +170,10 @@ PAGES = [
          og_title='Prima e dopo: foto dei piatti, profilo Google e menù QR',
          og_desc='Trascinate per vedere la differenza. Foto reali ritoccate, profilo Google completo e un menù QR da provare.',
          scripts='<script src="/studio/posts-gallery.js" defer></script>\n'),
-    dict(slug='prezzi', out='prezzi/index.html', body='prezzi.inc', banner='#pacchetti',
+    dict(slug='prezzi', out='prezzi/index.html', body='prezzi.inc',
          title='Prezzi: sito con menù, foto dei piatti, profilo Google · Emir Uçgun',
          title_en='Prices: website with menu, dish photos, Google profile · Emir Uçgun',
-         desc='Pacchetti a prezzo fisso per ristoranti di Torino: Sito + Menù, Rinnovo totale, Foto dei piatti, Visibilità e Completo, più la gestione mensile. Prima l\'anteprima, poi pagate.',
+         desc='Pacchetti a prezzo fisso per ristoranti di Torino: Prova con 10 foto, Foto dei piatti, Visibilità, Completo, Sito + Menù e Rinnovo totale, più la gestione mensile. Prima l\'anteprima, poi pagate.',
          og_title='Prezzi chiari per il vostro ristorante: sito, menù, foto e Google',
          og_desc='Sito con menù IT/EN al posto del PDF, foto dei piatti e profilo Google: pacchetti a prezzo fisso e confronto completo.'),
     dict(slug='come-funziona', out='come-funziona/index.html', body='come-funziona.inc',
@@ -205,7 +196,7 @@ def flags(body):
 
 for p in PAGES:
     body = flags((ROOT / 'tools' / 'pages' / p['body']).read_text())
-    html = head(p) + chrome_top(p['slug'], p.get('banner', '/studio/prezzi')) + '\n<main id="main">\n' + body + BAND + BOTTOM
+    html = head(p) + chrome_top(p['slug']) + '\n<main id="main">\n' + body + BAND + BOTTOM
     out = ROOT / p['out']
     out.parent.mkdir(exist_ok=True)
     out.write_text(html)

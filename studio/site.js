@@ -1,7 +1,8 @@
 /* studio.emirucgun.com: shared script for every studio page. No dependencies.
    - IT | EN toggle: both languages are in the HTML as <span lang="it"> / <span lang="en">;
      CSS hides the inactive one. Attributes (alt, aria-label, …) switch via data-en-*.
-   - Prices, offer state and countdown come from config.js (window.STUDIO).
+   - Prices come from config.js (window.STUDIO). The optional time-limited offer (config `offer`, null = none)
+     only switches packages that have an `offer` price, and drives banner/countdown markup if a page has any.
    - WhatsApp / email links, mini form and calculator build their text from config.js too.
    - Before/after sliders, mobile menu, sticky bar, scroll reveal and count-up. */
 (() => {
@@ -27,7 +28,7 @@
   /* ---------- offer + prices ---------- */
   const offerOn = () => (typeof C.offerActive === 'function' ? C.offerActive() : false);
   const P = C.prices || {};
-  const priceOf = (k) => (P[k] ? (offerOn() ? P[k].offer : P[k].regular) : 0);
+  const priceOf = (k) => (P[k] ? (offerOn() && P[k].offer != null ? P[k].offer : P[k].regular) : 0);
   const money = (n, l = lang()) => new Intl.NumberFormat(l === 'en' ? 'en-GB' : 'it-IT', {
     style: 'currency', currency: 'EUR', minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2
   }).format(n);
@@ -38,7 +39,7 @@
   const renderPrices = (l) => {
     $$('[data-price]').forEach((el) => { if (P[el.dataset.price]) el.textContent = money(priceOf(el.dataset.price), l); });
     $$('[data-price-regular]').forEach((el) => { const p = P[el.dataset.priceRegular]; if (p) el.textContent = money(p.regular, l); });
-    $$('[data-price-offer]').forEach((el) => { const p = P[el.dataset.priceOffer]; if (p) el.textContent = money(p.offer, l); });
+    $$('[data-price-offer]').forEach((el) => { const p = P[el.dataset.priceOffer]; if (p && p.offer != null) el.textContent = money(p.offer, l); });
     $$('[data-eur]').forEach((el) => { el.textContent = money(+el.dataset.eur, l); });
     if (endDate) {
       $$('[data-offer-date]').forEach((el) => { el.textContent = fmtDate(el.closest('[lang]')?.lang || l); });

@@ -28,29 +28,30 @@ window.STUDIO = {
   // Your main, professional site.
   mainSite: 'https://www.emirucgun.com',
 
-  /* ---------- prices and the Black Friday offer ----------
-     The offer ends at `ends` (local time in `timeZone`). Until then the site shows the `offer`
-     price with the `regular` price struck through, plus the banner and countdown. From that
-     moment on, for every visitor, the banner and countdown disappear and only `regular` prices
-     are shown. Nothing else to change. To run a new offer, set a new `ends` date (and prices).
-     The numbers written inside the HTML are only the fallback for browsers without JavaScript:
-     run `node studio/tools/check-site.mjs` after changing prices and it lists any that differ. */
-  offer: {
-    name: 'Black Friday',
-    ends: '2026-11-30T23:59',
-    timeZone: 'Europe/Rome'
-  },
+  /* ---------- prices ----------
+     Every price on every page comes from here: change a number, save, done. The numbers written
+     inside the HTML are only the fallback for browsers without JavaScript: run
+     `node studio/tools/check-site.mjs` after changing prices and it lists any that differ.
+
+     Time-limited offer: switched off (null). The mechanism is still there for the future: set
+       offer: { name: 'Saldi', ends: '2027-01-31T23:59', timeZone: 'Europe/Rome' },
+     and add an `offer` price next to `regular` for the packages on offer (e.g. photo: { offer: 119, regular: 149 }).
+     Until `ends`, those packages show the `offer` price; the pages carry no banner, countdown or
+     struck-through price any more, so add that markup back too if you want it. */
+  offer: null,
   prices: {
-    photo:   { offer: 119, regular: 149 }, // Foto dei piatti
-    vis:     { offer: 249, regular: 349 }, // Visibilità
-    full:    { offer: 349, regular: 449 }, // Completo
-    site:    { offer: 449, regular: 599 }, // Sito + Menù
-    renew:   { offer: 649, regular: 849 }, // Rinnovo totale (Sito + Menù + Google + 20 foto)
-    monthly: { offer: 149, regular: 149 }  // Gestione mensile, per month (includes hosting + small site updates)
+    trial:   { regular: 79 },  // Prova: 10 dish photos, paid only if satisfied
+    photo:   { regular: 149 }, // Foto dei piatti
+    vis:     { regular: 349 }, // Visibilità
+    full:    { regular: 449 }, // Completo
+    site:    { regular: 599 }, // Sito + Menù
+    renew:   { regular: 849 }, // Rinnovo totale (Sito + Menù + Google + 20 foto)
+    monthly: { regular: 149 }  // Gestione mensile, per month (includes hosting + small site updates)
   },
 
   // Package names, used in the prefilled WhatsApp messages.
   packages: {
+    trial: { it: 'Prova', en: 'Trial' },
     photo: { it: 'Foto dei piatti', en: 'Dish photos' },
     vis: { it: 'Visibilità', en: 'Visibility' },
     full: { it: 'Completo', en: 'Complete' },
@@ -76,10 +77,18 @@ window.STUDIO = {
 };
 
 /* ---- Nothing to edit below. ----
-   Turns `ends` + `timeZone` into one exact moment, the same for every visitor whatever their
-   phone's clock zone, and marks the page before it is drawn so the right prices show at once. */
+   With an offer: turns `ends` + `timeZone` into one exact moment, the same for every visitor whatever
+   their phone's clock zone, and marks the page before it is drawn so the right prices show at once.
+   With `offer: null`: no offer, regular prices only. */
 (function (S) {
-  var m = /^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)$/.exec(S.offer.ends);
+  var m = S.offer && /^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)$/.exec(S.offer.ends || '');
+  if (!m) {
+    if (S.offer) console.warn('[studio] config.js: offer.ends must look like 2027-01-31T23:59. Offer ignored.');
+    S.offer = null;
+    S.offerActive = function () { return false; };
+    document.documentElement.setAttribute('data-offer', 'off');
+    return;
+  }
   var guess = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
   // offset of the time zone at that moment: format the UTC guess in the zone and compare
   var offsetAt = function (t) {
@@ -88,7 +97,7 @@ window.STUDIO = {
       new Intl.DateTimeFormat('en-US', { timeZone: S.offer.timeZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
         .formatToParts(new Date(t)).forEach(function (x) { p[x.type] = x.value; });
       return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute) - t;
-    } catch { return 3600000; } // Europe/Rome in winter
+    } catch (e) { return 3600000; } // Europe/Rome in winter
   };
   S.offer.endsAt = guess - offsetAt(guess - offsetAt(guess)); // two passes: right across DST changes
   S.offerActive = function () { return Date.now() < S.offer.endsAt; };

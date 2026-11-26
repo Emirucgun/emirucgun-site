@@ -40,7 +40,7 @@
       <div>
         <div class="promise"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><strong><span lang="it">Miglioro le vostre foto reali, non creo piatti finti.</span><span lang="en">I enhance your real photos, I don't invent dishes.</span></strong><span><span lang="it">Niente immagini generate o prese da internet.</span><span lang="en">No generated images, nothing taken from the internet.</span></span></span></div>
         <div class="promise"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><strong><span lang="it">Pronte per le piattaforme.</span><span lang="en">Ready for the platforms.</span></strong><span><span lang="it">Formati giusti per Deliveroo, Glovo e Just Eat, senza scritte o loghi sul piatto.</span><span lang="en">The right formats for Deliveroo, Glovo and Just Eat, no text or logos over the dish.</span></span></span></div>
-        <p class="mt-16"><a class="more" href="/studio/prezzi#pacchetti"><span lang="it">Pacchetti foto da <span data-price="photo">119 €</span></span><span lang="en">Photo packages from <span data-price="photo">119 €</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p class="mt-16"><a class="more" href="/studio/prezzi#pacchetti"><span lang="it">Pacchetti foto da <span data-price="photo">149 €</span></span><span lang="en">Photo packages from <span data-price="photo">149 €</span></span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 

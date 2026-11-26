@@ -1,9 +1,9 @@
-// Browser test for the studio site: offer switch, countdown, prices, WhatsApp links, slider, form, menu, sticky bar.
+// Browser test for the studio site: no leftover offer, prices, packages, WhatsApp links, slider, form, menu, sticky bar.
 // Needs Playwright (`npm i -g playwright` or any global install) and a local server on the repo root:
 //   npx serve -l 4173 .            (from the repository root, in another terminal)
 //   or, with no server running:  node studio/tools/run-site-test.cjs
 //   node studio/tools/site-test.cjs [http://localhost:4173]
-// The browser clock is set with Playwright's clock API, so the end date in config.js is tested as it is.
+// The browser clock is set with Playwright's clock API where a date matters.
 const { chromium } = require('playwright');
 const BASE = process.argv[2] || 'http://localhost:4173';
 const PAGES = ['/studio/', '/studio/esempi', '/studio/prezzi', '/studio/come-funziona'];
@@ -16,7 +16,7 @@ async function open(browser, path, time, opts = {}) {
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') errors.push(m.text()); });
   if (time) await page.clock.install({ time: new Date(time) });
   await page.goto(BASE + path, { waitUntil: 'networkidle' });
   return { page, ctx, errors };
@@ -28,85 +28,55 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
 (async () => {
   const browser = await chromium.launch();
 
-  console.log('\n# Offer running (2026-11-22 10:00 Rome)');
-  for (const path of PAGES) {
-    const { page, ctx, errors } = await open(browser, path, '2026-11-22T10:00:00+01:00');
-    ok(await page.getAttribute('html', 'data-offer') === 'on', `${path}: data-offer=on`);
-    ok(await visible(page, '.promo'), `${path}: banner visible`);
-    const cd = await page.textContent('.promo [data-cd-text]');
-    ok(cd === '8g 13h 59m', `${path}: banner countdown "${cd}" (expected 8g 13h 59m to 30/11 23:59)`);
-    ok(errors.length === 0, `${path}: no JS errors ${errors.join(' | ')}`);
-    await ctx.close();
+  // config.js has `offer: null`: whatever the date, no banner, countdown, struck price, offer label or badge.
+  for (const [label, time] of [['before 30 November', '2026-11-22T10:00:00+01:00'], ['after 30 November', '2026-12-01T09:00:00+01:00']]) {
+    console.log(`\n# No offer (config offer: null), ${label}`);
+    for (const path of PAGES) {
+      const { page, ctx, errors } = await open(browser, path, time);
+      ok(await page.getAttribute('html', 'data-offer') === 'off', `${path}: data-offer=off`);
+      ok(await page.locator('.promo, .deadline, .offer-tag, .badge, del, [data-cd-text], [data-cd-box]').count() === 0, `${path}: no banner, countdown, offer label, badge or struck price in the page`);
+      for (const l of ['it', 'en']) {
+        if (l === 'en') await page.click('[data-set-lang="en"]');
+        const body = await page.evaluate(() => document.body.innerText);
+        ok(!/Black Friday|invece di|instead of|più richiesto|most popular/i.test(body), `${path} (${l}): no offer or "most popular" copy`);
+        // every price element shows a price: nothing left empty
+        const empty = await page.$$eval('[data-price]', (els) => els.filter((e) => !/\d/.test(e.textContent)).length);
+        ok(empty === 0, `${path} (${l}): no empty price elements`);
+      }
+      ok(errors.length === 0, `${path}: no JS errors or warnings ${errors.join(' | ')}`);
+      await ctx.close();
+    }
   }
   {
-    const { page, ctx } = await open(browser, '/studio/prezzi', '2026-11-22T10:00:00+01:00');
+    const { page, ctx } = await open(browser, '/studio/');
     const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '649 €,449 €,249 €,119 €,349 €', `prezzi: offer prices ${prices}`);
-    const struck = await texts(page, '.plans del');
-    ok(struck.join(',') === '849 €,599 €,349 €,149 €,449 €', `prezzi: struck regular prices ${struck}`);
-    ok(await visible(page, '.deadline'), 'prezzi: deadline box visible');
-    const box = await page.$$eval('[data-cd-box] [data-u]', (e) => e.map((x) => x.textContent));
-    ok(box.join(' ') === '8 13 59', `prezzi: countdown boxes ${box}`);
-    const href = await page.getAttribute('[data-wa="vis"]', 'href');
-    ok(norm(decodeURIComponent(href)).includes('Visibilità (249 €)'), 'prezzi: Visibilità WhatsApp message has the offer price');
+    ok(prices.join(',') === '79 €,349 €,599 €', `home: three packages, Prova first ${prices}`);
+    ok(await page.locator('.plans .plan').count() === 3, 'home: at most 3 package cards');
+    ok(await page.locator('.plans .plan').first().evaluate((el) => el.classList.contains('plan-pop') && el.classList.contains('p-trial')), 'home: Prova is the featured card');
+    ok(await page.locator('.plans-foot a[href$="/prezzi"]').count() === 1, 'home: one "Tutti i pacchetti" link');
+    const href = decodeURIComponent(await page.getAttribute('.plans [data-wa="trial"]', 'href'));
+    ok(norm(href).includes('pacchetto Prova (79 €)'), 'home: Prova WhatsApp message');
     ok(href.startsWith('https://wa.me/39'), 'WhatsApp number has the 39 country code');
-    const sr = await page.textContent('.deadline .sr-only [lang="it"]');
-    ok(/30 novembre alle 23:59/.test(sr), `prezzi: readable end text "${sr.trim()}"`);
-    // the clock ticks: one minute later the countdown moves, and nothing else changes
-    await page.clock.runFor(60_000);
-    ok(await page.textContent('[data-cd-box] [data-u="m"]') === '58', 'countdown ticks once a minute');
-    // reload gives the same countdown (no per-visitor reset)
-    await page.reload({ waitUntil: 'networkidle' });
-    ok(await page.textContent('[data-cd-box] [data-u="m"]') === '58', 'same countdown after reload');
     await ctx.close();
   }
   {
-    // a visitor whose phone is set to another time zone sees the same end moment
-    const { page, ctx } = await open(browser, '/studio/prezzi', '2026-11-22T10:00:00+01:00', { timezoneId: 'America/New_York' });
-    const box = await page.$$eval('[data-cd-box] [data-u]', (e) => e.map((x) => x.textContent));
-    ok(box.join(' ') === '8 13 59', `time zone independent countdown (New York phone): ${box}`);
-    await ctx.close();
-  }
-
-  console.log('\n# Offer crossing its end while the page is open');
-  {
-    const { page, ctx } = await open(browser, '/studio/', '2026-11-30T23:58:30+01:00');
-    ok(await page.getAttribute('html', 'data-offer') === 'on', 'on at 23:58:30');
-    await page.clock.runFor(31_000);
-    ok(await page.getAttribute('html', 'data-offer') === 'off', 'switches off at 23:59:00 without reload');
-    ok(!(await visible(page, '.promo')), 'banner hidden after the end');
+    const { page, ctx } = await open(browser, '/studio/prezzi');
     const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '849 €,149 €,349 €', `home: regular prices ${prices}`);
-    await ctx.close();
-  }
-
-  console.log('\n# After the end (2026-12-01 09:00 Rome)');
-  for (const path of PAGES) {
-    const { page, ctx, errors } = await open(browser, path, '2026-12-01T09:00:00+01:00');
-    ok(await page.getAttribute('html', 'data-offer') === 'off', `${path}: data-offer=off`);
-    ok(!(await visible(page, '.promo')), `${path}: no banner`);
-    ok(await page.locator('del:visible').count() === 0, `${path}: no struck prices`);
-    ok(await page.locator('.deadline:visible, .offer-tag:visible').count() === 0, `${path}: no countdown or offer label`);
-    const body = await page.evaluate(() => document.body.innerText);
-    ok(!/Black Friday/i.test(body), `${path}: no visible "Black Friday" text`);
-    ok(errors.length === 0, `${path}: no JS errors ${errors.join(' | ')}`);
-    await ctx.close();
-  }
-  {
-    const { page, ctx } = await open(browser, '/studio/prezzi', '2026-12-01T09:00:00+01:00');
-    const prices = await texts(page, '.plans .price');
-    ok(prices.join(',') === '849 €,599 €,349 €,149 €,449 €', `prezzi: regular prices ${prices}`);
+    ok(prices.join(',') === '79 €,849 €,599 €,349 €,149 €,449 €', `prezzi: one price per package, Prova first ${prices}`);
+    const first = await page.locator('.plans .plan').first().getAttribute('class');
+    ok(/p-trial/.test(first), 'prezzi: Prova is the first card');
     const cmp = await texts(page, '.cmp thead small');
-    ok(cmp.join(',') === '149 €,349 €,449 €,599 €,849 €', `prezzi: comparison table header ${cmp}`);
+    ok(cmp.join(',') === '79 €,149 €,349 €,449 €,599 €,849 €', `prezzi: comparison table header ${cmp}`);
+    const cols = await page.$$eval('.cmp tr', (rows) => rows.map((r) => r.children.length));
+    ok(cols.every((n) => n === 7), `prezzi: every table row has 7 cells (${[...new Set(cols)]})`);
     const href = decodeURIComponent(await page.getAttribute('[data-wa="photo"]', 'href'));
-    ok(norm(href).includes('Foto dei piatti (149 €)'), 'WhatsApp message uses the regular price');
-    ok(norm(await page.textContent('[data-calc] [data-out="vis"]')) === '349 €', 'calculator uses the regular Visibilità price');
+    ok(norm(href).includes('Foto dei piatti (149 €)'), 'WhatsApp message uses the config price');
+    ok(norm(await page.textContent('[data-calc] [data-out="vis"]')) === '349 €', 'calculator uses the Visibilità price');
     await ctx.close();
   }
-
   console.log('\n# Interactions (home, 375 px)');
   {
-    const { page, ctx } = await open(browser, '/studio/', '2026-11-22T10:00:00+01:00');
+    const { page, ctx } = await open(browser, '/studio/');
     const box = page.locator('#prima-dopo [data-ba]');
     const bb = await box.boundingBox();
     await page.mouse.move(bb.x + bb.width * 0.5, bb.y + bb.height / 2);
@@ -145,18 +115,17 @@ const texts = async (page, sel) => (await page.$$eval(sel, (els) => els.filter((
 
     await page.click('[data-set-lang="en"]');
     ok((await page.textContent('h1')).includes('More customers'), 'EN toggle switches the copy');
-    ok((await page.textContent('.promo [data-cd-text]')).includes('d '), 'countdown in English units');
-    ok(norm(decodeURIComponent(await page.getAttribute('[data-wa="vis"]', 'href'))).includes('Visibility package (€249)'), 'EN WhatsApp message');
+    ok(norm(decodeURIComponent(await page.getAttribute('[data-wa="vis"]', 'href'))).includes('Visibility package (€349)'), 'EN WhatsApp message');
     await ctx.close();
   }
   {
-    const { page, ctx } = await open(browser, '/studio/prezzi', '2026-11-22T10:00:00+01:00');
+    const { page, ctx } = await open(browser, '/studio/prezzi');
     await page.locator('#c-orders').fill('500');
     await page.locator('#c-aov').fill('20');
     const extra = norm(await page.textContent('[data-out="extra"]'));
     const days = (await page.textContent('[data-out="days"]')).trim();
     ok(extra === '1200 €' || extra === '1.200 €', `calculator 500 × 20 € × 12% = ${extra}`);
-    ok(days === '7', `pays for itself in ${days} days (249 / (1200/30) → 7)`);
+    ok(days === '9', `pays for itself in ${days} days (349 / (1200/30) → 9)`);
     await ctx.close();
   }
 
