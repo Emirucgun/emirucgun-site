@@ -1,5 +1,5 @@
 // Static checks for the studio site (no browser needed):   node studio/tools/check-site.mjs
-// - every price written in the HTML (the no-JavaScript fallback) matches config.js
+// - every price written in the HTML (the no-JavaScript fallback) matches config.js; with no offer, nothing of one is left
 // - every internal link and #anchor points to something that exists
 // - no duplicate ids, every <img> has alt + width + height, no leftover forbidden copy
 // - the WhatsApp fallback links use the number in config.js
@@ -21,6 +21,7 @@ vm.runInNewContext(readFileSync(join(STUDIO, 'config.js'), 'utf8'), sandbox);
 const C = sandbox.window.STUDIO;
 
 const errors = [];
+const current = (p) => (C.offerActive() && p.offer != null ? p.offer : p.regular);
 const err = (page, msg) => errors.push(`${page}: ${msg}`);
 const num = (t) => +t.replace(/[^\d,.]/g, '').replace(',', '.');
 
@@ -35,11 +36,11 @@ const urlToFile = (path) => {
 };
 
 for (const [page, src] of Object.entries(html)) {
-  // prices: offer price where the page shows "current", regular where it shows the struck price
+  // prices: the fallback is the price shown today (the offer price only while an offer runs and the package has one)
   for (const m of src.matchAll(/data-price="(\w+)"[^>]*>([^<]*)</g)) {
     const p = C.prices[m[1]];
     if (!p) err(page, `unknown price key "${m[1]}"`);
-    else if (num(m[2]) !== p.offer) err(page, `price ${m[1]} fallback "${m[2]}" ≠ config offer ${p.offer}`);
+    else if (num(m[2]) !== current(p)) err(page, `price ${m[1]} fallback "${m[2]}" ≠ config ${current(p)}`);
   }
   for (const m of src.matchAll(/data-price-regular="(\w+)"[^>]*>([^<]*)</g)) {
     const p = C.prices[m[1]];
@@ -51,8 +52,13 @@ for (const [page, src] of Object.entries(html)) {
   for (const m of stripped.matchAll(/>[^<]*?\d+\s?€[^<]*</g)) err(page, `hard-coded price outside a data-price element: ${m[0].slice(0, 80)}`);
 
   // forbidden leftovers
-  for (const re of [/31 dicembre/i, /31 December/i, /prezzo di lancio/i, /launch price/i, /\bposti\b/i, /\bspots?\b/i, /solo \d+ /i])
+  for (const re of [/31 dicembre/i, /31 December/i, /prezzo di lancio/i, /launch price/i, /\bposti\b/i, /\bspots?\b/i, /solo \d+ /i,
+    /il più richiesto/i, /most popular/i, /più scelto/i, /best ?seller/i])
     if (re.test(stripped)) err(page, `forbidden copy matches ${re}`);
+  // no offer running: nothing of it may be left on the page (banner, countdown, struck prices, labels)
+  if (!C.offer)
+    for (const re of [/Black Friday/i, /class="[^"]*\b(offer-only|offer-tag|promo|deadline|cd-box)\b/, /data-(offer-date|offer-time|cd-text|cd-box|price-regular|price-offer)\b/, /<del\b/, /invece di/i, /instead of/i])
+      if (re.test(src.replace(/<!--[\s\S]*?-->/g, ''))) err(page, `offer is off but the page still has ${re}`);
 
   // ids
   const seen = new Set();
@@ -93,6 +99,42 @@ for (const [page, src] of Object.entries(html)) {
   if (!/property="og:title"/.test(src)) err(page, 'missing og:title');
 }
 
+// before/after examples (studio/before-after.js): complete entries, every size in both formats, and the
+// first one is what the HTML shows before JavaScript (home hero, /esempi slider and delivery-app card)
+{
+  const box = { window: {} };
+  vm.runInNewContext(readFileSync(join(STUDIO, 'before-after.js'), 'utf8'), box);
+  const BA = box.window.STUDIO_BA;
+  const where = 'before-after.js';
+  if (!Array.isArray(BA) || !BA.length) errors.push(`${where}: the list is empty`);
+  else {
+    const seenIds = new Set();
+    BA.forEach((e, i) => {
+      const name = `${where}: entry ${i + 1} (${e && e.id})`;
+      if (!e || !e.id || seenIds.has(e.id)) errors.push(`${name}: missing or duplicate id`);
+      seenIds.add(e && e.id);
+      for (const k of ['before', 'after']) {
+        if (typeof e[k] !== 'string' || !e[k].startsWith('/studio/')) { errors.push(`${name}: "${k}" must be a path starting with /studio/`); continue; }
+        for (const w of e.widths || []) for (const ext of ['avif', 'webp'])
+          if (!existsSync(join(REPO, `${e[k]}-${w}.${ext}`))) errors.push(`${name}: missing file ${e[k]}-${w}.${ext} (run studio/tools/optimize-images.py)`);
+        if (!e.alt || !e.alt[k] || !e.alt[k].it || !e.alt[k].en) errors.push(`${name}: alt.${k} needs it and en`);
+      }
+      if (!Array.isArray(e.widths) || !e.widths.length) errors.push(`${name}: widths missing`);
+      if (!(e.width > 0 && e.height > 0)) errors.push(`${name}: width and height missing`);
+      if (!e.dish || !e.dish.it || !e.dish.en) errors.push(`${name}: dish needs it and en`);
+      if (e.credit && (!e.credit.it || !e.credit.en)) errors.push(`${name}: credit needs it and en (or null)`);
+    });
+    const first = BA[0];
+    for (const [page, src] of Object.entries(html)) {
+      for (const m of src.matchAll(/data-ba-set[^>]*>([\s\S]*?)<\/(figure|div)>\s*(?:<p class="ba-meta"|<div class="app-dish")/g)) {
+        const imgs = [...m[1].matchAll(/<img src="([^"]+)"/g)].map((x) => x[1]);
+        if (!imgs[0] || !imgs[0].startsWith(first.before + '-') || !imgs[1] || !imgs[1].startsWith(first.after + '-'))
+          err(page, `before/after HTML shows ${imgs.join(' + ')}, not the first entry of before-after.js (${first.id})`);
+      }
+    }
+  }
+}
+
 // sitemap lists every page
 const sitemap = readFileSync(join(STUDIO, 'sitemap.xml'), 'utf8');
 for (const u of ['/', '/esempi', '/prezzi', '/come-funziona'])
@@ -112,6 +154,15 @@ if (C.showWebsiteDemos !== true) {
   }
 }
 
+// no Turkish dotted capital I (U+0130) / dotless i (U+0131) anywhere in the site's text (an uppercase done under a tr locale turns
+// "Glicini" into "GL\u0130C\u0130N\u0130"). Every page also sets lang="it"/"en" so CSS text-transform never uses tr rules.
+const walkText = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.name.startsWith('.') || e.name === 'node_modules' ? [] : e.isDirectory() ? walkText(join(dir, e.name)) : /\.(html|js|mjs|css|svg|inc|json)$/.test(e.name) ? [join(dir, e.name)] : []));
+for (const f of walkText(STUDIO)) {
+  const src = readFileSync(f, 'utf8');
+  if (/[\u0130\u0131]/.test(src)) errors.push(`${f.slice(REPO.length + 1)}: contains a Turkish dotted I (U+0130) or dotless i (U+0131)`);
+  if (f.endsWith('.html') && /<html\b/.test(src) && !/<html[^>]*\slang="(it|en)"/.test(src) && !/<html lang="\$\{/.test(src)) errors.push(`${f.slice(REPO.length + 1)}: <html> without lang="it" or "en"`);
+}
+
 // private previews (/anteprima/<slug>) are never linked from any other page of the site
 const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));
 for (const f of walk(STUDIO)) {
@@ -123,8 +174,8 @@ for (const f of walk(STUDIO)) {
   if (/href="[^"]*\/anteprima\//.test(readFileSync(f, 'utf8'))) errors.push(`${rel}: links to a private preview (/anteprima/…)`);
 }
 
-console.log(`Offer "${C.offer.name}" ends ${new Date(C.offer.endsAt).toISOString()} (${C.offer.ends} ${C.offer.timeZone})`);
-console.log('Prices:', Object.entries(C.prices).map(([k, v]) => `${k} ${v.offer}/${v.regular}`).join(' · '));
+console.log(C.offer ? `Offer "${C.offer.name}" ends ${new Date(C.offer.endsAt).toISOString()} (${C.offer.ends} ${C.offer.timeZone})` : 'No offer (config offer: null)');
+console.log('Prices:', Object.entries(C.prices).map(([k, v]) => `${k} ${v.offer != null ? v.offer + '/' : ''}${v.regular}`).join(' · '));
 for (const e of errors) console.log('  ERROR ', e);
 console.log(errors.length ? `${errors.length} error(s).` : `OK: ${PAGES.length} pages checked.`);
 process.exit(errors.length ? 1 : 0);

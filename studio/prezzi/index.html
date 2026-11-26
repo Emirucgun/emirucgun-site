@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){var d=document.documentElement,l;d.classList.add('js');try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')}catch(e){}if(l==='en')d.lang='en'})();</script>
-<!-- config.js loads first (it is tiny): it decides offer or regular prices before the page is drawn. -->
+<!-- config.js loads first (it is tiny): prices and settings, ready before the page is drawn. -->
 <script src="/studio/config.js"></script>
 <title>Prezzi: sito con menù, foto dei piatti, profilo Google · Emir Uçgun</title>
-<meta name="description" content="Pacchetti a prezzo fisso per ristoranti di Torino: Sito + Menù, Rinnovo totale, Foto dei piatti, Visibilità e Completo, più la gestione mensile. Prima l'anteprima, poi pagate.">
+<meta name="description" content="Pacchetti a prezzo fisso per ristoranti di Torino: Prova con 10 foto, Foto dei piatti, Visibilità, Completo, Sito + Menù e Rinnovo totale, più la gestione mensile. Prima l'anteprima, poi pagate.">
 <link rel="canonical" href="https://studio.emirucgun.com/prezzi">
 <meta name="theme-color" content="#F4F1EC">
 <meta property="og:type" content="website">
@@ -64,15 +64,6 @@
 
 <a class="skip" href="#main"><span lang="it">Vai al contenuto</span><span lang="en">Skip to content</span></a>
 
-<!-- Black Friday banner: shown only while the offer runs (dates and prices in config.js) -->
-<div class="promo offer-only">
-  <a href="#pacchetti">
-    <span lang="it"><span class="short"><b>Black Friday</b> fino al <span data-offer-date>30 novembre</span></span><span class="long"><b>Black Friday</b>: prezzi validi fino al <span data-offer-date>30 novembre</span></span><span class="sr-only">. Termina il <span data-offer-date>30 novembre</span> alle <span data-offer-time>23:59</span>.</span></span>
-    <span lang="en"><span class="short"><b>Black Friday</b> until <span data-offer-date>30 November</span></span><span class="long"><b>Black Friday</b>: prices valid until <span data-offer-date>30 November</span></span><span class="sr-only">. Ends on <span data-offer-date>30 November</span> at <span data-offer-time>23:59</span>.</span></span>
-    <span class="cd-t" data-cd-text aria-hidden="true"></span>
-  </a>
-</div>
-
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/studio" aria-label="Emir Uçgun Studio, home"><b>Emir Uçgun</b><span>Studio</span></a>
@@ -101,27 +92,37 @@
   </div>
 </section>
 
-<!-- Prices, the offer end date and the regular prices all come from config.js.
+<!-- Every price comes from config.js.
      The numbers written here are only the fallback without JavaScript (tools/check-site.mjs compares them). -->
 <section id="pacchetti" class="sec" aria-labelledby="packs-title">
   <div class="wrap">
-    <div class="deadline offer-only">
-      <p class="lbl"><span lang="it"><b>Black Friday</b>: prezzi validi fino al <span data-offer-date>30 novembre</span></span><span lang="en"><b>Black Friday</b>: prices valid until <span data-offer-date>30 November</span></span></p>
-      <p class="sr-only"><span lang="it">Termina il <span data-offer-date>30 novembre</span> alle <span data-offer-time>23:59</span>.</span><span lang="en">Ends on <span data-offer-date>30 November</span> at <span data-offer-time>23:59</span>.</span></p>
-      <div class="cd-box" data-cd-box aria-hidden="true">
-        <span class="u"><b data-u="d">–</b><small><span lang="it">giorni</span><span lang="en">days</span></small></span>
-        <span class="u"><b data-u="h">–</b><small><span lang="it">ore</span><span lang="en">hours</span></small></span>
-        <span class="u"><b data-u="m">–</b><small>min</small></span>
+    <div id="prova" class="plans-group">
+      <h2 id="packs-title" class="group-title"><span lang="it">Per cominciare</span><span lang="en">To start</span></h2>
+      <p class="group-lead"><span lang="it">Non mi conoscete ancora: è normale. Provate con 10 piatti, e pagate solo se il risultato vi convince.</span><span lang="en">You don't know me yet, and that's fair. Try it with 10 dishes, and pay only if you're happy with the result.</span></p>
+      <div class="plans plans-1">
+      <article class="card plan plan-pop p-trial" aria-labelledby="pk-trial">
+        <h3 id="pk-trial"><span lang="it">Prova</span><span lang="en">Trial</span></h3>
+        <p class="for"><span lang="it">Per vedere il risultato sui vostri piatti prima di decidere altro.</span><span lang="en">To see the result on your own dishes before deciding anything else.</span></p>
+        <ul class="ticks">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">10 piatti ritoccati: luce, colori, sfondo e inquadratura</span><span lang="en">10 dishes edited: light, colour, background and framing</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Nei formati giusti per Deliveroo, Glovo, Just Eat, Google e Instagram</span><span lang="en">In the right formats for Deliveroo, Glovo, Just Eat, Google and Instagram</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Guida di una pagina per scattare con il telefono</span><span lang="en">One-page guide for shooting on your phone</span></span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagate alla consegna, solo se il risultato vi convince</span><span lang="en">Paid on delivery, only if you're happy with the result</span></span></li>
+        </ul>
+        <div class="cost">
+          <p class="price-line"><span class="price" data-price="trial">79 €</span></p>
+          <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
+          <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa="trial"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Scelgo la Prova</span><span lang="en">I want the Trial</span></a>
+        </div>
+      </article>
       </div>
-      <p class="note"><span lang="it">Il prezzo vale per chi mi scrive entro il <span data-offer-date>30 novembre</span>, anche se il lavoro parte a dicembre.</span><span lang="en">The price holds for anyone who messages me by <span data-offer-date>30 November</span>, even if the work starts in December.</span></p>
     </div>
 
     <div id="sito" class="plans-group">
-      <h2 id="packs-title" class="group-title"><span lang="it">Sito web con menù</span><span lang="en">Website with menu</span></h2>
+      <h2 class="group-title"><span lang="it">Sito web con menù</span><span lang="en">Website with menu</span></h2>
       <p class="group-lead"><span lang="it">Il menù non si apre più come PDF: è dentro il sito, in italiano e inglese, veloce sul telefono.</span><span lang="en">Your menu no longer opens as a PDF: it's part of the website, in Italian and English, fast on a phone.</span></p>
       <div class="plans plans-2" data-stagger>
-      <article class="card plan plan-pop p-renew" aria-labelledby="pk-renew">
-        <span class="badge"><span lang="it">Il più richiesto</span><span lang="en">Most popular</span></span>
+      <article class="card plan p-renew" aria-labelledby="pk-renew">
         <h3 id="pk-renew"><span lang="it">Rinnovo totale</span><span lang="en">Total refresh</span></h3>
         <p class="for"><span lang="it">Per chi ha già un sito, ma vecchio: sito, Google e foto, tutto nuovo.</span><span lang="en">For restaurants with an old website: site, Google and photos, all new.</span></p>
         <ul class="ticks">
@@ -132,10 +133,9 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
         </ul>
         <div class="cost">
-          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
-          <p class="price-line"><span class="price" data-price="renew">649 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="renew">849 €</del></span></p>
+          <p class="price-line"><span class="price" data-price="renew">849 €</span></p>
           <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 7–⁠10 giorni</span><span lang="en">Ready in 7–⁠10 days</span></p>
-          <a class="btn btn-primary" href="https://wa.me/393445034591" data-wa="renew"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span lang="it">Scelgo Rinnovo totale</span><span lang="en">I want Total refresh</span></a>
+          <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="renew"><span lang="it">Scelgo Rinnovo totale</span><span lang="en">I want Total refresh</span></a>
         </div>
       </article>
 
@@ -150,8 +150,7 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
         </ul>
         <div class="cost">
-          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
-          <p class="price-line"><span class="price" data-price="site">449 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="site">599 €</del></span></p>
+          <p class="price-line"><span class="price" data-price="site">599 €</span></p>
           <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 7–⁠10 giorni</span><span lang="en">Ready in 7–⁠10 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="site"><span lang="it">Scelgo Sito + Menù</span><span lang="en">I want Website + Menu</span></a>
         </div>
@@ -175,8 +174,7 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
         </ul>
         <div class="cost">
-          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
-          <p class="price-line"><span class="price" data-price="vis">249 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="vis">349 €</del></span></p>
+          <p class="price-line"><span class="price" data-price="vis">349 €</span></p>
           <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="vis"><span lang="it">Scelgo Visibilità</span><span lang="en">I want Visibility</span></a>
         </div>
@@ -193,8 +191,7 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento alla consegna</span><span lang="en">Payment on delivery</span></span></li>
         </ul>
         <div class="cost">
-          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
-          <p class="price-line"><span class="price" data-price="photo">119 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="photo">149 €</del></span></p>
+          <p class="price-line"><span class="price" data-price="photo">149 €</span></p>
           <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="photo"><span lang="it">Scelgo Foto dei piatti</span><span lang="en">I want Dish photos</span></a>
         </div>
@@ -211,8 +208,7 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span><span lang="it">Pagamento: metà all'anteprima, metà alla consegna</span><span lang="en">Payment: half at preview, half on delivery</span></span></li>
         </ul>
         <div class="cost">
-          <span class="offer-tag offer-only"><span lang="it">Prezzo Black Friday</span><span lang="en">Black Friday price</span></span>
-          <p class="price-line"><span class="price" data-price="full">349 €</span><span class="offer-only"><span class="sr-only"><span lang="it">invece di</span><span lang="en">instead of</span></span> <del data-price-regular="full">449 €</del></span></p>
+          <p class="price-line"><span class="price" data-price="full">449 €</span></p>
           <p class="eta"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span lang="it">Pronto in 2–⁠5 giorni</span><span lang="en">Ready in 2–⁠5 days</span></p>
           <a class="btn btn-ghost" href="https://wa.me/393445034591" data-wa="full"><span lang="it">Scelgo Completo</span><span lang="en">I want Complete</span></a>
         </div>
@@ -236,28 +232,29 @@
         <thead>
           <tr>
             <td></td>
-            <th scope="col"><span lang="it">Foto</span><span lang="en">Photos</span><small data-price="photo">119 €</small></th>
-            <th scope="col"><span lang="it">Visibilità</span><span lang="en">Visibility</span><small data-price="vis">249 €</small></th>
-            <th scope="col"><span lang="it">Completo</span><span lang="en">Complete</span><small data-price="full">349 €</small></th>
-            <th scope="col"><span lang="it">Sito + Menù</span><span lang="en">Website + Menu</span><small data-price="site">449 €</small></th>
-            <th scope="col" class="pop"><span lang="it">Rinnovo totale</span><span lang="en">Total refresh</span><small data-price="renew">649 €</small></th>
+            <th scope="col" class="pop"><span lang="it">Prova</span><span lang="en">Trial</span><small data-price="trial">79 €</small></th>
+            <th scope="col"><span lang="it">Foto</span><span lang="en">Photos</span><small data-price="photo">149 €</small></th>
+            <th scope="col"><span lang="it">Visibilità</span><span lang="en">Visibility</span><small data-price="vis">349 €</small></th>
+            <th scope="col"><span lang="it">Completo</span><span lang="en">Complete</span><small data-price="full">449 €</small></th>
+            <th scope="col"><span lang="it">Sito + Menù</span><span lang="en">Website + Menu</span><small data-price="site">599 €</small></th>
+            <th scope="col"><span lang="it">Rinnovo totale</span><span lang="en">Total refresh</span><small data-price="renew">849 €</small></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row"><span lang="it">Sito nuovo, pensato per il telefono</span><span lang="en">New phone-first website</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Menù digitale IT/EN</span><span lang="en">IT/EN digital menu</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td><span lang="it">Nel sito</span><span lang="en">In the site</span></td><td class="pop"><span lang="it">Nel sito</span><span lang="en">In the site</span></td></tr>
-          <tr><th scope="row"><span lang="it">Pulsante WhatsApp o prenotazioni, mappa</span><span lang="en">WhatsApp or booking button, map</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Dominio intestato a voi</span><span lang="en">Domain in your name</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Foto dei piatti ritoccate</span><span lang="en">Edited dish photos</span></th><td>15</td><td>20</td><td>20</td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="pop">20</td></tr>
-          <tr><th scope="row"><span lang="it">Formati per app di delivery e Google</span><span lang="en">Formats for delivery apps and Google</span></th><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Guida per scattare con il telefono</span><span lang="en">Guide for shooting on your phone</span></th><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Profilo Google in ordine</span><span lang="en">Google profile sorted</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
-          <tr><th scope="row"><span lang="it">Cartoncino QR da stampare</span><span lang="en">Printable QR table card</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
-          <tr><th scope="row"><span lang="it">Descrizioni del menù riscritte</span><span lang="en">Rewritten menu descriptions</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
-          <tr><th scope="row"><span lang="it">Post social</span><span lang="en">Social posts</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td>5</td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
-          <tr><th scope="row"><span lang="it">Gestione mensile inclusa</span><span lang="en">Monthly management included</span></th><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td><span lang="it">1 mese</span><span lang="en">1 month</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
-          <tr><th scope="row"><span lang="it">Pagamento</span><span lang="en">Payment</span></th><td><span lang="it">Alla consegna</span><span lang="en">On delivery</span></td><td>50% + 50%</td><td>50% + 50%</td><td>50% + 50%</td><td class="pop">50% + 50%</td></tr>
-          <tr><th scope="row"><span lang="it">Consegna</span><span lang="en">Delivery</span></th><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td><td class="pop"><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td></tr>
+          <tr><th scope="row"><span lang="it">Sito nuovo, pensato per il telefono</span><span lang="en">New phone-first website</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Menù digitale IT/EN</span><span lang="en">IT/EN digital menu</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td><span lang="it">Nel sito</span><span lang="en">In the site</span></td><td><span lang="it">Nel sito</span><span lang="en">In the site</span></td></tr>
+          <tr><th scope="row"><span lang="it">Pulsante WhatsApp o prenotazioni, mappa</span><span lang="en">WhatsApp or booking button, map</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Dominio intestato a voi</span><span lang="en">Domain in your name</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Foto dei piatti ritoccate</span><span lang="en">Edited dish photos</span></th><td class="pop">10</td><td>15</td><td>20</td><td>20</td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td>20</td></tr>
+          <tr><th scope="row"><span lang="it">Formati per app di delivery e Google</span><span lang="en">Formats for delivery apps and Google</span></th><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Guida per scattare con il telefono</span><span lang="en">Guide for shooting on your phone</span></th><td class="yes pop"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Profilo Google in ordine</span><span lang="en">Google profile sorted</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td></tr>
+          <tr><th scope="row"><span lang="it">Cartoncino QR da stampare</span><span lang="en">Printable QR table card</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
+          <tr><th scope="row"><span lang="it">Descrizioni del menù riscritte</span><span lang="en">Rewritten menu descriptions</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="yes"><svg class="ico" role="img" aria-label="Sì" data-en-aria-label="Yes"><use href="#i-check"/></svg></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
+          <tr><th scope="row"><span lang="it">Post social</span><span lang="en">Social posts</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td>5</td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
+          <tr><th scope="row"><span lang="it">Gestione mensile inclusa</span><span lang="en">Monthly management included</span></th><td class="no pop"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td><span lang="it">1 mese</span><span lang="en">1 month</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td><td class="no"><span aria-hidden="true">—</span><span class="sr-only">No</span></td></tr>
+          <tr><th scope="row"><span lang="it">Pagamento</span><span lang="en">Payment</span></th><td class="pop"><span lang="it">Alla consegna, se vi convince</span><span lang="en">On delivery, if you're happy</span></td><td><span lang="it">Alla consegna</span><span lang="en">On delivery</span></td><td>50% + 50%</td><td>50% + 50%</td><td>50% + 50%</td><td>50% + 50%</td></tr>
+          <tr><th scope="row"><span lang="it">Consegna</span><span lang="en">Delivery</span></th><td class="pop"><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">2–⁠5 giorni</span><span lang="en">2–⁠5 days</span></td><td><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td><td><span lang="it">7–⁠10 giorni</span><span lang="en">7–⁠10 days</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -309,7 +306,7 @@
         <span class="k"><span lang="it">Stima: fino a</span><span lang="en">Estimate: up to</span></span>
         <span class="v" data-out="extra">900 €</span>
         <span class="k"><span lang="it">di incassi in più al mese, con le foto nel menù</span><span lang="en">extra takings a month, with photos on the menu</span></span>
-        <p class="pay"><span lang="it">Il pacchetto Visibilità (<b data-out="vis">249 €</b>) si ripagherebbe in circa <b data-out="days">9</b> giorni.</span><span lang="en">The Visibility package (<b data-out="vis">249 €</b>) would pay for itself in about <b data-out="days">9</b> days.</span></p>
+        <p class="pay"><span lang="it">Il pacchetto Visibilità (<b data-out="vis">349 €</b>) si ripagherebbe in circa <b data-out="days">12</b> giorni.</span><span lang="en">The Visibility package (<b data-out="vis">349 €</b>) would pay for itself in about <b data-out="days">12</b> days.</span></p>
         <p class="fine"><span lang="it">Stima basata sul dato pubblicato da Deliveroo: fino al +12% di ordini online con le foto anche solo sul 10% del menù. Sono incassi lordi, non una promessa: ogni locale è diverso.</span><span lang="en">Estimate based on Deliveroo's published figure: up to +12% online orders with photos on just 10% of the menu. These are gross takings, not a promise: every restaurant is different.</span></p>
       </div>
     </div>
@@ -325,7 +322,7 @@
       <p class="lead"><span lang="it">Bonifico o PayPal intestati a me, Emir Uçgun, con ricevuta regolare per prestazione occasionale.</span><span lang="en">Bank transfer or PayPal in my own name, Emir Uçgun, with a proper receipt for occasional services.</span></p>
     </div>
     <ul class="terms" data-stagger>
-      <li class="card"><b><span lang="it">Foto dei piatti</span><span lang="en">Dish photos</span></b><span><span lang="it">Si paga tutto alla consegna.</span><span lang="en">Paid in full on delivery.</span></span></li>
+      <li class="card"><b><span lang="it">Prova e Foto dei piatti</span><span lang="en">Trial and Dish photos</span></b><span><span lang="it">Si paga tutto alla consegna, solo se il risultato vi convince.</span><span lang="en">Paid in full on delivery, only if you're happy with the result.</span></span></li>
       <li class="card"><b><span lang="it">Visibilità, Completo, Sito + Menù, Rinnovo totale</span><span lang="en">Visibility, Complete, Website + Menu, Total refresh</span></b><span><span lang="it">Metà quando approvate l'anteprima, metà alla consegna.</span><span lang="en">Half when you approve the preview, half on delivery.</span></span></li>
       <li class="card"><b><span lang="it">Gestione mensile</span><span lang="en">Monthly management</span></b><span><span lang="it">Mese per mese. Disdite con un messaggio.</span><span lang="en">Month by month. Cancel with one message.</span></span></li>
     </ul>
@@ -337,7 +334,7 @@
   <div class="wrap narrow">
     <div class="head">
       <p class="eyebrow"><span lang="it">Domande frequenti</span><span lang="en">FAQ</span></p>
-      <h2 id="faq-title"><span lang="it">Le domande che mi fanno più spesso</span><span lang="en">The questions I'm asked most</span></h2>
+      <h2 id="faq-title"><span lang="it">Domande e risposte</span><span lang="en">Questions and answers</span></h2>
     </div>
     <details>
       <summary><span lang="it">Devo darti le mie password?</span><span lang="en">Do I need to give you my passwords?</span></summary>
@@ -349,7 +346,7 @@
     </details>
     <details>
       <summary><span lang="it">Quanto costa e come si paga?</span><span lang="en">How much is it and how do I pay?</span></summary>
-      <div><span lang="it">Foto dei piatti <span data-price="photo">119 €</span>, Visibilità <span data-price="vis">249 €</span>, Completo <span data-price="full">349 €</span>, Sito + Menù <span data-price="site">449 €</span>, Rinnovo totale <span data-price="renew">649 €</span><span class="offer-only"> (prezzi Black Friday per chi scrive entro il <span data-offer-date>30 novembre</span>; poi <span data-price-regular="photo">149 €</span>, <span data-price-regular="vis">349 €</span>, <span data-price-regular="full">449 €</span>, <span data-price-regular="site">599 €</span> e <span data-price-regular="renew">849 €</span>)</span>. La gestione mensile costa <span data-price="monthly">149 €</span>/mese. Bonifico o PayPal intestati a me, con ricevuta regolare: Foto dei piatti alla consegna, gli altri pacchetti metà all'anteprima e metà alla consegna.</span><span lang="en">Dish photos <span data-price="photo">119 €</span>, Visibility <span data-price="vis">249 €</span>, Complete <span data-price="full">349 €</span>, Website + Menu <span data-price="site">449 €</span>, Total refresh <span data-price="renew">649 €</span><span class="offer-only"> (Black Friday prices for anyone who messages me by <span data-offer-date>30 November</span>; then <span data-price-regular="photo">149 €</span>, <span data-price-regular="vis">349 €</span>, <span data-price-regular="full">449 €</span>, <span data-price-regular="site">599 €</span> and <span data-price-regular="renew">849 €</span>)</span>. Monthly management is <span data-price="monthly">149 €</span>/month. Bank transfer or PayPal in my name, with a proper receipt: Dish photos on delivery, the other packages half at preview and half on delivery.</span></div>
+      <div><span lang="it">Prova <span data-price="trial">79 €</span>, Foto dei piatti <span data-price="photo">149 €</span>, Visibilità <span data-price="vis">349 €</span>, Completo <span data-price="full">449 €</span>, Sito + Menù <span data-price="site">599 €</span>, Rinnovo totale <span data-price="renew">849 €</span>. La gestione mensile costa <span data-price="monthly">149 €</span>/mese. Bonifico o PayPal intestati a me, con ricevuta regolare: Prova e Foto dei piatti alla consegna (solo se vi convince), gli altri pacchetti metà all'anteprima e metà alla consegna.</span><span lang="en">Trial <span data-price="trial">79 €</span>, Dish photos <span data-price="photo">149 €</span>, Visibility <span data-price="vis">349 €</span>, Complete <span data-price="full">449 €</span>, Website + Menu <span data-price="site">599 €</span>, Total refresh <span data-price="renew">849 €</span>. Monthly management is <span data-price="monthly">149 €</span>/month. Bank transfer or PayPal in my name, with a proper receipt: Trial and Dish photos on delivery (only if you're happy), the other packages half at preview and half on delivery.</span></div>
     </details>
     <details>
       <summary><span lang="it">Se mi fai il sito, di chi è? E il dominio?</span><span lang="en">If you build my website, who owns it? And the domain?</span></summary>
